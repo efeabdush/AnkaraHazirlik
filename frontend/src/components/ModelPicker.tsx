@@ -34,6 +34,7 @@ const keyHelp: Record<string, { label: string; url: string }> = {
 
 export function ModelPicker({ secret, active, onSaved }: Props) {
   const [providers, setProviders] = useState<ProviderInfo[]>([]);
+  const [keyManagementEnabled, setKeyManagementEnabled] = useState(false);
   const [provider, setProvider] = useState("");
   const [models, setModels] = useState<string[]>([]);
   const [model, setModel] = useState("");
@@ -48,10 +49,11 @@ export function ModelPicker({ secret, active, onSaved }: Props) {
   const [keyErr, setKeyErr] = useState<Record<string, string>>({});
 
   async function refreshProviders(pick?: string) {
-    const d = await api<{ providers: ProviderInfo[]; active: ActiveSummary }>("/api/admin/providers", {
+    const d = await api<{ providers: ProviderInfo[]; active: ActiveSummary; key_management_enabled: boolean }>("/api/admin/providers", {
       headers: adminHeaders(secret),
     });
     setProviders(d.providers);
+    setKeyManagementEnabled(d.key_management_enabled);
     const next = pick ?? d.active.provider ?? d.providers.find((p) => p.configured)?.id ?? "";
     setProvider(next);
     if (d.active.model) setModel(d.active.model);
@@ -165,7 +167,9 @@ export function ModelPicker({ secret, active, onSaved }: Props) {
         <div>
           <h2 className="font-serif text-2xl text-[var(--navy)]">Sağlayıcı ve model</h2>
           <p className="prose-quiet mt-1 text-sm">
-            Anahtarı buraya yapıştır, test edilsin. Çalışırsa kaydedilir ve model listesi açılır.
+            {keyManagementEnabled
+              ? "Anahtarı buraya yapıştır, test edilsin. Çalışırsa kaydedilir ve model listesi açılır."
+              : "Production anahtarları yalnızca Railway sealed variables üzerinden yönetilir."}
           </p>
         </div>
         {active?.ready ? (
@@ -207,43 +211,49 @@ export function ModelPicker({ secret, active, onSaved }: Props) {
                   <span className="mt-1 block text-xs leading-relaxed text-[var(--ink-2)]">{p.note}</span>
                 </button>
                 <span className={p.configured ? "badge badge-green" : "badge"}>
-                  {p.configured ? `anahtar: ${p.key_masked}` : "anahtar yok"}
+                  {p.configured ? (keyManagementEnabled ? `anahtar: ${p.key_masked}` : "anahtar hazır") : "anahtar yok"}
                 </span>
               </div>
 
-              <div className="mt-3 flex flex-wrap items-center gap-2">
-                <input
-                  type="password"
-                  className="input flex-1 min-w-[220px]"
-                  placeholder={p.configured ? "Yeni anahtarla değiştir" : "API anahtarını yapıştır"}
-                  value={keyDrafts[p.key_env] ?? ""}
-                  onChange={(e) => setKeyDrafts((prev) => ({ ...prev, [p.key_env]: e.target.value }))}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") void testKey(p);
-                  }}
-                />
-                <button
-                  type="button"
-                  className="btn btn-primary text-sm"
-                  disabled={busy || !(keyDrafts[p.key_env] ?? "").trim()}
-                  onClick={() => testKey(p)}
-                >
-                  {busy ? "Test ediliyor…" : "Test et ve kaydet"}
-                </button>
-                {p.key_source === "panel" ? (
-                  <button type="button" className="btn btn-quiet text-sm" disabled={busy} onClick={() => removeKey(p)}>
-                    Sil
+              {keyManagementEnabled ? (
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <input
+                    type="password"
+                    className="input flex-1 min-w-[220px]"
+                    placeholder={p.configured ? "Yeni anahtarla değiştir" : "API anahtarını yapıştır"}
+                    value={keyDrafts[p.key_env] ?? ""}
+                    onChange={(e) => setKeyDrafts((prev) => ({ ...prev, [p.key_env]: e.target.value }))}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") void testKey(p);
+                    }}
+                  />
+                  <button
+                    type="button"
+                    className="btn btn-primary text-sm"
+                    disabled={busy || !(keyDrafts[p.key_env] ?? "").trim()}
+                    onClick={() => testKey(p)}
+                  >
+                    {busy ? "Test ediliyor…" : "Test et ve kaydet"}
                   </button>
-                ) : null}
-              </div>
+                  {p.key_source === "panel" ? (
+                    <button type="button" className="btn btn-quiet text-sm" disabled={busy} onClick={() => removeKey(p)}>
+                      Sil
+                    </button>
+                  ) : null}
+                </div>
+              ) : (
+                <p className="mt-3 rounded-xl border border-[var(--line)] bg-[rgba(47,107,81,.05)] p-3 text-xs text-[var(--ink-2)]">
+                  Anahtar değiştirmek için Railway’de Backend → Variables alanını kullan.
+                </p>
+              )}
 
               <div className="mt-2 flex flex-wrap items-center gap-3 text-xs">
-                {help ? (
+                {keyManagementEnabled && help ? (
                   <a className="text-[var(--ink-2)] underline" href={help.url} target="_blank" rel="noreferrer">
                     Anahtar al: {help.label}
                   </a>
                 ) : null}
-                {p.key_source === "env" ? <span className="text-[var(--ink-3)]">.env üzerinden geliyor</span> : null}
+                {p.key_source === "env" ? <span className="text-[var(--ink-3)]">Railway değişkeninden geliyor</span> : null}
                 {p.key_env === "OPENCODE_API_KEY" ? (
                   <span className="text-[var(--ink-3)]">Go ve Zen aynı anahtarı paylaşır</span>
                 ) : null}

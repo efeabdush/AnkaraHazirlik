@@ -78,17 +78,6 @@ export function Header() {
               </Link>
             );
           })}
-          <span className="mx-1 hidden h-5 w-px bg-[var(--line)] sm:block" />
-          <Link
-            href="/admin"
-            className={`hidden flex-none rounded-lg border px-3 py-1.5 text-sm transition-colors lg:block ${
-              pathname === "/admin"
-                ? "border-[var(--navy)] bg-[var(--navy)] text-[#f6f1e6]"
-                : "border-[rgba(28,61,90,0.3)] text-[var(--navy)] hover:bg-[rgba(28,61,90,0.06)]"
-            }`}
-          >
-            Soru üret
-          </Link>
         </nav>
       </div>
     </header>

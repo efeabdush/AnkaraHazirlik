@@ -12,6 +12,8 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    app_env: str = "development"
+    railway_environment: str = ""
     admin_secret: str = ""
 
     # Owner-paid providers. Fill only the one(s) you have.
@@ -39,6 +41,14 @@ class Settings(BaseSettings):
     max_speaking_audio_mb: int = 25
     storage_dir: Path = BACKEND_DIR / "storage"
     content_dir: Path = REPO_DIR / "content"
+
+    @property
+    def is_production(self) -> bool:
+        return self.app_env.strip().lower() == "production" or bool(self.railway_environment.strip())
+
+    @property
+    def admin_key_management_enabled(self) -> bool:
+        return not self.is_production
 
 
 settings = Settings()

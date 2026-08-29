@@ -8,6 +8,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from ..auth import require_admin
+from ..config import settings
 from ..db import SessionLocal, get_db
 from ..models import GenerationJob, Setting, Test
 from ..providers import (
@@ -81,6 +82,11 @@ def _save_setting(db: Session, key: str, value: str) -> None:
         db.add(Setting(key=key, value=value))
 
 
+def _require_key_management() -> None:
+    if not settings.admin_key_management_enabled:
+        raise HTTPException(403, "Production ortamında API anahtarları yalnızca Railway variables üzerinden yönetilir.")
+
+
 @router.get("/status")
 def admin_status():
     return {"ok": True, "llm": llm_available(), "active": active_summary()}
@@ -90,6 +96,7 @@ def admin_status():
 def providers():
     return {
         "active": active_summary(),
+        "key_management_enabled": settings.admin_key_management_enabled,
         "providers": [
             {
                 "id": PROVIDERS[pid].id,
@@ -108,6 +115,8 @@ def providers():
 @router.post("/keys")
 def save_key(body: KeyIn, db: Session = Depends(get_db)):
     """Store an API key from the panel, but only if it actually works."""
+
+    _require_key_management()
 
     key_env = body.key_env.strip().upper()
     if key_env not in KEY_ENVS:
@@ -142,6 +151,7 @@ def save_key(body: KeyIn, db: Session = Depends(get_db)):
 
 @router.delete("/keys/{key_env}")
 def delete_key(key_env: str, db: Session = Depends(get_db)):
+    _require_key_management()
     key_env = key_env.strip().upper()
     if key_env not in KEY_ENVS:
         raise HTTPException(400, "Bilinmeyen anahtar alanı")

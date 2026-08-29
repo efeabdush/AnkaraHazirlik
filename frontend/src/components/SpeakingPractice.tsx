@@ -25,7 +25,7 @@ type TranscriptionResult = {
 type SpeakingResult = { scores: Record<string, number>; session_score_20: number; level_summary_tr: string; priorities_tr: string[]; filler_feedback_tr: string; better_phrases: { instead_of: string; try: string; why_tr: string }[]; next_drill_tr: string[]; disclaimer_tr: string };
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
-const scoreLabels: Record<string, string> = { task_completion: "Görevi tamamlama", grammar: "Dil bilgisi", vocabulary: "Kelime", fluency_pronunciation: "Akıcılık ve telaffuz" };
+const scoreLabels: Record<string, string> = { task_completion: "Görevi tamamlama", grammar: "Dil bilgisi", vocabulary: "Kelime", fluency_pronunciation: "Akıcılık ve telaffuz tahmini" };
 const fmt = (sec: number) => `${Math.floor(Math.max(0, sec) / 60).toString().padStart(2, "0")}:${(Math.max(0, sec) % 60).toString().padStart(2, "0")}`;
 
 function analyseSpeech(text: string, duration: number, transcription: TranscriptionResult | null) {
@@ -185,7 +185,7 @@ export function SpeakingPractice() {
   const phaseLabel = phase === "prep" ? "Hazırlık" : phase === "speak" ? "Konuşma" : phase === "processing" ? "Yazıya çevriliyor" : "Tamamlandı";
 
   return <div className="space-y-8">
-    <header className="space-y-3"><div className="flex flex-wrap gap-2"><span className="badge badge-navy">3. oturum · 20 puan</span><span className="badge">yaklaşık 10 dakika</span></div><h1 className="font-serif text-4xl text-[var(--navy)]">Konuşma</h1><p className="prose-quiet max-w-3xl">Konu kartını seç, bir dakika hazırlan, ana maddeleri ve takip sorularını konuş. Ses yalnızca yazıya çevrilmek için geçici olarak yerel API’ye gönderilir; işlem tamamlanınca ses dosyası silinir.</p></header>
+    <header className="space-y-3"><div className="flex flex-wrap gap-2"><span className="badge badge-navy">3. oturum · 20 puan</span><span className="badge">yaklaşık 10 dakika</span></div><h1 className="font-serif text-4xl text-[var(--navy)]">Konuşma</h1><p className="prose-quiet max-w-3xl">Konu kartını seç, bir dakika hazırlan, ana maddeleri ve takip sorularını konuş. Ses yalnızca yazıya çevrilmek için geçici olarak sunucuya gönderilir ve işlem tamamlanınca silinir. Transkript ile yaklaşık konuşma ölçümleri, geri bildirim üretmesi için seçili AI sağlayıcısına gönderilir.</p></header>
 
     {phase === "pick" ? <section className="card overflow-hidden"><div className="relative grid min-h-72 place-items-center overflow-hidden bg-[linear-gradient(160deg,rgba(28,61,90,.08),rgba(176,139,63,.12))] p-6 text-center"><div className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-[var(--gold)] opacity-50" /><div className={`relative w-full max-w-xl rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-8 shadow-lg ${rolling ? "pulse-soft" : ""}`}><p className="eyebrow">Konu seçimi</p><p className="mt-3 font-serif text-3xl leading-tight text-[var(--navy)]">{rollingTitle}</p><button type="button" className="btn btn-primary mt-6" onClick={() => void pickCard()} disabled={rolling || !cards.length}>{rolling ? "Konular akıyor…" : card ? "Başka konu seç" : "Konu kartını çek"}</button>{card && !rolling ? <button type="button" className="btn btn-outline ml-2 mt-6" onClick={() => { setPrepLeft(60); setPhase("prep"); }}>Bu konuyla başla</button> : null}</div></div></section> : null}
 
