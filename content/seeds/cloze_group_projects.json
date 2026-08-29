@@ -1,0 +1,18 @@
+{
+  "id": "seed-cloze-group-projects",
+  "kind": "cloze",
+  "title": "Making Group Projects Work",
+  "topic": "teamwork at university",
+  "cefr": "B1+",
+  "source": "seed",
+  "published": true,
+  "instructions": "Choose the option that best fits each gap.",
+  "content": {"text": "Group projects can help students learn from one another, but they may also lead to conflict. Problems often begin when the group starts working [[1]] agreeing on clear responsibilities. One student may assume that another person is collecting the data, while nobody has actually accepted the task. A short written plan can prevent this kind of confusion. It should state what each member is responsible [[2]] and when the work must be completed. Groups also need a way to discuss delays. A member who is struggling should explain the problem early [[3]] than remain silent until the final day. At the same time, the other members should focus on solving the problem instead of immediately blaming the person. If a disagreement cannot [[4]] inside the group, asking the course instructor for guidance may be necessary. Effective teamwork does not mean that everyone has identical ideas. It means that different ideas are discussed respectfully and that decisions [[5]] in time for the group to continue working."},
+  "questions": [
+    {"stem": "Gap 1", "options": {"A": "without", "B": "beside", "C": "against", "D": "except"}, "answer": "A", "points": 1, "qtype": "preposition", "rationale": "Without agreeing explains the missing action that creates the problem."},
+    {"stem": "Gap 2", "options": {"A": "to", "B": "for", "C": "of", "D": "with"}, "answer": "B", "points": 1, "qtype": "collocation", "rationale": "Responsible for is the correct collocation."},
+    {"stem": "Gap 3", "options": {"A": "rather", "B": "already", "C": "quite", "D": "even"}, "answer": "A", "points": 1, "qtype": "structure", "rationale": "Rather than forms the required preference structure."},
+    {"stem": "Gap 4", "options": {"A": "solve", "B": "solving", "C": "be solved", "D": "have solved"}, "answer": "C", "points": 1, "qtype": "passive", "rationale": "The disagreement is being solved, requiring a passive infinitive."},
+    {"stem": "Gap 5", "options": {"A": "make", "B": "are made", "C": "have making", "D": "will made"}, "answer": "B", "points": 1, "qtype": "passive", "rationale": "Decisions receive the action and the sentence describes a general process."}
+  ]
+}

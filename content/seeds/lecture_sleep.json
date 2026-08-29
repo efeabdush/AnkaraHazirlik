@@ -1,0 +1,83 @@
+{
+  "id": "seed-lecture-sleep-memory",
+  "kind": "lecture",
+  "title": "Sleep and memory in student life",
+  "topic": "study skills",
+  "cefr": "B1+",
+  "source": "seed",
+  "published": true,
+  "note_scaffold": [
+    "Main idea: sleep helps store what we study",
+    "Stages: light sleep, deep sleep, REM",
+    "Deep sleep: facts and details",
+    "REM: connections and problem solving",
+    "Why students sleep less: screens, caffeine, late groups",
+    "Advice: regular hours, no cramming all night, short naps"
+  ],
+  "script": [
+    {"speaker": "lecturer", "text": "Good morning. Today I want to talk about something that almost every university student cares about, but few students protect: sleep, and how it is connected to memory. Many of you stay up late before exams. You may think extra hours with your notes are always useful. Research on the brain suggests that this is only partly true. If you do not sleep enough, a large part of what you studied may never move into long-term memory."},
+    {"speaker": "lecturer", "text": "Let us start with a simple picture of memory. When you read a page or listen to a lecture, the information first sits in a short-term holding area. It is fragile. A phone message, a loud corridor, or even a few minutes of distraction can push it out. Sleep is one of the main times when the brain reviews this new material and decides what to keep. Scientists often say that sleep is not empty time. It is active work that you cannot see."},
+    {"speaker": "lecturer", "text": "Sleep is not one single state. In a normal night, we move through cycles that last about ninety minutes. In simple classroom language, we can talk about three parts that matter for students: light sleep, deep sleep, and REM sleep. REM means rapid eye movement. During REM, the eyes move quickly under the eyelids, and many people dream. Each part seems to help memory in a different way."},
+    {"speaker": "lecturer", "text": "Deep sleep is especially important for facts and details. If you need to remember dates, definitions, or the steps of a process, deep sleep helps the brain replay those items more slowly and more clearly. Laboratory studies have shown that people who get enough deep sleep after learning a list of words recall more of the list the next day than people who are kept awake. This does not mean that sleep replaces studying. It means that studying without sleep is like writing on paper and then leaving the paper in the rain."},
+    {"speaker": "lecturer", "text": "REM sleep seems to do a different job. It helps the brain connect ideas, notice patterns, and solve problems that felt impossible the evening before. Some students say, “I went to bed confused, and in the morning the example made sense.” That feeling is not magic. During REM, the brain can join a new concept to something you already know, which is exactly what teachers ask you to do in reading and lecture questions."},
+    {"speaker": "lecturer", "text": "Why do so many students sleep badly? There are three common reasons on campus. First, screens. Phones and laptops produce blue light, which tells the brain that it is still daytime. If you scroll in bed, your body may delay the chemicals that make you sleepy. Second, caffeine late in the day. Coffee, energy drinks, and even strong tea can stay in the body for hours. A drink at seven in the evening may still affect you at midnight. Third, group work that starts too late. Project meetings at ten o’clock often continue until people are too tired to think, and then they still have to walk home."},
+    {"speaker": "lecturer", "text": "There is also a cultural idea that “real students” do not sleep before exams. This idea is harmful. Staying awake all night can raise stress and reduce attention the next morning. You may recognise every word on the page during the night, but in the exam hall you cannot find the main idea. That is not because you are weak. It is because the memory file was never stored properly."},
+    {"speaker": "lecturer", "text": "So what can you do that is realistic? I will give four practical suggestions, not perfect rules. First, keep a regular sleep window, even on weekends, as much as you can. Going to bed at three a.m. on Saturday and six a.m. on Sunday confuses the body clock. Second, stop heavy revision at least thirty minutes before bed. Use that time to pack your bag or look at a simple summary, not a new chapter. Third, if you must study late, avoid another energy drink. A short walk is a better way to stay alert. Fourth, a nap of twenty minutes in the afternoon can help, but a two-hour nap late in the day can make night sleep worse."},
+    {"speaker": "lecturer", "text": "Let me also mention food and exercise, because they belong to the same picture. Heavy meals just before bed can make sleep lighter. A little exercise earlier in the day, even a walk across campus, often makes it easier to fall asleep. None of this requires expensive equipment. It requires planning, which is itself a study skill."},
+    {"speaker": "lecturer", "text": "To sum up, this lecture is not telling you that sleep is more important than classes. It is telling you that memory has stages, and sleep is one of those stages. Deep sleep supports detail. REM sleep supports connections. Screens, late caffeine, and all-night cramming work against both. If you protect a reasonable night of sleep during the week of an exam, you are not being lazy. You are finishing the work that your notes started. Tomorrow we will look at note-taking itself, and how short reviews during the day make the night’s work even more effective. Thank you. I will take questions in a moment."}
+  ],
+  "questions": [
+    {
+      "stem": "The lecture is mainly about -----. ",
+      "options": {
+        "A": "how university cafeterias should change their opening hours",
+        "B": "how sleep helps students store and connect what they study",
+        "C": "why REM sleep is more important than all other kinds of rest",
+        "D": "the history of laboratory studies on dreaming"
+      },
+      "answer": "B",
+      "qtype": "main_idea",
+      "rationale": "The lecturer’s central point is the link between sleep stages and memory for study.",
+      "points": 2
+    },
+    {
+      "stem": "Which of the following is TRUE about deep sleep?",
+      "options": {
+        "A": "It mainly helps people notice patterns and solve problems.",
+        "B": "It replaces the need to study lists of words.",
+        "C": "It is especially useful for remembering facts and details.",
+        "D": "It only happens if students drink tea before bed."
+      },
+      "answer": "C",
+      "qtype": "true",
+      "rationale": "The lecturer says deep sleep is especially important for facts and details.",
+      "points": 2
+    },
+    {
+      "stem": "Which of the following is NOT TRUE according to the lecture?",
+      "options": {
+        "A": "Blue light from screens can delay sleepiness.",
+        "B": "Caffeine in the evening may still affect a student at midnight.",
+        "C": "A twenty-minute afternoon nap can be useful.",
+        "D": "Sleeping all night before an exam is presented as a waste of study time."
+      },
+      "answer": "D",
+      "qtype": "not_true",
+      "rationale": "The lecturer argues that all-night cramming is harmful and that sleep helps store study, so all-night sleepless revision is not recommended.",
+      "points": 2
+    },
+    {
+      "stem": "According to the lecturer, a reason students sleep badly is -----. ",
+      "options": {
+        "A": "group project meetings that start very late",
+        "B": "too many morning sports classes",
+        "C": "libraries that close before dinner",
+        "D": "a lack of expensive sleep equipment"
+      },
+      "answer": "A",
+      "qtype": "cause",
+      "rationale": "Late group work is listed as one of three common campus reasons for poor sleep.",
+      "points": 2
+    }
+  ]
+}

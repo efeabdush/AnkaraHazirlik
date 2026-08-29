@@ -1,0 +1,82 @@
+{
+  "id": "seed-conv-laundry-card",
+  "kind": "conversation",
+  "title": "A problem with the dorm laundry card",
+  "topic": "campus life",
+  "cefr": "B1+",
+  "source": "seed",
+  "published": true,
+  "note_scaffold": "",
+  "script": [
+    {"speaker": "student", "text": "Hello. Sorry to bother you. I live in Building C, and I cannot use the washing machines. My laundry card just keeps flashing red."},
+    {"speaker": "staff", "text": "Hi. That usually means the card is empty or it is not activated for this term. When did you last add money?"},
+    {"speaker": "student", "text": "I added some in September, but I have been away for three weeks. Maybe the balance is gone. Can I put money on it here?"},
+    {"speaker": "staff", "text": "Not at this desk. You add money at the kiosk next to the cafeteria, or in the student app under Campus Services. Before that, I should check whether the card is still linked to your room."},
+    {"speaker": "student", "text": "I moved from room 214 to 309 last Friday. Could that be the problem?"},
+    {"speaker": "staff", "text": "Yes. When students change rooms, the laundry system does not update automatically. I can relink the card now if you show me your student ID and the new room key receipt."},
+    {"speaker": "student", "text": "I have my ID, but I left the receipt in my old room. The old lock still works until Sunday."},
+    {"speaker": "staff", "text": "Then bring the receipt tomorrow. I can give you a one-day guest code so you can wash clothes tonight. The code works only in Building C, and only until eight in the morning."},
+    {"speaker": "student", "text": "That would help. Do I need to pay for the guest code?"},
+    {"speaker": "staff", "text": "No. It is free, but you still pay for each wash at the machine with coins or the app. Also, please do not share the code. If two people use it, the system blocks the floor for twenty-four hours."},
+    {"speaker": "student", "text": "I will not share it. After I bring the receipt, how long does the relink take?"},
+    {"speaker": "staff", "text": "About ten minutes. Come before four o’clock, because the housing office closes early on Fridays. Once it is relinked, add money again. The old balance does not move to the new room."},
+    {"speaker": "student", "text": "So I lost the money from September?"},
+    {"speaker": "staff", "text": "If it is still on the old room account, we can transfer it, but only with the receipt. Without that paper, the system treats leftover credit as closed."},
+    {"speaker": "student", "text": "Okay. I will get the receipt tonight and come back tomorrow before four. Thanks for the guest code."},
+    {"speaker": "staff", "text": "You are welcome. The code is four seven one nine. Write it down. Good luck with the laundry."}
+  ],
+  "questions": [
+    {
+      "stem": "What is the student’s first problem?",
+      "options": {
+        "A": "She cannot enter her new room.",
+        "B": "Her laundry card does not work in the machines.",
+        "C": "The cafeteria kiosk is closed.",
+        "D": "She lost her student ID card."
+      },
+      "answer": "B",
+      "qtype": "purpose",
+      "rationale": "She says the washing machines will not start and the laundry card flashes red.",
+      "points": 1
+    },
+    {
+      "stem": "Why might the card be inactive after she moved?",
+      "options": {
+        "A": "Laundry cards expire every two weeks.",
+        "B": "The app deletes balances during holidays.",
+        "C": "Room changes are not updated automatically in the laundry system.",
+        "D": "Building C does not accept student cards."
+      },
+      "answer": "C",
+      "qtype": "detail",
+      "rationale": "The staff member says the laundry system does not update automatically when students change rooms.",
+      "points": 1
+    },
+    {
+      "stem": "What must the student bring to relink the card?",
+      "options": {
+        "A": "Only a photo of the washing machine.",
+        "B": "A parent’s signature.",
+        "C": "Coins for the office desk.",
+        "D": "Her student ID and the new room key receipt."
+      },
+      "answer": "D",
+      "qtype": "process",
+      "rationale": "The staff member asks for the student ID and the new room key receipt before relinking.",
+      "points": 1
+    },
+    {
+      "stem": "The student does not pay for the guest code because -----. ",
+      "options": {
+        "A": "it is free, although each wash still costs money",
+        "B": "she already paid in September",
+        "C": "guest codes are only for Building A",
+        "D": "the office will add money for her"
+      },
+      "answer": "A",
+      "qtype": "inference",
+      "rationale": "The code is free, but she still pays for each wash at the machine.",
+      "points": 1
+    }
+  ]
+}

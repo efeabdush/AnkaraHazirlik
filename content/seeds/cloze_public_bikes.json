@@ -1,0 +1,18 @@
+{
+  "id": "seed-cloze-public-bikes",
+  "kind": "cloze",
+  "title": "Public Bicycle Systems",
+  "topic": "urban transport",
+  "cefr": "B1+",
+  "source": "seed",
+  "published": true,
+  "instructions": "Choose the option that best fits each gap.",
+  "content": {"text": "Public bicycle systems allow people to borrow a bicycle from one station and return it to another. They are especially useful for journeys that are too far to walk but too short [[1]] a bus trip. To make the system convenient, cities need stations near homes, workplaces, and public transport. The bicycles must also be checked [[2]] because a damaged brake or light can create a serious risk. Some systems charge users for every journey, [[3]] others offer a yearly membership. Low prices can encourage more people to join, but they do not solve every problem. If stations become empty in the morning and full in the evening, workers have to [[4]] bicycles between different areas. Weather also affects demand, so the number of users may fall sharply during cold or rainy periods. Even with these difficulties, bicycle sharing can be a valuable part of a wider transport plan, particularly when safe cycle routes [[5]] at the same time."},
+  "questions": [
+    {"stem": "Gap 1", "options": {"A": "for", "B": "from", "C": "with", "D": "by"}, "answer": "A", "points": 1, "qtype": "preposition", "rationale": "Too short for a bus trip is the correct phrase."},
+    {"stem": "Gap 2", "options": {"A": "regular", "B": "regularity", "C": "regularly", "D": "regulate"}, "answer": "C", "points": 1, "qtype": "word_form", "rationale": "An adverb is needed to describe how the bicycles are checked."},
+    {"stem": "Gap 3", "options": {"A": "because", "B": "while", "C": "therefore", "D": "unless"}, "answer": "B", "points": 1, "qtype": "contrast", "rationale": "While contrasts two different payment systems."},
+    {"stem": "Gap 4", "options": {"A": "transport", "B": "transportation", "C": "transported", "D": "transporting"}, "answer": "A", "points": 1, "qtype": "verb_form", "rationale": "Have to is followed by the base form transport."},
+    {"stem": "Gap 5", "options": {"A": "develop", "B": "developed", "C": "are developed", "D": "are developing"}, "answer": "C", "points": 1, "qtype": "passive", "rationale": "Routes receive the action, so the passive form is appropriate."}
+  ]
+}

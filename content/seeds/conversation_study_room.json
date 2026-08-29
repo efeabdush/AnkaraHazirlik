@@ -1,0 +1,28 @@
+{
+  "id": "seed-conv-study-room",
+  "kind": "conversation",
+  "title": "Reserving a Group Study Room",
+  "topic": "library study room booking",
+  "cefr": "B1+",
+  "source": "seed",
+  "published": true,
+  "script": [
+    {"speaker": "student", "text": "Hi. I am trying to reserve a group study room for Thursday afternoon, but the booking page says I am not allowed to continue."},
+    {"speaker": "staff", "text": "Let me check. Are you trying to book it for yourself or for a study group? The small rooms are only available to groups of at least three students."},
+    {"speaker": "student", "text": "There will be four of us. We have a presentation on Friday, so we need a screen and enough space to practise together."},
+    {"speaker": "staff", "text": "That should be fine. The problem may be the length of your booking. Students can reserve a room for a maximum of two hours per day."},
+    {"speaker": "student", "text": "I selected one o'clock until four. I did not realise there was a limit. If I change it to two hours, will the system accept it?"},
+    {"speaker": "staff", "text": "Probably, but there is one more condition. Reservations open exactly three days in advance. Today is Monday, so you can book Thursday now, but not Friday yet."},
+    {"speaker": "student", "text": "I see. I will choose two until four on Thursday. Do all the rooms have a screen?"},
+    {"speaker": "staff", "text": "Rooms G12 and G14 do. G10 only has a whiteboard. G12 is already full, but G14 is free during the time you want."},
+    {"speaker": "student", "text": "Great. Is there anything we need to bring?"},
+    {"speaker": "staff", "text": "Bring one student card to open the door. Also, check in on the booking page within fifteen minutes of the starting time. Otherwise, the room becomes available to other students."},
+    {"speaker": "student", "text": "All right. I will change the length, choose G14, and remind everyone not to be late. Thanks for explaining it."}
+  ],
+  "questions": [
+    {"stem": "Why does the student want to reserve a room?", "options": {"A": "To attend an online lecture", "B": "To practise a group presentation", "C": "To meet a course advisor", "D": "To watch a recorded class"}, "answer": "B", "qtype": "purpose", "rationale": "The student says the group needs space and a screen to practise a presentation."},
+    {"stem": "What caused the first booking problem?", "options": {"A": "The group was too small", "B": "Thursday bookings were not open", "C": "The requested period was too long", "D": "The student had no library card"}, "answer": "C", "qtype": "detail", "rationale": "The student selected three hours, but the daily maximum is two hours."},
+    {"stem": "Which room should the student choose?", "options": {"A": "G10", "B": "G12", "C": "G14", "D": "Any small room"}, "answer": "C", "qtype": "process", "rationale": "G14 has a screen and is available from two until four."},
+    {"stem": "What can be inferred about checking in?", "options": {"A": "It protects the booking from being cancelled", "B": "It must be completed three days earlier", "C": "Every group member must use a card", "D": "It is only required in room G12"}, "answer": "A", "qtype": "inference", "rationale": "Without checking in within fifteen minutes, the room is released to other students."}
+  ]
+}

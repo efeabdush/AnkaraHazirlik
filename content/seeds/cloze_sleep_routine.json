@@ -1,0 +1,18 @@
+{
+  "id": "seed-cloze-sleep-routine",
+  "kind": "cloze",
+  "title": "Building a Regular Sleep Routine",
+  "topic": "sleep habits",
+  "cefr": "B1+",
+  "source": "seed",
+  "published": true,
+  "instructions": "Choose the option that best fits each gap.",
+  "content": {"text": "University students often change their sleeping hours from one day to the next. Although staying up late may seem useful before an exam, an irregular routine can make concentration more difficult. The body works best [[1]] it receives similar signals every day. Going to bed at a regular time is helpful, but the time a person wakes up may be even [[2]] important. Morning light tells the brain that the day has started and helps it prepare for sleep later. Students [[3]] want to improve their routine should therefore begin by choosing a realistic waking time. They should also avoid making a sudden change of several hours. A routine is more likely to last if it [[4]] gradually. For example, moving bedtime fifteen minutes earlier every few days is easier than trying to sleep two hours earlier immediately. Finally, the bed should be connected with rest rather than study. If possible, notes and laptops [[5]] on a desk so that the mind learns to separate work from sleep."},
+  "questions": [
+    {"stem": "Gap 1", "options": {"A": "unless", "B": "when", "C": "despite", "D": "during"}, "answer": "B", "points": 1, "qtype": "connector", "rationale": "When correctly introduces the condition under which the body works best."},
+    {"stem": "Gap 2", "options": {"A": "more", "B": "most", "C": "much", "D": "many"}, "answer": "A", "points": 1, "qtype": "comparison", "rationale": "The comparative phrase is 'even more important'."},
+    {"stem": "Gap 3", "options": {"A": "which", "B": "whose", "C": "who", "D": "where"}, "answer": "C", "points": 1, "qtype": "relative_clause", "rationale": "Who refers to the students performing the action."},
+    {"stem": "Gap 4", "options": {"A": "changes", "B": "changed", "C": "is changed", "D": "has changing"}, "answer": "C", "points": 1, "qtype": "passive", "rationale": "The routine is the thing being changed, so a passive form is needed."},
+    {"stem": "Gap 5", "options": {"A": "keep", "B": "should keep", "C": "should be kept", "D": "have kept"}, "answer": "C", "points": 1, "qtype": "modal_passive", "rationale": "Laptops receive the action, requiring should be kept."}
+  ]
+}

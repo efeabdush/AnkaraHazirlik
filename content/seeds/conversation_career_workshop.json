@@ -1,0 +1,57 @@
+{
+  "id": "seed-conv-career-workshop",
+  "kind": "conversation",
+  "title": "Registering for a Career Workshop",
+  "topic": "campus career centre registration",
+  "cefr": "B1+",
+  "source": "seed",
+  "published": true,
+  "script": [
+    {"speaker": "student", "text": "Hello. I tried to register for Saturday's interview workshop, but the website says that the event is full. I wondered whether there is another way to join."},
+    {"speaker": "staff", "text": "There is a waiting list. Two extra places became available this morning, although they have not appeared on the website yet. Are you a final-year student?"},
+    {"speaker": "student", "text": "No, I am in my third year. I am applying for a summer internship, and I have never had a formal interview before."},
+    {"speaker": "staff", "text": "That is fine. Final-year students had priority until yesterday, but registration is open to everyone now. I can add your name to one of the new places."},
+    {"speaker": "student", "text": "Great. Do I need to bring my internship application or prepare answers in advance?"},
+    {"speaker": "staff", "text": "Bring a printed copy of your CV. During the first hour, the adviser will explain common interview questions. After that, students will practise in pairs and receive comments."},
+    {"speaker": "student", "text": "My CV is still a draft. Could someone check it before the workshop?"},
+    {"speaker": "staff", "text": "Yes. Email it to the career centre by Thursday afternoon. A volunteer will return brief notes on Friday, so you will have time to make changes."},
+    {"speaker": "student", "text": "Should I pay online when the new place appears?"},
+    {"speaker": "staff", "text": "The workshop is free. I only need your student number and email address. You will receive a confirmation message later today."},
+    {"speaker": "student", "text": "Thank you. I nearly gave up when I saw the full notice."},
+    {"speaker": "staff", "text": "The online list is sometimes a few hours behind. If your confirmation does not arrive by this evening, call us tomorrow morning."}
+  ],
+  "questions": [
+    {
+      "stem": "Why does the student visit the career centre?",
+      "options": {"A": "To cancel a summer internship", "B": "To ask how to join a full workshop", "C": "To complain about an interview result", "D": "To find a paid campus job"},
+      "answer": "B",
+      "points": 1,
+      "qtype": "purpose",
+      "rationale": "The registration page says the workshop is full, so the student asks whether there is another way to join."
+    },
+    {
+      "stem": "Why can the third-year student register now?",
+      "options": {"A": "Two advisers cancelled their sessions", "B": "The internship company reserved a place", "C": "The priority period for final-year students has ended", "D": "Third-year students do not need to use the website"},
+      "answer": "C",
+      "points": 1,
+      "qtype": "detail",
+      "rationale": "Final-year students had priority only until the previous day; registration is now open to everyone."
+    },
+    {
+      "stem": "What should the student do before Thursday afternoon?",
+      "options": {"A": "Email a draft CV to the career centre", "B": "Pay the workshop fee online", "C": "Practise interview questions with a partner", "D": "Call the internship company"},
+      "answer": "A",
+      "points": 1,
+      "qtype": "process",
+      "rationale": "The staff member asks the student to email the CV by Thursday so a volunteer can comment on it."
+    },
+    {
+      "stem": "What can be inferred about the online registration list?",
+      "options": {"A": "It is available only to final-year students", "B": "It sometimes does not show recent changes immediately", "C": "It requires students to upload a CV", "D": "It closes every Thursday afternoon"},
+      "answer": "B",
+      "points": 1,
+      "qtype": "inference",
+      "rationale": "The staff member says the list can be a few hours behind, so new places may not appear immediately."
+    }
+  ]
+}

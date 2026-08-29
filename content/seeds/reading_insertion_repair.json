@@ -1,0 +1,32 @@
+{
+  "id": "seed-reading-insertion-repair",
+  "kind": "reading_insertion",
+  "title": "Repair Cafés and the Value of Fixing Things",
+  "topic": "repair culture and waste",
+  "cefr": "B1+",
+  "source": "seed",
+  "published": true,
+  "instructions": "Complete gaps 1-4 with the most suitable sentences A-E. There is one extra sentence.",
+  "content": {
+    "paragraphs": [
+      "A broken lamp or toaster often ends up in the rubbish even when only one small part has failed. Many people do not know how to open the object safely, and professional repair may cost almost as much as a replacement. Repair cafés were created as a practical response to this problem. [[1]]",
+      "Visitors bring damaged household objects, clothes, bicycles, or small pieces of furniture. Volunteers then examine the item together with its owner. [[2]] The aim is not simply to provide a free service. Owners are encouraged to watch, ask questions, and complete safe parts of the repair themselves.",
+      "This shared process has several benefits. A successful repair prevents useful material from becoming waste and saves the owner money. It also gives volunteers a chance to use skills that may not be valued in their daily jobs. [[3]] A person who arrives with a broken radio may leave with both a working object and the confidence to attempt a simple repair in the future.",
+      "Of course, not every object can be saved. Spare parts may be unavailable, or the damage may make an electrical item unsafe. Volunteers must be honest about these limits, especially when there is a risk of fire or injury. [[4]] Even an unsuccessful repair can show the owner why the object failed and what to consider when buying a replacement.",
+      "Repair cafés cannot solve the larger problem of products that are designed to be difficult to open or repair. Manufacturers and laws also influence how long objects remain useful. Still, the cafés demonstrate a different relationship with everyday possessions: before throwing something away, people can pause, investigate, and learn whether it deserves another chance."
+    ],
+    "sentence_options": {
+      "A": "They are public events where people with repair experience help others investigate faulty items.",
+      "B": "For this reason, safety is treated as more important than completing every repair.",
+      "C": "Some cities have therefore banned the sale of all inexpensive electrical goods.",
+      "D": "Knowledge also passes from one person to another during the conversation.",
+      "E": "Instead of taking the object away, they explain what they are checking and which tools they are using."
+    }
+  },
+  "questions": [
+    {"stem": "Which sentence best fits gap 1?", "options": {"A": "They are public events where people with repair experience help others investigate faulty items.", "B": "For this reason, safety is treated as more important than completing every repair.", "C": "Some cities have therefore banned the sale of all inexpensive electrical goods.", "D": "Knowledge also passes from one person to another during the conversation.", "E": "Instead of taking the object away, they explain what they are checking and which tools they are using."}, "answer": "A", "points": 2, "qtype": "sentence_insertion", "rationale": "The sentence defines repair cafés immediately after they are introduced."},
+    {"stem": "Which sentence best fits gap 2?", "options": {"A": "They are public events where people with repair experience help others investigate faulty items.", "B": "For this reason, safety is treated as more important than completing every repair.", "C": "Some cities have therefore banned the sale of all inexpensive electrical goods.", "D": "Knowledge also passes from one person to another during the conversation.", "E": "Instead of taking the object away, they explain what they are checking and which tools they are using."}, "answer": "E", "points": 2, "qtype": "sentence_insertion", "rationale": "It explains how volunteers work together with owners rather than offering a normal repair service."},
+    {"stem": "Which sentence best fits gap 3?", "options": {"A": "They are public events where people with repair experience help others investigate faulty items.", "B": "For this reason, safety is treated as more important than completing every repair.", "C": "Some cities have therefore banned the sale of all inexpensive electrical goods.", "D": "Knowledge also passes from one person to another during the conversation.", "E": "Instead of taking the object away, they explain what they are checking and which tools they are using."}, "answer": "D", "points": 2, "qtype": "sentence_insertion", "rationale": "The surrounding sentences describe learning and confidence gained through shared repair."},
+    {"stem": "Which sentence best fits gap 4?", "options": {"A": "They are public events where people with repair experience help others investigate faulty items.", "B": "For this reason, safety is treated as more important than completing every repair.", "C": "Some cities have therefore banned the sale of all inexpensive electrical goods.", "D": "Knowledge also passes from one person to another during the conversation.", "E": "Instead of taking the object away, they explain what they are checking and which tools they are using."}, "answer": "B", "points": 2, "qtype": "sentence_insertion", "rationale": "The previous sentence describes risk, so the result is that safety must come first."}
+  ]
+}

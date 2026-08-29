@@ -1,0 +1,18 @@
+{
+  "id": "seed-restatement-daily-choices",
+  "kind": "restatement",
+  "title": "Restatement Practice: Daily Choices",
+  "topic": "paraphrasing familiar ideas",
+  "cefr": "B1+",
+  "source": "seed",
+  "published": true,
+  "instructions": "Choose the option that best restates the meaning of the original sentence.",
+  "content": {"intro": "Read each original sentence carefully. Choose the option with the closest meaning."},
+  "questions": [
+    {"stem": "Because the library becomes crowded after lunch, students who need a quiet desk should arrive earlier.", "options": {"A": "Students are not allowed to enter the library after lunch.", "B": "Arriving before lunchtime gives students a better chance of finding a quiet desk.", "C": "The library provides quieter desks to students who stay all day.", "D": "Students should leave their desks when the library becomes crowded."}, "answer": "B", "points": 1, "qtype": "restatement", "rationale": "Both sentences express that earlier arrival improves the chance of finding quiet space."},
+    {"stem": "The event will take place outdoors unless the weather conditions become unsafe.", "options": {"A": "The event will move indoors only if the weather creates a risk.", "B": "The event was cancelled because the outdoor area was unsafe.", "C": "The organisers prefer unsafe weather to an indoor event.", "D": "The weather must improve before the event can be planned."}, "answer": "A", "points": 1, "qtype": "restatement", "rationale": "Unless introduces the only condition that would prevent the outdoor plan."},
+    {"stem": "Mina did not realise how useful the workshop had been until she started her first project.", "options": {"A": "Mina began the project before attending the workshop.", "B": "The workshop became less useful when Mina started working.", "C": "Starting a real project made Mina understand the value of the workshop.", "D": "Mina only attended the workshop because her project had failed."}, "answer": "C", "points": 1, "qtype": "restatement", "rationale": "Her later project experience revealed the workshop's usefulness."},
+    {"stem": "Although the new bus route is longer, it is more reliable during the morning rush hour.", "options": {"A": "The shorter bus route is always more reliable in the morning.", "B": "The new route takes more distance but is less likely to be delayed in busy morning traffic.", "C": "Morning passengers refuse to use the route because it is unreliable.", "D": "The new route is both shorter and faster during every part of the day."}, "answer": "B", "points": 1, "qtype": "restatement", "rationale": "The contrast between greater length and better reliability is preserved."},
+    {"stem": "Students are encouraged to ask for feedback before submitting the final version of their report.", "options": {"A": "Students should consider getting comments while they can still revise the report.", "B": "Only the final version of a report can receive feedback.", "C": "Students must submit the report before asking any questions.", "D": "Feedback is unnecessary when a report has several versions."}, "answer": "A", "points": 1, "qtype": "restatement", "rationale": "Both sentences recommend feedback before the final submission, while revision remains possible."}
+  ]
+}
