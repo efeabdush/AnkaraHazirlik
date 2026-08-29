@@ -9,8 +9,9 @@ from sqlalchemy.orm import Session
 from ..config import settings
 from ..db import get_db
 from ..models import Attempt
-from ..rate_limit import rate_limit_explain
+from ..rate_limit import limit_ai_concurrency, rate_limit_explain
 from ..services.llm import LLMError, active_summary, complete, llm_available
+from .security import require_human
 
 router = APIRouter(prefix="/api", tags=["explain"])
 
@@ -26,7 +27,13 @@ def _explain_system() -> str:
 
 
 @router.post("/explain")
-def explain(body: ExplainIn, db: Session = Depends(get_db), _=Depends(rate_limit_explain)):
+def explain(
+    body: ExplainIn,
+    db: Session = Depends(get_db),
+    _human=Depends(require_human),
+    _rate=Depends(rate_limit_explain),
+    _slot=Depends(limit_ai_concurrency),
+):
     if not llm_available():
         raise HTTPException(503, "Açıklama sohbeti şu an kapalı. Testler yine de çözülebilir.")
     if not active_summary()["ready"]:

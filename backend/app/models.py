@@ -70,6 +70,14 @@ class Setting(Base):
     value: Mapped[str] = mapped_column(Text, default="")
 
 
+class ApiUsage(Base):
+    __tablename__ = "api_usage"
+
+    key: Mapped[str] = mapped_column(String(160), primary_key=True)
+    count: Mapped[int] = mapped_column(Integer, default=0)
+    expires_at: Mapped[int] = mapped_column(Integer, index=True)
+
+
 class Attempt(Base):
     __tablename__ = "attempts"
 

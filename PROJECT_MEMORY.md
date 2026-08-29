@@ -15,3 +15,9 @@
 - Admin rotalarını kapat; API anahtarları, CORS, kalıcı disk, istek sınırı, Turnstile, harcama limiti ve gizlilik metnini production için ayarla.
 
 Kullanıcı "bir şey unuttuk mu?" diye sorduğunda bu listeyi kontrol et.
+
+## Tamamlanan production güvenliği
+
+- Production admin anahtar yazma/silme kapalı; API belgeleri kapalı; güvenlik başlıkları ve dar CORS aktif.
+- AI ve transkripsiyon için kalıcı saatlik limit, günlük genel kota ve eşzamanlı işlem freni eklendi.
+- Cloudflare Turnstile, Railway'e anahtarlar girildiğinde otomatik açılacak şekilde frontend/backend'e hazırlandı.

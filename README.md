@@ -16,7 +16,9 @@ Visitors can practise every session separately or complete a three-session mock 
 
 The current MVP includes the complete 100-point structure: Listening, Reading, Use of English, a 250+ word Writing task, and topic-card Speaking practice. The browser keeps the three session scores together on the exam hub. Writing and speaking feedback is an AI estimate, not an official score.
 
-Speaking audio is held in browser memory while the activity is running, then sent to the local backend only for transcription. The backend deletes the temporary audio file immediately after transcription (including failed attempts); only the resulting transcript and speaking metrics are sent for AI feedback. Microphone tracks are stopped when the activity finishes or the page closes.
+Speaking audio is held in browser memory while the activity is running, then sent to the backend only for transcription. The backend deletes the temporary audio file immediately after transcription (including failed attempts); only the resulting transcript and speaking metrics are sent for AI feedback. Microphone tracks are stopped when the activity finishes or the page closes.
+
+Production protects owner-paid operations with persistent per-client limits, site-wide daily ceilings, and concurrency caps. Optional Cloudflare Turnstile support becomes active only when its site and secret keys are configured; the browser receives a short-lived signed verification session, never the secret key.
 
 ## Quick start
 

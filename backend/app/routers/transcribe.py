@@ -11,7 +11,8 @@ from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 from starlette.concurrency import run_in_threadpool
 
 from ..config import settings
-from ..rate_limit import rate_limit_transcribe
+from ..rate_limit import limit_transcribe_concurrency, rate_limit_transcribe
+from .security import require_human
 
 router = APIRouter(prefix="/api", tags=["transcription"])
 
@@ -170,7 +171,9 @@ def _run_transcription(path: Path, topic_hint: str) -> dict:
 async def transcribe_audio(
     audio: UploadFile = File(...),
     topic_hint: str = Form(default="", max_length=600),
-    _=Depends(rate_limit_transcribe),
+    _human=Depends(require_human),
+    _rate=Depends(rate_limit_transcribe),
+    _slot=Depends(limit_transcribe_concurrency),
 ):
     content_type = (audio.content_type or "").split(";")[0].lower()
     suffix = _allowed_types.get(content_type)

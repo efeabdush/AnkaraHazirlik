@@ -35,6 +35,18 @@ class Settings(BaseSettings):
     evaluation_rate_limit_per_hour: int = 30
     coach_rate_limit_per_hour: int = 80
     transcribe_rate_limit_per_hour: int = 30
+    ai_daily_request_limit: int = 250
+    transcribe_daily_request_limit: int = 100
+    turnstile_rate_limit_per_hour: int = 30
+    turnstile_daily_request_limit: int = 1000
+    ai_max_concurrent: int = 3
+    transcribe_max_concurrent: int = 1
+    rate_limit_hash_secret: str = ""
+    turnstile_site_key: str = ""
+    turnstile_secret_key: str = ""
+    turnstile_session_secret: str = ""
+    turnstile_session_minutes: int = 30
+    turnstile_allowed_hostnames: str = ""
     whisper_model: str = "base.en"
     whisper_device: str = "cpu"
     whisper_compute_type: str = "int8"
@@ -49,6 +61,10 @@ class Settings(BaseSettings):
     @property
     def admin_key_management_enabled(self) -> bool:
         return not self.is_production
+
+    @property
+    def turnstile_enabled(self) -> bool:
+        return bool(self.turnstile_site_key.strip() and self.turnstile_secret_key.strip())
 
 
 settings = Settings()

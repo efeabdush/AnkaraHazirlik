@@ -6,7 +6,8 @@ import re
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 
-from ..rate_limit import rate_limit_coach, rate_limit_evaluate
+from ..rate_limit import limit_ai_concurrency, rate_limit_coach, rate_limit_evaluate
+from .security import require_human
 from ..services.llm import LLMError, active_summary, complete, llm_available, parse_json_object
 
 router = APIRouter(prefix="/api/evaluate", tags=["evaluation"])
@@ -145,7 +146,12 @@ def _normalize_speaking(result: dict, metrics: SpeakingMetrics) -> dict:
 
 
 @router.post("/writing")
-def evaluate_writing(body: WritingIn, _=Depends(rate_limit_evaluate)):
+def evaluate_writing(
+    body: WritingIn,
+    _human=Depends(require_human),
+    _rate=Depends(rate_limit_evaluate),
+    _slot=Depends(limit_ai_concurrency),
+):
     _require_llm()
     words = re.findall(r"[A-Za-z]+(?:['’-][A-Za-z]+)?", body.essay)
     system = """You are a strict but constructive unofficial practice evaluator using the published Ankara University B1+ proficiency writing criteria.
@@ -159,7 +165,12 @@ Write feedback in concise Turkish. Be specific, calm and realistic; never shame 
 
 
 @router.post("/speaking")
-def evaluate_speaking(body: SpeakingIn, _=Depends(rate_limit_evaluate)):
+def evaluate_speaking(
+    body: SpeakingIn,
+    _human=Depends(require_human),
+    _rate=Depends(rate_limit_evaluate),
+    _slot=Depends(limit_ai_concurrency),
+):
     _require_llm()
     system = """You are a strict but constructive unofficial practice evaluator using the published Ankara University B1+ proficiency speaking criteria.
 Use four official-style dimensions: task_completion, grammar, vocabulary, fluency_pronunciation.
@@ -175,7 +186,12 @@ Feedback must be concise Turkish, stoic, calm, direct and practical. No empty pr
 
 
 @router.post("/coach")
-def coach(body: CoachIn, _=Depends(rate_limit_coach)):
+def coach(
+    body: CoachIn,
+    _human=Depends(require_human),
+    _rate=Depends(rate_limit_coach),
+    _slot=Depends(limit_ai_concurrency),
+):
     _require_llm()
     allowed = [m for m in body.messages if m.role in {"user", "assistant"}]
     if not allowed or allowed[-1].role != "user":

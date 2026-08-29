@@ -8,7 +8,7 @@ from .config import settings
 from .db import Base, SessionLocal, engine, ensure_schema
 from .models import Setting
 from .providers import KEY_ENVS, set_panel_key
-from .routers import admin, evaluate, explain, public, transcribe
+from .routers import admin, evaluate, explain, public, security, transcribe
 from .services.llm import set_active
 from .services.seed import seed_if_empty
 
@@ -27,7 +27,8 @@ app.add_middleware(
     allow_origins=[o.strip() for o in settings.cors_origins.split(",") if o.strip()],
     allow_credentials=True,
     allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
-    allow_headers=["Accept", "Content-Type", "X-Admin-Secret"],
+    allow_headers=["Accept", "Content-Type", "X-Admin-Secret", "X-Human-Token"],
+    expose_headers=["Retry-After", "X-Human-Verification"],
 )
 
 
@@ -45,6 +46,7 @@ async def security_headers(request: Request, call_next):
         response.headers["X-Robots-Tag"] = "noindex, nofollow"
     return response
 app.include_router(public.router)
+app.include_router(security.router)
 app.include_router(explain.router)
 app.include_router(evaluate.router)
 app.include_router(transcribe.router)
