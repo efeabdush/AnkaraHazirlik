@@ -61,7 +61,7 @@ def startup() -> None:
 
 @app.get("/")
 def root():
-    return RedirectResponse("http://localhost:3000")
+    return RedirectResponse(settings.public_site_url)
 
 
 @app.get("/api/health")
