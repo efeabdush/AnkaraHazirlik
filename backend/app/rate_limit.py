@@ -154,6 +154,16 @@ def rate_limit_turnstile(request: Request) -> None:
     )
 
 
+def rate_limit_contact(request: Request) -> None:
+    _rate_limit(
+        request,
+        "contact",
+        "contact",
+        settings.contact_rate_limit_per_hour,
+        settings.contact_daily_request_limit,
+    )
+
+
 def limit_ai_concurrency() -> Generator[None, None, None]:
     if not _ai_slots.acquire(blocking=False):
         raise HTTPException(

@@ -20,6 +20,8 @@ Speaking audio is held in browser memory while the activity is running, then sen
 
 Production protects owner-paid operations with persistent per-client limits, site-wide daily ceilings, and concurrency caps. Optional Cloudflare Turnstile support becomes active only when its site and secret keys are configured; the browser receives a short-lived signed verification session, never the secret key.
 
+The About page contact form does not save messages in the application database. When `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL` are configured on the backend, it sends the message directly through Resend. The route is protected by the same human-verification session plus separate hourly/daily limits. LinkedIn and Instagram links are optional frontend build variables (`NEXT_PUBLIC_LINKEDIN_URL`, `NEXT_PUBLIC_INSTAGRAM_URL`).
+
 ## Quick start
 
 Windows: proje klasöründe `baslat.bat` dosyasına çift tıkla. **Tek** siyah pencere açılır; API ve site arka planda çalışır, tarayıcı ana sayfayı açar. Durdurmak için o pencerede `Ctrl+C` bas — hepsi kapanır. Günde bir kez açman yeter. Kod değişse bile API kendini yeniler. Admin’den yeni test üretince yeniden başlatmana gerek yok.

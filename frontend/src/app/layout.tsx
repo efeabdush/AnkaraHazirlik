@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   title: "Ankara Hazırlık · Yeterlik sınavı çalışması",
   description:
     "Ankara Üniversitesi İngilizce yeterlik sınavına hazırlık: üç oturumda dinleme, okuma, dil kullanımı, yazma ve konuşma pratiği.",
+  icons: {
+    icon: "/brand-mark.svg",
+    shortcut: "/brand-mark.svg",
+    apple: "/brand-mark.svg",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

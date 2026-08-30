@@ -8,7 +8,7 @@ from .config import settings
 from .db import Base, SessionLocal, engine, ensure_schema
 from .models import Setting
 from .providers import KEY_ENVS, set_panel_key
-from .routers import admin, evaluate, explain, public, security, transcribe
+from .routers import admin, contact, evaluate, explain, public, security, transcribe
 from .services.llm import set_active
 from .services.seed import seed_if_empty
 
@@ -47,6 +47,7 @@ async def security_headers(request: Request, call_next):
     return response
 app.include_router(public.router)
 app.include_router(security.router)
+app.include_router(contact.router)
 app.include_router(explain.router)
 app.include_router(evaluate.router)
 app.include_router(transcribe.router)
