@@ -3,15 +3,19 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { api, type TestSummary } from "@/lib/api";
+import { PracticeMoreCard } from "@/components/PracticeMoreCard";
 
 export default function ListeningPage() {
   const [tests, setTests] = useState<TestSummary[] | null>(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    api<TestSummary[]>("/api/tests")
-      .then(setTests)
-      .catch((e) => setError(e.message));
+    Promise.all([
+      api<TestSummary[]>("/api/tests?kind=conversation"),
+      api<TestSummary[]>("/api/tests?kind=lecture"),
+    ])
+      .then((groups) => setTests(groups.flat()))
+      .catch((e) => setError(e instanceof Error ? e.message : "İçerikler alınamadı"));
   }, []);
 
   const conv = tests?.filter((t) => t.kind === "conversation") ?? [];
@@ -72,6 +76,7 @@ export default function ListeningPage() {
         tests={conv}
         loading={tests === null && !error}
         href={(id) => `/listening/conversation/${id}`}
+        archiveHref="/practice-library/conversation"
       />
 
       <Section
@@ -82,6 +87,7 @@ export default function ListeningPage() {
         tests={lect}
         loading={tests === null && !error}
         href={(id) => `/listening/lecture/${id}`}
+        archiveHref="/practice-library/lecture"
       />
     </div>
   );
@@ -95,6 +101,7 @@ function Section({
   tests,
   loading,
   href,
+  archiveHref,
 }: {
   badge: string;
   tone: string;
@@ -103,6 +110,7 @@ function Section({
   tests: TestSummary[];
   loading: boolean;
   href: (id: string) => string;
+  archiveHref: string;
 }) {
   return (
     <section className="space-y-4">
@@ -121,8 +129,8 @@ function Section({
       ) : tests.length === 0 ? (
         <div className="card border-dashed p-6 text-sm text-[var(--ink-2)]">Henüz yayımlanmış test yok.</div>
       ) : (
-        <div className="grid gap-3 sm:grid-cols-2">
-          {tests.map((t) => (
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {tests.slice(0, 2).map((t) => (
             <Link
               key={t.id}
               href={href(t.id)}
@@ -144,6 +152,7 @@ function Section({
               </div>
             </Link>
           ))}
+          <PracticeMoreCard href={archiveHref} count={tests.length} label={title} />
         </div>
       )}
     </section>

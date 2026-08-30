@@ -28,6 +28,16 @@ type ChatMessage = { role: "user" | "assistant"; content: string };
 const scoreLabels: Record<string, string> = { task_completion: "Görevi tamamlama", grammar: "Dil bilgisi", vocabulary: "Kelime", fluency_pronunciation: "Akıcılık ve telaffuz tahmini" };
 const fmt = (sec: number) => `${Math.floor(Math.max(0, sec) / 60).toString().padStart(2, "0")}:${(Math.max(0, sec) % 60).toString().padStart(2, "0")}`;
 
+function shuffledCardIds(cards: TestSummary[], avoidFirstId = "") {
+  const ids = cards.map((item) => item.id);
+  for (let index = ids.length - 1; index > 0; index -= 1) {
+    const swap = Math.floor(Math.random() * (index + 1));
+    [ids[index], ids[swap]] = [ids[swap], ids[index]];
+  }
+  if (ids.length > 1 && ids[0] === avoidFirstId) [ids[0], ids[1]] = [ids[1], ids[0]];
+  return ids;
+}
+
 function analyseSpeech(text: string, duration: number, transcription: TranscriptionResult | null) {
   const words = text.toLowerCase().match(/[a-z]+(?:['’-][a-z]+)?/g) ?? [];
   const fillers = text.toLowerCase().match(/\b(?:um+|uh+|erm+|hmm+|you know|i mean)\b/g) ?? [];
@@ -88,6 +98,7 @@ export function SpeakingPractice() {
   const [result, setResult] = useState<SpeakingResult | null>(null); const [busy, setBusy] = useState(false); const [error, setError] = useState("");
   const recognitionRef = useRef<RecognitionLike | null>(null); const recorderRef = useRef<MediaRecorder | null>(null); const streamRef = useRef<MediaStream | null>(null); const chunksRef = useRef<BlobPart[]>([]); const speakingActiveRef = useRef(false); const startedAtRef = useRef(0);
   const audioContextRef = useRef<AudioContext | null>(null); const meterFrameRef = useRef<number | null>(null); const meterUpdatedAtRef = useRef(0);
+  const remainingCardIdsRef = useRef<string[]>([]);
   const content = card?.content as SpeakingContent | undefined;
   const topicHint = `${content?.prompt ?? ""}\n${content?.bullets?.join("\n") ?? ""}`.trim();
 
@@ -148,7 +159,7 @@ export function SpeakingPractice() {
 
   const beginSpeaking = useCallback(() => { setPrepLeft(0); setPhase("speak"); void startRecording(); }, [startRecording]);
 
-  useEffect(() => { api<TestSummary[]>("/api/tests?kind=speaking_card").then((items) => { setCards(items); setRollingTitle(items[0]?.title ?? "Konu bulunamadı"); }).catch((caught) => setError(caught instanceof Error ? caught.message : "Konu kartları yüklenemedi")); }, []);
+  useEffect(() => { api<TestSummary[]>("/api/tests?kind=speaking_card").then((items) => { setCards(items); remainingCardIdsRef.current = shuffledCardIds(items); setRollingTitle(items[0]?.title ?? "Konu bulunamadı"); }).catch((caught) => setError(caught instanceof Error ? caught.message : "Konu kartları yüklenemedi")); }, []);
   useEffect(() => { if (phase !== "prep") return; const timer = window.setInterval(() => setPrepLeft((value) => { if (value <= 1) { window.clearInterval(timer); beginSpeaking(); return 0; } return value - 1; }), 1000); return () => window.clearInterval(timer); }, [phase, beginSpeaking]);
   useEffect(() => { if (phase !== "speak") return; const timer = window.setInterval(() => setElapsed(Math.floor((Date.now() - startedAtRef.current) / 1000)), 1000); return () => window.clearInterval(timer); }, [phase]);
   useEffect(() => () => { speakingActiveRef.current = false; recognitionRef.current?.stop(); if (recorderRef.current?.state !== "inactive") recorderRef.current?.stop(); streamRef.current?.getTracks().forEach((track) => track.stop()); chunksRef.current = []; if (meterFrameRef.current !== null) cancelAnimationFrame(meterFrameRef.current); void audioContextRef.current?.close(); }, []);
@@ -156,7 +167,7 @@ export function SpeakingPractice() {
   async function pickCard() {
     if (!cards.length || rolling) return; setRolling(true); setResult(null); setTranscript(""); setTranscription(null); setError(""); let tick = 0;
     const interval = window.setInterval(() => { setRollingTitle(cards[tick % cards.length].title); tick += 1; }, 90);
-    window.setTimeout(async () => { window.clearInterval(interval); try { const chosen = cards[Math.floor(Math.random() * cards.length)]; setRollingTitle(chosen.title); setCard(await api<TestDetail>(`/api/tests/${chosen.id}`)); } catch (caught) { setError(caught instanceof Error ? caught.message : "Konu kartı açılamadı"); } finally { setRolling(false); } }, 1500);
+    window.setTimeout(async () => { window.clearInterval(interval); try { if (!remainingCardIdsRef.current.length) remainingCardIdsRef.current = shuffledCardIds(cards, card?.id); const chosenId = remainingCardIdsRef.current.shift(); const chosen = cards.find((item) => item.id === chosenId) ?? cards[0]; setRollingTitle(chosen.title); setCard(await api<TestDetail>(`/api/tests/${chosen.id}`)); } catch (caught) { setError(caught instanceof Error ? caught.message : "Konu kartı açılamadı"); } finally { setRolling(false); } }, 1500);
   }
 
   async function finish() {
@@ -187,7 +198,7 @@ export function SpeakingPractice() {
   return <div className="space-y-8">
     <header className="space-y-3"><div className="flex flex-wrap gap-2"><span className="badge badge-navy">3. oturum · 20 puan</span><span className="badge">yaklaşık 10 dakika</span></div><h1 className="font-serif text-4xl text-[var(--navy)]">Konuşma</h1><p className="prose-quiet max-w-3xl">Konu kartını seç, bir dakika hazırlan, ana maddeleri ve takip sorularını konuş. Ses yalnızca yazıya çevrilmek için geçici olarak sunucuya gönderilir ve işlem tamamlanınca silinir. Transkript ile yaklaşık konuşma ölçümleri, geri bildirim üretmesi için seçili AI sağlayıcısına gönderilir.</p></header>
 
-    {phase === "pick" ? <section className="card overflow-hidden"><div className="relative grid min-h-72 place-items-center overflow-hidden bg-[linear-gradient(160deg,rgba(28,61,90,.08),rgba(176,139,63,.12))] p-6 text-center"><div className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-[var(--gold)] opacity-50" /><div className={`relative w-full max-w-xl rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-8 shadow-lg ${rolling ? "pulse-soft" : ""}`}><p className="eyebrow">Konu seçimi</p><p className="mt-3 font-serif text-3xl leading-tight text-[var(--navy)]">{rollingTitle}</p><button type="button" className="btn btn-primary mt-6" onClick={() => void pickCard()} disabled={rolling || !cards.length}>{rolling ? "Konular akıyor…" : card ? "Başka konu seç" : "Konu kartını çek"}</button>{card && !rolling ? <button type="button" className="btn btn-outline ml-2 mt-6" onClick={() => { setPrepLeft(60); setPhase("prep"); }}>Bu konuyla başla</button> : null}</div></div></section> : null}
+    {phase === "pick" ? <section className="card overflow-hidden"><div className="relative grid min-h-72 place-items-center overflow-hidden bg-[linear-gradient(160deg,rgba(28,61,90,.08),rgba(176,139,63,.12))] p-6 text-center"><div className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-[var(--gold)] opacity-50" /><div className={`relative w-full max-w-xl rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-8 shadow-lg ${rolling ? "pulse-soft" : ""}`}><p className="eyebrow">Konu seçimi</p><p className="mt-2 text-xs text-[var(--ink-2)]">{cards.length || 100} farklı kart · havuz bitene kadar tekrar yok</p><p className="mt-3 font-serif text-3xl leading-tight text-[var(--navy)]">{rollingTitle}</p><button type="button" className="btn btn-primary mt-6" onClick={() => void pickCard()} disabled={rolling || !cards.length}>{rolling ? "Konular akıyor…" : card ? "Başka konu seç" : "Konu kartını çek"}</button>{card && !rolling ? <button type="button" className="btn btn-outline ml-2 mt-6" onClick={() => { setPrepLeft(60); setPhase("prep"); }}>Bu konuyla başla</button> : null}</div></div></section> : null}
 
     {card && phase !== "pick" ? <section className="grid gap-4 lg:grid-cols-[0.7fr_0.3fr]"><div className="card p-6 sm:p-8"><p className="eyebrow">Konu kartı</p><h2 className="mt-3 font-serif text-3xl leading-tight text-[var(--navy)]">{content?.prompt}</h2><ul className="prose-quiet mt-5 space-y-2">{content?.bullets?.map((item, index) => <li key={index}>— {item}</li>)}</ul><div className="mt-6 border-t border-[var(--line)] pt-5"><p className="eyebrow">Takip soruları</p><ul className="mt-3 space-y-2 text-sm leading-6">{content?.followups?.map((item, index) => <li key={index}>{index + 1}. {item}</li>)}</ul></div></div><aside className="card flex flex-col items-center justify-center p-6 text-center"><p className="eyebrow">{phaseLabel}</p><p className="mt-2 font-serif text-5xl text-[var(--navy)]">{phase === "prep" ? fmt(prepLeft) : showTimer ? fmt(elapsed) : "••:••"}</p>{phase !== "prep" ? <button type="button" className="btn btn-quiet mt-2 text-xs" onClick={() => setShowTimer((value) => !value)}>{showTimer ? "Süreyi gizle" : "Süreyi göster"}</button> : null}{phase === "prep" ? <button type="button" className="btn btn-outline mt-5" onClick={beginSpeaking}>Hazırım, konuşmayı başlat</button> : null}{phase === "speak" ? <><span className={`mt-4 inline-flex items-center gap-2 text-sm ${recordingReady ? "text-[var(--terracotta)]" : "text-[var(--ink-2)]"}`}><i className={`h-2.5 w-2.5 rounded-full ${recordingReady ? "bg-[var(--terracotta)] pulse-soft" : "bg-[var(--ink-3)]"}`} />{recordingReady ? "kayıt sürüyor" : "mikrofon bekleniyor"}</span><button type="button" className="btn btn-primary mt-5" onClick={() => void finish()}>Konuşmayı bitir</button></> : null}{phase === "processing" ? <span className="badge badge-gold mt-5 pulse-soft">yerel model çalışıyor…</span> : null}</aside></section> : null}
 

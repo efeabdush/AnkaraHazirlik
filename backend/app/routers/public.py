@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
+from threading import Lock
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
@@ -10,8 +12,16 @@ from ..config import settings
 from ..db import get_db
 from ..models import Attempt, Test
 from ..services.glossary import merge_entries, word_bank_for
+from ..services.tts import synthesize_script
 
 router = APIRouter(prefix="/api", tags=["public"])
+_AUDIO_LOCKS: dict[str, Lock] = {}
+_AUDIO_LOCKS_GUARD = Lock()
+
+
+def _audio_lock(test_id: str) -> Lock:
+    with _AUDIO_LOCKS_GUARD:
+        return _AUDIO_LOCKS.setdefault(test_id, Lock())
 
 
 def _glossary_pack(raw: str | None) -> tuple[list, dict]:
@@ -154,9 +164,23 @@ def get_audio(test_id: str, db: Session = Depends(get_db)):
     from fastapi.responses import FileResponse
 
     t = db.get(Test, test_id)
-    if not t or not t.published or not t.audio_path:
+    if not t or not t.published or t.kind not in {"conversation", "lecture"}:
         raise HTTPException(404, "Ses bulunamadı")
-    return FileResponse(t.audio_path, media_type="audio/mpeg", filename=f"{test_id}.mp3")
+    audio_path = Path(t.audio_path) if t.audio_path else settings.storage_dir / "audio" / f"{test_id}.mp3"
+    if not audio_path.exists():
+        with _audio_lock(test_id):
+            if not audio_path.exists():
+                try:
+                    script = json.loads(t.transcript_json or "[]")
+                    if not script:
+                        raise ValueError("Boş dinleme metni")
+                    t.duration_sec = synthesize_script(script, audio_path)
+                    t.audio_path = str(audio_path)
+                    db.commit()
+                except Exception as exc:  # noqa: BLE001
+                    db.rollback()
+                    raise HTTPException(503, "Ses şu anda hazırlanamadı; kısa süre sonra tekrar dene") from exc
+    return FileResponse(audio_path, media_type="audio/mpeg", filename=f"{test_id}.mp3")
 
 
 @router.post("/attempts")

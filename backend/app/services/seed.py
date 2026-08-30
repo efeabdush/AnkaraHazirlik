@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from ..config import settings
 from ..models import Question, Test
 from .glossary import merge_entries
+from .practice_catalog import build_practice_catalog
 from .tts import synthesize_script
 from .validator import ACADEMIC_KINDS, validate_academic_pack, validate_pack
 
@@ -20,6 +21,8 @@ def seed_if_empty(db: Session) -> None:
         if path.name.endswith(".glossary.json"):
             continue
         load_seed_file(db, path)
+    for data in build_practice_catalog():
+        load_seed_data(db, data)
     db.commit()
     backfill_seed_glossaries(db)
 
@@ -51,11 +54,13 @@ def _stored_glossary(test: Test) -> dict:
     return {"entries": data if isinstance(data, list) else [], "words": {}}
 
 
-def _glossary_for_seed(path: Path, data: dict) -> dict:
+def _glossary_for_seed(path: Path | None, data: dict) -> dict:
     raw = data.get("glossary")
-    if raw is None:
+    if raw is None and path is not None:
         gpath = path.with_name(path.stem + ".glossary.json")
         raw = json.loads(gpath.read_text(encoding="utf-8")) if gpath.exists() else []
+    if raw is None:
+        raw = []
     if isinstance(raw, dict):
         entries = raw.get("entries") or []
         words = raw.get("words") or {}
@@ -69,6 +74,10 @@ def _glossary_for_seed(path: Path, data: dict) -> dict:
 
 def load_seed_file(db: Session, path: Path) -> Test:
     data = json.loads(path.read_text(encoding="utf-8"))
+    return load_seed_data(db, data, path)
+
+
+def load_seed_data(db: Session, data: dict, path: Path | None = None) -> Test:
     if data["kind"] in {"conversation", "lecture"}:
         validate_pack(data["kind"], data)
     elif data["kind"] in ACADEMIC_KINDS:
@@ -106,12 +115,17 @@ def load_seed_file(db: Session, path: Path) -> Test:
             db.delete(question)
         if data["kind"] in {"conversation", "lecture"}:
             audio_path = settings.storage_dir / "audio" / f"{existing.id}.mp3"
-            if script_changed or not audio_path.exists():
-                try:
-                    existing.duration_sec = synthesize_script(data["script"], audio_path)
-                except Exception as exc:  # noqa: BLE001
-                    print(f"TTS refresh skipped for {existing.id}: {exc}")
-            if audio_path.exists():
+            words = sum(len(line["text"].split()) for line in data["script"])
+            existing.duration_sec = max(30, int(words / 2.3))
+            if not data.get("defer_audio", False):
+                if script_changed or not audio_path.exists():
+                    try:
+                        existing.duration_sec = synthesize_script(data["script"], audio_path)
+                    except Exception as exc:  # noqa: BLE001
+                        print(f"TTS refresh skipped for {existing.id}: {exc}")
+                if audio_path.exists():
+                    existing.audio_path = str(audio_path)
+            elif audio_path.exists():
                 existing.audio_path = str(audio_path)
         existing.glossary_json = json.dumps(_glossary_for_seed(path, data), ensure_ascii=False)
         return existing
@@ -148,15 +162,18 @@ def load_seed_file(db: Session, path: Path) -> Test:
         )
     if data["kind"] in {"conversation", "lecture"}:
         audio_path = settings.storage_dir / "audio" / f"{test.id}.mp3"
-        if not audio_path.exists():
+        words = sum(len(line["text"].split()) for line in data["script"])
+        test.duration_sec = max(30, int(words / 2.3))
+        if data.get("defer_audio", False):
+            if audio_path.exists():
+                test.audio_path = str(audio_path)
+        elif not audio_path.exists():
             try:
                 duration = synthesize_script(data["script"], audio_path)
                 test.duration_sec = duration
                 test.audio_path = str(audio_path)
             except Exception as exc:  # noqa: BLE001
                 print(f"TTS skipped for {test.id}: {exc}")
-                words = sum(len(line["text"].split()) for line in data["script"])
-                test.duration_sec = max(30, int(words / 2.3))
         else:
             test.audio_path = str(audio_path)
     test.glossary_json = json.dumps(_glossary_for_seed(path, data), ensure_ascii=False)

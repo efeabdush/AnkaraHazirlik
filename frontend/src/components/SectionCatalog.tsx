@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { api, type TestSummary } from "@/lib/api";
 import { AcademicPracticeSession } from "@/components/AcademicPracticeSession";
+import { PracticeMoreCard } from "@/components/PracticeMoreCard";
 
 type Group = { kind: string; label: string; note: string };
 
@@ -35,8 +36,8 @@ export function SectionCatalog({ groups, inline = false }: { groups: Group[]; in
               </div>
               <span className="badge">{items.length} çalışma</span>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {items.map((test, index) => {
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {items.slice(0, 2).map((test, index) => {
                 const content = <>
                   <span>
                     <span className="eyebrow">{group.label} · {String(index + 1).padStart(2, "0")}</span>
@@ -49,6 +50,7 @@ export function SectionCatalog({ groups, inline = false }: { groups: Group[]; in
                   ? <button key={test.id} type="button" onClick={() => setSelectedTestId(test.id)} className="card card-lift flex w-full items-center justify-between gap-4 p-5 text-left">{content}</button>
                   : <Link key={test.id} href={`/practice/${test.id}`} className="card card-lift flex items-center justify-between gap-4 p-5">{content}</Link>;
               })}
+              {items.length > 2 ? <PracticeMoreCard href={`/practice-library/${group.kind}`} count={items.length} label={group.label} /> : null}
             </div>
           </section>
         );
