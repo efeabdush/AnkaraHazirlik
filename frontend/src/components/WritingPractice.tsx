@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { api } from "@/lib/api";
 import { saveExamProgress } from "@/lib/examProgress";
@@ -40,14 +40,53 @@ export function WritingPractice() {
   const [essay, setEssay] = useState("");
   const [remaining, setRemaining] = useState(60 * 60);
   const [running, setRunning] = useState(false);
+  const [timerStarted, setTimerStarted] = useState(false);
   const [result, setResult] = useState<WritingResult | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const endSoundPlayedRef = useRef(false);
+
+  function primeAudio() {
+    try {
+      const context = audioContextRef.current ?? new window.AudioContext();
+      audioContextRef.current = context;
+      if (context.state === "suspended") void context.resume();
+    } catch {
+      // Sayaç, ses desteği olmayan tarayıcılarda da çalışmaya devam eder.
+    }
+  }
+
+  function playEndSound() {
+    const context = audioContextRef.current;
+    if (!context) return;
+
+    const now = context.currentTime;
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(523.25, now);
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(0.045, now + 0.025);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.3);
+    oscillator.connect(gain);
+    gain.connect(context.destination);
+    oscillator.start(now);
+    oscillator.stop(now + 0.32);
+  }
 
   useEffect(() => {
     if (!running) return;
     const timer = window.setInterval(() => setRemaining((value) => {
-      if (value <= 1) { setRunning(false); return 0; }
+      if (value <= 1) {
+        setRunning(false);
+        if (!endSoundPlayedRef.current) {
+          endSoundPlayedRef.current = true;
+          playEndSound();
+        }
+        return 0;
+      }
       return value - 1;
     }), 1000);
     return () => window.clearInterval(timer);
@@ -67,7 +106,33 @@ export function WritingPractice() {
     finally { setBusy(false); }
   }
 
-  function resetEssay() { setEssay(""); setResult(null); setRemaining(3600); setRunning(false); setError(""); }
+  function handleEssayChange(value: string) {
+    setEssay(value);
+    if (!timerStarted && value.trim().length > 0 && remaining > 0) {
+      primeAudio();
+      endSoundPlayedRef.current = false;
+      setTimerStarted(true);
+      setRunning(true);
+    }
+  }
+
+  function toggleTimer() {
+    if (remaining <= 0) return;
+    primeAudio();
+    endSoundPlayedRef.current = false;
+    setTimerStarted(true);
+    setRunning((value) => !value);
+  }
+
+  function resetEssay() {
+    setEssay("");
+    setResult(null);
+    setRemaining(3600);
+    setRunning(false);
+    setTimerStarted(false);
+    endSoundPlayedRef.current = false;
+    setError("");
+  }
 
   function drawTopic() {
     if (rolling) return;
@@ -99,14 +164,15 @@ export function WritingPractice() {
           </div>
           <div className="card p-5">
             <div className="flex items-center justify-between"><span className="eyebrow">Süre</span><span className={`font-serif text-3xl ${remaining < 600 ? "text-[var(--terracotta)]" : "text-[var(--navy)]"}`}>{formatTime(remaining)}</span></div>
-            <button type="button" className="btn btn-outline mt-4 w-full" onClick={() => setRunning((v) => !v)}>{running ? "Sayacı durdur" : remaining === 3600 ? "60 dakikayı başlat" : "Sayacı sürdür"}</button>
+            <p className="prose-quiet mt-3 text-xs">Ekranda yazmaya başladığında süre kendiliğinden akar. Kâğıda yazacaksan aşağıdan başlatabilirsin.</p>
+            <button type="button" className="btn btn-outline mt-4 w-full" disabled={remaining === 0} onClick={toggleTimer}>{running ? "Sayacı durdur" : remaining === 0 ? "Süre doldu" : timerStarted ? "Sayacı sürdür" : "60 dakikayı başlat"}</button>
           </div>
           <div className="rounded-xl border border-[var(--line)] p-4 text-xs leading-6 text-[var(--ink-2)]"><b className="text-[var(--navy)]">Dört ölçüt:</b> görevi tamamlama, dil bilgisi, kelime, tutarlılık-bağlaşıklık.</div>
         </aside>
 
         <div className="card overflow-hidden">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--line)] px-5 py-3"><span className="eyebrow">Kompozisyonun</span><span className={wordCount >= 250 ? "badge badge-green" : "badge badge-warn"}>{wordCount} / 250+ kelime</span></div>
-          <textarea className="min-h-[34rem] w-full resize-y bg-[var(--paper)] p-5 text-[1rem] leading-8 outline-none disabled:cursor-not-allowed disabled:opacity-55 sm:p-7" value={essay} onChange={(e) => setEssay(e.target.value)} placeholder={selected ? "Write your opinion essay here…" : "Önce soldan bir konu teması çek…"} spellCheck="true" disabled={!selected || rolling} />
+          <textarea className="min-h-[34rem] w-full resize-y bg-[var(--paper)] p-5 text-[1rem] leading-8 outline-none disabled:cursor-not-allowed disabled:opacity-55 sm:p-7" value={essay} onChange={(e) => handleEssayChange(e.target.value)} placeholder={selected ? "Write your opinion essay here…" : "Önce soldan bir konu teması çek…"} spellCheck="true" disabled={!selected || rolling} />
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[var(--line)] p-4"><button type="button" className="btn btn-quiet" onClick={resetEssay}>Metni temizle</button><button type="button" className="btn btn-primary" disabled={busy || !selected || essay.trim().length < 20} onClick={() => void evaluate()}>{busy ? "Rubrik uygulanıyor…" : "Yazımı değerlendir"}</button></div>
         </div>
       </section>
