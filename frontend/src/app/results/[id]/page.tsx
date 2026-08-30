@@ -6,6 +6,7 @@ import { ExplainChat } from "@/components/ExplainChat";
 import { AcademicContent } from "@/components/AcademicPracticeSession";
 import { SelectTranslate } from "@/components/SelectTranslate";
 import { api, type AttemptDetail } from "@/lib/api";
+import { isPracticeKind } from "@/lib/practiceLibrary";
 
 export default function ResultsPage({ params }: { params: Promise<{ id: string }> }) {
   const [attempt, setAttempt] = useState<AttemptDetail | null>(null);
@@ -49,6 +50,9 @@ export default function ResultsPage({ params }: { params: Promise<{ id: string }
     : attempt.kind === "cloze" || attempt.kind === "restatement"
       ? "Dil kullanımı"
       : "Dinleme";
+  const discoveryHref = isPracticeKind(attempt.kind)
+    ? `/practice-library/${attempt.kind}`
+    : sectionHref;
 
   return (
     <div className="space-y-8">
@@ -191,7 +195,7 @@ export default function ResultsPage({ params }: { params: Promise<{ id: string }
       </section> : null}
 
       <div className="flex flex-wrap gap-3">
-        <Link href={sectionHref} className="btn btn-primary">
+        <Link href={discoveryHref} className="btn btn-primary">
           Başka test çöz
         </Link>
         <Link href={isListening ? `/listening/${attempt.kind === "lecture" ? "lecture" : "conversation"}/${attempt.test_id}` : `/practice/${attempt.test_id}`} className="btn btn-outline">
