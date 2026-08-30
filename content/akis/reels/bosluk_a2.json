@@ -1,0 +1,126 @@
+[
+  { "id": "bosluk-a2-01", "kind": "bosluk", "level": "A2", "title": "At The Museum", "topic": "free time",
+    "body": "Yesterday we ___ to the new museum and stayed there for almost two hours.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "go", "B": "went", "C": "gone", "D": "going" }, "answer": "B",
+      "explain_tr": "'Yesterday' geçmiş zaman ister; go fiilinin ikinci hali **went**'tir." } },
+
+  { "id": "bosluk-a2-02", "kind": "bosluk", "level": "A2", "title": "Next Door", "topic": "neighbours",
+    "body": "She has been our neighbour ___ 2019 and we still meet her every morning.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "for", "B": "from", "C": "since", "D": "during" }, "answer": "C",
+      "explain_tr": "Başlangıç noktası verildiğinde **since** kullanılır: since 2019. 'for' ise süre uzunluğu içindir." } },
+
+  { "id": "bosluk-a2-03", "kind": "bosluk", "level": "A2", "title": "Two Exams", "topic": "school",
+    "body": "This exam was ___ difficult than the one we took last month.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "most", "B": "much", "C": "very", "D": "more" }, "answer": "D",
+      "explain_tr": "Uzun sıfatlarda karşılaştırma **more + sıfat + than** ile yapılır." } },
+
+  { "id": "bosluk-a2-04", "kind": "bosluk", "level": "A2", "title": "Weekend Plans", "topic": "family",
+    "body": "I am going to ___ my grandparents next weekend if the weather is good.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "visit", "B": "visiting", "C": "visited", "D": "visits" }, "answer": "A",
+      "explain_tr": "'going to' kalıbından sonra fiilin yalın hali gelir: going to **visit**." } },
+
+  { "id": "bosluk-a2-05", "kind": "bosluk", "level": "A2", "title": "Power Cut", "topic": "at home",
+    "body": "We ___ watching a film when the lights suddenly went out last night.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "was", "B": "were", "C": "are", "D": "did" }, "answer": "B",
+      "explain_tr": "Çoğul özne (we) ile geçmiş sürekli zaman **were + -ing** olur." } },
+
+  { "id": "bosluk-a2-06", "kind": "bosluk", "level": "A2", "title": "If It Rains", "topic": "weather",
+    "body": "If it rains tomorrow, we ___ at home and watch something together.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "stayed", "B": "would stay", "C": "will stay", "D": "staying" }, "answer": "C",
+      "explain_tr": "Birinci tip koşul cümlesinde: If + geniş zaman, **will + fiil**." } },
+
+  { "id": "bosluk-a2-07", "kind": "bosluk", "level": "A2", "title": "Take It With You", "topic": "advice",
+    "body": "You ___ take an umbrella today because it is going to rain this afternoon.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "should", "B": "would", "C": "could", "D": "might" }, "answer": "A",
+      "explain_tr": "Tavsiye vermek için **should** kullanılır." } },
+
+  { "id": "bosluk-a2-08", "kind": "bosluk", "level": "A2", "title": "Half Empty", "topic": "events",
+    "body": "There were ___ people at the concert than we had expected on a Friday.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "less", "B": "fewer", "C": "fewest", "D": "least" }, "answer": "B",
+      "explain_tr": "Sayılabilen isimlerle **fewer** kullanılır; 'less' sayılamayanlar içindir." } },
+
+  { "id": "bosluk-a2-09", "kind": "bosluk", "level": "A2", "title": "In This Flat", "topic": "housing",
+    "body": "I have lived in this flat ___ five years and I still like it.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "since", "B": "from", "C": "for", "D": "ago" }, "answer": "C",
+      "explain_tr": "Süre uzunluğu verildiğinde **for** kullanılır: for five years." } },
+
+  { "id": "bosluk-a2-10", "kind": "bosluk", "level": "A2", "title": "Who Speaks More", "topic": "languages",
+    "body": "She speaks English ___ than her brother, but he writes more carefully.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "good", "B": "best", "C": "more good", "D": "better" }, "answer": "D",
+      "explain_tr": "good sıfatının karşılaştırma hali düzensizdir: **better**." } },
+
+  { "id": "bosluk-a2-11", "kind": "bosluk", "level": "A2", "title": "A Boring Film", "topic": "free time",
+    "body": "The film was so boring that I ___ asleep before the middle of it.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "felt", "B": "fell", "C": "fall", "D": "fallen" }, "answer": "B",
+      "explain_tr": "'uykuya dalmak' kalıbı **fall asleep**; geçmiş hali fell'dir. 'felt' ise feel fiilinden gelir." } },
+
+  { "id": "bosluk-a2-12", "kind": "bosluk", "level": "A2", "title": "Too Early", "topic": "travel",
+    "body": "They arrived ___ the airport almost two hours before the flight.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "to", "B": "in", "C": "at", "D": "on" }, "answer": "C",
+      "explain_tr": "arrive fiili havaalanı gibi noktalarla **at** ile kullanılır: arrive at the airport." } },
+
+  { "id": "bosluk-a2-13", "kind": "bosluk", "level": "A2", "title": "Locked Out", "topic": "problems",
+    "body": "I ___ my keys yesterday, so I could not open the door for an hour.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "lose", "B": "losing", "C": "loses", "D": "lost" }, "answer": "D",
+      "explain_tr": "'yesterday' geçmiş zaman ister; lose fiilinin ikinci hali **lost**'tur." } },
+
+  { "id": "bosluk-a2-14", "kind": "bosluk", "level": "A2", "title": "Too Loud", "topic": "requests",
+    "body": "Could you turn ___ the music a little? The neighbours are already asleep.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "down", "B": "up", "C": "on", "D": "into" }, "answer": "A",
+      "explain_tr": "Sesi kısmak **turn down**, açmak ise turn up'tır." } },
+
+  { "id": "bosluk-a2-15", "kind": "bosluk", "level": "A2", "title": "Early Mornings", "topic": "habits",
+    "body": "He is used ___ getting up at five because of his job at the bakery.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "for", "B": "to", "C": "at", "D": "with" }, "answer": "B",
+      "explain_tr": "'alışkın olmak' kalıbı **be used to + fiil-ing** biçimindedir." } },
+
+  { "id": "bosluk-a2-16", "kind": "bosluk", "level": "A2", "title": "Closing Time", "topic": "campus",
+    "body": "We must ___ before the library closes at six o'clock this evening.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "to leave", "B": "leaving", "C": "leave", "D": "left" }, "answer": "C",
+      "explain_tr": "must gibi modal fiillerden sonra yalın fiil gelir: must **leave**." } },
+
+  { "id": "bosluk-a2-17", "kind": "bosluk", "level": "A2", "title": "Around The Corner", "topic": "eating out",
+    "body": "This is the ___ restaurant in the neighbourhood and it is always full.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "better", "B": "good", "C": "more good", "D": "best" }, "answer": "D",
+      "explain_tr": "Bir grubun içinde en üstün için **the best** kullanılır." } },
+
+  { "id": "bosluk-a2-18", "kind": "bosluk", "level": "A2", "title": "Stayed In", "topic": "weather",
+    "body": "I did not go out yesterday ___ the weather was really terrible all day.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "because", "B": "so", "C": "but", "D": "although" }, "answer": "A",
+      "explain_tr": "Sebep bildirmek için **because** kullanılır." } },
+
+  { "id": "bosluk-a2-19", "kind": "bosluk", "level": "A2", "title": "Finished Anyway", "topic": "work",
+    "body": "She was extremely tired, ___ she still finished the report before midnight.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "because", "B": "but", "C": "so", "D": "and" }, "answer": "B",
+      "explain_tr": "Beklenmedik bir sonuç geldiği için karşıtlık bağlacı **but** gerekir." } },
+
+  { "id": "bosluk-a2-20", "kind": "bosluk", "level": "A2", "title": "At The Stop", "topic": "transport",
+    "body": "How long ___ you wait for the bus at the stop yesterday morning?",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "do", "B": "were", "C": "did", "D": "have" }, "answer": "C",
+      "explain_tr": "Geçmiş zaman sorusunda yardımcı fiil **did** olur ve ana fiil yalın kalır." } },
+
+  { "id": "bosluk-a2-21", "kind": "bosluk", "level": "A2", "title": "Almost Gone", "topic": "shopping",
+    "body": "There is ___ sugar left in the jar, so we need to buy some more.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "few", "B": "a few", "C": "many", "D": "little" }, "answer": "D",
+      "explain_tr": "Sayılamayan isimle 'çok az' anlamı **little** ile verilir; few sayılabilenler içindir." } },
+
+  { "id": "bosluk-a2-22", "kind": "bosluk", "level": "A2", "title": "Hurry Up", "topic": "travel",
+    "body": "The train leaves ___ ten minutes, so we should walk to the platform now.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "in", "B": "at", "C": "on", "D": "for" }, "answer": "A",
+      "explain_tr": "'... sonra' anlamında gelecek bir zaman için **in** kullanılır: in ten minutes." } },
+
+  { "id": "bosluk-a2-23", "kind": "bosluk", "level": "A2", "title": "Closed Sunday", "topic": "shopping",
+    "body": "Neither of the two shops ___ open on Sunday, so we went on Monday.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "are", "B": "is", "C": "were", "D": "have" }, "answer": "B",
+      "explain_tr": "'Neither of' tekil kabul edilir, bu yüzden **is** gelir." } },
+
+  { "id": "bosluk-a2-24", "kind": "bosluk", "level": "A2", "title": "A Quiet Night", "topic": "plans",
+    "body": "I would rather ___ at home tonight than go to a crowded place.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "to stay", "B": "staying", "C": "stayed", "D": "stay" }, "answer": "D",
+      "explain_tr": "'would rather' kalıbından sonra yalın fiil gelir: would rather **stay**." } },
+
+  { "id": "bosluk-a2-25", "kind": "bosluk", "level": "A2", "title": "Not Yet", "topic": "coursework",
+    "body": "I have ___ finished the first part, but the second one is still open.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "yet", "B": "already", "C": "still", "D": "ever" }, "answer": "B",
+      "explain_tr": "Olumlu cümlede 'çoktan' anlamı **already** ile verilir; 'yet' olumsuz ve sorularda kullanılır." } }
+]

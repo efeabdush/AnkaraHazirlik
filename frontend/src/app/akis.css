@@ -1,0 +1,625 @@
+/* Akış-specific controls and immersive feed styles. */
+.speed-btn {
+  min-height: 30px;
+}
+
+/* a 16px native range is hard to grab with a thumb */
+.seek {
+  width: 100%;
+  height: 20px;
+  accent-color: var(--navy);
+}
+
+/* standalone text links need a real tap box, not just their line height */
+.tap-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+}
+
+/* touch screens get targets that clear the 44px guideline */
+@media (hover: none) {
+  .speed-btn {
+    min-height: 40px;
+  }
+
+  .seek {
+    height: 32px;
+  }
+
+  .tap-link {
+    min-height: 40px;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+
+  .btn-quiet {
+    min-height: 40px;
+  }
+
+  .opt {
+    min-height: 48px;
+    padding: 0.75rem 0.9rem;
+  }
+
+  .badge {
+    min-height: 32px;
+    padding: 0.35rem 0.7rem;
+  }
+}
+
+.lv {
+  --lv: var(--ink-2);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--lv);
+  border: 1px solid color-mix(in srgb, var(--lv) 35%, transparent);
+  background: color-mix(in srgb, var(--lv) 11%, #fff);
+}
+
+.lv small {
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.lv-a1 { --lv: var(--lv-a1); }
+.lv-a2 { --lv: var(--lv-a2); }
+.lv-b1 { --lv: var(--lv-b1); }
+.lv-b1plus { --lv: var(--lv-b1plus); }
+
+.lv-rail {
+  width: 3px;
+  border-radius: 999px;
+  background: var(--lv, var(--line));
+}
+
+/* ---------- the feed ---------- */
+
+.feed-stage {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(176, 139, 63, 0.16), transparent 45%),
+    linear-gradient(170deg, var(--navy) 0%, var(--navy-deep) 62%, #0f2233 100%);
+}
+
+/* proximity, not mandatory: a card taller than the screen must stay scrollable
+   by hand, otherwise the buttons under the feedback slide away as you reach
+   for them. Slides grow with their content and snap from the top. */
+.feed-scroll {
+  scroll-snap-type: y proximity;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.feed-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.feed-slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* the action row of an answered card stays within thumb reach */
+.card-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  background: linear-gradient(to bottom, rgba(253, 251, 247, 0.75), var(--paper) 45%);
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+/* ---------- answer options ---------- */
+
+.opt {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.65rem 0.85rem;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 140ms ease, background 140ms ease, transform 120ms ease;
+}
+
+.opt:hover:not(:disabled) {
+  border-color: rgba(28, 61, 90, 0.45);
+  background: #fffdf8;
+}
+
+.opt:disabled {
+  cursor: default;
+}
+
+.opt-letter {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  background: var(--paper);
+}
+
+.opt-correct {
+  border-color: rgba(47, 107, 81, 0.6);
+  background: rgba(47, 107, 81, 0.09);
+}
+
+.opt-correct .opt-letter {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.opt-wrong {
+  border-color: rgba(176, 81, 44, 0.55);
+  background: rgba(176, 81, 44, 0.07);
+}
+
+.opt-wrong .opt-letter {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: #fff;
+}
+
+.opt-dim {
+  opacity: 0.5;
+}
+
+/* ---------- player ---------- */
+
+.play-btn {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: #f6f1e6;
+  border: 0;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background 150ms ease, transform 120ms ease;
+}
+
+.play-btn:hover:not(:disabled) {
+  background: var(--navy-deep);
+}
+
+.play-btn:active {
+  transform: scale(0.95);
+}
+
+.wave {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 26px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.wave i {
+  display: block;
+  flex: 1;
+  min-width: 2px;
+  border-radius: 3px;
+  background: rgba(28, 61, 90, 0.22);
+  transform-origin: center;
+}
+
+.wave.on i {
+  background: var(--navy);
+  animation: wave-beat 1s ease-in-out infinite;
+}
+
+@keyframes wave-beat {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+
+/* ---------- chat ---------- */
+
+.bubble {
+  max-width: 88%;
+  border-radius: 14px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+/* what the visitor typed is shown exactly as typed */
+.bubble-plain {
+  white-space: pre-wrap;
+}
+
+/* ---------- rendered markdown ---------- */
+
+.md > * + * {
+  margin-top: 0.6rem;
+}
+
+.md ul,
+.md ol {
+  display: grid;
+  gap: 0.25rem;
+  padding-left: 1.25rem;
+}
+
+.md ul {
+  list-style: disc;
+}
+
+.md ol {
+  list-style: decimal;
+}
+
+.md li::marker {
+  color: var(--gold);
+}
+
+.md .md-h {
+  font-weight: 700;
+  color: inherit;
+}
+
+.md strong {
+  font-weight: 700;
+}
+
+.md em {
+  font-style: italic;
+}
+
+.md code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: rgba(28, 61, 90, 0.09);
+  border-radius: 5px;
+  padding: 0.08em 0.35em;
+}
+
+.md pre {
+  background: rgba(28, 61, 90, 0.07);
+  border-radius: 10px;
+  padding: 0.6rem 0.75rem;
+  overflow-x: auto;
+}
+
+.md pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.85em;
+}
+
+.md blockquote {
+  border-left: 2px solid var(--gold);
+  padding-left: 0.75rem;
+  color: inherit;
+  opacity: 0.85;
+}
+
+.md hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0.9rem 0;
+}
+
+.md a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* inside the navy bubble the code chip needs a light-on-dark treatment */
+.bubble-you .md code,
+.bubble-you .md pre {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.bubble-you {
+  margin-left: auto;
+  background: var(--navy);
+  color: #f6f1e6;
+  border-bottom-right-radius: 4px;
+}
+
+.bubble-ai {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-bottom-left-radius: 4px;
+}
+
+.typing {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.typing i {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--ink-3);
+  animation: typing-dot 0.9s ease-in-out infinite;
+}
+
+.typing i:nth-child(2) { animation-delay: 0.15s; }
+.typing i:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes typing-dot {
+  0%, 100% { transform: translateY(0); opacity: 0.45; }
+  50% { transform: translateY(-3px); opacity: 1; }
+}
+
+/* ---------- motion ---------- */
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.rise {
+  animation: rise 260ms ease both;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+.pulse-soft {
+  animation: pulse-soft 1.4s ease-in-out infinite;
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  50% { transform: translateY(5px); opacity: 1; }
+}
+
+.nudge {
+  animation: nudge 1.8s ease-in-out infinite;
+}
+
+/* ---------- mode cards on the flow hub ---------- */
+
+/* Each card shows, on a loop, what that mode actually feels like. Same idea as
+   the demo tiles on the main site's home page. */
+.mode-stage {
+  display: grid;
+  place-items: center;
+  height: 132px;
+  border-radius: 14px;
+  border: 1px solid var(--line-soft);
+  background: linear-gradient(160deg, rgba(28, 61, 90, 0.05), rgba(176, 139, 63, 0.07));
+  overflow: hidden;
+}
+
+.mode-soon .mode-stage {
+  background: linear-gradient(160deg, rgba(28, 61, 90, 0.04), rgba(28, 61, 90, 0.02));
+}
+
+/* 1 — listen, then the options arrive and one gets picked */
+.demo-ask {
+  display: grid;
+  gap: 9px;
+  width: 148px;
+}
+
+.demo-ask-wave {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 26px;
+}
+
+.demo-ask-wave i {
+  width: 5px;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--navy);
+  transform-origin: bottom;
+  animation: ask-wave 5s ease-in-out infinite;
+}
+
+.demo-ask-wave i:nth-child(2) { animation-delay: 0.1s; background: var(--gold); }
+.demo-ask-wave i:nth-child(3) { animation-delay: 0.22s; }
+.demo-ask-wave i:nth-child(4) { animation-delay: 0.06s; background: var(--gold); }
+.demo-ask-wave i:nth-child(5) { animation-delay: 0.3s; }
+
+.demo-ask-opts {
+  display: grid;
+  gap: 5px;
+}
+
+.demo-ask-opt {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(28, 61, 90, 0.16);
+  opacity: 0;
+  animation: ask-opt 5s ease-in-out infinite;
+}
+
+.demo-ask-opt:nth-child(1) { width: 92%; animation-delay: 0.05s; }
+.demo-ask-opt:nth-child(2) { width: 74%; animation-delay: 0.15s; }
+.demo-ask-opt:nth-child(3) { width: 86%; animation: ask-pick 5s ease-in-out infinite; animation-delay: 0.25s; }
+.demo-ask-opt:nth-child(4) { width: 66%; animation-delay: 0.35s; }
+
+@keyframes ask-wave {
+  0%, 40% { transform: scaleY(0.3); }
+  8%, 16%, 24%, 32% { transform: scaleY(1); }
+  12%, 20%, 28%, 36% { transform: scaleY(0.35); }
+  45%, 100% { transform: scaleY(0.18); opacity: 0.35; }
+}
+
+@keyframes ask-opt {
+  0%, 42% { opacity: 0; transform: translateY(4px); }
+  52%, 92% { opacity: 1; transform: none; }
+  98%, 100% { opacity: 0; }
+}
+
+@keyframes ask-pick {
+  0%, 42% { opacity: 0; transform: translateY(4px); background: rgba(28, 61, 90, 0.16); }
+  52%, 64% { opacity: 1; transform: none; background: rgba(28, 61, 90, 0.16); }
+  72%, 92% { opacity: 1; background: var(--green); }
+  98%, 100% { opacity: 0; }
+}
+
+/* 2 — one word in a line of text turns out to be wrong */
+.demo-spell {
+  display: grid;
+  gap: 8px;
+  width: 152px;
+}
+
+.demo-spell-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.demo-spell i,
+.demo-spell b {
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(28, 61, 90, 0.18);
+}
+
+.demo-spell-line:nth-child(1) i:nth-child(1) { width: 26px; }
+.demo-spell-line:nth-child(1) i:nth-child(2) { width: 18px; }
+.demo-spell-line:nth-child(1) i:nth-child(4) { width: 22px; }
+.demo-spell-line:nth-child(1) i:nth-child(5) { width: 30px; }
+.demo-spell-line:nth-child(2) i:nth-child(1) { width: 34px; }
+.demo-spell-line:nth-child(2) i:nth-child(2) { width: 20px; }
+
+.demo-spell-bad {
+  width: 38px;
+  animation: spell-catch 5s ease-in-out infinite;
+}
+
+@keyframes spell-catch {
+  0%, 30% { background: rgba(28, 61, 90, 0.18); transform: none; }
+  42%, 58% { background: var(--terracotta); transform: translateY(-3px); }
+  70%, 92% { background: var(--green); transform: none; }
+  98%, 100% { background: rgba(28, 61, 90, 0.18); }
+}
+
+/* 3 — a hole in the sentence, then the right word drops in */
+.demo-gap {
+  display: grid;
+  gap: 11px;
+  width: 152px;
+}
+
+.demo-gap-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.demo-gap i {
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(28, 61, 90, 0.18);
+}
+
+.demo-gap-line i:nth-child(1) { width: 24px; }
+.demo-gap-line i:nth-child(2) { width: 16px; }
+.demo-gap-line i:nth-child(4) { width: 28px; }
+
+.demo-gap-hole {
+  display: block;
+  width: 40px;
+  height: 10px;
+  border-radius: 4px;
+  border-bottom: 2px solid var(--gold);
+  background: rgba(176, 139, 63, 0.14);
+  animation: gap-fill 5s ease-in-out infinite;
+}
+
+.demo-gap-opts {
+  display: flex;
+  gap: 5px;
+}
+
+.demo-gap-opts u {
+  display: block;
+  width: 32px;
+  height: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.demo-gap-pick {
+  animation: gap-pick 5s ease-in-out infinite;
+}
+
+@keyframes gap-fill {
+  0%, 55% { background: rgba(176, 139, 63, 0.14); }
+  70%, 92% { background: var(--green); border-bottom-color: var(--green); }
+  98%, 100% { background: rgba(176, 139, 63, 0.14); border-bottom-color: var(--gold); }
+}
+
+@keyframes gap-pick {
+  0%, 30% { background: #fff; border-color: var(--line); transform: none; }
+  45%, 60% { background: rgba(28, 61, 90, 0.12); border-color: var(--navy); transform: translateY(-2px); }
+  70%, 92% { background: var(--green); border-color: var(--green); transform: none; }
+  98%, 100% { background: #fff; border-color: var(--line); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .pulse-soft,
+  .nudge,
+  .wave.on i,
+  .typing i,
+  .demo-ask-wave i,
+  .demo-ask-opt,
+  .demo-spell-bad,
+  .demo-gap-hole,
+  .demo-gap-pick {
+    animation: none;
+  }
+
+  /* the loops carry meaning, so freeze them on a readable frame */
+  .demo-ask-opt {
+    opacity: 1;
+  }
+
+  .demo-ask-opt:nth-child(3) {
+    background: var(--green);
+  }
+
+  .demo-spell-bad {
+    background: var(--terracotta);
+  }
+
+  .demo-gap-pick {
+    background: var(--green);
+    border-color: var(--green);
+  }
+}

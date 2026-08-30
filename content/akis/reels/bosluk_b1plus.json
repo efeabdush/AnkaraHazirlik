@@ -1,0 +1,126 @@
+[
+  { "id": "bosluk-b1p-01", "kind": "bosluk", "level": "B1+", "title": "Nobody Saw It", "topic": "problem solving",
+    "body": "The fault ___ have been noticed weeks earlier if anyone had bothered to read the weekly logs, but the file was opened only after the machine finally stopped.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "could", "B": "can", "C": "must", "D": "should" }, "answer": "A",
+      "explain_tr": "Geçmişte gerçekleşmemiş bir imkân için **could have + üçüncü hal** kullanılır." } },
+
+  { "id": "bosluk-b1p-02", "kind": "bosluk", "level": "B1+", "title": "The Only Explanation", "topic": "deduction",
+    "body": "The lights are on and her coat is still on the chair, so she ___ be somewhere in the building, probably in the laboratory downstairs, where she often works until late.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "might", "B": "must", "C": "should", "D": "can" }, "answer": "B",
+      "explain_tr": "Kanıta dayanan güçlü tahmin için **must** kullanılır: kesin öyledir." } },
+
+  { "id": "bosluk-b1p-03", "kind": "bosluk", "level": "B1+", "title": "A Different Choice", "topic": "regret",
+    "body": "If she ___ read the small print before signing, she would not be paying for a service she has never actually used and could not cancel it without paying a fee.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "would have", "B": "has", "C": "had", "D": "did" }, "answer": "C",
+      "explain_tr": "Karma koşul cümlesi: geçmişteki koşul için **had + üçüncü hal**, sonucu bugüne bakar." } },
+
+  { "id": "bosluk-b1p-04", "kind": "bosluk", "level": "B1+", "title": "Not The Real Reason", "topic": "workplace",
+    "body": "The delay was blamed on the weather, ___ the real cause was a supplier who had missed three deadlines in a row, long before the first storm even arrived.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "whereas", "B": "therefore", "C": "moreover", "D": "hence" }, "answer": "A",
+      "explain_tr": "İki durumu karşılaştırıp zıtlık kurmak için **whereas** kullanılır." } },
+
+  { "id": "bosluk-b1p-05", "kind": "bosluk", "level": "B1+", "title": "Rarely Seen", "topic": "emphasis",
+    "body": "Rarely ___ a first-year student present at the conference, which is why her twenty minutes attracted so much attention that afternoon from the older researchers sitting in the room.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "you see", "B": "do you see", "C": "seeing", "D": "to see" }, "answer": "B",
+      "explain_tr": "Olumsuz anlamlı 'Rarely' başa gelince devrik yapı gerekir: **do you see**." } },
+
+  { "id": "bosluk-b1p-06", "kind": "bosluk", "level": "B1+", "title": "Worth The Effort", "topic": "study skills",
+    "body": "The method is worth ___ even though it feels slower at first, because the material stays in your memory for months rather than days and the difference shows clearly in the final exam.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "to try", "B": "try", "C": "trying", "D": "tried" }, "answer": "C",
+      "explain_tr": "'be worth' kalıbından sonra fiil **-ing** alır: worth trying." } },
+
+  { "id": "bosluk-b1p-07", "kind": "bosluk", "level": "B1+", "title": "Someone Else Did It", "topic": "services",
+    "body": "She had the whole report ___ by a professional editor, which explains why the final version reads so differently from her first draft, even to people who know her writing well.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "check", "B": "checking", "C": "to check", "D": "checked" }, "answer": "D",
+      "explain_tr": "'have something done' yapısında üçüncü hal gelir: had the report **checked**." } },
+
+  { "id": "bosluk-b1p-08", "kind": "bosluk", "level": "B1+", "title": "On Condition", "topic": "agreements",
+    "body": "You may use the laboratory at the weekend ___ that you sign the register and leave everything exactly as you found it before you switch off the lights and lock the door.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "unless", "B": "provided", "C": "despite", "D": "whether" }, "answer": "B",
+      "explain_tr": "'... şartıyla' anlamı **provided that** ile verilir." } },
+
+  { "id": "bosluk-b1p-09", "kind": "bosluk", "level": "B1+", "title": "Only If", "topic": "agreements",
+    "body": "The committee will not consider a late application ___ there is a medical report attached to it, and even then the decision takes weeks, because the panel meets only once a month.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "unless", "B": "if", "C": "provided", "D": "in case" }, "answer": "A",
+      "explain_tr": "Olumsuz cümlede '... olmadıkça' anlamı **unless** ile kurulur." } },
+
+  { "id": "bosluk-b1p-10", "kind": "bosluk", "level": "B1+", "title": "Second Thoughts", "topic": "decisions",
+    "body": "He regretted ___ the offer as soon as he saw how quickly the department filled the position with somebody far less qualified and considerably less interested in the work itself.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "to refuse", "B": "refuse", "C": "refusing", "D": "refused" }, "answer": "C",
+      "explain_tr": "'regret + -ing' geçmişte yapılan bir şeye pişmanlık bildirir; 'regret to' ise kötü haber verir." } },
+
+  { "id": "bosluk-b1p-11", "kind": "bosluk", "level": "B1+", "title": "Not Quite Ready", "topic": "projects",
+    "body": "By the end of next month the team ___ working on this version for a full year, and the client has still not seen a demonstration that anyone outside the team can actually use.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "will have been", "B": "has been", "C": "will be", "D": "had been" }, "answer": "A",
+      "explain_tr": "Gelecekteki bir noktaya kadar süregelen iş için **will have been + -ing** kullanılır." } },
+
+  { "id": "bosluk-b1p-12", "kind": "bosluk", "level": "B1+", "title": "Whatever Happens", "topic": "planning",
+    "body": "Take a printed copy with you ___ the network is down again, because the office will not accept a phone screen as proof and the deadline will not move for anybody.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "unless", "B": "in case", "C": "so that", "D": "although" }, "answer": "B",
+      "explain_tr": "Olası bir duruma karşı önlem almak için **in case** kullanılır." } },
+
+  { "id": "bosluk-b1p-13", "kind": "bosluk", "level": "B1+", "title": "Anyone At All", "topic": "rules",
+    "body": "___ arrives first is responsible for opening the windows and switching on the machines in the far corner of the room, before the first group arrives at half past eight.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "Whoever", "B": "Whatever", "C": "However", "D": "Whenever" }, "answer": "A",
+      "explain_tr": "Kişi için 'her kim ... ise' anlamı **Whoever** ile verilir." } },
+
+  { "id": "bosluk-b1p-14", "kind": "bosluk", "level": "B1+", "title": "A Small Difference", "topic": "research",
+    "body": "The difference between the two groups was so small ___ the researchers refused to draw any conclusion from a single experiment until two other laboratories had repeated the measurements.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "as", "B": "that", "C": "than", "D": "which" }, "answer": "B",
+      "explain_tr": "'so + sıfat + that' kalıbı sonuç bildirir." } },
+
+  { "id": "bosluk-b1p-15", "kind": "bosluk", "level": "B1+", "title": "Said Differently", "topic": "reporting",
+    "body": "He denied ___ the message, although the system clearly showed that it had been opened from his account twice that morning, and the timestamps matched his working hours exactly.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "to read", "B": "read", "C": "reading", "D": "to have read" }, "answer": "C",
+      "explain_tr": "deny fiilinden sonra fiil **-ing** alır: denied reading." } },
+
+  { "id": "bosluk-b1p-16", "kind": "bosluk", "level": "B1+", "title": "Both Sides", "topic": "discussion",
+    "body": "The proposal is expensive; ___, it solves a problem that has been costing the department far more every single year in repairs, delays and unhappy staff every winter.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "therefore", "B": "however", "C": "moreover", "D": "otherwise" }, "answer": "B",
+      "explain_tr": "İki zıt bilgiyi bağlamak için **however** kullanılır." } },
+
+  { "id": "bosluk-b1p-17", "kind": "bosluk", "level": "B1+", "title": "What Was Missing", "topic": "feedback",
+    "body": "___ the essay lacked was not information but a clear line of argument connecting the paragraphs to the original question that the reader had been asked to consider.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "That", "B": "Which", "C": "What", "D": "Whose" }, "answer": "C",
+      "explain_tr": "Özne görevindeki isim cümleciği **What** ile başlar: What the essay lacked ..." } },
+
+  { "id": "bosluk-b1p-18", "kind": "bosluk", "level": "B1+", "title": "Getting Used To It", "topic": "adaptation",
+    "body": "It took her two months to get used to ___ in a language she had only studied from books, but now she barely notices the effort, not even when she is speaking quickly.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "work", "B": "working", "C": "to work", "D": "worked" }, "answer": "B",
+      "explain_tr": "'get used to' kalıbındaki to edattır, bu yüzden fiil **-ing** alır." } },
+
+  { "id": "bosluk-b1p-19", "kind": "bosluk", "level": "B1+", "title": "Hardly Anyone", "topic": "attendance",
+    "body": "Hardly ___ the lecture started when half the room realised they had walked into the wrong seminar entirely and had to walk out again in front of everybody.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "did", "B": "has", "C": "had", "D": "was" }, "answer": "C",
+      "explain_tr": "'Hardly ... when' kalıbı geçmişte tam bitmiş bir işi anlatır ve **had** ile devrik kurulur." } },
+
+  { "id": "bosluk-b1p-20", "kind": "bosluk", "level": "B1+", "title": "Better Left Alone", "topic": "advice",
+    "body": "Rather than ___ the file yourself, send it back to the person who created it, because two people editing it will double the confusion and the version history will become impossible to follow.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "to fix", "B": "fixing", "C": "fixed", "D": "fix" }, "answer": "B",
+      "explain_tr": "'Rather than' başta kullanıldığında genellikle **-ing** biçimi gelir." } },
+
+  { "id": "bosluk-b1p-21", "kind": "bosluk", "level": "B1+", "title": "As Expected", "topic": "results",
+    "body": "The outcome was more or less ___ we had predicted, which was reassuring but also slightly disappointing for everyone hoping for a surprise after eight months of unusually careful preparation.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "what", "B": "which", "C": "that", "D": "how" }, "answer": "A",
+      "explain_tr": "'... olan şey' anlamındaki isim cümleciği **what** ile kurulur." } },
+
+  { "id": "bosluk-b1p-22", "kind": "bosluk", "level": "B1+", "title": "Enough Notice", "topic": "rules",
+    "body": "Students are expected ___ the office at least ten days before they leave, otherwise the last month is charged in full, even if the room was left completely empty.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "informing", "B": "inform", "C": "to inform", "D": "informed" }, "answer": "C",
+      "explain_tr": "'be expected' edilgen kalıbından sonra **to + fiil** gelir." } },
+
+  { "id": "bosluk-b1p-23", "kind": "bosluk", "level": "B1+", "title": "The Point Of It", "topic": "purpose",
+    "body": "The rule exists ___ everyone gets a fair share of the equipment, not because the department enjoys collecting forms from tired students that nobody reads until something actually goes wrong.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "in order to", "B": "so that", "C": "due to", "D": "because of" }, "answer": "B",
+      "explain_tr": "Arkasından özne + fiil geldiği için amaç bağlacı **so that** olmalı." } },
+
+  { "id": "bosluk-b1p-24", "kind": "bosluk", "level": "B1+", "title": "Long Overdue", "topic": "institutions",
+    "body": "It is high time the university ___ the online system, which has not been updated since the year most current students started school and every department has learned to work around it.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "replaces", "B": "replaced", "C": "will replace", "D": "replace" }, "answer": "B",
+      "explain_tr": "'It is high time' kalıbından sonra geçmiş zaman gelir ama anlam bugüne bakar: **replaced**." } },
+
+  { "id": "bosluk-b1p-25", "kind": "bosluk", "level": "B1+", "title": "Not Only That", "topic": "emphasis",
+    "body": "Not only ___ the deadline moved, but the required format changed as well, and nobody sent a single message about either decision, right up to the day the window closed.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "was", "B": "it was", "C": "has", "D": "did" }, "answer": "A",
+      "explain_tr": "'Not only' başa gelince devrik yapı gerekir; edilgen için **was the deadline moved** olur." } }
+]

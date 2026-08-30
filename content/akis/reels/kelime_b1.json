@@ -1,0 +1,126 @@
+[
+  { "id": "kelime-b1-01", "kind": "kelime", "level": "B1", "title": "Rooms For Students", "topic": "housing",
+    "body": "The university offers accomodation to first year students only. Everyone else has to look for a flat in the city, and prices near the campus rise sharply in September.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "university", "B": "accomodation", "C": "campus", "D": "September" }, "answer": "B", "correct_form": "accommodation",
+      "explain_tr": "Doğrusu **accommodation**. Hem c hem m çift yazılır: ac-com-mo-da-tion." } },
+
+  { "id": "kelime-b1-02", "kind": "kelime", "level": "B1", "title": "A Clear Answer", "topic": "plans",
+    "body": "She is definately coming to the meeting on Thursday. She confirmed it twice and even asked which room we had booked for the group.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "definately", "B": "meeting", "C": "confirmed", "D": "booked" }, "answer": "A", "correct_form": "definitely",
+      "explain_tr": "Doğrusu **definitely**. İçinde finite geçer, a değil i vardır: de-fin-ite-ly." } },
+
+  { "id": "kelime-b1-03", "kind": "kelime", "level": "B1", "title": "Small Habits", "topic": "environment",
+    "body": "Protecting the enviroment starts with small habits at home. Turning off the lights, repairing clothes and buying less plastic change more than most people expect.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "Protecting", "B": "repairing", "C": "enviroment", "D": "plastic" }, "answer": "C", "correct_form": "environment",
+      "explain_tr": "Doğrusu **environment**. n harfi atlanmış: en-viron-ment." } },
+
+  { "id": "kelime-b1-04", "kind": "kelime", "level": "B1", "title": "New Rules", "topic": "society",
+    "body": "The goverment announced new rules for public transport last month. Tickets are cheaper for students, but the discount only works with a registered card.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "announced", "B": "transport", "C": "discount", "D": "goverment" }, "answer": "D", "correct_form": "government",
+      "explain_tr": "Doğrusu **government**. govern kökünden gelir, n düşmez: govern-ment." } },
+
+  { "id": "kelime-b1-05", "kind": "kelime", "level": "B1", "title": "Before The Trip", "topic": "travel",
+    "body": "It is neccessary to bring your passport, not just a photo of it. The office refuses copies and you will lose your place in the queue.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "neccessary", "B": "passport", "C": "refuses", "D": "queue" }, "answer": "A", "correct_form": "necessary",
+      "explain_tr": "Doğrusu **necessary**. Tek c, çift s vardır: nec-es-sary." } },
+
+  { "id": "kelime-b1-06", "kind": "kelime", "level": "B1", "title": "A Rare Evening", "topic": "social life",
+    "body": "The dinner was a special occassion for the whole department. People who had not spoken for years sat at the same table and talked until midnight.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "special", "B": "department", "C": "occassion", "D": "midnight" }, "answer": "C", "correct_form": "occasion",
+      "explain_tr": "Doğrusu **occasion**. c çift, s tektir: oc-ca-sion." } },
+
+  { "id": "kelime-b1-07", "kind": "kelime", "level": "B1", "title": "What Worked", "topic": "study skills",
+    "body": "The most succesful students in the group were not the fastest ones. They simply reviewed their notes every week instead of reading everything twice before the exam.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "students", "B": "reviewed", "C": "instead", "D": "succesful" }, "answer": "D", "correct_form": "successful",
+      "explain_tr": "Doğrusu **successful**. success çift s ile biter, sonra tek l'li -ful eki gelir." } },
+
+  { "id": "kelime-b1-08", "kind": "kelime", "level": "B1", "title": "Worth Reading", "topic": "advice",
+    "body": "I would reccomend the second book rather than the first one. It explains the same ideas with clearer examples and it costs almost nothing second hand.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "reccomend", "B": "explains", "C": "examples", "D": "almost" }, "answer": "A", "correct_form": "recommend",
+      "explain_tr": "Doğrusu **recommend**. Tek c, çift m vardır: re-com-mend." } },
+
+  { "id": "kelime-b1-09", "kind": "kelime", "level": "B1", "title": "Wrong Name", "topic": "social life",
+    "body": "He felt embarassed after calling the manager by the wrong name twice in one meeting. Nobody mentioned it, which somehow made the feeling worse.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "manager", "B": "embarassed", "C": "mentioned", "D": "feeling" }, "answer": "B", "correct_form": "embarrassed",
+      "explain_tr": "Doğrusu **embarrassed**. Hem r hem s çift yazılır: em-bar-rassed." } },
+
+  { "id": "kelime-b1-10", "kind": "kelime", "level": "B1", "title": "No Delay", "topic": "safety",
+    "body": "If the alarm rings, leave the building imediately and wait at the gate. Do not return for bags, laptops or anything else you left on the desk.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "alarm", "B": "building", "C": "imediately", "D": "laptops" }, "answer": "C", "correct_form": "immediately",
+      "explain_tr": "Doğrusu **immediately**. m çift yazılır: im-me-di-ate-ly." } },
+
+  { "id": "kelime-b1-11", "kind": "kelime", "level": "B1", "title": "One Place Left", "topic": "applications",
+    "body": "This is a real oportunity for anyone who wants laboratory experience. Only one place is left and applications close at the end of the week.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "laboratory", "B": "experience", "C": "applications", "D": "oportunity" }, "answer": "D", "correct_form": "opportunity",
+      "explain_tr": "Doğrusu **opportunity**. p çift yazılır: op-por-tu-ni-ty." } },
+
+  { "id": "kelime-b1-12", "kind": "kelime", "level": "B1", "title": "Who Does What", "topic": "group work",
+    "body": "Each member is responsable for one section of the report. If somebody misses the deadline, the whole group loses marks, so we agreed on weekly checks.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "responsable", "B": "section", "C": "deadline", "D": "weekly" }, "answer": "A", "correct_form": "responsible",
+      "explain_tr": "Doğrusu **responsible**. Sonu -able değil -ible ile biter." } },
+
+  { "id": "kelime-b1-13", "kind": "kelime", "level": "B1", "title": "Living Alone", "topic": "student life",
+    "body": "Living alone made him more independant than he expected. Cooking, paying bills and repairing small things taught him more in six months than two years of advice.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "expected", "B": "independant", "C": "repairing", "D": "advice" }, "answer": "B", "correct_form": "independent",
+      "explain_tr": "Doğrusu **independent**. Sonu -ant değil -ent ile biter." } },
+
+  { "id": "kelime-b1-14", "kind": "kelime", "level": "B1", "title": "What Counts", "topic": "work",
+    "body": "The company asks for two years of experiance, but they often accept students who have done a serious internship and can explain what they actually did.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "company", "B": "internship", "C": "experiance", "D": "actually" }, "answer": "C", "correct_form": "experience",
+      "explain_tr": "Doğrusu **experience**. Sonu -ance değil -ence ile biter." } },
+
+  { "id": "kelime-b1-15", "kind": "kelime", "level": "B1", "title": "More Than Facts", "topic": "learning",
+    "body": "Real knowlege is not a pile of facts. It shows up when you can explain the same idea to somebody who has never heard of the subject.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "knowlege", "B": "explain", "C": "somebody", "D": "subject" }, "answer": "A", "correct_form": "knowledge",
+      "explain_tr": "Doğrusu **knowledge**. know + ledge; d harfi atlanmış." } },
+
+  { "id": "kelime-b1-16", "kind": "kelime", "level": "B1", "title": "Keeping Time", "topic": "music",
+    "body": "The drummer keeps the rythm steady while the others change speed. Without him the whole band would fall apart in the middle of every song.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "drummer", "B": "steady", "C": "rythm", "D": "middle" }, "answer": "C", "correct_form": "rhythm",
+      "explain_tr": "Doğrusu **rhythm**. Baştaki h atlanmış: rh-y-thm." } },
+
+  { "id": "kelime-b1-17", "kind": "kelime", "level": "B1", "title": "A Full Week", "topic": "planning",
+    "body": "My schedual is full until Friday afternoon. If the meeting cannot wait, the only free hour is early tomorrow morning before the lecture starts.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "afternoon", "B": "meeting", "C": "lecture", "D": "schedual" }, "answer": "D", "correct_form": "schedule",
+      "explain_tr": "Doğrusu **schedule**. Sonu -ual değil -ule ile biter." } },
+
+  { "id": "kelime-b1-18", "kind": "kelime", "level": "B1", "title": "An Old Photo", "topic": "family",
+    "body": "The photo was a complete suprise for my mother. Nobody in the family knew that a picture from her first school year still existed.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "suprise", "B": "complete", "C": "picture", "D": "existed" }, "answer": "A", "correct_form": "surprise",
+      "explain_tr": "Doğrusu **surprise**. İlk r atlanmış: sur-prise." } },
+
+  { "id": "kelime-b1-19", "kind": "kelime", "level": "B1", "title": "Cold Classroom", "topic": "campus",
+    "body": "The temprature in the seminar room drops quickly after five o'clock. Students who stay late usually bring a jacket even in the middle of spring.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "seminar", "B": "temprature", "C": "jacket", "D": "spring" }, "answer": "B", "correct_form": "temperature",
+      "explain_tr": "Doğrusu **temperature**. Ortadaki e düşmüş: tem-per-a-ture." } },
+
+  { "id": "kelime-b1-20", "kind": "kelime", "level": "B1", "title": "Small Steps", "topic": "goals",
+    "body": "You will not acheive a good result in one night. Twenty minutes every day beats five hours on Sunday, especially with listening and speaking practice.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "result", "B": "beats", "C": "acheive", "D": "practice" }, "answer": "C", "correct_form": "achieve",
+      "explain_tr": "Doğrusu **achieve**. i ve e yer değiştirmiş: a-chie-ve." } },
+
+  { "id": "kelime-b1-21", "kind": "kelime", "level": "B1", "title": "Two Sides", "topic": "discussion",
+    "body": "Her arguement was clear but it completely ignored the cost. The other group answered with real numbers, and after that the discussion became much shorter.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "arguement", "B": "ignored", "C": "numbers", "D": "discussion" }, "answer": "A", "correct_form": "argument",
+      "explain_tr": "Doğrusu **argument**. argue kelimesinin sonundaki e düşer." } },
+
+  { "id": "kelime-b1-22", "kind": "kelime", "level": "B1", "title": "The Decision", "topic": "organisations",
+    "body": "The commitee meets once a month and decides which projects receive money. Anyone can send a proposal, but late applications are never read at all.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "projects", "B": "proposal", "C": "commitee", "D": "applications" }, "answer": "C", "correct_form": "committee",
+      "explain_tr": "Doğrusu **committee**. m, t ve e üçü de çift yazılır: com-mit-tee." } },
+
+  { "id": "kelime-b1-23", "kind": "kelime", "level": "B1", "title": "Not What We Hoped", "topic": "feelings",
+    "body": "We were dissapointed with the whole trip, mainly because of the weather. The museum itself was excellent and the guide answered every question patiently.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "mainly", "B": "museum", "C": "excellent", "D": "dissapointed" }, "answer": "D", "correct_form": "disappointed",
+      "explain_tr": "Doğrusu **disappointed**. dis + appoint; s tek, p çift olur." } },
+
+  { "id": "kelime-b1-24", "kind": "kelime", "level": "B1", "title": "Another Language", "topic": "languages",
+    "body": "Learning a foriegn language as an adult takes real patience. Children copy sounds without thinking, while adults keep translating in their heads for months.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "foriegn", "B": "patience", "C": "translating", "D": "months" }, "answer": "A", "correct_form": "foreign",
+      "explain_tr": "Doğrusu **foreign**. Bu kelime kurala uymaz: e önce, i sonra gelir." } },
+
+  { "id": "kelime-b1-25", "kind": "kelime", "level": "B1", "title": "Read The Label", "topic": "health",
+    "body": "Take the medecine after food, never on an empty stomach. If you forget one dose, skip it rather than taking two at the same time.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "stomach", "B": "medecine", "C": "forget", "D": "taking" }, "answer": "B", "correct_form": "medicine",
+      "explain_tr": "Doğrusu **medicine**. Ortadaki harf e değil i: med-i-cine." } }
+]

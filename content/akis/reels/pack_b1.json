@@ -1,0 +1,444 @@
+[
+  {
+    "id": "reel-b1-deadline-request",
+    "level": "B1",
+    "title": "Deadline Request",
+    "topic": "coursework",
+    "script": [
+      { "speaker": "student", "text": "Is there any chance of two more days for the essay?" },
+      { "speaker": "teacher", "text": "The deadline is Friday for everyone. Why do you need longer?" },
+      { "speaker": "student", "text": "I had a lab report and a presentation in the same week." },
+      { "speaker": "teacher", "text": "I can accept it on Monday, but I take two points off." },
+      { "speaker": "student", "text": "Then I hand it in on Friday, even if it is shorter." }
+    ],
+    "question": {
+      "stem": "What does the student decide?",
+      "options": {
+        "A": "To hand the essay in on Monday",
+        "B": "To hand it in on Friday and accept a shorter essay",
+        "C": "To give up on the essay",
+        "D": "To ask a different teacher",
+        "E": "To take the two point penalty"
+      },
+      "answer": "B",
+      "explain_tr": "Pazartesi iki puan kaybettiriyor; öğrenci kısa da olsa cumaya yetiştirmeyi seçiyor.",
+      "key_line": "Then I hand it in on Friday, even if it is shorter."
+    }
+  },
+  {
+    "id": "reel-b1-two-electives",
+    "level": "B1",
+    "title": "Two Electives",
+    "topic": "course choice",
+    "script": [
+      { "speaker": "student", "text": "I can't choose between the film course and the statistics course." },
+      { "speaker": "friend", "text": "Statistics has one exam. Film has a group project every month." },
+      { "speaker": "student", "text": "I hate exams, but three projects sounds like a lot of work." },
+      { "speaker": "friend", "text": "It is. Last year half the class dropped the film course." },
+      { "speaker": "student", "text": "Then the exam is the smaller problem. Statistics it is." }
+    ],
+    "question": {
+      "stem": "Why does the student choose statistics?",
+      "options": {
+        "A": "The film course is already full",
+        "B": "One exam is less work than a project every month",
+        "C": "She is good with numbers",
+        "D": "Her friend is taking statistics too",
+        "E": "The film course has an exam as well"
+      },
+      "answer": "B",
+      "explain_tr": "Film dersi her ay proje istiyor; öğrenci tek sınavı daha küçük dert olarak görüyor.",
+      "key_line": "Then the exam is the smaller problem."
+    }
+  },
+  {
+    "id": "reel-b1-late-night-noise",
+    "level": "B1",
+    "title": "Late Night Noise",
+    "topic": "flatmates",
+    "script": [
+      { "speaker": "student", "text": "Your music was loud again last night, after midnight." },
+      { "speaker": "friend", "text": "Sorry. I study late and music helps me concentrate." },
+      { "speaker": "student", "text": "I have a nine o'clock class. I can't sleep with the bass." },
+      { "speaker": "friend", "text": "What if I use headphones after eleven?" },
+      { "speaker": "student", "text": "That works. And I'll stop leaving dishes in the sink." }
+    ],
+    "question": {
+      "stem": "What do they agree?",
+      "options": {
+        "A": "The friend will stop studying late",
+        "B": "The friend will use headphones after eleven",
+        "C": "The student will change rooms",
+        "D": "They will both sleep at eleven",
+        "E": "The friend will wash the dishes"
+      },
+      "answer": "B",
+      "explain_tr": "Arkadaş on birden sonra kulaklık kullanmayı öneriyor, öğrenci de kabul ediyor.",
+      "key_line": "What if I use headphones after eleven?"
+    }
+  },
+  {
+    "id": "reel-b1-interview-clash",
+    "level": "B1",
+    "title": "Interview Clash",
+    "topic": "attendance",
+    "script": [
+      { "speaker": "student", "text": "My internship interview is at the same time as the seminar." },
+      { "speaker": "staff", "text": "The seminar has an attendance rule, but one absence is allowed." },
+      { "speaker": "student", "text": "So I don't lose anything if I miss this one?" },
+      { "speaker": "staff", "text": "Not this time. But use it carefully; the second absence costs marks." },
+      { "speaker": "student", "text": "Understood. I'll go to the interview and keep the rest." }
+    ],
+    "question": {
+      "stem": "What does the staff member explain?",
+      "options": {
+        "A": "Every seminar must be attended",
+        "B": "One absence is free, but the next one costs marks",
+        "C": "The interview matters more than the seminar",
+        "D": "The seminar has no attendance rule",
+        "E": "The student will lose marks this time"
+      },
+      "answer": "B",
+      "explain_tr": "Bir devamsızlık hakkı var, ikincisi not kaybettiriyor. Bu yüzden hakkını dikkatli kullanması söyleniyor.",
+      "key_line": "But use it carefully; the second absence costs marks."
+    }
+  },
+  {
+    "id": "reel-b1-pay-per-visit",
+    "level": "B1",
+    "title": "Pay Per Visit",
+    "topic": "sports centre",
+    "script": [
+      { "speaker": "student", "text": "Is the yearly membership cheaper than paying each time?" },
+      { "speaker": "staff", "text": "The membership is two thousand. One visit is fifty lira." },
+      { "speaker": "student", "text": "I come maybe twice a week in term time." },
+      { "speaker": "staff", "text": "That's about sixty visits a year, so three thousand. The membership wins." },
+      { "speaker": "student", "text": "Unless I stop going in March, like last year." }
+    ],
+    "question": {
+      "stem": "What is the student's doubt about the membership?",
+      "options": {
+        "A": "A single visit costs more than fifty lira",
+        "B": "She may stop going before the year ends",
+        "C": "The gym is too far from her home",
+        "D": "She only goes once a week",
+        "E": "The staff member added the numbers wrongly"
+      },
+      "answer": "B",
+      "explain_tr": "Hesap üyeliği ucuz gösteriyor ama öğrenci geçen yıl mart ayında bırakmış; asıl şüphesi bu.",
+      "key_line": "Unless I stop going in March, like last year."
+    }
+  },
+  {
+    "id": "reel-b1-lost-bag",
+    "level": "B1",
+    "title": "Lost Bag",
+    "topic": "lost and found",
+    "script": [
+      { "speaker": "student", "text": "I left a grey bag on the ten o'clock bus." },
+      { "speaker": "staff", "text": "Drivers bring lost things here at the end of the shift." },
+      { "speaker": "student", "text": "When does that driver finish?" },
+      { "speaker": "staff", "text": "Around six. But if there is a laptop inside, call this number now." },
+      { "speaker": "student", "text": "There is. I'll call while I wait." }
+    ],
+    "question": {
+      "stem": "Why does the student call the number?",
+      "options": {
+        "A": "Because the driver finishes at six",
+        "B": "Because there is a laptop in the bag",
+        "C": "Because the office is about to close",
+        "D": "Because the bag is grey",
+        "E": "Because she needs a new ticket"
+      },
+      "answer": "B",
+      "explain_tr": "Görevli içinde dizüstü varsa hemen aranmasını söylüyor; öğrencinin çantasında da var.",
+      "key_line": "But if there is a laptop inside, call this number now."
+    }
+  },
+  {
+    "id": "reel-b1-role-swap",
+    "level": "B1",
+    "title": "Role Swap",
+    "topic": "group project",
+    "script": [
+      { "speaker": "student", "text": "Can I do the slides instead of speaking? I panic in front of people." },
+      { "speaker": "friend", "text": "Then I speak, but you have to finish the slides by Wednesday." },
+      { "speaker": "student", "text": "Wednesday is tight. Thursday morning?" },
+      { "speaker": "friend", "text": "The presentation is Thursday afternoon. I need one evening to practise." },
+      { "speaker": "student", "text": "Fair. Wednesday night, then. I'll send them before midnight." }
+    ],
+    "question": {
+      "stem": "Why does the friend insist on Wednesday?",
+      "options": {
+        "A": "The slides take a long time to make",
+        "B": "He wants an evening to practise before the presentation",
+        "C": "The teacher asked for the slides early",
+        "D": "He is busy on Thursday morning",
+        "E": "The student panics on Thursdays"
+      },
+      "answer": "B",
+      "explain_tr": "Sunum perşembe öğleden sonra; arkadaş bir akşam prova yapmak istediği için slaytları çarşamba istiyor.",
+      "key_line": "I need one evening to practise."
+    }
+  },
+  {
+    "id": "reel-b1-shift-swap",
+    "level": "B1",
+    "title": "Shift Swap",
+    "topic": "part-time work",
+    "script": [
+      { "speaker": "student", "text": "Can anyone take my Friday shift? I have a wedding." },
+      { "speaker": "staff", "text": "Ece can, but she wants your Sunday morning in return." },
+      { "speaker": "student", "text": "Sunday morning is my only free morning." },
+      { "speaker": "staff", "text": "Then ask Mert. He takes shifts for money, not for swaps." },
+      { "speaker": "student", "text": "How much does he ask?" },
+      { "speaker": "staff", "text": "Usually a third of the pay. Cheaper than losing the day." }
+    ],
+    "question": {
+      "stem": "What is the difference between Ece and Mert?",
+      "options": {
+        "A": "Ece works faster than Mert",
+        "B": "Ece wants a swap, Mert wants money",
+        "C": "Mert cannot work on Fridays",
+        "D": "Ece is free on Sunday morning",
+        "E": "Mert takes shifts for free"
+      },
+      "answer": "B",
+      "explain_tr": "Ece karşılığında pazar sabahını istiyor; Mert ise takas değil, para karşılığı vardiya alıyor.",
+      "key_line": "He takes shifts for money, not for swaps."
+    }
+  },
+  {
+    "id": "reel-b1-laptop-choice",
+    "level": "B1",
+    "title": "Laptop Choice",
+    "topic": "shopping",
+    "script": [
+      { "speaker": "student", "text": "This one is cheaper, but the warranty is only one year." },
+      { "speaker": "staff", "text": "The other has three years and a free repair service." },
+      { "speaker": "student", "text": "The difference is four thousand lira. That's a lot for me." },
+      { "speaker": "staff", "text": "One screen repair costs about three thousand. Think about that." },
+      { "speaker": "student", "text": "I'll take the cheaper one and keep the money for repairs." }
+    ],
+    "question": {
+      "stem": "What does the student decide?",
+      "options": {
+        "A": "To buy the laptop with the longer warranty",
+        "B": "To buy the cheaper one and save the difference for repairs",
+        "C": "To wait for a discount",
+        "D": "To repair her old laptop instead",
+        "E": "To pay four thousand lira more"
+      },
+      "answer": "B",
+      "explain_tr": "Uzun garantiye rağmen öğrenci ucuz olanı alıp aradaki farkı olası tamir için ayırıyor.",
+      "key_line": "I'll take the cheaper one and keep the money for repairs."
+    }
+  },
+  {
+    "id": "reel-b1-moving-out",
+    "level": "B1",
+    "title": "Moving Out",
+    "topic": "dorm rules",
+    "script": [
+      { "speaker": "student", "text": "If I leave the dorm in April, do I get any money back?" },
+      { "speaker": "staff", "text": "You get the last month back only if you tell us thirty days before." },
+      { "speaker": "student", "text": "So I should hand in the form in March." },
+      { "speaker": "staff", "text": "Before the tenth of March, yes. After that you pay April fully." },
+      { "speaker": "student", "text": "Then I'll bring it next week." }
+    ],
+    "question": {
+      "stem": "When must the form be handed in?",
+      "options": {
+        "A": "At the beginning of April",
+        "B": "Before the tenth of March",
+        "C": "Thirty days after leaving",
+        "D": "Any time next week",
+        "E": "At the end of March"
+      },
+      "answer": "B",
+      "explain_tr": "Nisan parasının iadesi için form 10 Mart'tan önce verilmeli; sonrası tam ücret demek.",
+      "key_line": "Before the tenth of March, yes."
+    }
+  },
+  {
+    "id": "reel-b1-bike-or-bus",
+    "level": "B1",
+    "title": "Bike Or Bus",
+    "topic": "getting to campus",
+    "script": [
+      { "speaker": "friend", "text": "Twenty minutes by bike, forty by bus. Why do you take the bus?" },
+      { "speaker": "student", "text": "Because there is no safe place to leave the bike at the faculty." },
+      { "speaker": "friend", "text": "There is a locked stand behind the library now." },
+      { "speaker": "student", "text": "Since when? That changes everything." },
+      { "speaker": "friend", "text": "Since the term started. You register your bike once, that's all." }
+    ],
+    "question": {
+      "stem": "Why has the student been taking the bus?",
+      "options": {
+        "A": "Her bike was broken",
+        "B": "There was nowhere safe to leave the bike",
+        "C": "The bus is faster than the bike",
+        "D": "The stand is behind the library",
+        "E": "She never registered her bike"
+      },
+      "answer": "B",
+      "explain_tr": "Otobüs daha yavaş; asıl sebep bisikleti güvenle bırakacak yer olmaması. Artık kilitli park var.",
+      "key_line": "Because there is no safe place to leave the bike at the faculty."
+    }
+  },
+  {
+    "id": "reel-b1-club-budget",
+    "level": "B1",
+    "title": "Club Budget",
+    "topic": "student clubs",
+    "script": [
+      { "speaker": "student", "text": "We have eight thousand lira for the whole term." },
+      { "speaker": "friend", "text": "The photography trip alone costs five. That leaves almost nothing." },
+      { "speaker": "student", "text": "Or we do two small workshops here and keep the trip for spring." },
+      { "speaker": "friend", "text": "The members voted for the trip, though." },
+      { "speaker": "student", "text": "Then we ask them again with the real numbers in front of them." }
+    ],
+    "question": {
+      "stem": "What does the student suggest at the end?",
+      "options": {
+        "A": "Cancelling the trip completely",
+        "B": "Asking the members to vote again now that the costs are clear",
+        "C": "Running two workshops without telling anyone",
+        "D": "Spending the whole budget on the trip",
+        "E": "Collecting more money from members"
+      },
+      "answer": "B",
+      "explain_tr": "Üyeler geziyi oylamış; öğrenci gerçek rakamlar ortadayken yeniden sorulmasını öneriyor.",
+      "key_line": "Then we ask them again with the real numbers in front of them."
+    }
+  },
+  {
+    "id": "reel-b1-late-registration",
+    "level": "B1",
+    "title": "Late Registration",
+    "topic": "registration",
+    "script": [
+      { "speaker": "student", "text": "I missed the registration week. Is it completely over?" },
+      { "speaker": "staff", "text": "There is a late period, but you pay a fee and choose from what is left." },
+      { "speaker": "student", "text": "So the good hours are gone." },
+      { "speaker": "staff", "text": "The morning groups usually are. Evening groups still have space." },
+      { "speaker": "student", "text": "Evening is fine. I work in the mornings anyway." }
+    ],
+    "question": {
+      "stem": "What does the student learn?",
+      "options": {
+        "A": "Registration is completely closed",
+        "B": "Late registration costs a fee and leaves fewer choices",
+        "C": "The morning groups are still open",
+        "D": "There is no fee for late registration",
+        "E": "He must wait until next term"
+      },
+      "answer": "B",
+      "explain_tr": "Geç kayıt mümkün ama ücretli ve seçenek sınırlı; sabah grupları genelde dolmuş oluyor.",
+      "key_line": "There is a late period, but you pay a fee and choose from what is left."
+    }
+  },
+  {
+    "id": "reel-b1-reference-letter",
+    "level": "B1",
+    "title": "Reference Letter",
+    "topic": "applications",
+    "script": [
+      { "speaker": "student", "text": "Could you write a reference for my application?" },
+      { "speaker": "teacher", "text": "I can, but I need your grades and a short paragraph about why you want the programme." },
+      { "speaker": "student", "text": "The deadline is Monday." },
+      { "speaker": "teacher", "text": "Then send everything today. I don't write references in one night." },
+      { "speaker": "student", "text": "I'll send it in an hour." }
+    ],
+    "question": {
+      "stem": "What does the teacher require from the student?",
+      "options": {
+        "A": "A meeting before Monday",
+        "B": "The grades and a paragraph, sent today",
+        "C": "Only the deadline date",
+        "D": "A draft letter written by the student",
+        "E": "One night to think about it"
+      },
+      "answer": "B",
+      "explain_tr": "Öğretmen notları ve programla ilgili kısa bir paragrafı bugün istiyor; bir gecede referans yazmıyor.",
+      "key_line": "Then send everything today."
+    }
+  },
+  {
+    "id": "reel-b1-group-chat",
+    "level": "B1",
+    "title": "Group Chat",
+    "topic": "group project",
+    "script": [
+      { "speaker": "student", "text": "Nobody answered the group message for three days, and the plan is still empty." },
+      { "speaker": "friend", "text": "Most people mute it. Try tagging them one by one." },
+      { "speaker": "student", "text": "That feels rude." },
+      { "speaker": "friend", "text": "It is less rude than doing the whole project alone on Sunday." },
+      { "speaker": "student", "text": "True. I'll tag everyone tonight and set a small deadline." }
+    ],
+    "question": {
+      "stem": "What does the friend recommend?",
+      "options": {
+        "A": "Doing the project alone",
+        "B": "Tagging each person directly in the chat",
+        "C": "Leaving the group",
+        "D": "Waiting three more days",
+        "E": "Reporting the group to the teacher"
+      },
+      "answer": "B",
+      "explain_tr": "Çoğu kişi bildirimleri kapatmış; arkadaş herkesi tek tek etiketlemeyi öneriyor.",
+      "key_line": "Try tagging them one by one."
+    }
+  },
+  {
+    "id": "reel-b1-train-or-bus",
+    "level": "B1",
+    "title": "Train Or Bus",
+    "topic": "travel",
+    "script": [
+      { "speaker": "friend", "text": "The train is two hours faster but twice the price." },
+      { "speaker": "student", "text": "If I take the night bus I save a hotel night too." },
+      { "speaker": "friend", "text": "You arrive at six in the morning and the check-in is at two." },
+      { "speaker": "student", "text": "Eight hours with a heavy bag. Maybe the train is not expensive after all." }
+    ],
+    "question": {
+      "stem": "Why does the student change her mind about the bus?",
+      "options": {
+        "A": "The bus ticket costs more than the train",
+        "B": "She would wait eight hours with her luggage",
+        "C": "The train is actually slower",
+        "D": "The hotel has no free rooms",
+        "E": "The night bus was cancelled"
+      },
+      "answer": "B",
+      "explain_tr": "Otobüs otel parası kazandırıyor ama sabah altıdan ikiye kadar ağır çantayla beklemek gerekiyor.",
+      "key_line": "Eight hours with a heavy bag."
+    }
+  },
+  {
+    "id": "reel-b1-cafeteria-meeting",
+    "level": "B1",
+    "title": "Cafeteria Meeting",
+    "topic": "campus food",
+    "script": [
+      { "speaker": "staff", "text": "Students say the queue at noon is too long." },
+      { "speaker": "student", "text": "It is. I have twenty minutes between classes." },
+      { "speaker": "staff", "text": "We can open a second till, or we can start serving at half past eleven." },
+      { "speaker": "student", "text": "The second till helps everyone. The earlier time only helps the morning groups." },
+      { "speaker": "staff", "text": "That's a fair point. I'll write it in the report." }
+    ],
+    "question": {
+      "stem": "Why does the student prefer the second till?",
+      "options": {
+        "A": "It costs the cafeteria less money",
+        "B": "It helps all students, not only the morning groups",
+        "C": "The queue is short at half past eleven",
+        "D": "She only has twenty minutes",
+        "E": "The report asks for it"
+      },
+      "answer": "B",
+      "explain_tr": "Erken servis yalnızca sabah gruplarına yarıyor; ikinci kasa herkesin sırasını kısaltıyor.",
+      "key_line": "The second till helps everyone."
+    }
+  }
+]

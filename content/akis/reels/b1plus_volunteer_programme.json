@@ -1,0 +1,26 @@
+{
+  "id": "reel-volunteer-programme",
+  "level": "B1+",
+  "title": "Volunteer Programme",
+  "topic": "student life",
+  "script": [
+    { "speaker": "staff", "text": "The volunteer programme takes eight students this term. We had forty applications." },
+    { "speaker": "student", "text": "Do you choose the ones with the best grades?" },
+    { "speaker": "staff", "text": "Grades help, but we mostly look at whether you can come every week for a whole term." },
+    { "speaker": "student", "text": "So somebody with average grades and a free Wednesday has a real chance?" },
+    { "speaker": "staff", "text": "That person often has a better chance than a busy top student." }
+  ],
+  "question": {
+    "stem": "What does the staff member suggest about the selection?",
+    "options": {
+      "A": "Only the students with the highest grades are taken",
+      "B": "Being there every week counts for more than high grades",
+      "C": "Everyone who applies is accepted",
+      "D": "Students must be free every day of the week",
+      "E": "Grades are not looked at at all"
+    },
+    "answer": "B",
+    "explain_tr": "Görevli notların yardımcı olduğunu ama asıl ölçütün her hafta düzenli gelebilmek olduğunu söylüyor. Notlara hiç bakılmadığı söylenmiyor.",
+    "key_line": "That person often has a better chance than a busy top student."
+  }
+}

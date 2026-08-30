@@ -1,0 +1,126 @@
+[
+  { "id": "kelime-a1-01", "kind": "kelime", "level": "A1", "title": "Walking To School", "topic": "friends",
+    "body": "My freind lives near the school. We walk there together every morning.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "freind", "B": "lives", "C": "school", "D": "morning" }, "answer": "A", "correct_form": "friend",
+      "explain_tr": "Doğrusu **friend**. Harf sırası karışmış: önce i, sonra e gelir." } },
+
+  { "id": "kelime-a1-02", "kind": "kelime", "level": "A1", "title": "The Bus", "topic": "transport",
+    "body": "I go to skool by bus. The bus comes at eight every day.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "bus", "B": "skool", "C": "comes", "D": "every" }, "answer": "B", "correct_form": "school",
+      "explain_tr": "Doğrusu **school**. Baştaki ses /sk/ okunsa da yazımı sc- ile başlar ve sonda sessiz bir h vardır." } },
+
+  { "id": "kelime-a1-03", "kind": "kelime", "level": "A1", "title": "A Birthday", "topic": "family",
+    "body": "She is happy becuse today is her birthday. Her family made a cake.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "happy", "B": "birthday", "C": "becuse", "D": "family" }, "answer": "C", "correct_form": "because",
+      "explain_tr": "Doğrusu **because**. Ortadaki a düşmüş: be-cause olarak iki parçadan gelir." } },
+
+  { "id": "kelime-a1-04", "kind": "kelime", "level": "A1", "title": "Films At Home", "topic": "free time",
+    "body": "I like to wach films at home. My sister likes books more.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "films", "B": "sister", "C": "books", "D": "wach" }, "answer": "D", "correct_form": "watch",
+      "explain_tr": "Doğrusu **watch**. Okunmayan bir t var: wa-t-ch." } },
+
+  { "id": "kelime-a1-05", "kind": "kelime", "level": "A1", "title": "The Keys", "topic": "at home",
+    "body": "The keys are on the tabel next to the door. Please take them.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "keys", "B": "tabel", "C": "door", "D": "take" }, "answer": "B", "correct_form": "table",
+      "explain_tr": "Doğrusu **table**. Sondaki iki harf yer değiştirmiş: -le, -el değil." } },
+
+  { "id": "kelime-a1-06", "kind": "kelime", "level": "A1", "title": "The Garden", "topic": "at home",
+    "body": "We have a littel garden behind the house. My mother grows flowers there.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "garden", "B": "house", "C": "littel", "D": "flowers" }, "answer": "C", "correct_form": "little",
+      "explain_tr": "Doğrusu **little**. Yine -le ile biter: lit-tle." } },
+
+  { "id": "kelime-a1-07", "kind": "kelime", "level": "A1", "title": "Early Tea", "topic": "daily routine",
+    "body": "Every mornig I drink tea and read the news for ten minutes.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "mornig", "B": "drink", "C": "read", "D": "minutes" }, "answer": "A", "correct_form": "morning",
+      "explain_tr": "Doğrusu **morning**. Sondaki -ing ekindeki n düşmüş." } },
+
+  { "id": "kelime-a1-08", "kind": "kelime", "level": "A1", "title": "No School", "topic": "school",
+    "body": "The children are very hapy today because there is no school.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "children", "B": "hapy", "C": "today", "D": "school" }, "answer": "B", "correct_form": "happy",
+      "explain_tr": "Doğrusu **happy**. Kısa a sesinden sonra p iki kez yazılır." } },
+
+  { "id": "kelime-a1-09", "kind": "kelime", "level": "A1", "title": "Dinner Time", "topic": "family",
+    "body": "My famaly has four people. We eat dinner together at seven o'clock.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "people", "B": "dinner", "C": "famaly", "D": "together" }, "answer": "C", "correct_form": "family",
+      "explain_tr": "Doğrusu **family**. Ortadaki harf a değil i: fam-i-ly." } },
+
+  { "id": "kelime-a1-10", "kind": "kelime", "level": "A1", "title": "Ask The Driver", "topic": "transport",
+    "body": "I do not know wich bus goes to the station. Ask the driver.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "know", "B": "station", "C": "driver", "D": "wich" }, "answer": "D", "correct_form": "which",
+      "explain_tr": "Doğrusu **which**. Baştaki wh- ikilisi eksik kalmış." } },
+
+  { "id": "kelime-a1-11", "kind": "kelime", "level": "A1", "title": "Sit Down", "topic": "classroom",
+    "body": "Put your bag over ther and sit down. The class starts soon.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "bag", "B": "ther", "C": "class", "D": "starts" }, "answer": "B", "correct_form": "there",
+      "explain_tr": "Doğrusu **there**. Sondaki e düşmüş; 'orada' anlamındaki bu kelime there yazılır." } },
+
+  { "id": "kelime-a1-12", "kind": "kelime", "level": "A1", "title": "Friday Test", "topic": "school",
+    "body": "The teacher sed the test is on Friday. I need to study tonight.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "teacher", "B": "test", "C": "sed", "D": "study" }, "answer": "C", "correct_form": "said",
+      "explain_tr": "Doğrusu **said**. 'Say' fiilinin geçmiş hali /sed/ okunur ama said yazılır." } },
+
+  { "id": "kelime-a1-13", "kind": "kelime", "level": "A1", "title": "A Quiet Flat", "topic": "neighbours",
+    "body": "Thay live in a small flat near the park. It is very quiet.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "Thay", "B": "live", "C": "flat", "D": "quiet" }, "answer": "A", "correct_form": "they",
+      "explain_tr": "Doğrusu **they**. /ey/ sesi burada ay ile değil ey ile yazılır." } },
+
+  { "id": "kelime-a1-14", "kind": "kelime", "level": "A1", "title": "Thirsty", "topic": "at home",
+    "body": "Please bring me a bottle of wotor from the kitchen. I am thirsty.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "bottle", "B": "kitchen", "C": "thirsty", "D": "wotor" }, "answer": "D", "correct_form": "water",
+      "explain_tr": "Doğrusu **water**. Okunuşu yanıltıyor; wa- ile başlar ve -ter ile biter." } },
+
+  { "id": "kelime-a1-15", "kind": "kelime", "level": "A1", "title": "Study Tonight", "topic": "school",
+    "body": "We have a test tomorow. I will read my notes after dinner tonight.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "test", "B": "tomorow", "C": "notes", "D": "dinner" }, "answer": "B", "correct_form": "tomorrow",
+      "explain_tr": "Doğrusu **tomorrow**. İkinci r tek kalmış: to-mor-row." } },
+
+  { "id": "kelime-a1-16", "kind": "kelime", "level": "A1", "title": "In The City", "topic": "family",
+    "body": "My bruther works in a shop in the city. He starts at nine.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "bruther", "B": "works", "C": "shop", "D": "city" }, "answer": "A", "correct_form": "brother",
+      "explain_tr": "Doğrusu **brother**. Okunuşta /a/ duyulsa da bro- diye yazılır." } },
+
+  { "id": "kelime-a1-17", "kind": "kelime", "level": "A1", "title": "The Nurse", "topic": "family",
+    "body": "My sistur is a nurse. She works at the hospital near our house.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "nurse", "B": "sistur", "C": "hospital", "D": "house" }, "answer": "B", "correct_form": "sister",
+      "explain_tr": "Doğrusu **sister**. Sondaki ek -ur değil -er ile yazılır." } },
+
+  { "id": "kelime-a1-18", "kind": "kelime", "level": "A1", "title": "Our New Teacher", "topic": "school",
+    "body": "Our new tichir is from Izmir. She speaks slowly and we understand her.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "speaks", "B": "slowly", "C": "tichir", "D": "understand" }, "answer": "C", "correct_form": "teacher",
+      "explain_tr": "Doğrusu **teacher**. teach fiiline -er eki gelir; okunuş yazımı değiştirmez." } },
+
+  { "id": "kelime-a1-19", "kind": "kelime", "level": "A1", "title": "Left On The Bus", "topic": "lost and found",
+    "body": "I left my buk on the bus this morning. Maybe someone found it.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "bus", "B": "morning", "C": "found", "D": "buk" }, "answer": "D", "correct_form": "book",
+      "explain_tr": "Doğrusu **book**. Uzun /u/ sesi burada çift o ile yazılır." } },
+
+  { "id": "kelime-a1-20", "kind": "kelime", "level": "A1", "title": "Cooking Together", "topic": "at home",
+    "body": "The kichen is small but we cook there every evening together.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "kichen", "B": "small", "C": "cook", "D": "evening" }, "answer": "A", "correct_form": "kitchen",
+      "explain_tr": "Doğrusu **kitchen**. Okunmayan t düşmüş: kit-chen." } },
+
+  { "id": "kelime-a1-21", "kind": "kelime", "level": "A1", "title": "Tea Or Coffee", "topic": "daily routine",
+    "body": "She drinks cofee every morning, but I prefer tea with a little sugar.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "drinks", "B": "cofee", "C": "prefer", "D": "sugar" }, "answer": "B", "correct_form": "coffee",
+      "explain_tr": "Doğrusu **coffee**. Hem f hem e çift yazılır: cof-fee." } },
+
+  { "id": "kelime-a1-22", "kind": "kelime", "level": "A1", "title": "Half Past Seven", "topic": "daily routine",
+    "body": "We eat brekfast at half past seven. Then my father drives to work.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "father", "B": "drives", "C": "brekfast", "D": "work" }, "answer": "C", "correct_form": "breakfast",
+      "explain_tr": "Doğrusu **breakfast**. break + fast birleşimidir, o yüzden -ea- ile yazılır." } },
+
+  { "id": "kelime-a1-23", "kind": "kelime", "level": "A1", "title": "New Shoes", "topic": "shopping",
+    "body": "My new shose are black. They were cheap and very comfortable to wear.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "black", "B": "cheap", "C": "comfortable", "D": "shose" }, "answer": "D", "correct_form": "shoes",
+      "explain_tr": "Doğrusu **shoes**. shoe kelimesinin çoğulu; e ile o yer değiştirmiş." } },
+
+  { "id": "kelime-a1-24", "kind": "kelime", "level": "A1", "title": "Open The Window", "topic": "at home",
+    "body": "Open the windo, please. The room is hot and the air is heavy.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "windo", "B": "room", "C": "air", "D": "heavy" }, "answer": "A", "correct_form": "window",
+      "explain_tr": "Doğrusu **window**. Sondaki w düşmüş; -ow ile biter." } },
+
+  { "id": "kelime-a1-25", "kind": "kelime", "level": "A1", "title": "After School", "topic": "free time",
+    "body": "The childrin play football in the park after school every afternoon.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "football", "B": "childrin", "C": "park", "D": "afternoon" }, "answer": "B", "correct_form": "children",
+      "explain_tr": "Doğrusu **children**. Sondaki ek -in değil -en ile yazılır." } }
+]

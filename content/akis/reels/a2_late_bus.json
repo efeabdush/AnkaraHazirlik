@@ -1,0 +1,25 @@
+{
+  "id": "reel-late-bus",
+  "level": "A2",
+  "title": "Late Bus",
+  "topic": "city transport",
+  "script": [
+    { "speaker": "friend", "text": "Have you been waiting long?" },
+    { "speaker": "student", "text": "Twenty minutes. The four fifteen bus never came." },
+    { "speaker": "friend", "text": "There was an accident near the bridge. Everything is late." },
+    { "speaker": "student", "text": "Then I will walk. It only takes fifteen minutes." },
+    { "speaker": "friend", "text": "I will come with you. The rain stopped." }
+  ],
+  "question": {
+    "stem": "Why is the bus late?",
+    "options": {
+      "A": "Because of the rain",
+      "B": "Because of an accident",
+      "C": "Because the driver is ill",
+      "D": "Because it is a holiday"
+    },
+    "answer": "B",
+    "explain_tr": "Arkadaş gecikmenin sebebini 'an accident near the bridge' olarak söylüyor. Yağmurdan söz ediliyor ama yağmur dinmiş.",
+    "key_line": "There was an accident near the bridge."
+  }
+}

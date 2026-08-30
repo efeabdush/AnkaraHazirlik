@@ -1,0 +1,401 @@
+[
+  {
+    "id": "reel-a2-study-room",
+    "level": "A2",
+    "title": "Study Room",
+    "topic": "library booking",
+    "script": [
+      { "speaker": "student", "text": "Can I book a study room for tomorrow afternoon?" },
+      { "speaker": "staff", "text": "The small rooms are full. There is one big room at three." },
+      { "speaker": "student", "text": "We are only two people. Is that a problem?" },
+      { "speaker": "staff", "text": "No, but bring your card and be on time. We keep it fifteen minutes." },
+      { "speaker": "student", "text": "Okay, three o'clock. Thank you." }
+    ],
+    "question": {
+      "stem": "When can they use a room?",
+      "options": {
+        "A": "Tomorrow at three",
+        "B": "This afternoon",
+        "C": "Next week",
+        "D": "They cannot use one"
+      },
+      "answer": "A",
+      "explain_tr": "Küçük odalar dolu; yarın saat üçte büyük oda boş.",
+      "key_line": "There is one big room at three."
+    }
+  },
+  {
+    "id": "reel-a2-dentist-change",
+    "level": "A2",
+    "title": "Dentist Change",
+    "topic": "appointments",
+    "script": [
+      { "speaker": "student", "text": "I have an appointment on Tuesday, but I have an exam." },
+      { "speaker": "staff", "text": "I can move you to Thursday at four." },
+      { "speaker": "student", "text": "Thursday is good. Do I pay again?" },
+      { "speaker": "staff", "text": "No, you keep the same appointment. Just come ten minutes early." },
+      { "speaker": "student", "text": "Fine. Thursday at four, ten minutes early." }
+    ],
+    "question": {
+      "stem": "What must the student do on Thursday?",
+      "options": {
+        "A": "Pay for the appointment again",
+        "B": "Come ten minutes early",
+        "C": "Bring a friend",
+        "D": "Take the exam"
+      },
+      "answer": "B",
+      "explain_tr": "Ücret tekrar alınmıyor; sadece on dakika erken gelmesi isteniyor.",
+      "key_line": "Just come ten minutes early."
+    }
+  },
+  {
+    "id": "reel-a2-bus-card",
+    "level": "A2",
+    "title": "Bus Card",
+    "topic": "city transport",
+    "script": [
+      { "speaker": "student", "text": "My bus card doesn't work. The machine says zero." },
+      { "speaker": "staff", "text": "You can load money here or with the phone app." },
+      { "speaker": "student", "text": "The app didn't work for me last week." },
+      { "speaker": "staff", "text": "Then load it here. Fifty lira is enough for two weeks." },
+      { "speaker": "student", "text": "Okay, fifty lira, please." }
+    ],
+    "question": {
+      "stem": "How does the student load the card?",
+      "options": {
+        "A": "With the phone app",
+        "B": "At the desk",
+        "C": "On the bus",
+        "D": "At the bank"
+      },
+      "answer": "B",
+      "explain_tr": "Uygulama geçen hafta çalışmadığı için parayı gişede yüklüyor.",
+      "key_line": "Then load it here."
+    }
+  },
+  {
+    "id": "reel-a2-missed-lecture",
+    "level": "A2",
+    "title": "Missed Lecture",
+    "topic": "class notes",
+    "script": [
+      { "speaker": "student", "text": "I was ill on Monday. Can I see your notes?" },
+      { "speaker": "friend", "text": "Sure, but my handwriting is terrible." },
+      { "speaker": "student", "text": "That's fine. Was there any homework?" },
+      { "speaker": "friend", "text": "Yes, two pages for Friday. And the teacher changed the exam date." },
+      { "speaker": "student", "text": "Changed it? To when?" },
+      { "speaker": "friend", "text": "To the week after. Check the group message." }
+    ],
+    "question": {
+      "stem": "What does the student learn about the exam?",
+      "options": {
+        "A": "It is cancelled",
+        "B": "It moved to a later week",
+        "C": "It is on Friday",
+        "D": "It is only two pages"
+      },
+      "answer": "B",
+      "explain_tr": "Sınav bir hafta sonraya alınmış. Cuma tarihi ödev için söyleniyor.",
+      "key_line": "To the week after."
+    }
+  },
+  {
+    "id": "reel-a2-second-hand-bike",
+    "level": "A2",
+    "title": "Second-hand Bike",
+    "topic": "buying and selling",
+    "script": [
+      { "speaker": "student", "text": "Is this bike still for sale?" },
+      { "speaker": "friend", "text": "Yes. Nine hundred lira, but the back light is broken." },
+      { "speaker": "student", "text": "Can you fix it before Saturday?" },
+      { "speaker": "friend", "text": "A new light is fifty lira. I can put it on tonight." },
+      { "speaker": "student", "text": "Then nine hundred and fifty, with the light. Deal." }
+    ],
+    "question": {
+      "stem": "What do they agree?",
+      "options": {
+        "A": "The student pays nine hundred lira",
+        "B": "The student pays for the bike and the new light",
+        "C": "The friend keeps the bike",
+        "D": "They meet again on Saturday"
+      },
+      "answer": "B",
+      "explain_tr": "Kırık lamba yenisiyle değişiyor ve fiyat elli lira artıyor.",
+      "key_line": "Then nine hundred and fifty, with the light."
+    }
+  },
+  {
+    "id": "reel-a2-cinema-discount",
+    "level": "A2",
+    "title": "Cinema Discount",
+    "topic": "free time",
+    "script": [
+      { "speaker": "friend", "text": "Two tickets for the eight o'clock film, please." },
+      { "speaker": "staff", "text": "Are you students? Then it is half price on Wednesday." },
+      { "speaker": "friend", "text": "Today is Tuesday." },
+      { "speaker": "staff", "text": "Then it is full price, one hundred lira for two." },
+      { "speaker": "friend", "text": "We come tomorrow then. Same film, same time?" },
+      { "speaker": "staff", "text": "Yes, but book early. Wednesday is busy." }
+    ],
+    "question": {
+      "stem": "Why do they decide to come back tomorrow?",
+      "options": {
+        "A": "The film starts later tomorrow",
+        "B": "Students pay half price on Wednesday",
+        "C": "The cinema is closed today",
+        "D": "They have no money at all"
+      },
+      "answer": "B",
+      "explain_tr": "Öğrenci indirimi çarşamba geçerli; bugün salı olduğu için tam ücret isteniyor.",
+      "key_line": "Then it is half price on Wednesday."
+    }
+  },
+  {
+    "id": "reel-a2-package-delivery",
+    "level": "A2",
+    "title": "Package Delivery",
+    "topic": "dorm life",
+    "script": [
+      { "speaker": "student", "text": "There is a package for me, but I was in class." },
+      { "speaker": "staff", "text": "The driver comes again tomorrow between ten and twelve." },
+      { "speaker": "student", "text": "I have class until eleven." },
+      { "speaker": "staff", "text": "Then leave a note. Your neighbour can take it for you." },
+      { "speaker": "student", "text": "Good idea. I write the note now." }
+    ],
+    "question": {
+      "stem": "What does the staff member suggest?",
+      "options": {
+        "A": "Waiting at home all morning",
+        "B": "Asking a neighbour to take the package",
+        "C": "Going to the post office",
+        "D": "Cancelling the package"
+      },
+      "answer": "B",
+      "explain_tr": "Öğrenci on bire kadar derste olduğu için komşusunun paketi almasını öneriyor.",
+      "key_line": "Your neighbour can take it for you."
+    }
+  },
+  {
+    "id": "reel-a2-phone-repair",
+    "level": "A2",
+    "title": "Phone Repair",
+    "topic": "services",
+    "script": [
+      { "speaker": "student", "text": "My phone screen is broken. How long does the repair take?" },
+      { "speaker": "staff", "text": "Normally two days, but we don't have this screen now." },
+      { "speaker": "student", "text": "When do you get it?" },
+      { "speaker": "staff", "text": "On Friday. So your phone is ready on Monday." },
+      { "speaker": "student", "text": "Monday is late, but okay." }
+    ],
+    "question": {
+      "stem": "When will the phone be ready?",
+      "options": { "A": "In two days", "B": "On Friday", "C": "On Monday", "D": "Today" },
+      "answer": "C",
+      "explain_tr": "Ekran cuma geliyor, telefon pazartesi hazır. İki gün ise normal onarım süresi.",
+      "key_line": "So your phone is ready on Monday."
+    }
+  },
+  {
+    "id": "reel-a2-club-fee",
+    "level": "A2",
+    "title": "Club Fee",
+    "topic": "student clubs",
+    "script": [
+      { "speaker": "student", "text": "I want to join the photography club. Is there a fee?" },
+      { "speaker": "staff", "text": "Fifty lira for the year. The first meeting is free." },
+      { "speaker": "student", "text": "Can I come once and decide later?" },
+      { "speaker": "staff", "text": "Of course. Come on Thursday at six and see." },
+      { "speaker": "student", "text": "Thursday at six. I bring my camera." }
+    ],
+    "question": {
+      "stem": "What does the student decide to do?",
+      "options": {
+        "A": "Pay fifty lira today",
+        "B": "Go to the free first meeting",
+        "C": "Join a different club",
+        "D": "Buy a new camera"
+      },
+      "answer": "B",
+      "explain_tr": "İlk toplantı ücretsiz; öğrenci önce gelip görmeyi seçiyor.",
+      "key_line": "Can I come once and decide later?"
+    }
+  },
+  {
+    "id": "reel-a2-weekend-plan",
+    "level": "A2",
+    "title": "Weekend Plan",
+    "topic": "free time",
+    "script": [
+      { "speaker": "friend", "text": "Are we going to the lake on Saturday?" },
+      { "speaker": "student", "text": "The weather is bad on Saturday. Sunday is sunny." },
+      { "speaker": "friend", "text": "I work on Sunday morning until one." },
+      { "speaker": "student", "text": "Then we go in the afternoon. The bus leaves at two." },
+      { "speaker": "friend", "text": "Perfect. I meet you at the stop at half past one." }
+    ],
+    "question": {
+      "stem": "When do they go to the lake?",
+      "options": {
+        "A": "Saturday morning",
+        "B": "Sunday morning",
+        "C": "Sunday afternoon",
+        "D": "They do not go"
+      },
+      "answer": "C",
+      "explain_tr": "Cumartesi hava kötü, pazar sabahı arkadaş çalışıyor; geriye pazar öğleden sonrası kalıyor.",
+      "key_line": "Then we go in the afternoon."
+    }
+  },
+  {
+    "id": "reel-a2-double-sided",
+    "level": "A2",
+    "title": "Double Sided",
+    "topic": "printing",
+    "script": [
+      { "speaker": "student", "text": "Why is my printing so expensive this month?" },
+      { "speaker": "staff", "text": "You print one page on each sheet. Double-sided costs less." },
+      { "speaker": "student", "text": "How do I change that?" },
+      { "speaker": "staff", "text": "In the print window, choose both sides before you send it." },
+      { "speaker": "student", "text": "Both sides. I try it now." }
+    ],
+    "question": {
+      "stem": "How can the student pay less?",
+      "options": {
+        "A": "By printing fewer pages",
+        "B": "By printing on both sides",
+        "C": "By printing in colour",
+        "D": "By using another printer"
+      },
+      "answer": "B",
+      "explain_tr": "Tek yüze basmak pahalıya geliyor; çift taraflı baskı daha ucuz.",
+      "key_line": "Double-sided costs less."
+    }
+  },
+  {
+    "id": "reel-a2-cold-room",
+    "level": "A2",
+    "title": "Cold Room",
+    "topic": "dorm life",
+    "script": [
+      { "speaker": "student", "text": "The heating in my room doesn't work." },
+      { "speaker": "staff", "text": "Which floor? The third floor had a problem yesterday." },
+      { "speaker": "student", "text": "I am on the third floor, room nineteen." },
+      { "speaker": "staff", "text": "The technician comes tomorrow morning. Tonight I can give you a heater." },
+      { "speaker": "student", "text": "Yes, please. It is really cold." }
+    ],
+    "question": {
+      "stem": "What does the student get tonight?",
+      "options": {
+        "A": "A new room",
+        "B": "A heater",
+        "C": "Nothing until tomorrow",
+        "D": "A visit from the technician"
+      },
+      "answer": "B",
+      "explain_tr": "Tesisatçı yarın sabah geliyor; bu gece için ısıtıcı veriliyor.",
+      "key_line": "Tonight I can give you a heater."
+    }
+  },
+  {
+    "id": "reel-a2-language-partner",
+    "level": "A2",
+    "title": "Language Partner",
+    "topic": "language exchange",
+    "script": [
+      { "speaker": "student", "text": "I want an English speaking partner. How does it work?" },
+      { "speaker": "staff", "text": "You meet once a week for an hour. Half English, half Turkish." },
+      { "speaker": "student", "text": "Do I choose the person?" },
+      { "speaker": "staff", "text": "We match you by your level and your free days." },
+      { "speaker": "student", "text": "My free day is Wednesday." },
+      { "speaker": "staff", "text": "Then write Wednesday on the form." }
+    ],
+    "question": {
+      "stem": "How are partners matched?",
+      "options": {
+        "A": "By age",
+        "B": "By level and free days",
+        "C": "By city",
+        "D": "The student chooses the person"
+      },
+      "answer": "B",
+      "explain_tr": "Eşleştirme seviyeye ve boş günlere göre yapılıyor; kişiyi öğrenci seçmiyor.",
+      "key_line": "We match you by your level and your free days."
+    }
+  },
+  {
+    "id": "reel-a2-book-order",
+    "level": "A2",
+    "title": "Book Order",
+    "topic": "campus shop",
+    "script": [
+      { "speaker": "student", "text": "Do you have this grammar book?" },
+      { "speaker": "staff", "text": "Not now, but I can order it. It comes in three days." },
+      { "speaker": "student", "text": "My exam is in two days." },
+      { "speaker": "staff", "text": "Then take the library copy. You can keep it for one week." },
+      { "speaker": "student", "text": "Good. Where is the library copy?" },
+      { "speaker": "staff", "text": "Second floor, English section." }
+    ],
+    "question": {
+      "stem": "What does the student do?",
+      "options": {
+        "A": "Orders the book",
+        "B": "Borrows the library copy",
+        "C": "Buys a different book",
+        "D": "Waits three days"
+      },
+      "answer": "B",
+      "explain_tr": "Kitap üç günde geliyor ama sınav iki gün sonra; bu yüzden kütüphane kopyası alınıyor.",
+      "key_line": "Then take the library copy."
+    }
+  },
+  {
+    "id": "reel-a2-ticket-change",
+    "level": "A2",
+    "title": "Ticket Change",
+    "topic": "travel",
+    "script": [
+      { "speaker": "student", "text": "Can I change my train ticket to the evening train?" },
+      { "speaker": "staff", "text": "Yes, but there is a small fee. Twenty lira." },
+      { "speaker": "student", "text": "And if I cancel?" },
+      { "speaker": "staff", "text": "Then you lose half the money. Changing is cheaper." },
+      { "speaker": "student", "text": "Okay, I change it. The seven o'clock train." }
+    ],
+    "question": {
+      "stem": "Why does the student change the ticket instead of cancelling it?",
+      "options": {
+        "A": "Cancelling is free",
+        "B": "Changing costs less money",
+        "C": "There is no evening train",
+        "D": "The staff member refuses to cancel"
+      },
+      "answer": "B",
+      "explain_tr": "İptalde paranın yarısı gidiyor, değişiklik yirmi lira; değiştirmek daha ucuz.",
+      "key_line": "Then you lose half the money. Changing is cheaper."
+    }
+  },
+  {
+    "id": "reel-a2-volunteer-hours",
+    "level": "A2",
+    "title": "Volunteer Hours",
+    "topic": "student life",
+    "script": [
+      { "speaker": "student", "text": "How many hours do volunteers work every week?" },
+      { "speaker": "staff", "text": "Three hours. Most students come on Saturday morning." },
+      { "speaker": "student", "text": "I can't come on Saturday. I work in a shop." },
+      { "speaker": "staff", "text": "There is a small group on Tuesday evening too." },
+      { "speaker": "student", "text": "Tuesday evening is perfect for me." }
+    ],
+    "question": {
+      "stem": "When will this student volunteer?",
+      "options": {
+        "A": "Saturday morning",
+        "B": "Tuesday evening",
+        "C": "Every day of the week",
+        "D": "She will not volunteer"
+      },
+      "answer": "B",
+      "explain_tr": "Cumartesi dükkânda çalıştığı için salı akşamı grubunu seçiyor.",
+      "key_line": "There is a small group on Tuesday evening too."
+    }
+  }
+]

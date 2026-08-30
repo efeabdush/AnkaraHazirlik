@@ -126,14 +126,46 @@ def complete(system: str, user: str, json_mode: bool = False) -> str:
     return _extract_json(text) if json_mode else text
 
 
+def chat(system: str, messages: list[dict], json_mode: bool = False) -> str:
+    """Multi-turn completion through the same provider/model used everywhere else."""
+    provider = active_provider()
+    if not provider:
+        raise LLMError("Sunucuda hiçbir sağlayıcı anahtarı tanımlı değil.")
+    model = active_model()
+    if not model:
+        raise LLMError(f"{provider.label} için model seçilmedi. Panelden bir model seç.")
+    clean = [
+        {"role": m["role"], "content": str(m["content"])}
+        for m in messages
+        if m.get("role") in {"user", "assistant"} and str(m.get("content", "")).strip()
+    ]
+    if not clean:
+        raise LLMError("Boş sohbet.")
+    if provider.id == "gemini":
+        contents = [
+            {"role": "model" if m["role"] == "assistant" else "user", "parts": [{"text": m["content"]}]}
+            for m in clean
+        ]
+        return _gemini_call(provider, model, system, contents, {"temperature": 0.7, "maxOutputTokens": 4096})
+    if provider.id == "opencode-zen" and model.lower().startswith("claude"):
+        return _anthropic_chat(provider, model, system, clean)
+    if provider.id == "opencode-zen" and model.lower().startswith("gpt-"):
+        flat = "\n\n".join(f"{m['role'].upper()}: {m['content']}" for m in clean)
+        return _openai_responses(provider, model, system, flat, json_mode)
+    return _openai_chat_messages(provider, model, system, clean, json_mode)
+
+
 def _openai_chat(provider: Provider, model: str, system: str, user: str, json_mode: bool) -> str:
+    return _openai_chat_messages(provider, model, system, [{"role": "user", "content": user}], json_mode)
+
+
+def _openai_chat_messages(
+    provider: Provider, model: str, system: str, messages: list[dict], json_mode: bool
+) -> str:
     body: dict = {
         "model": model,
-        "messages": [
-            {"role": "system", "content": system},
-            {"role": "user", "content": user},
-        ],
-        "temperature": 0.6,
+        "messages": [{"role": "system", "content": system}, *messages],
+        "temperature": 0.7,
     }
     if json_mode:
         body["response_format"] = {"type": "json_object"}
@@ -172,13 +204,17 @@ def _openai_responses(provider: Provider, model: str, system: str, user: str, js
 
 
 def _anthropic_messages(provider: Provider, model: str, system: str, user: str) -> str:
+    return _anthropic_chat(provider, model, system, [{"role": "user", "content": user}])
+
+
+def _anthropic_chat(provider: Provider, model: str, system: str, messages: list[dict]) -> str:
     headers = _auth_headers(provider)
     headers["anthropic-version"] = "2023-06-01"
     body = {
         "model": model,
         "system": system,
         "max_tokens": 8192,
-        "messages": [{"role": "user", "content": user}],
+        "messages": messages,
     }
     with httpx.Client(timeout=180) as client:
         r = client.post(f"{provider.base_url}/messages", headers=headers, json=body)
@@ -191,14 +227,18 @@ def _anthropic_messages(provider: Provider, model: str, system: str, user: str) 
 
 
 def _gemini(provider: Provider, model: str, system: str, user: str, json_mode: bool) -> str:
-    url = f"{provider.base_url}/models/{model}:generateContent?key={provider.api_key}"
     generation_config: dict = {"temperature": 0.6, "maxOutputTokens": 8192}
     if json_mode:
         generation_config["responseMimeType"] = "application/json"
+    return _gemini_call(provider, model, system, [{"role": "user", "parts": [{"text": user}]}], generation_config)
+
+
+def _gemini_call(provider: Provider, model: str, system: str, contents: list[dict], config: dict) -> str:
+    url = f"{provider.base_url}/models/{model}:generateContent?key={provider.api_key}"
     payload = {
         "systemInstruction": {"parts": [{"text": system}]},
-        "contents": [{"role": "user", "parts": [{"text": user}]}],
-        "generationConfig": generation_config,
+        "contents": contents,
+        "generationConfig": config,
     }
     with httpx.Client(timeout=180) as client:
         r = client.post(url, json=payload)

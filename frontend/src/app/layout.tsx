@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
-import { Footer, Header } from "@/components/SiteChrome";
 import { HumanVerification } from "@/components/HumanVerification";
+import { SiteFrame } from "@/components/SiteFrame";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, websiteStructuredData } from "@/lib/seo";
 import "./globals.css";
+import "./akis.css";
 
 const sans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -58,9 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteStructuredData).replace(/</g, "\\u003c") }}
         />
         <HumanVerification />
-        <Header />
-        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-5 sm:py-10">{children}</main>
-        <Footer />
+        <SiteFrame>{children}</SiteFrame>
       </body>
     </html>
   );

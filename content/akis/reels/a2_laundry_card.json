@@ -1,0 +1,24 @@
+{
+  "id": "reel-laundry-card",
+  "level": "A2",
+  "title": "Laundry Card",
+  "topic": "dorm laundry",
+  "script": [
+    { "speaker": "student", "text": "The washing machine took my money but it didn't start." },
+    { "speaker": "staff", "text": "Which machine? Number four has been broken since Friday." },
+    { "speaker": "student", "text": "Number four, yes. There was no sign on it." },
+    { "speaker": "staff", "text": "Sorry. Bring me the receipt and I'll put the money back on your card." }
+  ],
+  "question": {
+    "stem": "What does the student have to do to get the money back?",
+    "options": {
+      "A": "Use another machine",
+      "B": "Come back on Friday",
+      "C": "Show the receipt",
+      "D": "Write a letter to the office"
+    },
+    "answer": "C",
+    "explain_tr": "Görevli parayı karta geri yüklemek için fişi ('the receipt') istiyor. Cuma tarihi makinenin ne zamandır bozuk olduğunu anlatıyor.",
+    "key_line": "Bring me the receipt and I'll put the money back on your card."
+  }
+}

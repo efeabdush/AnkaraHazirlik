@@ -18,6 +18,7 @@ content/private/*
 !content/private/.gitkeep
 tmp/
 *.mp3
+!content/akis/audio/*.mp3
 *.wav
 .DS_Store
 Thumbs.db

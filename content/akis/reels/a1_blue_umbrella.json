@@ -1,0 +1,24 @@
+{
+  "id": "reel-blue-umbrella",
+  "level": "A1",
+  "title": "Blue Umbrella",
+  "topic": "lost and found",
+  "script": [
+    { "speaker": "student", "text": "I lost my umbrella yesterday. Is it here?" },
+    { "speaker": "staff", "text": "We have two umbrellas. One is black, one is blue." },
+    { "speaker": "student", "text": "Mine is blue. It is very small." },
+    { "speaker": "staff", "text": "Then this one is yours. Please write your name here." }
+  ],
+  "question": {
+    "stem": "Which umbrella belongs to the student?",
+    "options": {
+      "A": "The black one",
+      "B": "The blue one",
+      "C": "The big one",
+      "D": "Both of them"
+    },
+    "answer": "B",
+    "explain_tr": "Öğrenci 'Mine is blue' diyor. Siyah şemsiye de var ama ona ait değil.",
+    "key_line": "Mine is blue."
+  }
+}

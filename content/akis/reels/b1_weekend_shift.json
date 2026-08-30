@@ -1,0 +1,26 @@
+{
+  "id": "reel-weekend-shift",
+  "level": "B1",
+  "title": "Weekend Shift",
+  "topic": "part-time work",
+  "script": [
+    { "speaker": "student", "text": "Can I change my Saturday shift? I have an exam on Monday." },
+    { "speaker": "staff", "text": "I can move you to Sunday afternoon, but then you lose the weekend bonus." },
+    { "speaker": "student", "text": "How much is the bonus?" },
+    { "speaker": "staff", "text": "About two hundred lira a month. Some students keep Saturday and study at night." },
+    { "speaker": "student", "text": "I'll take Sunday. Two hundred lira is not worth a bad grade." }
+  ],
+  "question": {
+    "stem": "Why does the student choose the Sunday shift?",
+    "options": {
+      "A": "Sunday pays more than Saturday",
+      "B": "The exam matters more to her than the bonus",
+      "C": "Saturday shifts were cancelled",
+      "D": "She is not allowed to work at night",
+      "E": "The manager asked her to change"
+    },
+    "answer": "B",
+    "explain_tr": "Öğrenci parayı 'kötü bir nota değmez' diyerek sınavı önceliyor. Pazar vardiyası daha çok değil, primi kaybettirdiği için daha az kazandırıyor.",
+    "key_line": "Two hundred lira is not worth a bad grade."
+  }
+}

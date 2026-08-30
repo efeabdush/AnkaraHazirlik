@@ -1,0 +1,126 @@
+[
+  { "id": "kelime-b1p-01", "kind": "kelime", "level": "B1+", "title": "Half Awake", "topic": "health",
+    "body": "Most people are not concious of how badly a short night affects their judgement. They feel tired but assume their decisions are normal, and only notice the difference days later when the schedule finally returns to something reasonable.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "judgement", "B": "concious", "C": "decisions", "D": "schedule" }, "answer": "B", "correct_form": "conscious",
+      "explain_tr": "Doğrusu **conscious**. İçinde sci geçer: con-sci-ous." } },
+
+  { "id": "kelime-b1p-02", "kind": "kelime", "level": "B1+", "title": "Twice In A Month", "topic": "maintenance",
+    "body": "A second occurence of the same fault in one month suggests the repair was never finished properly. The engineer replaced one part, signed the form and left, but nobody checked whether the original cause had actually been removed.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "occurence", "B": "engineer", "C": "original", "D": "removed" }, "answer": "A", "correct_form": "occurrence",
+      "explain_tr": "Doğrusu **occurrence**. Hem c hem r çift yazılır: oc-cur-rence." } },
+
+  { "id": "kelime-b1p-03", "kind": "kelime", "level": "B1+", "title": "Not A Right", "topic": "society",
+    "body": "Parking inside the campus is a priviledge, not a right, and the university repeats this every September. Places are limited, staff come first, and students who live within walking distance are politely refused every single year.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "campus", "B": "limited", "C": "priviledge", "D": "distance" }, "answer": "C", "correct_form": "privilege",
+      "explain_tr": "Doğrusu **privilege**. İçinde d yoktur: pri-vi-lege." } },
+
+  { "id": "kelime-b1p-04", "kind": "kelime", "level": "B1+", "title": "Nobody Answered", "topic": "research",
+    "body": "The questionaire was too long, so most students abandoned it halfway through. A shorter version with five clear items would have produced far more usable answers than thirty questions that nobody finished before losing patience.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "abandoned", "B": "version", "C": "usable", "D": "questionaire" }, "answer": "D", "correct_form": "questionnaire",
+      "explain_tr": "Doğrusu **questionnaire**. n çift yazılır: ques-tion-naire." } },
+
+  { "id": "kelime-b1p-05", "kind": "kelime", "level": "B1+", "title": "A Thousand Years", "topic": "history",
+    "body": "The building has stood here for almost a milenium, surviving fires, wars and several confident architects who wanted to modernise it. Its walls are now protected, which means even the windows cannot be changed without permission.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "surviving", "B": "milenium", "C": "architects", "D": "permission" }, "answer": "B", "correct_form": "millennium",
+      "explain_tr": "Doğrusu **millennium**. Hem l hem n çift yazılır: mil-len-nium." } },
+
+  { "id": "kelime-b1p-06", "kind": "kelime", "level": "B1+", "title": "Four Signatures", "topic": "institutions",
+    "body": "The bureacracy around a simple transfer request is remarkable: four signatures, two offices and a form that exists only on paper. Students who start the process in October are usually finished somewhere around the middle of December.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "bureacracy", "B": "transfer", "C": "remarkable", "D": "process" }, "answer": "A", "correct_form": "bureaucracy",
+      "explain_tr": "Doğrusu **bureaucracy**. bureau kökünden gelir, u düşmez: bureau-cracy." } },
+
+  { "id": "kelime-b1p-07", "kind": "kelime", "level": "B1+", "title": "Starting Something", "topic": "work",
+    "body": "Every successful entrepeneur in the panel described the same first year: no salary, long hours and constant doubt. What separated them from the others was not talent but a stubborn refusal to stop before the second year.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "salary", "B": "constant", "C": "entrepeneur", "D": "stubborn" }, "answer": "C", "correct_form": "entrepreneur",
+      "explain_tr": "Doğrusu **entrepreneur**. İkinci r atlanmış: entre-pre-neur." } },
+
+  { "id": "kelime-b1p-08", "kind": "kelime", "level": "B1+", "title": "A Quiet Voice", "topic": "ethics",
+    "body": "He returned the extra change because his concience would not let him keep it. The amount was small enough that nobody would ever have noticed, which is precisely what made the decision interesting.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "returned", "B": "amount", "C": "noticed", "D": "concience" }, "answer": "D", "correct_form": "conscience",
+      "explain_tr": "Doğrusu **conscience**. İçinde sci geçer: con-sci-ence." } },
+
+  { "id": "kelime-b1p-09", "kind": "kelime", "level": "B1+", "title": "Barely A Friend", "topic": "social life",
+    "body": "She described him as an aquaintance rather than a friend, which explained why she hesitated before asking for such a large favour. They had met twice, both times at conferences neither of them had wanted to attend.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "aquaintance", "B": "hesitated", "C": "conferences", "D": "attend" }, "answer": "A", "correct_form": "acquaintance",
+      "explain_tr": "Doğrusu **acquaintance**. acquire gibi cq ile yazılır: ac-quaint-ance." } },
+
+  { "id": "kelime-b1p-10", "kind": "kelime", "level": "B1+", "title": "Nine Attempts", "topic": "learning",
+    "body": "What the coach called perseverence looked to everyone else like plain stubbornness. He failed the same test eight times, changed almost nothing about his method, and passed on the ninth attempt without any obvious explanation.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "stubbornness", "B": "perseverence", "C": "method", "D": "explanation" }, "answer": "B", "correct_form": "perseverance",
+      "explain_tr": "Doğrusu **perseverance**. Sonu -ence değil -ance ile biter." } },
+
+  { "id": "kelime-b1p-11", "kind": "kelime", "level": "B1+", "title": "Cheaper Later", "topic": "buildings",
+    "body": "Regular maintainance costs less than a single emergency repair, but it never appears urgent, so it is the first line cut from any budget. The consequences arrive quietly, usually three or four winters later.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "emergency", "B": "maintainance", "C": "budget", "D": "consequences" }, "answer": "B", "correct_form": "maintenance",
+      "explain_tr": "Doğrusu **maintenance**. maintain'den gelse de i düşer: main-te-nance." } },
+
+  { "id": "kelime-b1p-12", "kind": "kelime", "level": "B1+", "title": "Too Good To Be True", "topic": "media",
+    "body": "Advertisements exagerate what a single product can do, and readers know this, yet the numbers still work. A claim that is obviously too strong is remembered longer than a modest one that happens to be accurate.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "Advertisements", "B": "product", "C": "exagerate", "D": "accurate" }, "answer": "C", "correct_form": "exaggerate",
+      "explain_tr": "Doğrusu **exaggerate**. g çift yazılır: ex-ag-ger-ate." } },
+
+  { "id": "kelime-b1p-13", "kind": "kelime", "level": "B1+", "title": "The Old Rule", "topic": "regulations",
+    "body": "The new guidelines supercede everything published before March, including the printed handbook that most departments still keep on the shelf. Anyone quoting the older version in an appeal will simply be told to read the current text.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "guidelines", "B": "handbook", "C": "departments", "D": "supercede" }, "answer": "D", "correct_form": "supersede",
+      "explain_tr": "Doğrusu **supersede**. c değil s ile yazılır: super-sede." } },
+
+  { "id": "kelime-b1p-14", "kind": "kelime", "level": "B1+", "title": "Not A Joke", "topic": "workplace",
+    "body": "Repeated messages after midnight harrass a colleague even when each one seems harmless alone. The person sending them rarely sees the pattern, because from their side it is simply a series of separate small questions.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "harrass", "B": "harmless", "C": "pattern", "D": "separate" }, "answer": "A", "correct_form": "harass",
+      "explain_tr": "Doğrusu **harass**. r tek, s çift yazılır: ha-rass." } },
+
+  { "id": "kelime-b1p-15", "kind": "kelime", "level": "B1+", "title": "One Person Between", "topic": "organisations",
+    "body": "The liason between the two departments left in April and nobody replaced her. Since then each side assumes the other is handling the shared timetable, which is why three meetings were booked in the same room.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "departments", "B": "replaced", "C": "liason", "D": "timetable" }, "answer": "C", "correct_form": "liaison",
+      "explain_tr": "Doğrusu **liaison**. İkinci i atlanmış: li-ai-son." } },
+
+  { "id": "kelime-b1p-16", "kind": "kelime", "level": "B1+", "title": "Everyone Agreed", "topic": "meetings",
+    "body": "The concensus in the room was comfortable but shallow: everyone agreed because nobody wanted the meeting to continue. Two weeks later the same objections appeared in writing, and the decision had to be taken again.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "concensus", "B": "comfortable", "C": "objections", "D": "decision" }, "answer": "A", "correct_form": "consensus",
+      "explain_tr": "Doğrusu **consensus**. Baştan sona s ile yazılır: con-sen-sus." } },
+
+  { "id": "kelime-b1p-17", "kind": "kelime", "level": "B1+", "title": "It Only Looked Simple", "topic": "problem solving",
+    "body": "The reason was apparant only after somebody read the log file line by line. Until then three engineers had argued about the network for two days, each of them confident and each of them looking in the wrong place.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "apparant", "B": "engineers", "C": "network", "D": "confident" }, "answer": "A", "correct_form": "apparent",
+      "explain_tr": "Doğrusu **apparent**. Sonu -ant değil -ent ile biter." } },
+
+  { "id": "kelime-b1p-18", "kind": "kelime", "level": "B1+", "title": "Off The Point", "topic": "writing",
+    "body": "Half the essay was well written but not relevent to the question that was actually asked. The marker cannot reward accurate paragraphs about a different topic, however carefully those paragraphs happen to be constructed.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "essay", "B": "relevent", "C": "accurate", "D": "constructed" }, "answer": "B", "correct_form": "relevant",
+      "explain_tr": "Doğrusu **relevant**. Sonu -ent değil -ant ile biter." } },
+
+  { "id": "kelime-b1p-19", "kind": "kelime", "level": "B1+", "title": "It Came Back", "topic": "health",
+    "body": "A persistant cough that lasts more than three weeks deserves a proper appointment rather than another box from the pharmacy. Most cases turn out to be harmless, but the few that are not depend entirely on being seen early.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "persistant", "B": "appointment", "C": "pharmacy", "D": "harmless" }, "answer": "A", "correct_form": "persistent",
+      "explain_tr": "Doğrusu **persistent**. Sonu -ant değil -ent ile biter." } },
+
+  { "id": "kelime-b1p-20", "kind": "kelime", "level": "B1+", "title": "Hard To Prove", "topic": "science",
+    "body": "The existance of the effect was never in doubt; measuring it reliably was the difficult part. Early experiments produced numbers that nobody could repeat, which delayed serious work on the subject by almost a decade.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "measuring", "B": "reliably", "C": "existance", "D": "experiments" }, "answer": "C", "correct_form": "existence",
+      "explain_tr": "Doğrusu **existence**. Sonu -ance değil -ence ile biter." } },
+
+  { "id": "kelime-b1p-21", "kind": "kelime", "level": "B1+", "title": "Last Winter", "topic": "incidents",
+    "body": "The failure occured during the coldest week of the year, when the heating was already working at its limit. Nobody had tested the system under that load, and the assumption that it would cope was never written down anywhere.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "failure", "B": "occured", "C": "heating", "D": "assumption" }, "answer": "B", "correct_form": "occurred",
+      "explain_tr": "Doğrusu **occurred**. Vurgu son hecede olduğu için r ikiye çıkar." } },
+
+  { "id": "kelime-b1p-22", "kind": "kelime", "level": "B1+", "title": "The Other One", "topic": "choices",
+    "body": "Most participants prefered the second design once they had used both for a week. The first looked better in photographs, but people who actually lived with it complained about the same three things again and again.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "participants", "B": "design", "C": "photographs", "D": "prefered" }, "answer": "D", "correct_form": "preferred",
+      "explain_tr": "Doğrusu **preferred**. Vurgu son hecede olduğu için r ikiye çıkar." } },
+
+  { "id": "kelime-b1p-23", "kind": "kelime", "level": "B1+", "title": "Which Report", "topic": "meetings",
+    "body": "When she said the report was late, she was refering to the financial one, not the summary everybody had already read. The confusion cost the committee another twenty minutes it did not really have.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "refering", "B": "financial", "C": "summary", "D": "committee" }, "answer": "A", "correct_form": "referring",
+      "explain_tr": "Doğrusu **referring**. Vurgu son hecede olduğu için r ikiye çıkar." } },
+
+  { "id": "kelime-b1p-24", "kind": "kelime", "level": "B1+", "title": "Worth The Trouble", "topic": "study skills",
+    "body": "Testing yourself is more benificial than reading the same chapter a fourth time, although it feels considerably worse while you are doing it. The discomfort is exactly the signal that something is being learned.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "chapter", "B": "benificial", "C": "considerably", "D": "discomfort" }, "answer": "B", "correct_form": "beneficial",
+      "explain_tr": "Doğrusu **beneficial**. benefit kökünden gelir: ben-e-ficial." } },
+
+  { "id": "kelime-b1p-25", "kind": "kelime", "level": "B1+", "title": "Ask Next Door", "topic": "workplace",
+    "body": "A collegue in the next office had solved the identical problem in March, but nobody thought to ask her. The two teams share a corridor, a coffee machine and almost no information about what either of them is doing.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "identical", "B": "corridor", "C": "collegue", "D": "information" }, "answer": "C", "correct_form": "colleague",
+      "explain_tr": "Doğrusu **colleague**. Sonu -league şeklinde yazılır: col-league." } }
+]

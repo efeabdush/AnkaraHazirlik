@@ -1,0 +1,126 @@
+[
+  { "id": "bosluk-b1-01", "kind": "bosluk", "level": "B1", "title": "Closed Since Monday", "topic": "campus",
+    "body": "The reading room ___ closed since Monday for repairs, so almost everyone is studying in the corridor or in the cafe downstairs.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "is", "B": "has been", "C": "was", "D": "will be" }, "answer": "B",
+      "explain_tr": "'since Monday' geçmişte başlayıp süren bir durumu gösterir; bu yüzden **has been** gerekir." } },
+
+  { "id": "bosluk-b1-02", "kind": "bosluk", "level": "B1", "title": "The Missing Laptop", "topic": "campus",
+    "body": "The student ___ laptop was stolen reported it to the office the same afternoon, and the security team checked the cameras that evening.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "who", "B": "which", "C": "whose", "D": "that" }, "answer": "C",
+      "explain_tr": "Sahiplik bildiren ilgi zamiri **whose**'dur: the student whose laptop." } },
+
+  { "id": "bosluk-b1-03", "kind": "bosluk", "level": "B1", "title": "On Friday", "topic": "exams",
+    "body": "The results ___ published on Friday morning, so there is really no point in asking the office about them before then.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "will", "B": "will be", "C": "are going", "D": "have" }, "answer": "B",
+      "explain_tr": "Sonuçlar 'yayımlanacak' yani edilgen bir gelecek: **will be + üçüncü hal**." } },
+
+  { "id": "bosluk-b1-04", "kind": "bosluk", "level": "B1", "title": "An Extra Course", "topic": "study plans",
+    "body": "If I ___ more time this term, I would take an extra course, but three lab reports every week already fill my evenings.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "have", "B": "has", "C": "would have", "D": "had" }, "answer": "D",
+      "explain_tr": "İkinci tip koşul cümlesi: If + geçmiş zaman, would + fiil. Bu yüzden **had** gelir." } },
+
+  { "id": "bosluk-b1-05", "kind": "bosluk", "level": "B1", "title": "Nothing Arrived", "topic": "group work",
+    "body": "She said she ___ finish the report by Friday, but nothing arrived and nobody in the group could reach her over the weekend.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "will", "B": "would", "C": "can", "D": "shall" }, "answer": "B",
+      "explain_tr": "Dolaylı anlatımda 'will' bir adım geriye gider ve **would** olur." } },
+
+  { "id": "bosluk-b1-06", "kind": "bosluk", "level": "B1", "title": "The Match Went On", "topic": "sport",
+    "body": "___ the heavy rain, the match continued until the very last minute and the crowd stayed until the final whistle.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "Despite", "B": "Although", "C": "Because", "D": "However" }, "answer": "A",
+      "explain_tr": "**Despite** isim öbeğiyle kullanılır: despite the rain. 'Although' ise cümle ister." } },
+
+  { "id": "bosluk-b1-07", "kind": "bosluk", "level": "B1", "title": "Still Playing", "topic": "sport",
+    "body": "___ it was raining heavily all afternoon, the match continued to the end and only a few people left the stadium early.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "Despite", "B": "Because of", "C": "Although", "D": "In spite" }, "answer": "C",
+      "explain_tr": "Arkasından özne + fiil geldiği için **Although** gerekir; 'despite' isim ister." } },
+
+  { "id": "bosluk-b1-08", "kind": "bosluk", "level": "B1", "title": "Another Language", "topic": "plans",
+    "body": "I am seriously thinking of ___ a second language next year, mainly because most job advertisements in my field now ask for one.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "to learn", "B": "learning", "C": "learn", "D": "learned" }, "answer": "B",
+      "explain_tr": "'think of' edatından sonra fiil **-ing** alır: thinking of learning." } },
+
+  { "id": "bosluk-b1-09", "kind": "bosluk", "level": "B1", "title": "Everyone Available", "topic": "meetings",
+    "body": "They decided ___ the meeting until everyone in the group could attend, which turned out to be the following Wednesday afternoon.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "postponing", "B": "postpone", "C": "to postpone", "D": "postponed" }, "answer": "C",
+      "explain_tr": "decide fiilinden sonra **to + fiil** gelir: decided to postpone." } },
+
+  { "id": "bosluk-b1-10", "kind": "bosluk", "level": "B1", "title": "Before The Deadline", "topic": "problems",
+    "body": "We need to ___ this problem before the deadline, otherwise the whole team will lose marks for something only two people caused.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "sort out", "B": "sort off", "C": "sort over", "D": "sort in" }, "answer": "A",
+      "explain_tr": "'çözmek, halletmek' anlamındaki öbek fiil **sort out**'tur." } },
+
+  { "id": "bosluk-b1-11", "kind": "bosluk", "level": "B1", "title": "A New District", "topic": "city life",
+    "body": "I ___ never been to that part of the city before today, although I have lived here for almost four years.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "had", "B": "has", "C": "have", "D": "am" }, "answer": "C",
+      "explain_tr": "Özne I olduğu için yakın geçmiş **have been** biçiminde kurulur." } },
+
+  { "id": "bosluk-b1-12", "kind": "bosluk", "level": "B1", "title": "Too Late", "topic": "shopping",
+    "body": "By the time we arrived at the shopping centre, the bookshop ___ already closed and the lights inside were off.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "has", "B": "had", "C": "have", "D": "was" }, "answer": "B",
+      "explain_tr": "Geçmişteki bir andan daha önce olan iş için **had + üçüncü hal** kullanılır." } },
+
+  { "id": "bosluk-b1-13", "kind": "bosluk", "level": "B1", "title": "Your Book", "topic": "friends",
+    "body": "The book ___ I borrowed from you last month is on the desk next to the window, exactly where you left your notes.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "who", "B": "whose", "C": "what", "D": "that" }, "answer": "D",
+      "explain_tr": "Cansız varlıklar için ilgi zamiri **that** ya da 'which' olur; 'what' bu yapıda kullanılmaz." } },
+
+  { "id": "bosluk-b1-14", "kind": "bosluk", "level": "B1", "title": "The Old Route", "topic": "habits",
+    "body": "She ___ walk to work every morning, but since the tram line opened she has not done it once.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "used to", "B": "use to", "C": "is used to", "D": "was used" }, "answer": "A",
+      "explain_tr": "Geçmişteki alışkanlık için **used to + yalın fiil** kullanılır." } },
+
+  { "id": "bosluk-b1-15", "kind": "bosluk", "level": "B1", "title": "Called Off", "topic": "work",
+    "body": "The meeting was cancelled ___ the manager was ill, and nobody thought to inform the people who had travelled from another city.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "despite", "B": "because", "C": "although", "D": "in order to" }, "answer": "B",
+      "explain_tr": "Sebep bildiren bağlaç **because**'tur ve arkasından cümle gelir." } },
+
+  { "id": "bosluk-b1-16", "kind": "bosluk", "level": "B1", "title": "Saving Up", "topic": "work",
+    "body": "He works two jobs ___ save enough money for his studies, and he still manages to attend every seminar on time.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "because of", "B": "despite", "C": "in order to", "D": "so that" }, "answer": "C",
+      "explain_tr": "Amaç bildirirken yalın fiil geldiği için **in order to** gerekir; 'so that' özne + fiil ister." } },
+
+  { "id": "bosluk-b1-17", "kind": "bosluk", "level": "B1", "title": "Nobody Knew", "topic": "communication",
+    "body": "Neither the students nor the teacher ___ informed about the room change, so everyone waited outside the wrong door for twenty minutes.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "were", "B": "was", "C": "are", "D": "have" }, "answer": "B",
+      "explain_tr": "'Neither ... nor' yapısında fiil kendisine en yakın özneye uyar: the teacher **was**." } },
+
+  { "id": "bosluk-b1-18", "kind": "bosluk", "level": "B1", "title": "Too Late To Say", "topic": "plans",
+    "body": "You ___ have told me earlier about the change; I would have cancelled my other plans and come with you.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "can", "B": "will", "C": "must", "D": "should" }, "answer": "D",
+      "explain_tr": "Geçmişte yapılmayan ama yapılması gereken bir şey için **should have + üçüncü hal** kullanılır." } },
+
+  { "id": "bosluk-b1-19", "kind": "bosluk", "level": "B1", "title": "Waiting For News", "topic": "applications",
+    "body": "I look forward ___ from you soon, and I am happy to send any other document the committee might need.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "to hearing", "B": "to hear", "C": "hearing", "D": "hear" }, "answer": "A",
+      "explain_tr": "'look forward to' kalıbındaki to bir edattır, bu yüzden fiil **-ing** alır." } },
+
+  { "id": "bosluk-b1-20", "kind": "bosluk", "level": "B1", "title": "A New Dish", "topic": "food",
+    "body": "This is the first time I ___ tried this dish, and I am already thinking about how to cook it at home.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "did", "B": "am", "C": "have", "D": "had" }, "answer": "C",
+      "explain_tr": "'It is the first time' kalıbından sonra yakın geçmiş gelir: **have tried**." } },
+
+  { "id": "bosluk-b1-21", "kind": "bosluk", "level": "B1", "title": "Two Readers", "topic": "procedures",
+    "body": "Every report ___ by two different people before it is sent to the client, which is why small mistakes rarely survive.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "checks", "B": "is checked", "C": "checking", "D": "has checked" }, "answer": "B",
+      "explain_tr": "Raporu başkası kontrol ettiği için edilgen yapı gerekir: **is checked**." } },
+
+  { "id": "bosluk-b1-22", "kind": "bosluk", "level": "B1", "title": "When You Finish", "topic": "classroom",
+    "body": "___ you have finished the exercise, you can leave the room quietly without waiting for the others to complete it.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "During", "B": "Until", "C": "While", "D": "Once" }, "answer": "D",
+      "explain_tr": "'... -diğinde, bir kez ... olunca' anlamı **Once** ile verilir." } },
+
+  { "id": "bosluk-b1-23", "kind": "bosluk", "level": "B1", "title": "Let It Go", "topic": "advice",
+    "body": "There is no point ___ about something you cannot change; put that energy into the parts of the project you actually control.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "in worrying", "B": "to worry", "C": "worry", "D": "worried" }, "answer": "A",
+      "explain_tr": "'There is no point' kalıbı **in + fiil-ing** ile devam eder." } },
+
+  { "id": "bosluk-b1-24", "kind": "bosluk", "level": "B1", "title": "Two Qualities", "topic": "people",
+    "body": "She is not only clever ___ also extremely hard-working, which is a combination the department does not see very often.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "and", "B": "but", "C": "or", "D": "so" }, "answer": "B",
+      "explain_tr": "Kalıp sabittir: **not only ... but also**." } },
+
+  { "id": "bosluk-b1-25", "kind": "bosluk", "level": "B1", "title": "One More Draft", "topic": "coursework",
+    "body": "The teacher made us ___ the essay again because half the class had ignored the question and written about something else.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "to write", "B": "writing", "C": "write", "D": "wrote" }, "answer": "C",
+      "explain_tr": "'make somebody do' yapısında to kullanılmaz: made us **write**." } }
+]

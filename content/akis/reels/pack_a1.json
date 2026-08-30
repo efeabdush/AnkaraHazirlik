@@ -1,0 +1,399 @@
+[
+  {
+    "id": "reel-a1-bus-ticket",
+    "level": "A1",
+    "title": "Bus Ticket",
+    "topic": "city transport",
+    "script": [
+      { "speaker": "student", "text": "How much is a ticket to the city centre?" },
+      { "speaker": "staff", "text": "For students it is nine lira with a card." },
+      { "speaker": "student", "text": "I don't have a card. I have cash." },
+      { "speaker": "staff", "text": "Then it is twelve lira." },
+      { "speaker": "student", "text": "Okay, here you are." }
+    ],
+    "question": {
+      "stem": "How much does the student pay?",
+      "options": { "A": "Nine lira", "B": "Twelve lira", "C": "Ten lira", "D": "Nothing" },
+      "answer": "B",
+      "explain_tr": "Öğrencinin kartı yok, bu yüzden dokuz lira değil on iki lira ödüyor.",
+      "key_line": "Then it is twelve lira."
+    }
+  },
+  {
+    "id": "reel-a1-class-time",
+    "level": "A1",
+    "title": "Class Time",
+    "topic": "campus schedule",
+    "script": [
+      { "speaker": "teacher", "text": "Our Monday class starts at nine, not at ten." },
+      { "speaker": "student", "text": "Nine? That is very early for me." },
+      { "speaker": "teacher", "text": "Yes. The room is free only in the morning." },
+      { "speaker": "student", "text": "Okay, I write it in my notebook." },
+      { "speaker": "teacher", "text": "Good. Please tell your friends too." }
+    ],
+    "question": {
+      "stem": "When does the Monday class start?",
+      "options": { "A": "At nine", "B": "At ten", "C": "In the evening", "D": "On Tuesday" },
+      "answer": "A",
+      "explain_tr": "Öğretmen dersin dokuzda başladığını söylüyor. 'not at ten' kısmı onda olmadığını anlatıyor.",
+      "key_line": "Our Monday class starts at nine, not at ten."
+    }
+  },
+  {
+    "id": "reel-a1-room-twelve",
+    "level": "A1",
+    "title": "Room Twelve",
+    "topic": "finding a room",
+    "script": [
+      { "speaker": "student", "text": "Excuse me, where is room twelve?" },
+      { "speaker": "staff", "text": "It is on this floor, next to the lift." },
+      { "speaker": "student", "text": "Thank you. Is the class there now?" },
+      { "speaker": "staff", "text": "No, your class starts at two o'clock." },
+      { "speaker": "student", "text": "Then I can drink a tea first." }
+    ],
+    "question": {
+      "stem": "Where is room twelve?",
+      "options": {
+        "A": "Next to the lift",
+        "B": "On the second floor",
+        "C": "Near the garden",
+        "D": "In the library"
+      },
+      "answer": "A",
+      "explain_tr": "Görevli odanın aynı katta, asansörün yanında olduğunu söylüyor.",
+      "key_line": "It is on this floor, next to the lift."
+    }
+  },
+  {
+    "id": "reel-a1-wifi-password",
+    "level": "A1",
+    "title": "Wifi Password",
+    "topic": "campus internet",
+    "script": [
+      { "speaker": "student", "text": "Can I have the wifi password, please?" },
+      { "speaker": "staff", "text": "It is on the yellow card. Small letters, no spaces." },
+      { "speaker": "student", "text": "Is the internet free for students?" },
+      { "speaker": "staff", "text": "Yes, but only inside this building." },
+      { "speaker": "student", "text": "Okay, thank you very much." }
+    ],
+    "question": {
+      "stem": "Where can the student use the free internet?",
+      "options": {
+        "A": "Everywhere in the city",
+        "B": "Only inside this building",
+        "C": "Only at home",
+        "D": "In the garden"
+      },
+      "answer": "B",
+      "explain_tr": "Görevli internetin ücretsiz olduğunu ama sadece bu binada çalıştığını söylüyor.",
+      "key_line": "Yes, but only inside this building."
+    }
+  },
+  {
+    "id": "reel-a1-sandwich-order",
+    "level": "A1",
+    "title": "Cheese Sandwich",
+    "topic": "campus cafe",
+    "script": [
+      { "speaker": "student", "text": "One cheese sandwich, please." },
+      { "speaker": "staff", "text": "With tomato or without tomato? The bread is fresh today." },
+      { "speaker": "student", "text": "Without tomato, please. I don't like tomato." },
+      { "speaker": "student", "text": "And one small water, please." },
+      { "speaker": "staff", "text": "Okay. Together it is twenty-five lira." },
+      { "speaker": "student", "text": "Here you are." }
+    ],
+    "question": {
+      "stem": "What does the student NOT want in the sandwich?",
+      "options": { "A": "Cheese", "B": "Tomato", "C": "Bread", "D": "Water" },
+      "answer": "B",
+      "explain_tr": "Öğrenci domates istemiyor. Peynir ve ekmek sandviçin içinde, su ise ayrı bir sipariş.",
+      "key_line": "Without tomato, please."
+    }
+  },
+  {
+    "id": "reel-a1-library-closes",
+    "level": "A1",
+    "title": "Library Closes",
+    "topic": "library hours",
+    "script": [
+      { "speaker": "student", "text": "What time does the library close today?" },
+      { "speaker": "staff", "text": "At six. On Friday we close at eight." },
+      { "speaker": "student", "text": "And on Sunday?" },
+      { "speaker": "staff", "text": "On Sunday the library is closed." },
+      { "speaker": "staff", "text": "The reading room upstairs is open until six too." },
+      { "speaker": "student", "text": "Okay, I come tomorrow morning." }
+    ],
+    "question": {
+      "stem": "What time does the library close today?",
+      "options": { "A": "At six", "B": "At eight", "C": "At ten", "D": "It is closed today" },
+      "answer": "A",
+      "explain_tr": "Bugün altıda kapanıyor. Sekiz saati cuma günü için söyleniyor, pazar günü ise kapalı.",
+      "key_line": "At six. On Friday we close at eight."
+    }
+  },
+  {
+    "id": "reel-a1-lost-charger",
+    "level": "A1",
+    "title": "Lost Charger",
+    "topic": "lost and found",
+    "script": [
+      { "speaker": "student", "text": "I lost my phone charger in this room." },
+      { "speaker": "staff", "text": "What colour is it?" },
+      { "speaker": "student", "text": "It is white and very small." },
+      { "speaker": "staff", "text": "We have one white charger here. Is this yours?" },
+      { "speaker": "student", "text": "Yes! Thank you very much." }
+    ],
+    "question": {
+      "stem": "What does the student lose?",
+      "options": {
+        "A": "A phone",
+        "B": "A white charger",
+        "C": "A black bag",
+        "D": "A small book"
+      },
+      "answer": "B",
+      "explain_tr": "Öğrenci beyaz ve küçük bir şarj aleti kaybettiğini söylüyor. Telefonunu değil.",
+      "key_line": "It is white and very small."
+    }
+  },
+  {
+    "id": "reel-a1-gym-hours",
+    "level": "A1",
+    "title": "Gym Hours",
+    "topic": "sports centre",
+    "script": [
+      { "speaker": "student", "text": "When is the gym open in the morning?" },
+      { "speaker": "staff", "text": "From seven to eleven. Then it closes for cleaning." },
+      { "speaker": "student", "text": "And in the afternoon?" },
+      { "speaker": "staff", "text": "It opens again at two and closes at nine." },
+      { "speaker": "student", "text": "Good, I come after my class." }
+    ],
+    "question": {
+      "stem": "When does the gym close in the morning?",
+      "options": { "A": "At seven", "B": "At eleven", "C": "At two", "D": "At nine" },
+      "answer": "B",
+      "explain_tr": "Sabah yediden on bire açık; on birde temizlik için kapanıyor. İkide tekrar açılıyor.",
+      "key_line": "From seven to eleven. Then it closes for cleaning."
+    }
+  },
+  {
+    "id": "reel-a1-photocopy-price",
+    "level": "A1",
+    "title": "Photocopy Price",
+    "topic": "library services",
+    "script": [
+      { "speaker": "student", "text": "How much is one photocopy?" },
+      { "speaker": "staff", "text": "One lira for black, three lira for colour." },
+      { "speaker": "student", "text": "I need ten black copies." },
+      { "speaker": "staff", "text": "That is ten lira. Do you want them now?" },
+      { "speaker": "student", "text": "Yes, please. I wait here." }
+    ],
+    "question": {
+      "stem": "How much does the student pay?",
+      "options": { "A": "One lira", "B": "Three lira", "C": "Ten lira", "D": "Thirty lira" },
+      "answer": "C",
+      "explain_tr": "On siyah fotokopi, tanesi bir lira, toplam on lira. Üç lira renkli fotokopinin fiyatı.",
+      "key_line": "That is ten lira."
+    }
+  },
+  {
+    "id": "reel-a1-at-the-gate",
+    "level": "A1",
+    "title": "At The Gate",
+    "topic": "meeting a friend",
+    "script": [
+      { "speaker": "friend", "text": "Where are you? I am at the gate." },
+      { "speaker": "student", "text": "I am in the library. I come in five minutes." },
+      { "speaker": "friend", "text": "Okay. I wait near the coffee machine." },
+      { "speaker": "student", "text": "Please buy me a small coffee." },
+      { "speaker": "friend", "text": "Okay, but bring money. I have only ten lira." }
+    ],
+    "question": {
+      "stem": "Where does the friend wait?",
+      "options": {
+        "A": "In the library",
+        "B": "Near the coffee machine",
+        "C": "At home",
+        "D": "In the classroom"
+      },
+      "answer": "B",
+      "explain_tr": "Arkadaş kahve makinesinin yanında bekliyor. Kütüphanede olan kişi öğrencinin kendisi.",
+      "key_line": "I wait near the coffee machine."
+    }
+  },
+  {
+    "id": "reel-a1-notebook-shop",
+    "level": "A1",
+    "title": "Notebook Shop",
+    "topic": "campus shop",
+    "script": [
+      { "speaker": "student", "text": "Do you have big notebooks?" },
+      { "speaker": "staff", "text": "Yes. Blue, red and green." },
+      { "speaker": "student", "text": "One blue, please. And two pens." },
+      { "speaker": "staff", "text": "The notebook is fifteen lira, the pens are ten." },
+      { "speaker": "staff", "text": "Thank you. Do you need a bag?" },
+      { "speaker": "student", "text": "No, thank you. My bag is here." }
+    ],
+    "question": {
+      "stem": "What does the student buy?",
+      "options": {
+        "A": "One blue notebook and two pens",
+        "B": "Two notebooks and one pen",
+        "C": "One red notebook",
+        "D": "Only two pens"
+      },
+      "answer": "A",
+      "explain_tr": "Öğrenci bir mavi defter ve iki kalem alıyor. Kırmızı ve yeşil sadece seçenek olarak geçiyor.",
+      "key_line": "One blue, please. And two pens."
+    }
+  },
+  {
+    "id": "reel-a1-take-an-umbrella",
+    "level": "A1",
+    "title": "Take An Umbrella",
+    "topic": "weather",
+    "script": [
+      { "speaker": "friend", "text": "Is it cold outside?" },
+      { "speaker": "student", "text": "Not very cold, but it rains." },
+      { "speaker": "friend", "text": "Then I take my umbrella." },
+      { "speaker": "student", "text": "Take a jacket too. The wind is strong." },
+      { "speaker": "student", "text": "The bus stop has no roof today." },
+      { "speaker": "friend", "text": "Okay. See you at school." }
+    ],
+    "question": {
+      "stem": "What is the weather like?",
+      "options": {
+        "A": "Very cold and sunny",
+        "B": "Rainy and windy",
+        "C": "Hot and dry",
+        "D": "Snowy"
+      },
+      "answer": "B",
+      "explain_tr": "Yağmur yağıyor ve rüzgâr sert. Hava çok soğuk değil, kar da yok.",
+      "key_line": "Not very cold, but it rains."
+    }
+  },
+  {
+    "id": "reel-a1-doctor-day",
+    "level": "A1",
+    "title": "Doctor Day",
+    "topic": "health centre",
+    "script": [
+      { "speaker": "student", "text": "I want to see the doctor." },
+      { "speaker": "staff", "text": "Today is full. Can you come on Thursday?" },
+      { "speaker": "student", "text": "Thursday is good. What time?" },
+      { "speaker": "staff", "text": "At half past ten. Bring your student card." },
+      { "speaker": "student", "text": "Okay. Thursday at half past ten." }
+    ],
+    "question": {
+      "stem": "When is the appointment?",
+      "options": {
+        "A": "Today",
+        "B": "Thursday morning",
+        "C": "Thursday evening",
+        "D": "Friday morning"
+      },
+      "answer": "B",
+      "explain_tr": "Randevu perşembe, saat on buçukta. 'Half past ten' sabahı gösteriyor, bugün ise dolu.",
+      "key_line": "At half past ten."
+    }
+  },
+  {
+    "id": "reel-a1-cafeteria-floor",
+    "level": "A1",
+    "title": "Cafeteria Floor",
+    "topic": "campus food",
+    "script": [
+      { "speaker": "student", "text": "Is the cafeteria on this floor?" },
+      { "speaker": "staff", "text": "No, it is downstairs, near the garden door." },
+      { "speaker": "student", "text": "Is it open now?" },
+      { "speaker": "staff", "text": "Yes, until three o'clock." },
+      { "speaker": "staff", "text": "The soup today is tomato soup." },
+      { "speaker": "student", "text": "Good. I am very hungry." }
+    ],
+    "question": {
+      "stem": "Where is the cafeteria?",
+      "options": {
+        "A": "On this floor",
+        "B": "Downstairs, near the garden door",
+        "C": "In the library",
+        "D": "Next to the gym"
+      },
+      "answer": "B",
+      "explain_tr": "Kafeterya bu katta değil; alt katta ve bahçe kapısının yanında.",
+      "key_line": "No, it is downstairs, near the garden door."
+    }
+  },
+  {
+    "id": "reel-a1-borrow-a-pen",
+    "level": "A1",
+    "title": "Borrow A Pen",
+    "topic": "classroom",
+    "script": [
+      { "speaker": "student", "text": "Can I borrow a pen? Mine is empty." },
+      { "speaker": "friend", "text": "I have a blue one and a black one." },
+      { "speaker": "student", "text": "The black one, please. I write the answers." },
+      { "speaker": "friend", "text": "Okay, but give it back after the class." },
+      { "speaker": "student", "text": "Of course. Thank you." }
+    ],
+    "question": {
+      "stem": "Which pen does the student take?",
+      "options": { "A": "The blue one", "B": "The black one", "C": "Both pens", "D": "No pen" },
+      "answer": "B",
+      "explain_tr": "Öğrenci siyah kalemi istiyor. Mavi kalem de var ama onu almıyor.",
+      "key_line": "The black one, please."
+    }
+  },
+  {
+    "id": "reel-a1-which-bus",
+    "level": "A1",
+    "title": "Which Bus",
+    "topic": "city transport",
+    "script": [
+      { "speaker": "student", "text": "Which bus goes to the station?" },
+      { "speaker": "staff", "text": "Number twelve. It comes every ten minutes." },
+      { "speaker": "student", "text": "Is number eight good too?" },
+      { "speaker": "staff", "text": "No, number eight goes to the hospital." },
+      { "speaker": "staff", "text": "The stop is in front of this building." },
+      { "speaker": "student", "text": "Okay, I take number twelve." }
+    ],
+    "question": {
+      "stem": "Which bus goes to the station?",
+      "options": {
+        "A": "Number eight",
+        "B": "Number twelve",
+        "C": "Number ten",
+        "D": "Both buses"
+      },
+      "answer": "B",
+      "explain_tr": "İstasyona on iki numara gidiyor. Sekiz numara hastaneye gidiyor.",
+      "key_line": "Number twelve. It comes every ten minutes."
+    }
+  },
+  {
+    "id": "reel-a1-water-and-juice",
+    "level": "A1",
+    "title": "Water And Juice",
+    "topic": "campus shop",
+    "script": [
+      { "speaker": "student", "text": "How much is a bottle of water?" },
+      { "speaker": "staff", "text": "Small water is five lira, big water is eight." },
+      { "speaker": "student", "text": "And orange juice?" },
+      { "speaker": "staff", "text": "Orange juice is fifteen lira." },
+      { "speaker": "student", "text": "One big water, please. Juice is expensive." },
+      { "speaker": "staff", "text": "Here you are. Eight lira." }
+    ],
+    "question": {
+      "stem": "What does the student buy?",
+      "options": {
+        "A": "Small water",
+        "B": "Big water",
+        "C": "Orange juice",
+        "D": "Water and juice"
+      },
+      "answer": "B",
+      "explain_tr": "Öğrenci büyük su alıyor. Portakal suyunu pahalı bulduğu için almıyor.",
+      "key_line": "One big water, please."
+    }
+  }
+]

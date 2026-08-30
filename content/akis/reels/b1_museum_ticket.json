@@ -1,0 +1,26 @@
+{
+  "id": "reel-museum-ticket",
+  "level": "B1",
+  "title": "Museum Ticket",
+  "topic": "free time",
+  "script": [
+    { "speaker": "friend", "text": "The museum is free on the first Sunday of the month, isn't it?" },
+    { "speaker": "student", "text": "It was, but they changed it. Now it's free for students any day, with a card." },
+    { "speaker": "friend", "text": "I left my student card at home." },
+    { "speaker": "student", "text": "Then it's sixty lira today. Or we go tomorrow and you bring the card." },
+    { "speaker": "friend", "text": "Tomorrow. I'm not paying sixty lira for a card I own." }
+  ],
+  "question": {
+    "stem": "What do they decide to do?",
+    "options": {
+      "A": "Pay sixty lira and go in today",
+      "B": "Go on the first Sunday of the month",
+      "C": "Visit the museum tomorrow with the card",
+      "D": "Buy a new student card",
+      "E": "Ask for a free ticket at the door"
+    },
+    "answer": "C",
+    "explain_tr": "Arkadaş kartını evde unuttuğu için yarın gitmeye karar veriyorlar. 'Ayın ilk pazarı' kuralı ise artık geçerli değil.",
+    "key_line": "Or we go tomorrow and you bring the card."
+  }
+}

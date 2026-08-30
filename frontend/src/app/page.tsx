@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AkisModeDemo } from "@/components/ModeHub";
+import { MODES } from "@/lib/modes";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata(
@@ -205,45 +207,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- listening structure explained ---------- */}
+      {/* ---------- short-form Akış ---------- */}
       <section className="card overflow-hidden">
         <div className="border-b border-[var(--line)] bg-[rgba(28,61,90,0.04)] px-7 py-5">
-          <p className="eyebrow">Dinleme bölümü</p>
-          <h2 className="mt-1 font-serif text-2xl text-[var(--navy)]">Bir dinleme sınavı dört kayıttan oluşur</h2>
+          <p className="eyebrow">⚡ Akış</p>
+          <h2 className="mt-1 font-serif text-2xl text-[var(--navy)]">Uzun teste vaktin yoksa kısa kısa çalış</h2>
           <p className="prose-quiet mt-2 max-w-3xl text-sm">
-            İlk üç kayıt (Track I–III) kısa kampüs diyaloglarıdır, sorular dinlerken önündedir. Dördüncü kayıt (Track
-            IV) yaklaşık beş dakikalık bir derstir: önce not alırsın, sorular kayıt bitince açılır.
+            Dinle, kelimeyi yakala veya boşluğu tamamla. Her kart tek bir işe odaklanır; cevapladıktan sonra nedenini
+            görür, takıldığın soruyu yapay zekâya sorabilirsin.
           </p>
         </div>
-        <div className="grid gap-0 md:grid-cols-2">
-          <div className="border-b border-[var(--line)] p-7 md:border-b-0 md:border-r">
-            <div className="flex items-center gap-3">
-              <span className="badge badge-navy">Track I–III</span>
-              <span className="live-dot" />
-            </div>
-            <h3 className="mt-3 font-serif text-2xl text-[var(--navy)]">Diyalog</h3>
-            <p className="prose-quiet mt-2 text-sm">
-              Öğrenci ile görevli arasında kısa bir kampüs konuşması: kayıt bürosu, kütüphane, danışman görüşmesi…
-              Her diyalogda dört soru vardır ve dinlerken işaretlersin.
-            </p>
-            <Link href="/listening" className="btn btn-outline mt-5">
-              Diyaloğa geç
+        <div className="grid gap-0 md:grid-cols-3">
+          {MODES.map((mode, index) => (
+            <Link
+              key={mode.id}
+              href={`/akis/${mode.id}`}
+              className={`group p-6 transition-colors hover:bg-[rgba(28,61,90,0.035)] ${index < 2 ? "border-b border-[var(--line)] md:border-b-0 md:border-r" : ""}`}
+            >
+              <div className="mode-stage"><AkisModeDemo kind={mode.demo} /></div>
+              <h3 className="mt-4 font-serif text-xl text-[var(--navy)]">{mode.title}</h3>
+              <p className="prose-quiet mt-1.5 text-sm">{mode.blurb}</p>
+              <span className="mt-4 inline-flex text-sm font-semibold text-[var(--navy)] group-hover:underline">Başla →</span>
             </Link>
-          </div>
-          <div className="p-7">
-            <div className="flex items-center gap-3">
-              <span className="badge badge-gold">Track IV</span>
-              <span className="live-dot" />
-            </div>
-            <h3 className="mt-3 font-serif text-2xl text-[var(--navy)]">Not almalı ders</h3>
-            <p className="prose-quiet mt-2 text-sm">
-              Tek konuşmacının beş dakikalık dersi. Dinlerken çizgili deftere not alırsın; notlar puanlanmaz ama
-              sorular kayıt bittikten sonra geldiği için iyi not almak işini kolaylaştırır.
-            </p>
-            <Link href="/listening" className="btn btn-outline mt-5">
-              Derse geç
-            </Link>
-          </div>
+          ))}
+        </div>
+        <div className="border-t border-[var(--line)] px-7 py-4 text-center">
+          <Link href="/akis" className="btn btn-primary">Üç modu ve seviyeleri gör</Link>
         </div>
       </section>
     </div>

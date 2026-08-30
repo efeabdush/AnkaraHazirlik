@@ -1,0 +1,25 @@
+{
+  "id": "reel-tea-not-coffee",
+  "level": "A1",
+  "title": "Tea, Not Coffee",
+  "topic": "campus cafe",
+  "script": [
+    { "speaker": "student", "text": "Hi. Can I have a coffee, please?" },
+    { "speaker": "staff", "text": "Sorry, the coffee machine is broken today. We have tea." },
+    { "speaker": "student", "text": "Okay. Then a green tea, please." },
+    { "speaker": "staff", "text": "Green tea. That is fifteen lira." },
+    { "speaker": "student", "text": "Here you are. Thank you." }
+  ],
+  "question": {
+    "stem": "What does the student buy?",
+    "options": {
+      "A": "A coffee",
+      "B": "A green tea",
+      "C": "A bottle of water",
+      "D": "Nothing"
+    },
+    "answer": "B",
+    "explain_tr": "Kahve makinesi bozuk olduğu için öğrenci yeşil çay alıyor. Kayıtta 'coffee' geçiyor ama satın alınmıyor.",
+    "key_line": "Okay. Then a green tea, please."
+  }
+}

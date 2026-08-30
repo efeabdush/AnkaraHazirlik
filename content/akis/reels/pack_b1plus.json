@@ -1,0 +1,480 @@
+[
+  {
+    "id": "reel-b1plus-exam-hint",
+    "level": "B1+",
+    "title": "Exam Hint",
+    "topic": "exam preparation",
+    "script": [
+      { "speaker": "student", "text": "Will the exam have exactly the same format as last year's paper?" },
+      { "speaker": "teacher", "text": "I wouldn't spend too long on the old paper if I were you." },
+      { "speaker": "student", "text": "So the format does change this year?" },
+      { "speaker": "teacher", "text": "I said what I said. The reading section is worth looking at again." },
+      { "speaker": "student", "text": "Understood. Less memorising of old questions, more reading practice." }
+    ],
+    "question": {
+      "stem": "What is the teacher suggesting?",
+      "options": {
+        "A": "The exam will be identical to last year's",
+        "B": "The old paper is not a safe guide, and reading deserves attention",
+        "C": "The reading section has been removed",
+        "D": "Students should memorise the old paper",
+        "E": "There will be no exam this year"
+      },
+      "answer": "B",
+      "explain_tr": "Öğretmen açıkça söylemiyor ama eski kâğıda güvenmemeyi ima ediyor ve okuma bölümünü işaret ediyor.",
+      "key_line": "I wouldn't spend too long on the old paper if I were you."
+    }
+  },
+  {
+    "id": "reel-b1plus-the-deposit",
+    "level": "B1+",
+    "title": "The Deposit",
+    "topic": "housing",
+    "script": [
+      { "speaker": "student", "text": "When do I get the deposit back after I move out?" },
+      { "speaker": "staff", "text": "Normally within a month, if there is no damage in the room." },
+      { "speaker": "student", "text": "The wall was already marked when I arrived." },
+      { "speaker": "staff", "text": "Did you write that on the form on your first day?" },
+      { "speaker": "student", "text": "I don't think anyone gave me a form." },
+      { "speaker": "staff", "text": "Then it will be your word against the report. Take photos today." }
+    ],
+    "question": {
+      "stem": "What is the staff member implying?",
+      "options": {
+        "A": "The deposit will certainly be returned",
+        "B": "With no record from the first day, the student may be blamed for the mark",
+        "C": "The student must repaint the wall",
+        "D": "The move-in form does not matter",
+        "E": "Deposits take a year to return"
+      },
+      "answer": "B",
+      "explain_tr": "Giriş formu yoksa duvardaki iz öğrenciye yazılabilir; bu yüzden bugün fotoğraf çekmesi isteniyor.",
+      "key_line": "Then it will be your word against the report."
+    }
+  },
+  {
+    "id": "reel-b1plus-six-courses",
+    "level": "B1+",
+    "title": "Six Courses",
+    "topic": "advising",
+    "script": [
+      { "speaker": "student", "text": "I want to take six courses this term instead of five." },
+      { "speaker": "staff", "text": "You can. Students who do it usually drop one by November." },
+      { "speaker": "student", "text": "I work better under pressure." },
+      { "speaker": "staff", "text": "Everyone says that in September. Look at your two lab courses first." },
+      { "speaker": "student", "text": "Both of them have weekly reports." },
+      { "speaker": "staff", "text": "Exactly. That is where the time goes." }
+    ],
+    "question": {
+      "stem": "What is the adviser's view?",
+      "options": {
+        "A": "Six courses are not allowed",
+        "B": "The plan usually collapses, especially with two report-heavy labs",
+        "C": "The student should drop a lab course today",
+        "D": "Pressure improves most students' work",
+        "E": "November is the best month to add a course"
+      },
+      "answer": "B",
+      "explain_tr": "Danışman izin veriyor ama genelde kasımda bırakıldığını, asıl yükün haftalık raporlu iki laboratuvarda olduğunu söylüyor.",
+      "key_line": "Students who do it usually drop one by November."
+    }
+  },
+  {
+    "id": "reel-b1plus-not-this-time",
+    "level": "B1+",
+    "title": "Not This Time",
+    "topic": "applications",
+    "script": [
+      { "speaker": "student", "text": "Can you tell me why my application wasn't accepted?" },
+      { "speaker": "staff", "text": "Your grades were fine. The written part was very short." },
+      { "speaker": "student", "text": "There was a five hundred word limit." },
+      { "speaker": "staff", "text": "A limit, not a target. Most successful applicants used four hundred and fifty." },
+      { "speaker": "student", "text": "Mine was under two hundred." },
+      { "speaker": "staff", "text": "That is what the panel noticed first." }
+    ],
+    "question": {
+      "stem": "Why was the application unsuccessful?",
+      "options": {
+        "A": "The grades were too low",
+        "B": "The written part was far shorter than expected",
+        "C": "The student went over the word limit",
+        "D": "The panel never read the application",
+        "E": "The deadline was missed"
+      },
+      "answer": "B",
+      "explain_tr": "Beş yüz kelime üst sınır; başarılı adaylar dört yüz elli civarı yazmış, öğrenci ise iki yüzün altında kalmış.",
+      "key_line": "A limit, not a target."
+    }
+  },
+  {
+    "id": "reel-b1plus-new-rule",
+    "level": "B1+",
+    "title": "New Rule",
+    "topic": "library policy",
+    "script": [
+      { "speaker": "student", "text": "Since when can we not book a study room for four hours?" },
+      { "speaker": "staff", "text": "Since students booked rooms and never came." },
+      { "speaker": "student", "text": "So the people who used them properly are punished." },
+      { "speaker": "staff", "text": "I understand the feeling. But the two hour limit doubled the number of groups that get a room." },
+      { "speaker": "student", "text": "That's hard to argue with." }
+    ],
+    "question": {
+      "stem": "What is the staff member's main point?",
+      "options": {
+        "A": "The rule exists to punish careless students",
+        "B": "The shorter limit lets far more groups actually get a room",
+        "C": "Students should simply book earlier",
+        "D": "Four hour bookings are still possible",
+        "E": "The rooms are rarely used at all"
+      },
+      "answer": "B",
+      "explain_tr": "Görevli şikâyeti anlıyor ama iki saatlik sınırın oda bulabilen grup sayısını ikiye katladığını söylüyor.",
+      "key_line": "But the two hour limit doubled the number of groups that get a room."
+    }
+  },
+  {
+    "id": "reel-b1plus-nothing-is-wrong",
+    "level": "B1+",
+    "title": "Nothing Is Wrong",
+    "topic": "group work",
+    "script": [
+      { "speaker": "student", "text": "Is everything okay? You've been quiet in the meetings." },
+      { "speaker": "friend", "text": "It's fine, really. I just do my part and go home." },
+      { "speaker": "student", "text": "You used to bring ideas." },
+      { "speaker": "friend", "text": "I brought three. All three ended up with someone else's name on the slide." },
+      { "speaker": "student", "text": "I didn't know that. I'll change how we credit the work." }
+    ],
+    "question": {
+      "stem": "Why has the friend become quiet?",
+      "options": {
+        "A": "She is busy with other courses",
+        "B": "Her ideas were presented under other people's names",
+        "C": "She dislikes the meeting times",
+        "D": "She prefers working on her own",
+        "E": "Nobody ever asked her for ideas"
+      },
+      "answer": "B",
+      "explain_tr": "Arkadaş 'sorun yok' dese de üç fikrinin başkasının adıyla sunulduğunu söylüyor; sessizliğin gerçek sebebi bu.",
+      "key_line": "All three ended up with someone else's name on the slide."
+    }
+  },
+  {
+    "id": "reel-b1plus-small-print",
+    "level": "B1+",
+    "title": "The Small Print",
+    "topic": "scholarships",
+    "script": [
+      { "speaker": "student", "text": "I have a 3.4 average, so I qualify for the scholarship." },
+      { "speaker": "staff", "text": "The average is one condition. The other is thirty credits a year." },
+      { "speaker": "student", "text": "I took twenty-four last year because of my illness." },
+      { "speaker": "staff", "text": "Then you can apply with a medical report, but not through the normal form." },
+      { "speaker": "student", "text": "Nobody mentioned a second route." },
+      { "speaker": "staff", "text": "It's in the same document, further down." }
+    ],
+    "question": {
+      "stem": "What does the student learn?",
+      "options": {
+        "A": "Her average is too low to apply",
+        "B": "There is a separate route for students with a medical report",
+        "C": "She cannot apply at all this year",
+        "D": "The credit condition does not exist",
+        "E": "The normal form is enough for her case"
+      },
+      "answer": "B",
+      "explain_tr": "Ortalama yetiyor ama kredi şartı eksik. Rapora dayalı ayrı bir başvuru yolu var, aynı belgenin alt kısmında.",
+      "key_line": "Then you can apply with a medical report, but not through the normal form."
+    }
+  },
+  {
+    "id": "reel-b1plus-lab-shoes",
+    "level": "B1+",
+    "title": "Lab Shoes",
+    "topic": "lab safety",
+    "script": [
+      { "speaker": "staff", "text": "You cannot come into the laboratory in those open shoes." },
+      { "speaker": "student", "text": "It's just one measurement. Two minutes." },
+      { "speaker": "staff", "text": "The rule doesn't count minutes. It counts what is on the floor." },
+      { "speaker": "student", "text": "Nothing has spilled on the floor today." },
+      { "speaker": "staff", "text": "That is exactly what we thought last term, before the accident." },
+      { "speaker": "student", "text": "Fine. I'll get my other shoes." }
+    ],
+    "question": {
+      "stem": "What is the staff member's argument?",
+      "options": {
+        "A": "The measurement will take too long",
+        "B": "The risk does not depend on how long you stay inside",
+        "C": "The student's shoes are dirty",
+        "D": "The laboratory is closed today",
+        "E": "An accident happened this morning"
+      },
+      "answer": "B",
+      "explain_tr": "Görevli süreyi değil zemindeki riski önemsiyor ve geçen dönemki kazayı hatırlatıyor.",
+      "key_line": "The rule doesn't count minutes."
+    }
+  },
+  {
+    "id": "reel-b1plus-draft-feedback",
+    "level": "B1+",
+    "title": "Draft Feedback",
+    "topic": "writing",
+    "script": [
+      { "speaker": "teacher", "text": "Your argument is clear, but I stopped believing it on page two." },
+      { "speaker": "student", "text": "Is the grammar the problem?" },
+      { "speaker": "teacher", "text": "The grammar is fine. You make a big claim and then give one example from your own life." },
+      { "speaker": "student", "text": "So I need sources." },
+      { "speaker": "teacher", "text": "You need evidence that a reader who disagrees with you would still accept." }
+    ],
+    "question": {
+      "stem": "What does the teacher say the essay needs?",
+      "options": {
+        "A": "Better grammar and spelling",
+        "B": "Evidence that would satisfy a reader who disagrees",
+        "C": "A shorter, simpler argument",
+        "D": "More stories from the student's own life",
+        "E": "A completely different topic"
+      },
+      "answer": "B",
+      "explain_tr": "Sorun dil bilgisi değil. Büyük iddia tek kişisel örnekle destekleniyor; karşı görüştekini de ikna edecek kanıt isteniyor.",
+      "key_line": "You need evidence that a reader who disagrees with you would still accept."
+    }
+  },
+  {
+    "id": "reel-b1plus-another-time",
+    "level": "B1+",
+    "title": "Another Time",
+    "topic": "group project",
+    "script": [
+      { "speaker": "student", "text": "Can we move Thursday's meeting to Friday afternoon again?" },
+      { "speaker": "friend", "text": "That is the third change this month, and it is only the fifteenth." },
+      { "speaker": "student", "text": "My shift changed again." },
+      { "speaker": "friend", "text": "Then tell me which days never change and we will build the meeting around them." },
+      { "speaker": "student", "text": "Monday and Wednesday evenings never change." },
+      { "speaker": "friend", "text": "Good. Wednesday from now on." }
+    ],
+    "question": {
+      "stem": "What does the friend actually want?",
+      "options": {
+        "A": "To cancel the meetings",
+        "B": "A fixed day that will stop changing",
+        "C": "To meet on Friday instead of Thursday",
+        "D": "The student to change her shift",
+        "E": "Fewer messages about the project"
+      },
+      "answer": "B",
+      "explain_tr": "Arkadaş cumaya itiraz etmiyor; sürekli değişikliği bitirecek sabit bir gün istiyor.",
+      "key_line": "Then tell me which days never change and we will build the meeting around them."
+    }
+  },
+  {
+    "id": "reel-b1plus-team-selection",
+    "level": "B1+",
+    "title": "Team Selection",
+    "topic": "sports team",
+    "script": [
+      { "speaker": "student", "text": "I trained all summer, but I'm not in the first team." },
+      { "speaker": "teacher", "text": "Your fitness is the best in the group." },
+      { "speaker": "student", "text": "Then why am I on the bench?" },
+      { "speaker": "teacher", "text": "In the last three matches you passed twice and shot eleven times." },
+      { "speaker": "student", "text": "I was trying to help us score." },
+      { "speaker": "teacher", "text": "The team scores more when the ball moves. That's the whole reason." }
+    ],
+    "question": {
+      "stem": "Why is the student not in the first team?",
+      "options": {
+        "A": "His fitness is not good enough",
+        "B": "He shoots instead of passing to the team",
+        "C": "He missed the summer training",
+        "D": "The coach does not like him",
+        "E": "The team never scores any goals"
+      },
+      "answer": "B",
+      "explain_tr": "Kondisyonu gruptaki en iyisi; sorun topu paylaşmaması. Antrenör pas ve şut sayısını örnek veriyor.",
+      "key_line": "In the last three matches you passed twice and shot eleven times."
+    }
+  },
+  {
+    "id": "reel-b1plus-waiting-list",
+    "level": "B1+",
+    "title": "Waiting List",
+    "topic": "housing",
+    "script": [
+      { "speaker": "student", "text": "I am number forty on the housing waiting list. Is there any hope?" },
+      { "speaker": "staff", "text": "Last year we got to number thirty-five by October." },
+      { "speaker": "student", "text": "So probably not." },
+      { "speaker": "staff", "text": "Unless you accept a shared room. That list moves much faster." },
+      { "speaker": "student", "text": "How much faster?" },
+      { "speaker": "staff", "text": "Almost everyone who ticked that box last year got a place." }
+    ],
+    "question": {
+      "stem": "What is the staff member suggesting?",
+      "options": {
+        "A": "The student will certainly get a single room",
+        "B": "Accepting a shared room makes a place very likely",
+        "C": "The waiting list never moves at all",
+        "D": "The student should apply again next year",
+        "E": "Thirty-five is the limit for shared rooms"
+      },
+      "answer": "B",
+      "explain_tr": "Tek kişilik odada sıra kırka ulaşmıyor; paylaşımlı odayı işaretleyenlerin neredeyse tamamı yer almış.",
+      "key_line": "Almost everyone who ticked that box last year got a place."
+    }
+  },
+  {
+    "id": "reel-b1plus-two-devices",
+    "level": "B1+",
+    "title": "Two Devices",
+    "topic": "software licence",
+    "script": [
+      { "speaker": "student", "text": "The program says my licence is already in use." },
+      { "speaker": "staff", "text": "It works on two devices. Did you install it on a third?" },
+      { "speaker": "student", "text": "My laptop, the lab computer, and my old tablet." },
+      { "speaker": "staff", "text": "The tablet is still counted, even though you never open it." },
+      { "speaker": "student", "text": "So I remove it from there first." },
+      { "speaker": "staff", "text": "Yes, from your account page, not from the tablet." }
+    ],
+    "question": {
+      "stem": "What must the student do?",
+      "options": {
+        "A": "Buy a second licence",
+        "B": "Remove the old device through the account page",
+        "C": "Uninstall the program from the laptop",
+        "D": "Use only the lab computer from now on",
+        "E": "Open the program on the tablet once"
+      },
+      "answer": "B",
+      "explain_tr": "Kullanılmasa bile tablet bir hakkı işgal ediyor; kaldırma işlemi tabletten değil hesap sayfasından yapılıyor.",
+      "key_line": "Yes, from your account page, not from the tablet."
+    }
+  },
+  {
+    "id": "reel-b1plus-price-rise",
+    "level": "B1+",
+    "title": "Price Rise",
+    "topic": "campus food",
+    "script": [
+      { "speaker": "student", "text": "The menu went up thirty percent and the portions got smaller." },
+      { "speaker": "staff", "text": "The portions are the same. We changed the plates." },
+      { "speaker": "student", "text": "That's worse, isn't it?" },
+      { "speaker": "staff", "text": "It looks worse. The weight is printed on the board now, if you want to check." },
+      { "speaker": "student", "text": "I'll check tomorrow. If it's the same, I'll say so in the group." }
+    ],
+    "question": {
+      "stem": "What does the staff member claim?",
+      "options": {
+        "A": "The portions were reduced with the price rise",
+        "B": "Only the plates changed, and the weights are now displayed",
+        "C": "The prices did not change at all",
+        "D": "The board shows the wrong weights",
+        "E": "Students should complain as a group"
+      },
+      "answer": "B",
+      "explain_tr": "Görevli porsiyonun aynı kaldığını, sadece tabakların değiştiğini söylüyor ve gramajın panoda yazdığını ekliyor.",
+      "key_line": "The portions are the same. We changed the plates."
+    }
+  },
+  {
+    "id": "reel-b1plus-unpaid-hours",
+    "level": "B1+",
+    "title": "Unpaid Hours",
+    "topic": "internship",
+    "script": [
+      { "speaker": "student", "text": "The internship says thirty hours a week, but I stayed until nine twice." },
+      { "speaker": "staff", "text": "Were those hours in the agreement?" },
+      { "speaker": "student", "text": "No, but everyone stays." },
+      { "speaker": "staff", "text": "Everyone staying doesn't change what you signed. Write the extra hours down." },
+      { "speaker": "student", "text": "They won't like that." },
+      { "speaker": "staff", "text": "Perhaps. But a record protects you if the report is questioned later." }
+    ],
+    "question": {
+      "stem": "What does the staff member advise?",
+      "options": {
+        "A": "Leaving the internship",
+        "B": "Keeping a written record of the extra hours",
+        "C": "Staying late like everyone else",
+        "D": "Asking for extra payment immediately",
+        "E": "Signing a new agreement"
+      },
+      "answer": "B",
+      "explain_tr": "Herkesin kalması sözleşmeyi değiştirmiyor. Görevli fazladan saatleri yazılı tutmayı, ileride belge olsun diye öneriyor.",
+      "key_line": "Write the extra hours down."
+    }
+  },
+  {
+    "id": "reel-b1plus-who-speaks",
+    "level": "B1+",
+    "title": "Who Speaks",
+    "topic": "presentations",
+    "script": [
+      { "speaker": "teacher", "text": "Three of you spoke for eleven minutes and one for forty seconds." },
+      { "speaker": "student", "text": "She was very nervous, so the rest of us covered her part." },
+      { "speaker": "teacher", "text": "Covering someone is kind, but the mark is individual." },
+      { "speaker": "student", "text": "We didn't know that." },
+      { "speaker": "teacher", "text": "It's in the brief. Next time give her the easiest section, not none of it." }
+    ],
+    "question": {
+      "stem": "What is the teacher's point?",
+      "options": {
+        "A": "The presentation ran too long",
+        "B": "Helping a nervous member should not mean leaving her no part",
+        "C": "The mark is given to the whole group together",
+        "D": "The student should have spoken less",
+        "E": "Nervous students should not present at all"
+      },
+      "answer": "B",
+      "explain_tr": "Not bireysel veriliyor. Arkadaşını korumak iyi niyetli ama ona hiç bölüm bırakmamak notuna zarar veriyor.",
+      "key_line": "Next time give her the easiest section, not none of it."
+    }
+  },
+  {
+    "id": "reel-b1plus-returned-on-time",
+    "level": "B1+",
+    "title": "Returned On Time",
+    "topic": "library fines",
+    "script": [
+      { "speaker": "student", "text": "The system says my book is nine days late, but I returned it on the fourth." },
+      { "speaker": "staff", "text": "The date on the record is the fourteenth." },
+      { "speaker": "student", "text": "I put it in the outside box on a Saturday." },
+      { "speaker": "staff", "text": "That box is emptied on Mondays. If it was a long weekend, that explains it." },
+      { "speaker": "student", "text": "It was. Can the fine be removed?" }
+    ],
+    "question": {
+      "stem": "What probably caused the late record?",
+      "options": {
+        "A": "The student really did return the book late",
+        "B": "The outside box was not emptied until after the long weekend",
+        "C": "The system deleted the return record",
+        "D": "The student kept the book for nine extra days",
+        "E": "The staff member typed the date wrongly"
+      },
+      "answer": "B",
+      "explain_tr": "Kitap cumartesi dış kutuya bırakılmış. Kutu pazartesileri boşaltıldığı ve uzun tatil olduğu için kayıt geç düşmüş.",
+      "key_line": "That box is emptied on Mondays."
+    }
+  },
+  {
+    "id": "reel-b1plus-two-emails",
+    "level": "B1+",
+    "title": "Two Emails",
+    "topic": "registration",
+    "script": [
+      { "speaker": "student", "text": "I got one email saying I'm registered and another saying payment failed." },
+      { "speaker": "staff", "text": "The first is automatic. It goes out before the payment is checked." },
+      { "speaker": "student", "text": "So I'm not registered." },
+      { "speaker": "staff", "text": "Not yet. Your place is held until Friday, then it goes to the waiting list." },
+      { "speaker": "student", "text": "I'll pay today. I'm not risking a place for a bank delay." }
+    ],
+    "question": {
+      "stem": "What does the staff member explain about the first email?",
+      "options": {
+        "A": "It was sent to the student by mistake",
+        "B": "It is automatic and does not confirm that payment succeeded",
+        "C": "It confirms the place permanently",
+        "D": "It came from the waiting list system",
+        "E": "It cancels the second email"
+      },
+      "answer": "B",
+      "explain_tr": "İlk e-posta otomatik ve ödeme kontrol edilmeden gönderiliyor; yer yalnızca cumaya kadar tutuluyor.",
+      "key_line": "The first is automatic. It goes out before the payment is checked."
+    }
+  }
+]

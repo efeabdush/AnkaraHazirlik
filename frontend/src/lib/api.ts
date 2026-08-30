@@ -73,6 +73,55 @@ export type AttemptDetail = {
   questions: GradedQuestion[];
 };
 
+export type Level = "A1" | "A2" | "B1" | "B1+";
+
+export type ReelCard = {
+  id: string;
+  kind: "sorular" | "kelime" | "bosluk";
+  level: Level;
+  title: string;
+  topic: string;
+  seconds: number;
+  body: string;
+  stem: string;
+  options: Record<string, string>;
+};
+
+export type AnswerResult = {
+  id: string;
+  kind: ReelCard["kind"];
+  chosen: string;
+  answer: string;
+  correct: boolean;
+  explain_tr: string;
+  key_line: string;
+  script: { speaker: string; text: string }[];
+};
+
+export type LevelSummary = {
+  kind: ReelCard["kind"];
+  level: Level;
+  cards: number;
+  packs: number;
+  pack_size: number;
+};
+
+export type Pack = {
+  id: string;
+  kind: ReelCard["kind"];
+  level: Level;
+  index: number;
+  title: string;
+  size: number;
+  pack_size: number;
+  full: boolean;
+};
+
+export type ChatStatus = {
+  ready: boolean;
+  active: { provider: string | null; provider_label: string | null; model: string | null; ready: boolean };
+};
+
 export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   const isFormData = typeof FormData !== "undefined" && init?.body instanceof FormData;
   const humanToken = getHumanToken();
@@ -103,6 +152,10 @@ export async function api<T>(path: string, init?: RequestInit): Promise<T> {
 
 export function audioUrl(testId: string) {
   return `${API_URL}/api/audio/${testId}`;
+}
+
+export function akisAudioUrl(reelId: string) {
+  return `${API_URL}/api/akis/audio/${reelId}`;
 }
 
 export function adminHeaders(secret: string) {

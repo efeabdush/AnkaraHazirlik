@@ -1,0 +1,126 @@
+[
+  { "id": "bosluk-a1-01", "kind": "bosluk", "level": "A1", "title": "Every Morning", "topic": "daily routine",
+    "body": "I ___ to school every morning by bus.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "go", "B": "goes", "C": "going", "D": "went" }, "answer": "A",
+      "explain_tr": "Özne **I** olduğu için fiil yalın haliyle kullanılır: I go. 'goes' o/she/it için, 'went' ise geçmiş zaman." } },
+
+  { "id": "bosluk-a1-02", "kind": "bosluk", "level": "A1", "title": "At Our School", "topic": "people",
+    "body": "My aunt ___ a teacher at our school in the city.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "are", "B": "am", "C": "is", "D": "be" }, "answer": "C",
+      "explain_tr": "Tekil üçüncü şahıs (my aunt) için **is** kullanılır." } },
+
+  { "id": "bosluk-a1-03", "kind": "bosluk", "level": "A1", "title": "On The Table", "topic": "at home",
+    "body": "There ___ two books and a pen on the table.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "is", "B": "are", "C": "was", "D": "be" }, "answer": "B",
+      "explain_tr": "Çoğul bir liste geldiği için **are** gerekir: there are two books." } },
+
+  { "id": "bosluk-a1-04", "kind": "bosluk", "level": "A1", "title": "Every Saturday", "topic": "free time",
+    "body": "My brother ___ football with his friends every Saturday.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "play", "B": "playing", "C": "played", "D": "plays" }, "answer": "D",
+      "explain_tr": "Geniş zamanda tekil özneye **-s** eklenir: he plays." } },
+
+  { "id": "bosluk-a1-05", "kind": "bosluk", "level": "A1", "title": "The Cat", "topic": "at home",
+    "body": "The cat is sleeping ___ the table in the kitchen.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "under", "B": "between", "C": "into", "D": "among" }, "answer": "A",
+      "explain_tr": "Bir şeyin altı için **under** kullanılır. 'between' iki şeyin arası, 'into' ise hareket bildirir." } },
+
+  { "id": "bosluk-a1-06", "kind": "bosluk", "level": "A1", "title": "Empty Fridge", "topic": "shopping",
+    "body": "We do not have ___ milk in the fridge today.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "some", "B": "any", "C": "many", "D": "a" }, "answer": "B",
+      "explain_tr": "Olumsuz cümlede sayılamayan isimle **any** kullanılır." } },
+
+  { "id": "bosluk-a1-07", "kind": "bosluk", "level": "A1", "title": "Seven O'clock", "topic": "daily routine",
+    "body": "I get up ___ seven o'clock every day of the week.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "in", "B": "on", "C": "at", "D": "to" }, "answer": "C",
+      "explain_tr": "Saatlerle **at** kullanılır: at seven o'clock." } },
+
+  { "id": "bosluk-a1-08", "kind": "bosluk", "level": "A1", "title": "Her City", "topic": "people",
+    "body": "She lives ___ Ankara with her mother and father.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "at", "B": "on", "C": "by", "D": "in" }, "answer": "D",
+      "explain_tr": "Şehir adlarıyla **in** kullanılır: in Ankara." } },
+
+  { "id": "bosluk-a1-09", "kind": "bosluk", "level": "A1", "title": "Fruit", "topic": "food",
+    "body": "I eat ___ apple every morning before I leave home.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "an", "B": "a", "C": "the", "D": "some" }, "answer": "A",
+      "explain_tr": "Sesli harfle başlayan tekil isimden önce **an** gelir: an apple." } },
+
+  { "id": "bosluk-a1-10", "kind": "bosluk", "level": "A1", "title": "Tea Please", "topic": "food",
+    "body": "They ___ like coffee at all. They always prefer tea.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "does not", "B": "do not", "C": "is not", "D": "are not" }, "answer": "B",
+      "explain_tr": "Çoğul özne (they) ile geniş zaman olumsuzu **do not** ile kurulur." } },
+
+  { "id": "bosluk-a1-11", "kind": "bosluk", "level": "A1", "title": "Class Size", "topic": "school",
+    "body": "How ___ students are there in your English class?",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "much", "B": "long", "C": "many", "D": "old" }, "answer": "C",
+      "explain_tr": "Sayılabilen isimlerle **many** kullanılır: how many students." } },
+
+  { "id": "bosluk-a1-12", "kind": "bosluk", "level": "A1", "title": "Two Sisters", "topic": "family",
+    "body": "My sister is ___ than me, but she is younger.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "tall", "B": "taller", "C": "tallest", "D": "more tall" }, "answer": "B",
+      "explain_tr": "İki kişi kıyaslanırken kısa sıfata **-er** eklenir: taller than." } },
+
+  { "id": "bosluk-a1-13", "kind": "bosluk", "level": "A1", "title": "Cinema Night", "topic": "free time",
+    "body": "We are going to the cinema ___ Friday evening with friends.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "in", "B": "at", "C": "to", "D": "on" }, "answer": "D",
+      "explain_tr": "Gün adlarıyla **on** kullanılır: on Friday." } },
+
+  { "id": "bosluk-a1-14", "kind": "bosluk", "level": "A1", "title": "A New Phone", "topic": "shopping",
+    "body": "My father ___ got a new phone for his birthday.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "has", "B": "have", "C": "is", "D": "are" }, "answer": "A",
+      "explain_tr": "Tekil özne için **has got** kullanılır." } },
+
+  { "id": "bosluk-a1-15", "kind": "bosluk", "level": "A1", "title": "In The Garden", "topic": "free time",
+    "body": "Look! The children ___ in the garden right now.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "play", "B": "plays", "C": "are playing", "D": "played" }, "answer": "C",
+      "explain_tr": "'Look!' ve 'right now' şu anı gösterir, bu yüzden şimdiki zaman **are playing** gerekir." } },
+
+  { "id": "bosluk-a1-16", "kind": "bosluk", "level": "A1", "title": "How Many", "topic": "family",
+    "body": "I have two ___ and one sister in my family.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "brother", "B": "brothers", "C": "brother's", "D": "brothers'" }, "answer": "B",
+      "explain_tr": "'two' sayısından sonra çoğul biçim gelir: **brothers**. Kesme işaretli biçimler iyelik gösterir." } },
+
+  { "id": "bosluk-a1-17", "kind": "bosluk", "level": "A1", "title": "A Small Favour", "topic": "requests",
+    "body": "Can you help ___ with this box, please? It is heavy.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "I", "B": "my", "C": "me", "D": "mine" }, "answer": "C",
+      "explain_tr": "Fiilden sonra nesne biçimi gelir: help **me**." } },
+
+  { "id": "bosluk-a1-18", "kind": "bosluk", "level": "A1", "title": "Opening Time", "topic": "shopping",
+    "body": "The shop opens ___ nine in the morning and closes at six.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "on", "B": "at", "C": "in", "D": "for" }, "answer": "B",
+      "explain_tr": "Saatlerle **at** kullanılır. Cümlenin sonundaki 'at six' de aynı kuralı gösteriyor." } },
+
+  { "id": "bosluk-a1-19", "kind": "bosluk", "level": "A1", "title": "Whose Bag", "topic": "at school",
+    "body": "This bag is ___. I bought it here yesterday afternoon.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "my", "B": "me", "C": "I", "D": "mine" }, "answer": "D",
+      "explain_tr": "İsim gelmeden tek başına kullanılan iyelik biçimi **mine**'dır: This bag is mine." } },
+
+  { "id": "bosluk-a1-20", "kind": "bosluk", "level": "A1", "title": "Nothing Left", "topic": "food",
+    "body": "There isn't ___ bread left, so I will go to the shop.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "any", "B": "some", "C": "many", "D": "a" }, "answer": "A",
+      "explain_tr": "Olumsuz cümlede sayılamayan isimle **any** kullanılır." } },
+
+  { "id": "bosluk-a1-21", "kind": "bosluk", "level": "A1", "title": "In The Evening", "topic": "daily routine",
+    "body": "My mother ___ television in the evening after dinner.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "watch", "B": "watches", "C": "watching", "D": "watched" }, "answer": "B",
+      "explain_tr": "Geniş zamanda tekil özneye -es eklenir: **watches**." } },
+
+  { "id": "bosluk-a1-22", "kind": "bosluk", "level": "A1", "title": "A Rainy Day", "topic": "weather",
+    "body": "We were ___ home all day yesterday because of the rain.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "in", "B": "on", "C": "at", "D": "to" }, "answer": "C",
+      "explain_tr": "'evde' anlamı **at home** kalıbıyla verilir." } },
+
+  { "id": "bosluk-a1-23", "kind": "bosluk", "level": "A1", "title": "No Breakfast", "topic": "food",
+    "body": "I ___ very hungry because I did not eat breakfast today.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "am", "B": "is", "C": "are", "D": "be" }, "answer": "A",
+      "explain_tr": "Özne **I** olduğunda 'to be' fiili **am** olur." } },
+
+  { "id": "bosluk-a1-24", "kind": "bosluk", "level": "A1", "title": "The Whole Class", "topic": "school",
+    "body": "Ali is the ___ boy in our class this year.",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "taller", "B": "tall", "C": "more tall", "D": "tallest" }, "answer": "D",
+      "explain_tr": "Bir grubun içinde en üstün olan için **the tallest** kullanılır." } },
+
+  { "id": "bosluk-a1-25", "kind": "bosluk", "level": "A1", "title": "An Offer", "topic": "food",
+    "body": "Would you like ___ tea with your cake, or just water?",
+    "question": { "stem": "Boşluğa hangisi gelir?", "options": { "A": "any", "B": "some", "C": "many", "D": "a" }, "answer": "B",
+      "explain_tr": "Teklif ederken soru cümlesinde bile **some** kullanılır: Would you like some tea?" } }
+]

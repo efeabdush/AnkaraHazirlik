@@ -1,0 +1,126 @@
+[
+  { "id": "kelime-a2-01", "kind": "kelime", "level": "A2", "title": "The Package", "topic": "post office",
+    "body": "You will recieve the package on Tuesday. The driver leaves it at the door if nobody answers the bell.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "recieve", "B": "package", "C": "driver", "D": "answers" }, "answer": "A", "correct_form": "receive",
+      "explain_tr": "Doğrusu **receive**. c harfinden sonra ei sırası gelir: re-ce-i-ve." } },
+
+  { "id": "kelime-a2-02", "kind": "kelime", "level": "A2", "title": "Hard To Believe", "topic": "opinions",
+    "body": "I cannot beleive the price of tickets this year. Last summer the same seats cost half of this.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "price", "B": "tickets", "C": "beleive", "D": "summer" }, "answer": "C", "correct_form": "believe",
+      "explain_tr": "Doğrusu **believe**. i ve e yer değiştirmiş: be-lie-ve." } },
+
+  { "id": "kelime-a2-03", "kind": "kelime", "level": "A2", "title": "Wrong Street", "topic": "directions",
+    "body": "The adress on the form is wrong, so the letter went to another street and came back last week.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "form", "B": "adress", "C": "letter", "D": "street" }, "answer": "B", "correct_form": "address",
+      "explain_tr": "Doğrusu **address**. Hem d hem s çift yazılır: ad-dress." } },
+
+  { "id": "kelime-a2-04", "kind": "kelime", "level": "A2", "title": "Exam Dates", "topic": "school",
+    "body": "Write the exam dates in your calender now. The office will not send a second message about them.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "exam", "B": "office", "C": "message", "D": "calender" }, "answer": "D", "correct_form": "calendar",
+      "explain_tr": "Doğrusu **calendar**. Sonu -er değil -ar ile biter." } },
+
+  { "id": "kelime-a2-05", "kind": "kelime", "level": "A2", "title": "Wet Floor", "topic": "warnings",
+    "body": "Be carefull on the stairs. The cleaner washed them ten minutes ago and the floor is still wet.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "carefull", "B": "stairs", "C": "cleaner", "D": "floor" }, "answer": "A", "correct_form": "careful",
+      "explain_tr": "Doğrusu **careful**. -ful eki tek l ile yazılır; sadece zarf hali full değildir." } },
+
+  { "id": "kelime-a2-06", "kind": "kelime", "level": "A2", "title": "Morning Runs", "topic": "health",
+    "body": "She does excercise before work every morning. Thirty minutes of running is enough to wake her up.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "morning", "B": "excercise", "C": "running", "D": "enough" }, "answer": "B", "correct_form": "exercise",
+      "explain_tr": "Doğrusu **exercise**. Fazladan bir c eklenmiş; ex-er-cise." } },
+
+  { "id": "kelime-a2-07", "kind": "kelime", "level": "A2", "title": "The Last Box", "topic": "moving house",
+    "body": "We finaly carried the last box upstairs at midnight. Nobody wanted to open anything until the morning.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "carried", "B": "upstairs", "C": "midnight", "D": "finaly" }, "answer": "D", "correct_form": "finally",
+      "explain_tr": "Doğrusu **finally**. final + ly olduğu için iki l yan yana gelir." } },
+
+  { "id": "kelime-a2-08", "kind": "kelime", "level": "A2", "title": "A Long Podcast", "topic": "free time",
+    "body": "The podcast was intresting but too long. I stopped it after an hour and finished it the next day.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "podcast", "B": "intresting", "C": "stopped", "D": "finished" }, "answer": "B", "correct_form": "interesting",
+      "explain_tr": "Doğrusu **interesting**. Ortadaki e düşmüş: in-ter-est-ing." } },
+
+  { "id": "kelime-a2-09", "kind": "kelime", "level": "A2", "title": "Quiet Corner", "topic": "campus",
+    "body": "The libary closes at six today. The quiet corner upstairs is usually free in the early afternoon.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "closes", "B": "corner", "C": "libary", "D": "afternoon" }, "answer": "C", "correct_form": "library",
+      "explain_tr": "Doğrusu **library**. İkinci r atlanmış: lib-ra-ry." } },
+
+  { "id": "kelime-a2-10", "kind": "kelime", "level": "A2", "title": "Not Sure Yet", "topic": "plans",
+    "body": "He will probaly come with us, but he has not answered the message since yesterday evening.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "probaly", "B": "answered", "C": "message", "D": "evening" }, "answer": "A", "correct_form": "probably",
+      "explain_tr": "Doğrusu **probably**. probable + ly; ortadaki b duyulmasa da yazılır." } },
+
+  { "id": "kelime-a2-11", "kind": "kelime", "level": "A2", "title": "Table For Four", "topic": "eating out",
+    "body": "The restarant near the station takes bookings online. We need a table for four people on Saturday.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "station", "B": "bookings", "C": "restarant", "D": "people" }, "answer": "C", "correct_form": "restaurant",
+      "explain_tr": "Doğrusu **restaurant**. Ortada okunmayan bir u vardır: resta-u-rant." } },
+
+  { "id": "kelime-a2-12", "kind": "kelime", "level": "A2", "title": "A Free Room", "topic": "campus",
+    "body": "I tought the room was free, but another group had booked it for the whole afternoon.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "room", "B": "group", "C": "booked", "D": "tought" }, "answer": "D", "correct_form": "thought",
+      "explain_tr": "Doğrusu **thought**. think fiilinin geçmiş hali th- ile başlar." } },
+
+  { "id": "kelime-a2-13", "kind": "kelime", "level": "A2", "title": "Same Bus", "topic": "daily routine",
+    "body": "We usualy take the same bus, but today it was full and we waited for the next one.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "usualy", "B": "today", "C": "waited", "D": "next" }, "answer": "A", "correct_form": "usually",
+      "explain_tr": "Doğrusu **usually**. usual + ly olduğu için iki l yan yana gelir." } },
+
+  { "id": "kelime-a2-14", "kind": "kelime", "level": "A2", "title": "Two Pages", "topic": "coursework",
+    "body": "Writting two pages every evening is easier than writing ten pages the night before the deadline.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "pages", "B": "evening", "C": "Writting", "D": "deadline" }, "answer": "C", "correct_form": "writing",
+      "explain_tr": "Doğrusu **writing**. write kelimesinin sonundaki e düşer ama t çiftlenmez. Aynı cümlede doğrusu da geçiyor." } },
+
+  { "id": "kelime-a2-15", "kind": "kelime", "level": "A2", "title": "The First Week", "topic": "school",
+    "body": "The begining of the term is always busy. After the first week the timetable becomes much calmer.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "begining", "B": "always", "C": "timetable", "D": "calmer" }, "answer": "A", "correct_form": "beginning",
+      "explain_tr": "Doğrusu **beginning**. Vurgulu heceden sonra n ikiye çıkar: be-gin-ning." } },
+
+  { "id": "kelime-a2-16", "kind": "kelime", "level": "A2", "title": "Another Answer", "topic": "opinions",
+    "body": "Her answer was diffrent from mine, but the teacher accepted both because we explained our reasons.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "answer", "B": "teacher", "C": "diffrent", "D": "reasons" }, "answer": "C", "correct_form": "different",
+      "explain_tr": "Doğrusu **different**. Ortadaki e düşmüş: dif-fer-ent." } },
+
+  { "id": "kelime-a2-17", "kind": "kelime", "level": "A2", "title": "A Short Break", "topic": "travel",
+    "body": "We booked a short holliday in October. The flights were cheap because it is not the busy season.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "booked", "B": "holliday", "C": "flights", "D": "season" }, "answer": "B", "correct_form": "holiday",
+      "explain_tr": "Doğrusu **holiday**. l tek yazılır: ho-li-day." } },
+
+  { "id": "kelime-a2-18", "kind": "kelime", "level": "A2", "title": "A Small Shop", "topic": "work",
+    "body": "Her bussiness is small but steady. She sells coffee and cakes to the offices around the square.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "steady", "B": "coffee", "C": "offices", "D": "bussiness" }, "answer": "D", "correct_form": "business",
+      "explain_tr": "Doğrusu **business**. s çift, ama busi- kısmında tek s vardır." } },
+
+  { "id": "kelime-a2-19", "kind": "kelime", "level": "A2", "title": "Two Piles", "topic": "organising",
+    "body": "Please seperate the clean towels from the dirty ones before you put anything into the machine.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "seperate", "B": "towels", "C": "dirty", "D": "machine" }, "answer": "A", "correct_form": "separate",
+      "explain_tr": "Doğrusu **separate**. Ortada e değil a vardır: sep-a-rate." } },
+
+  { "id": "kelime-a2-20", "kind": "kelime", "level": "A2", "title": "Two Families", "topic": "neighbours",
+    "body": "Two familes share the garden behind the building. They cut the grass together on the first Sunday.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "share", "B": "familes", "C": "building", "D": "grass" }, "answer": "B", "correct_form": "families",
+      "explain_tr": "Doğrusu **families**. y ile biten kelimede çoğul -ies olur: famil-ies." } },
+
+  { "id": "kelime-a2-21", "kind": "kelime", "level": "A2", "title": "Strange Weather", "topic": "weather",
+    "body": "The weather was wierd yesterday: sun in the morning, heavy rain at noon and snow in the evening.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "weather", "B": "heavy", "C": "wierd", "D": "evening" }, "answer": "C", "correct_form": "weird",
+      "explain_tr": "Doğrusu **weird**. Bu kelime kurala uymaz: e önce, i sonra gelir." } },
+
+  { "id": "kelime-a2-22", "kind": "kelime", "level": "A2", "title": "Same Seat", "topic": "daily routine",
+    "body": "He allways sits in the same seat at the back. From there he can see the whole classroom.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "allways", "B": "seat", "C": "whole", "D": "classroom" }, "answer": "A", "correct_form": "always",
+      "explain_tr": "Doğrusu **always**. Tek l ile yazılır: al-ways." } },
+
+  { "id": "kelime-a2-23", "kind": "kelime", "level": "A2", "title": "Open Late", "topic": "campus",
+    "body": "The computer room stays open untill midnight during exam week, but the printers stop working at ten.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "computer", "B": "midnight", "C": "printers", "D": "untill" }, "answer": "D", "correct_form": "until",
+      "explain_tr": "Doğrusu **until**. Tek l ile biter; till ile karıştırılıyor." } },
+
+  { "id": "kelime-a2-24", "kind": "kelime", "level": "A2", "title": "Nobody Knew", "topic": "classroom",
+    "body": "Nobody knew the anser to the second question, so the teacher explained it again on the board.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "knew", "B": "anser", "C": "question", "D": "board" }, "answer": "B", "correct_form": "answer",
+      "explain_tr": "Doğrusu **answer**. Okunmayan bir w vardır: ans-w-er." } },
+
+  { "id": "kelime-a2-25", "kind": "kelime", "level": "A2", "title": "Hard Choice", "topic": "plans",
+    "body": "The desicion was hard because both courses looked useful and they were at exactly the same hour.",
+    "question": { "stem": "Hangi kelime yanlış yazılmış?", "options": { "A": "courses", "B": "useful", "C": "desicion", "D": "exactly" }, "answer": "C", "correct_form": "decision",
+      "explain_tr": "Doğrusu **decision**. decide kökünden gelir: de-ci-sion." } }
+]

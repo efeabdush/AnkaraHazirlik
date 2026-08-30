@@ -1,0 +1,24 @@
+{
+  "id": "reel-library-floor",
+  "level": "A1",
+  "title": "Library Floor",
+  "topic": "library directions",
+  "script": [
+    { "speaker": "student", "text": "Excuse me. Where are the English books?" },
+    { "speaker": "staff", "text": "They are on the second floor. Go up the stairs." },
+    { "speaker": "student", "text": "Is the study room there too?" },
+    { "speaker": "staff", "text": "No. The study room is on the first floor, next to the door." }
+  ],
+  "question": {
+    "stem": "Where are the English books?",
+    "options": {
+      "A": "On the first floor",
+      "B": "On the second floor",
+      "C": "Next to the door",
+      "D": "In the study room"
+    },
+    "answer": "B",
+    "explain_tr": "Görevli kitaplar için 'second floor' diyor. 'First floor' ve 'next to the door' çalışma odasını anlatıyor.",
+    "key_line": "They are on the second floor."
+  }
+}

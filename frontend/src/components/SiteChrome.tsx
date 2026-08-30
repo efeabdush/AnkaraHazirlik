@@ -6,11 +6,7 @@ import { BrandMark } from "@/components/BrandMark";
 
 const links = [
   { href: "/exam", label: "Sınav merkezi" },
-  { href: "/listening", label: "Dinleme" },
-  { href: "/reading", label: "Okuma" },
-  { href: "/use-of-english", label: "Dil" },
-  { href: "/writing", label: "Yazma" },
-  { href: "/speaking", label: "Konuşma" },
+  { href: "/akis", label: "⚡ Akış", featured: true },
   { href: "/resources", label: "Kaynaklar" },
   { href: "/about", label: "Hakkında" },
 ];
@@ -41,7 +37,11 @@ export function Header() {
                 key={l.href}
                 href={l.href}
                 className={`flex-none rounded-lg px-3 py-1.5 transition-colors ${
-                  active
+                  l.featured
+                    ? active
+                      ? "bg-[var(--navy-deep)] font-semibold text-white shadow-sm"
+                      : "bg-[var(--navy)] font-semibold text-white shadow-sm hover:bg-[var(--navy-deep)]"
+                    : active
                     ? "bg-[rgba(28,61,90,0.09)] font-medium text-[var(--navy)]"
                     : "text-[var(--ink-2)] hover:bg-[rgba(28,61,90,0.05)] hover:text-[var(--navy)]"
                 }`}

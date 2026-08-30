@@ -92,3 +92,31 @@ class Attempt(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 
     test: Mapped[Test] = relationship(back_populates="attempts")
+
+
+AKIS_LEVELS = ("A1", "A2", "B1", "B1+")
+AKIS_KINDS = ("sorular", "kelime", "bosluk")
+
+
+class AkisReel(Base):
+    """One short-form practice card. Answers stay server-side until submission."""
+
+    __tablename__ = "akis_reels"
+
+    id: Mapped[str] = mapped_column(String(64), primary_key=True, default=uid)
+    kind: Mapped[str] = mapped_column(String(16), default="sorular", index=True)
+    level: Mapped[str] = mapped_column(String(8), default="A2", index=True)
+    body: Mapped[str] = mapped_column(Text, default="")
+    title: Mapped[str] = mapped_column(String(200))
+    topic: Mapped[str] = mapped_column(String(120), default="")
+    script_json: Mapped[str] = mapped_column(Text, default="[]")
+    stem: Mapped[str] = mapped_column(Text, default="")
+    options_json: Mapped[str] = mapped_column(Text, default="{}")
+    answer: Mapped[str] = mapped_column(String(1), default="A")
+    explain_tr: Mapped[str] = mapped_column(Text, default="")
+    key_line: Mapped[str] = mapped_column(Text, default="")
+    audio_path: Mapped[str] = mapped_column(String(400), default="")
+    seconds: Mapped[int] = mapped_column(Integer, default=0)
+    source: Mapped[str] = mapped_column(String(16), default="seed")
+    published: Mapped[bool] = mapped_column(Boolean, default=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())

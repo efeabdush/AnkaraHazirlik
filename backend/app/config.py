@@ -34,6 +34,7 @@ class Settings(BaseSettings):
     explain_rate_limit_per_hour: int = 20
     evaluation_rate_limit_per_hour: int = 30
     coach_rate_limit_per_hour: int = 80
+    akis_chat_rate_limit_per_hour: int = 60
     transcribe_rate_limit_per_hour: int = 30
     ai_daily_request_limit: int = 250
     transcribe_daily_request_limit: int = 100
@@ -56,6 +57,7 @@ class Settings(BaseSettings):
     whisper_device: str = "cpu"
     whisper_compute_type: str = "int8"
     max_speaking_audio_mb: int = 25
+    akis_pack_size: int = 5
     storage_dir: Path = BACKEND_DIR / "storage"
     content_dir: Path = REPO_DIR / "content"
 

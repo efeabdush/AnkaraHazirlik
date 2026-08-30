@@ -134,6 +134,10 @@ def rate_limit_coach(request: Request) -> None:
     _rate_limit(request, "coach", "ai", settings.coach_rate_limit_per_hour, settings.ai_daily_request_limit)
 
 
+def rate_limit_akis_chat(request: Request) -> None:
+    _rate_limit(request, "akis-chat", "ai", settings.akis_chat_rate_limit_per_hour, settings.ai_daily_request_limit)
+
+
 def rate_limit_transcribe(request: Request) -> None:
     _rate_limit(
         request,

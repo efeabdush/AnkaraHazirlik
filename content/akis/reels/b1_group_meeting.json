@@ -1,0 +1,26 @@
+{
+  "id": "reel-group-meeting",
+  "level": "B1",
+  "title": "Group Meeting",
+  "topic": "group project",
+  "script": [
+    { "speaker": "student", "text": "We said Thursday at four for the group meeting, right?" },
+    { "speaker": "friend", "text": "That was the plan, but Deniz has a lab until six on Thursdays." },
+    { "speaker": "student", "text": "Then Friday morning? The library rooms are usually empty then." },
+    { "speaker": "friend", "text": "Friday works for me, but book the room today. They go fast." },
+    { "speaker": "student", "text": "I'll book it now and send the link to the group." }
+  ],
+  "question": {
+    "stem": "What is the student going to do next?",
+    "options": {
+      "A": "Cancel the meeting",
+      "B": "Book a library room",
+      "C": "Wait for Deniz to finish the lab",
+      "D": "Move the meeting to Thursday evening",
+      "E": "Ask the group to choose a day"
+    },
+    "answer": "B",
+    "explain_tr": "Öğrenci odayı hemen ayırtacağını söylüyor. Perşembe planı Deniz'in laboratuvarı yüzünden bırakıldı, gün zaten Cuma sabahı olarak netleşti.",
+    "key_line": "I'll book it now and send the link to the group."
+  }
+}

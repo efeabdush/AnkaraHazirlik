@@ -1,0 +1,26 @@
+{
+  "id": "reel-printer-quota",
+  "level": "B1+",
+  "title": "Printer Quota",
+  "topic": "library services",
+  "script": [
+    { "speaker": "student", "text": "My printing card says zero, but I only printed a few pages this week." },
+    { "speaker": "staff", "text": "The quota resets on the first of the month, not on Monday. A lot of people get that wrong." },
+    { "speaker": "student", "text": "So the pages I printed last week came out of this month's quota?" },
+    { "speaker": "staff", "text": "Exactly. And colour pages count as three. That is usually where it goes." },
+    { "speaker": "student", "text": "The poster. That explains it." }
+  ],
+  "question": {
+    "stem": "What is the main reason the student's quota is empty?",
+    "options": {
+      "A": "The printing card is broken",
+      "B": "The quota is reset every Monday",
+      "C": "A colour poster used up most of the quota",
+      "D": "The library office made a mistake",
+      "E": "She has not printed anything this month"
+    },
+    "answer": "C",
+    "explain_tr": "Renkli sayfalar üç sayfa sayılıyor ve öğrenci afiş bastırmış; asıl kota oradan gitmiş. Kotanın pazartesi sıfırlandığı bilgisi ise yanlış, ayın biri sıfırlanıyor.",
+    "key_line": "And colour pages count as three."
+  }
+}

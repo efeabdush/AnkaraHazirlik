@@ -1,0 +1,25 @@
+{
+  "id": "reel-room-change",
+  "level": "A2",
+  "title": "Room Change",
+  "topic": "campus announcement",
+  "script": [
+    { "speaker": "announcer", "text": "Good morning. This is a message for the Monday writing group." },
+    { "speaker": "announcer", "text": "Your class is not in Room 204 today." },
+    { "speaker": "announcer", "text": "The heating there is broken, so you will meet in Room 118." },
+    { "speaker": "announcer", "text": "The time is the same: eleven o'clock." },
+    { "speaker": "announcer", "text": "Please tell your friends if they are not here." }
+  ],
+  "question": {
+    "stem": "Where will the class meet today?",
+    "options": {
+      "A": "In Room 204",
+      "B": "In Room 118",
+      "C": "In the writing office",
+      "D": "At the same place, one hour later"
+    },
+    "answer": "B",
+    "explain_tr": "Duyuru, 204'ün ısıtması bozuk olduğu için dersin 118'de yapılacağını söylüyor. Saat değişmiyor, sadece oda değişiyor.",
+    "key_line": "The heating there is broken, so you will meet in Room 118."
+  }
+}

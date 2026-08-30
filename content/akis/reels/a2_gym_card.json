@@ -1,0 +1,24 @@
+{
+  "id": "reel-gym-card",
+  "level": "A2",
+  "title": "Gym Card",
+  "topic": "sports centre",
+  "script": [
+    { "speaker": "student", "text": "Hi, I want to use the gym. Do I need a card?" },
+    { "speaker": "staff", "text": "Yes. The card costs eighty lira for one term." },
+    { "speaker": "student", "text": "Can I pay next week? I don't have money today." },
+    { "speaker": "staff", "text": "You can, but you cannot enter before you pay." }
+  ],
+  "question": {
+    "stem": "What must the student do before using the gym?",
+    "options": {
+      "A": "Bring a photo",
+      "B": "Pay for the card",
+      "C": "Wait until next term",
+      "D": "Book a place online"
+    },
+    "answer": "B",
+    "explain_tr": "Görevli ödeme yapılmadan girilemeyeceğini söylüyor. Ödemeyi haftaya bırakmak mümkün ama o zamana kadar giriş yok.",
+    "key_line": "You can, but you cannot enter before you pay."
+  }
+}
