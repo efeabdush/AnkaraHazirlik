@@ -12,7 +12,6 @@ const links = [
   { href: "/writing", label: "Yazma" },
   { href: "/speaking", label: "Konuşma" },
   { href: "/resources", label: "Kaynaklar" },
-  { href: "/about", label: "Hakkında" },
 ];
 
 export function Header() {
@@ -73,9 +72,6 @@ export function Footer() {
           </a>
           <Link className="underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--navy)]" href="/resources">
             Kaynaklar
-          </Link>
-          <Link className="underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--navy)]" href="/about">
-            Hakkında ve iletişim
           </Link>
         </div>
       </div>
