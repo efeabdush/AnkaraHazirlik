@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { AboutContact } from "@/components/AboutContact";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Hakkında ve iletişim · Ankara Hazırlık",
-  description: "Ankara Hazırlık projesinin hikâyesi, bağımsızlık açıklaması ve iletişim formu.",
-};
+export const metadata: Metadata = createPageMetadata(
+  "Hakkında ve İletişim",
+  "Ankara Hazırlık projesinin amacı, Ankara Üniversitesi ile resmî bağlantısı olmadığına ilişkin açıklama ve iletişim formu.",
+  "/about",
+);
 
 export default function AboutPage() {
   return (

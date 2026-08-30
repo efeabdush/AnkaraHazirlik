@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata(
+  "Ankara Üniversitesi Hazırlık Muafiyet Sınavı",
+  "Ankara Üniversitesi İngilizce hazırlık muafiyet ve yeterlik sınavına ücretsiz hazırlan. B1+ dinleme, okuma, dil kullanımı, writing ve speaking çalışmaları.",
+  "/",
+);
 
 const sessions = [
   {
@@ -34,15 +42,16 @@ export default function HomePage() {
       {/* ---------- hero ---------- */}
       <section className="rise grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
         <div className="space-y-5">
-          <span className="badge badge-navy">Yeterlik sınavına hazırlık</span>
+          <span className="badge badge-navy">Ücretsiz B1+ yeterlik sınavı hazırlığı</span>
           <h1 className="font-serif text-4xl leading-[1.1] tracking-tight text-[var(--navy)] md:text-[3.35rem]">
-            Sınavı, sınavdaki
+            Ankara Üniversitesi hazırlık{" "}
             <br />
-            gibi çalış.
+            muafiyet sınavına çalış.
           </h1>
           <p className="prose-quiet max-w-xl text-lg">
-            Ankara Üniversitesi B1+ yeterlik yapısında üç oturumun tamamını çalış: dinleme, okuma, dil kullanımı,
-            yazma ve konuşma. İçerikler özgündür; sonuçlarda neyi neden kaçırdığını somut biçimde görürsün.
+            Ankara Üniversitesi İngilizce hazırlık muafiyet ve yeterlik sınavının B1+ yapısında üç oturumun tamamını
+            ücretsiz çalış: dinleme, okuma, dil kullanımı, yazma ve konuşma. İçerikler özgündür; sonuçlarda neyi neden
+            kaçırdığını somut biçimde görürsün.
           </p>
           <div className="flex flex-wrap items-center gap-3 pt-1">
             <Link href="/exam" className="btn btn-primary">

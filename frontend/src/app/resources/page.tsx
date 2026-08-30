@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata(
+  "Ankara Üniversitesi Muafiyet Sınavı Kaynakları",
+  "Ankara Üniversitesi İngilizce hazırlık yeterlik ve muafiyet sınavının resmî örnekleri ile ücretsiz B1+ dinleme, okuma ve dil çalışma kaynakları.",
+  "/resources",
+);
+
 const groups = [
   {
     title: "Resmi kaynaklar",

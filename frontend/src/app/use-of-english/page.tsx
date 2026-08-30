@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import { SectionCatalog } from "@/components/SectionCatalog";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata(
+  "Ankara Üniversitesi Hazırlık Dil Kullanımı",
+  "Ankara Üniversitesi İngilizce hazırlık muafiyet sınavı için B1+ cloze text, dil bilgisi, kelime ve restatement soruları çöz.",
+  "/use-of-english",
+);
 
 const groups = [
   { kind: "cloze", label: "Cloze Texts I–III", note: "Dil bilgisi ve kelimeyi bağlam içinde ölçen beşer soru" },

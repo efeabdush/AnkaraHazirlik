@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ExamProgressSummary } from "@/components/ExamProgressSummary";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata(
+  "Ankara Hazırlık Muafiyet Sınavı Denemesi",
+  "Ankara Üniversitesi İngilizce hazırlık yeterlik sınavının dinleme, okuma, dil kullanımı, writing ve speaking bölümlerini ayrı ayrı veya tam deneme olarak çalış.",
+  "/exam",
+);
 
 const practiceSections = [
   { number: "01", title: "Dinleme", session: "1. oturum", score: "20 puan", href: "/listening", description: "Üç kısa kampüs diyaloğunu sorular açıkken, bir dersi ise önce not alarak çalış." },

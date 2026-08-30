@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import { SectionCatalog } from "@/components/SectionCatalog";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata(
+  "Ankara Üniversitesi Hazırlık Okuma Pratiği",
+  "Ankara Üniversitesi hazırlık muafiyet sınavı için B1+ okuma metinleri, ana fikir, ayrıntı, çıkarım ve cümle yerleştirme soruları çöz.",
+  "/reading",
+);
 
 const groups = [
   { kind: "reading_standard", label: "Passage I–II", note: "Ana fikir, ayrıntı, çıkarım ve bağlamdan sözcük soruları · 6 soru" },
