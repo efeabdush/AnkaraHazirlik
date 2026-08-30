@@ -3,14 +3,8 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { api } from "@/lib/api";
 
-type Props = {
-  linkedinUrl?: string;
-  instagramUrl?: string;
-};
-
 type FormState = {
   name: string;
-  email: string;
   category: "bug" | "content" | "general";
   message: string;
   website: string;
@@ -18,25 +12,12 @@ type FormState = {
 
 const emptyForm: FormState = {
   name: "",
-  email: "",
   category: "bug",
   message: "",
   website: "",
 };
 
-function safeSocialUrl(value?: string) {
-  if (!value) return "";
-  try {
-    const url = new URL(value);
-    return url.protocol === "https:" ? url.toString() : "";
-  } catch {
-    return "";
-  }
-}
-
-export function AboutContact({ linkedinUrl, instagramUrl }: Props) {
-  const linkedin = safeSocialUrl(linkedinUrl);
-  const instagram = safeSocialUrl(instagramUrl);
+export function AboutContact() {
   const [enabled, setEnabled] = useState<boolean | null>(null);
   const [form, setForm] = useState<FormState>(emptyForm);
   const [busy, setBusy] = useState(false);
@@ -67,7 +48,7 @@ export function AboutContact({ linkedinUrl, instagramUrl }: Props) {
       });
       setForm(emptyForm);
       setStatus("sent");
-      setMessage("Mesaj ulaştı. Yamuk bir şey varsa artık kaçamaz.");
+      setMessage("Mesajın gönderildi, teşekkür ederim.");
     } catch (caught) {
       setStatus("error");
       setMessage(caught instanceof Error ? caught.message : "Mesaj gönderilemedi.");
@@ -83,54 +64,22 @@ export function AboutContact({ linkedinUrl, instagramUrl }: Props) {
         <h2 className="mt-3 font-serif text-3xl leading-tight text-white">Bir şey yamuk mu?</h2>
         <p className="mt-4 max-w-sm text-sm leading-7 text-[#ece3d2]">
           Bozuk bir yer, kafa karıştıran bir soru ya da “şurası şöyle olsa daha tatlı olur” dediğin bir şey varsa yaz.
-          Gerçek kullanıcı geri bildirimi bu projenin yakıtı.
         </p>
-
-        {linkedin || instagram ? (
-          <div className="mt-7 flex flex-wrap gap-2">
-            {linkedin ? (
-              <a className="btn border border-white/25 bg-white/10 text-sm text-white hover:bg-white/15" href={linkedin} target="_blank" rel="noreferrer">
-                LinkedIn ↗
-              </a>
-            ) : null}
-            {instagram ? (
-              <a className="btn border border-white/25 bg-white/10 text-sm text-white hover:bg-white/15" href={instagram} target="_blank" rel="noreferrer">
-                Instagram ↗
-              </a>
-            ) : null}
-          </div>
-        ) : (
-          <p className="mt-7 text-xs leading-6 text-[#cfc5b2]">Sosyal bağlantılar kısa süre içinde burada olacak.</p>
-        )}
       </div>
 
       <form className="space-y-4 p-6 sm:p-8" onSubmit={submit}>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <label className="block text-sm font-medium text-[var(--navy)]">
-            Adın
-            <input
-              className="input mt-1.5"
-              value={form.name}
-              onChange={(event) => update("name", event.target.value)}
-              minLength={2}
-              maxLength={80}
-              autoComplete="name"
-              required
-            />
-          </label>
-          <label className="block text-sm font-medium text-[var(--navy)]">
-            E-posta
-            <input
-              className="input mt-1.5"
-              type="email"
-              value={form.email}
-              onChange={(event) => update("email", event.target.value)}
-              maxLength={160}
-              autoComplete="email"
-              required
-            />
-          </label>
-        </div>
+        <label className="block text-sm font-medium text-[var(--navy)]">
+          Adın
+          <input
+            className="input mt-1.5"
+            value={form.name}
+            onChange={(event) => update("name", event.target.value)}
+            minLength={2}
+            maxLength={80}
+            autoComplete="name"
+            required
+          />
+        </label>
 
         <label className="block text-sm font-medium text-[var(--navy)]">
           Konu
@@ -165,7 +114,7 @@ export function AboutContact({ linkedinUrl, instagramUrl }: Props) {
 
         {enabled === false ? (
           <p className="rounded-xl border border-[rgba(176,81,44,.25)] bg-[rgba(176,81,44,.06)] p-3 text-sm text-[var(--terracotta)]">
-            Mesaj kutusu şu an hazırlanıyor. Sosyal bağlantılardan ulaşabilirsin.
+            Mesaj kutusunu yayınlamadan önce e-posta teslimine bağlayacağız.
           </p>
         ) : null}
         {status !== "idle" ? (

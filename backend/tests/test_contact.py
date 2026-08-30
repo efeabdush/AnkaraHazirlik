@@ -46,7 +46,6 @@ def test_contact_sends_email_without_persisting_message(monkeypatch):
         "/api/contact",
         json={
             "name": "Efe <script>",
-            "email": "visitor@example.com",
             "category": "bug",
             "message": "Butonda <b>hata</b> görüyorum.",
             "website": "",
@@ -58,7 +57,7 @@ def test_contact_sends_email_without_persisting_message(monkeypatch):
     assert captured["url"] == "https://api.resend.com/emails"
     payload = captured["json"]
     assert payload["to"] == ["owner@example.com"]
-    assert payload["reply_to"] == "visitor@example.com"
+    assert "reply_to" not in payload
     assert "<script>" not in payload["html"]
     assert "&lt;script&gt;" in payload["html"]
     assert "<b>hata</b>" not in payload["html"]
@@ -72,7 +71,6 @@ def test_contact_honeypot_does_not_call_delivery_service(monkeypatch):
         "/api/contact",
         json={
             "name": "Spam Bot",
-            "email": "bot@example.com",
             "category": "general",
             "message": "This is definitely automated.",
             "website": "https://spam.invalid",
