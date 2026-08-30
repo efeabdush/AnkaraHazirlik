@@ -86,7 +86,12 @@ export function AcademicPracticeSession({ testId, onBack }: { testId: string; on
         </div>
       </header>
       <section className="card p-5 sm:p-7"><AcademicContent test={test} /></section>
-      <QuestionList questions={test.questions} answers={answers} onChange={(id, letter) => setAnswers((old) => ({ ...old, [id]: letter }))} />
+      <QuestionList
+        questions={test.questions}
+        answers={answers}
+        onChange={(id, letter) => setAnswers((old) => ({ ...old, [id]: letter }))}
+        compactLanguage={test.kind === "cloze" || test.kind === "restatement"}
+      />
       <section className="sticky bottom-4 z-20 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[var(--line)] bg-[rgba(253,251,247,0.94)] p-4 shadow-lg backdrop-blur">
         <p className="text-sm text-[var(--ink-2)]">{answered}/{test.questions.length} cevaplandı</p>
         <button type="button" className="btn btn-primary" disabled={sending} onClick={() => void submit()}>{sending ? "Gönderiliyor…" : "Cevapları gönder"}</button>
