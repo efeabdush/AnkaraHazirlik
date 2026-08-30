@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { QuestionList } from "@/components/QuestionList";
-import { api, audioUrl, type TestDetail } from "@/lib/api";
+import { api, audioUrl, type AttemptDetail, type TestDetail } from "@/lib/api";
+import { markPracticeCompleted } from "@/lib/practiceProgress";
 
 type Props = { testId: string; kind: "conversation" | "lecture" };
 
@@ -55,7 +56,7 @@ export function ListeningSession({ testId, kind }: Props) {
   async function submit() {
     setBusy(true);
     try {
-      const attempt = await api<{ id: string }>("/api/attempts", {
+      const attempt = await api<AttemptDetail>("/api/attempts", {
         method: "POST",
         body: JSON.stringify({
           test_id: testId,
@@ -65,6 +66,7 @@ export function ListeningSession({ testId, kind }: Props) {
           plays_used: plays,
         }),
       });
+      markPracticeCompleted(testId, kind);
       router.push(`/results/${attempt.id}`);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Gönderilemedi");

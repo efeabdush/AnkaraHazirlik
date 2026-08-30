@@ -1,6 +1,16 @@
 import Link from "next/link";
 
-export function PracticeMoreCard({ href, count, label }: { href: string; count: number; label: string }) {
+export function PracticeMoreCard({
+  href,
+  count,
+  label,
+  completedCount = 0,
+}: {
+  href: string;
+  count: number;
+  label: string;
+  completedCount?: number;
+}) {
   return (
     <Link
       href={href}
@@ -10,7 +20,10 @@ export function PracticeMoreCard({ href, count, label }: { href: string; count: 
       <span className="relative">
         <span className="eyebrow">Daha fazla pratik</span>
         <span className="mt-1 block font-serif text-xl text-[var(--navy)]">Tüm çalışmaları keşfet</span>
-        <span className="prose-quiet mt-1 block text-xs">{label} bölümündeki {count} özgün çalışmanın tamamını gör.</span>
+        <span className="prose-quiet mt-1 block text-xs">
+          {label} bölümündeki {count} özgün çalışmanın tamamını gör.
+          {completedCount > 0 ? ` Şimdiye kadar ${completedCount}/${count} çözüldü.` : ""}
+        </span>
       </span>
       <span className="relative mt-3 text-sm font-semibold text-[var(--navy)]">Arşivi aç <span className="inline-block transition-transform group-hover:translate-x-1">→</span></span>
     </Link>

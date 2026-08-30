@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { QuestionList } from "@/components/QuestionList";
 import { api, type AttemptDetail, type TestDetail } from "@/lib/api";
+import { markPracticeCompleted } from "@/lib/practiceProgress";
 
 function MarkedText({ text }: { text: string }) {
   const parts = text.split(/(\[\[\d+\]\])/g);
@@ -63,6 +64,7 @@ export function AcademicPracticeSession({ testId, onBack }: { testId: string; on
         method: "POST",
         body: JSON.stringify({ test_id: test.id, mode, answers, notes: "", plays_used: 0 }),
       });
+      markPracticeCompleted(test.id, test.kind);
       router.push(`/results/${result.id}`);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Gönderilemedi");

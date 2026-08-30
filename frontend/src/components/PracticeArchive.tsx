@@ -3,12 +3,16 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { api, type TestSummary } from "@/lib/api";
+import { PracticeSolvedBadge } from "@/components/PracticeSolvedBadge";
 import { practiceHref, practiceLibrary, type PracticeKind } from "@/lib/practiceLibrary";
+import { useCompletedPracticeIds } from "@/lib/practiceProgress";
 
 export function PracticeArchive({ kind }: { kind: PracticeKind }) {
   const meta = practiceLibrary[kind];
   const [tests, setTests] = useState<TestSummary[] | null>(null);
   const [error, setError] = useState("");
+  const completedIds = useCompletedPracticeIds();
+  const completedCount = tests?.filter((test) => completedIds.has(test.id)).length ?? 0;
 
   useEffect(() => {
     api<TestSummary[]>(`/api/tests?kind=${kind}`)
@@ -28,7 +32,10 @@ export function PracticeArchive({ kind }: { kind: PracticeKind }) {
             <h1 className="mt-2 font-serif text-4xl tracking-tight text-[var(--navy)]">{meta.label}</h1>
             <p className="prose-quiet mt-3">{meta.description}</p>
           </div>
-          <span className="badge badge-gold">{tests?.length ?? 25} çalışma</span>
+          <div className="flex flex-wrap gap-2">
+            <span className="badge badge-gold">{tests?.length ?? 25} çalışma</span>
+            {completedCount > 0 ? <span className="badge badge-green">✓ {completedCount} çözüldü</span> : null}
+          </div>
         </div>
       </header>
 
@@ -44,8 +51,8 @@ export function PracticeArchive({ kind }: { kind: PracticeKind }) {
                 <span className="eyebrow">Çalışma {String(index + 1).padStart(2, "0")}</span>
                 <span className="mt-2 block font-serif text-xl leading-snug text-[var(--navy)]">{test.title}</span>
               </span>
-              <span className="mt-4 flex items-center justify-between text-xs text-[var(--ink-2)]">
-                <span>{test.cefr} · özgün çalışma</span>
+              <span className="mt-4 flex items-center justify-between gap-3 text-xs text-[var(--ink-2)]">
+                {completedIds.has(test.id) ? <PracticeSolvedBadge /> : <span>{test.cefr} · özgün çalışma</span>}
                 <span className="text-base text-[var(--gold)] transition-transform group-hover:translate-x-1">→</span>
               </span>
             </Link>

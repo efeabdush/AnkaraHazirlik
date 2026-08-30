@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { api, type TestSummary } from "@/lib/api";
 import { PracticeMoreCard } from "@/components/PracticeMoreCard";
+import { PracticeSolvedBadge } from "@/components/PracticeSolvedBadge";
+import { useCompletedPracticeIds } from "@/lib/practiceProgress";
 
 export default function ListeningPage() {
   const [tests, setTests] = useState<TestSummary[] | null>(null);
   const [error, setError] = useState("");
+  const completedIds = useCompletedPracticeIds();
 
   useEffect(() => {
     Promise.all([
@@ -77,6 +80,7 @@ export default function ListeningPage() {
         loading={tests === null && !error}
         href={(id) => `/listening/conversation/${id}`}
         archiveHref="/practice-library/conversation"
+        completedIds={completedIds}
       />
 
       <Section
@@ -88,6 +92,7 @@ export default function ListeningPage() {
         loading={tests === null && !error}
         href={(id) => `/listening/lecture/${id}`}
         archiveHref="/practice-library/lecture"
+        completedIds={completedIds}
       />
     </div>
   );
@@ -102,6 +107,7 @@ function Section({
   loading,
   href,
   archiveHref,
+  completedIds,
 }: {
   badge: string;
   tone: string;
@@ -111,12 +117,16 @@ function Section({
   loading: boolean;
   href: (id: string) => string;
   archiveHref: string;
+  completedIds: Set<string>;
 }) {
+  const completedCount = tests.filter((test) => completedIds.has(test.id)).length;
+
   return (
     <section className="space-y-4">
       <div className="flex flex-wrap items-center gap-3">
         <span className={tone}>{badge}</span>
         <h2 className="font-serif text-2xl text-[var(--navy)]">{title}</h2>
+        {completedCount > 0 ? <span className="badge badge-green">✓ {completedCount} çözüldü</span> : null}
       </div>
       <p className="prose-quiet max-w-2xl text-sm">{desc}</p>
 
@@ -139,7 +149,7 @@ function Section({
               <span className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-[var(--navy)] to-[var(--gold)] opacity-70 transition-opacity group-hover:opacity-100" />
               <div className="flex items-start justify-between gap-3">
                 <h3 className="font-serif text-lg leading-snug text-[var(--navy)]">{t.title}</h3>
-                <span className="badge">{t.cefr}</span>
+                {completedIds.has(t.id) ? <PracticeSolvedBadge /> : <span className="badge">{t.cefr}</span>}
               </div>
               <div className="mt-auto flex items-center justify-between text-xs text-[var(--ink-2)]">
                 <span className="capitalize">{t.topic}</span>
@@ -152,7 +162,7 @@ function Section({
               </div>
             </Link>
           ))}
-          <PracticeMoreCard href={archiveHref} count={tests.length} label={title} />
+          <PracticeMoreCard href={archiveHref} count={tests.length} label={title} completedCount={completedCount} />
         </div>
       )}
     </section>

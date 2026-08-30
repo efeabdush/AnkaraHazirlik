@@ -7,6 +7,7 @@ import { AcademicContent } from "@/components/AcademicPracticeSession";
 import { SelectTranslate } from "@/components/SelectTranslate";
 import { api, type AttemptDetail } from "@/lib/api";
 import { isPracticeKind } from "@/lib/practiceLibrary";
+import { markPracticeCompleted } from "@/lib/practiceProgress";
 
 export default function ResultsPage({ params }: { params: Promise<{ id: string }> }) {
   const [attempt, setAttempt] = useState<AttemptDetail | null>(null);
@@ -18,7 +19,10 @@ export default function ResultsPage({ params }: { params: Promise<{ id: string }
     params.then(({ id: value }) => {
       setId(value);
       api<AttemptDetail>(`/api/attempts/${value}`)
-        .then(setAttempt)
+        .then((result) => {
+          markPracticeCompleted(result.test_id, result.kind);
+          setAttempt(result);
+        })
         .catch((e) => setError(e.message));
     });
   }, [params]);
