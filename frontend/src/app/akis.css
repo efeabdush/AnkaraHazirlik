@@ -112,6 +112,14 @@
   scroll-snap-stop: always;
 }
 
+/* Touch browsers get a firm landing point after momentum. Oversized slides
+   are still scrollable within their own snap area. */
+@media (hover: none) and (pointer: coarse) {
+  .feed-scroll {
+    scroll-snap-type: y mandatory;
+  }
+}
+
 /* the action row of an answered card stays within thumb reach */
 .card-actions {
   position: sticky;

@@ -130,8 +130,60 @@ export function ReelFeed({
     if (!root || !visible.length) return;
     measure();
     let last = -1;
+    let touchStart: number | null = null;
+    let releaseTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const clearReleaseTimer = () => {
+      if (releaseTimer) clearTimeout(releaseTimer);
+      releaseTimer = null;
+    };
+
+    const releaseTouchGuard = () => {
+      clearReleaseTimer();
+      // Keep the guard alive through the short momentum phase after a finger
+      // leaves the screen. Scroll events below extend this window as needed.
+      releaseTimer = setTimeout(() => {
+        touchStart = null;
+        releaseTimer = null;
+      }, 500);
+    };
+
+    const nearestSnap = () => {
+      const offsets = offsetsRef.current;
+      const lastSnap = Math.min(visible.length, offsets.length - 1);
+      let nearest = 0;
+      let distance = Number.POSITIVE_INFINITY;
+      for (let i = 0; i <= lastSnap; i += 1) {
+        const current = Math.abs((offsets[i] ?? 0) - root.scrollTop);
+        if (current < distance) {
+          distance = current;
+          nearest = i;
+        }
+      }
+      return nearest;
+    };
+
+    const beginTouch = () => {
+      measure();
+      clearReleaseTimer();
+      touchStart = nearestSnap();
+    };
+
     const pick = () => {
       if (root.scrollHeight !== heightRef.current) measure();
+
+      // iOS and some Android WebViews can ignore scroll-snap-stop during a
+      // fast fling. Clamp that fling to the two neighbouring snap points;
+      // ordinary scrolling inside a tall answered card remains untouched.
+      if (touchStart !== null) {
+        const lower = offsetsRef.current[Math.max(0, touchStart - 1)] ?? 0;
+        const upperIndex = Math.min(visible.length, touchStart + 1);
+        const upper = offsetsRef.current[upperIndex] ?? root.scrollHeight;
+        const clamped = Math.min(upper, Math.max(lower, root.scrollTop));
+        if (Math.abs(clamped - root.scrollTop) > 0.5) root.scrollTop = clamped;
+        releaseTouchGuard();
+      }
+
       const line = root.scrollTop + root.clientHeight * 0.35;
       const offsets = offsetsRef.current;
       let at = 0;
@@ -143,9 +195,16 @@ export function ReelFeed({
       setIndex(at);
     };
     root.addEventListener("scroll", pick, { passive: true });
+    root.addEventListener("touchstart", beginTouch, { passive: true });
+    root.addEventListener("touchend", releaseTouchGuard, { passive: true });
+    root.addEventListener("touchcancel", releaseTouchGuard, { passive: true });
     window.addEventListener("resize", measure);
     return () => {
+      clearReleaseTimer();
       root.removeEventListener("scroll", pick);
+      root.removeEventListener("touchstart", beginTouch);
+      root.removeEventListener("touchend", releaseTouchGuard);
+      root.removeEventListener("touchcancel", releaseTouchGuard);
       window.removeEventListener("resize", measure);
     };
   }, [visible, measure]);
