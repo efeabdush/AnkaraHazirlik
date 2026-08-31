@@ -145,7 +145,7 @@
 
   /* Once feedback expands the card, its buttons travel with the explanation
      instead of sticking over it. The whole result can then scroll naturally. */
-  .card-actions {
+  .feed-card-scroll .card-actions {
     position: static;
     background: transparent;
   }
