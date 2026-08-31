@@ -4,7 +4,12 @@ import { useCallback, useEffect, useMemo, useRef, useState, type TouchEvent } fr
 import Link from "next/link";
 import { ReelCard } from "@/components/ReelCard";
 import { api, type AnswerResult, type Level, type Pack, type ReelCard as Card } from "@/lib/api";
-import { akisSwipeDestination, type SwipeStart } from "@/lib/akis-swipe";
+import {
+  AKIS_SWIPE_DURATION_MS,
+  AKIS_SWIPE_LOCK_MS,
+  akisSwipeDestination,
+  type SwipeStart,
+} from "@/lib/akis-swipe";
 import { LEVELS, levelColor, levelSlug } from "@/lib/levels";
 import { modeTitle, type ModeId } from "@/lib/modes";
 import { MIX_SCOPE, loadFeedState, loadOrder, saveFeedState, saveOrder } from "@/lib/session";
@@ -32,6 +37,7 @@ export function ReelFeed({
   const touchRef = useRef<SwipeStart | null>(null);
   const swipeLockedRef = useRef(false);
   const swipeUnlockRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scrollAnimationRef = useRef<number | null>(null);
 
   const [cards, setCards] = useState<Card[] | null>(null);
   const [error, setError] = useState("");
@@ -161,7 +167,34 @@ export function ReelFeed({
       if (!root || !el) return;
       measure();
       const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      root.scrollTo({ top: offsetsRef.current[to] ?? 0, behavior: still ? "auto" : "smooth" });
+      const target = offsetsRef.current[to] ?? 0;
+      const touchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+      if (scrollAnimationRef.current !== null) {
+        cancelAnimationFrame(scrollAnimationRef.current);
+        scrollAnimationRef.current = null;
+      }
+
+      if (still || !touchDevice) {
+        root.scrollTo({ top: target, behavior: still ? "auto" : "smooth" });
+        return;
+      }
+
+      const from = root.scrollTop;
+      const distance = target - from;
+      if (Math.abs(distance) < 1) return;
+      const started = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min(1, (now - started) / AKIS_SWIPE_DURATION_MS);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        root.scrollTop = from + distance * eased;
+        if (progress < 1) {
+          scrollAnimationRef.current = requestAnimationFrame(tick);
+        } else {
+          root.scrollTop = target;
+          scrollAnimationRef.current = null;
+        }
+      };
+      scrollAnimationRef.current = requestAnimationFrame(tick);
     },
     [measure],
   );
@@ -209,7 +242,7 @@ export function ReelFeed({
         swipeUnlockRef.current = setTimeout(() => {
           swipeLockedRef.current = false;
           swipeUnlockRef.current = null;
-        }, 360);
+        }, AKIS_SWIPE_LOCK_MS);
       }
     },
     [goTo, visible.length],
@@ -221,6 +254,7 @@ export function ReelFeed({
 
   useEffect(() => () => {
     if (swipeUnlockRef.current) clearTimeout(swipeUnlockRef.current);
+    if (scrollAnimationRef.current !== null) cancelAnimationFrame(scrollAnimationRef.current);
   }, []);
 
   const answer = useCallback(
