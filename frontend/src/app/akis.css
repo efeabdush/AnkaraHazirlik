@@ -112,11 +112,35 @@
   scroll-snap-stop: always;
 }
 
-/* Touch browsers get a firm landing point after momentum. Oversized slides
-   are still scrollable within their own snap area. */
+/* On phones the outer feed never receives native momentum. Each gesture is
+   resolved by ReelFeed to exactly one neighbour; long cards keep their own
+   natural, isolated scroll area. This avoids both multi-card flings and the
+   visual bounce caused by correcting scrollTop during momentum. */
 @media (hover: none) and (pointer: coarse) {
   .feed-scroll {
-    scroll-snap-type: y mandatory;
+    overflow-y: hidden;
+    scroll-snap-type: none;
+    -webkit-overflow-scrolling: auto;
+  }
+
+  .feed-slide {
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    scroll-snap-align: none;
+  }
+
+  .feed-card-scroll {
+    max-height: 100%;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .feed-card-scroll::-webkit-scrollbar {
+    display: none;
   }
 }
 

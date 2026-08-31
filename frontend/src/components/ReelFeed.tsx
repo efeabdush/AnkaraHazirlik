@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type TouchEvent } from "react";
 import Link from "next/link";
 import { ReelCard } from "@/components/ReelCard";
 import { api, type AnswerResult, type Level, type Pack, type ReelCard as Card } from "@/lib/api";
+import { akisSwipeDestination, type SwipeStart } from "@/lib/akis-swipe";
 import { LEVELS, levelColor, levelSlug } from "@/lib/levels";
 import { modeTitle, type ModeId } from "@/lib/modes";
 import { MIX_SCOPE, loadFeedState, loadOrder, saveFeedState, saveOrder } from "@/lib/session";
@@ -28,6 +29,9 @@ export function ReelFeed({
   const offsetsRef = useRef<number[]>([]);
   const heightRef = useRef(0);
   const restoredRef = useRef(false);
+  const touchRef = useRef<SwipeStart | null>(null);
+  const swipeLockedRef = useRef(false);
+  const swipeUnlockRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [cards, setCards] = useState<Card[] | null>(null);
   const [error, setError] = useState("");
@@ -130,60 +134,8 @@ export function ReelFeed({
     if (!root || !visible.length) return;
     measure();
     let last = -1;
-    let touchStart: number | null = null;
-    let releaseTimer: ReturnType<typeof setTimeout> | null = null;
-
-    const clearReleaseTimer = () => {
-      if (releaseTimer) clearTimeout(releaseTimer);
-      releaseTimer = null;
-    };
-
-    const releaseTouchGuard = () => {
-      clearReleaseTimer();
-      // Keep the guard alive through the short momentum phase after a finger
-      // leaves the screen. Scroll events below extend this window as needed.
-      releaseTimer = setTimeout(() => {
-        touchStart = null;
-        releaseTimer = null;
-      }, 500);
-    };
-
-    const nearestSnap = () => {
-      const offsets = offsetsRef.current;
-      const lastSnap = Math.min(visible.length, offsets.length - 1);
-      let nearest = 0;
-      let distance = Number.POSITIVE_INFINITY;
-      for (let i = 0; i <= lastSnap; i += 1) {
-        const current = Math.abs((offsets[i] ?? 0) - root.scrollTop);
-        if (current < distance) {
-          distance = current;
-          nearest = i;
-        }
-      }
-      return nearest;
-    };
-
-    const beginTouch = () => {
-      measure();
-      clearReleaseTimer();
-      touchStart = nearestSnap();
-    };
-
     const pick = () => {
       if (root.scrollHeight !== heightRef.current) measure();
-
-      // iOS and some Android WebViews can ignore scroll-snap-stop during a
-      // fast fling. Clamp that fling to the two neighbouring snap points;
-      // ordinary scrolling inside a tall answered card remains untouched.
-      if (touchStart !== null) {
-        const lower = offsetsRef.current[Math.max(0, touchStart - 1)] ?? 0;
-        const upperIndex = Math.min(visible.length, touchStart + 1);
-        const upper = offsetsRef.current[upperIndex] ?? root.scrollHeight;
-        const clamped = Math.min(upper, Math.max(lower, root.scrollTop));
-        if (Math.abs(clamped - root.scrollTop) > 0.5) root.scrollTop = clamped;
-        releaseTouchGuard();
-      }
-
       const line = root.scrollTop + root.clientHeight * 0.35;
       const offsets = offsetsRef.current;
       let at = 0;
@@ -195,16 +147,9 @@ export function ReelFeed({
       setIndex(at);
     };
     root.addEventListener("scroll", pick, { passive: true });
-    root.addEventListener("touchstart", beginTouch, { passive: true });
-    root.addEventListener("touchend", releaseTouchGuard, { passive: true });
-    root.addEventListener("touchcancel", releaseTouchGuard, { passive: true });
     window.addEventListener("resize", measure);
     return () => {
-      clearReleaseTimer();
       root.removeEventListener("scroll", pick);
-      root.removeEventListener("touchstart", beginTouch);
-      root.removeEventListener("touchend", releaseTouchGuard);
-      root.removeEventListener("touchcancel", releaseTouchGuard);
       window.removeEventListener("resize", measure);
     };
   }, [visible, measure]);
@@ -220,6 +165,63 @@ export function ReelFeed({
     },
     [measure],
   );
+
+  const beginSwipe = useCallback((event: TouchEvent<HTMLDivElement>) => {
+    if (
+      swipeLockedRef.current ||
+      !window.matchMedia("(hover: none) and (pointer: coarse)").matches
+    ) return;
+    const touch = event.touches[0];
+    const target = event.target as HTMLElement;
+    const slide = target.closest<HTMLElement>(".feed-slide");
+    const touchedCardScroll = target.closest<HTMLElement>(".feed-card-scroll");
+    const cardScroll =
+      touchedCardScroll && slide?.contains(touchedCardScroll)
+        ? touchedCardScroll
+        : slide?.querySelector<HTMLElement>(".feed-card-scroll");
+    if (!touch || !slide || !cardScroll) return;
+
+    const slideIndex = Number(slide.dataset.index);
+    if (!Number.isInteger(slideIndex)) return;
+    touchRef.current = {
+      y: touch.clientY,
+      index: slideIndex,
+      // If the card itself has content left in this direction, this gesture
+      // belongs to the card rather than to the surrounding feed.
+      canMoveBack: cardScroll.scrollTop > 2,
+      canMoveForward:
+        cardScroll.scrollTop + cardScroll.clientHeight < cardScroll.scrollHeight - 2,
+    };
+  }, []);
+
+  const finishSwipe = useCallback(
+    (event: TouchEvent<HTMLDivElement>) => {
+      const start = touchRef.current;
+      touchRef.current = null;
+      const touch = event.changedTouches[0];
+      if (!start || !touch) return;
+
+      const destination = akisSwipeDestination(start, touch.clientY, visible.length);
+      if (destination !== null) {
+        swipeLockedRef.current = true;
+        if (swipeUnlockRef.current) clearTimeout(swipeUnlockRef.current);
+        goTo(destination);
+        swipeUnlockRef.current = setTimeout(() => {
+          swipeLockedRef.current = false;
+          swipeUnlockRef.current = null;
+        }, 360);
+      }
+    },
+    [goTo, visible.length],
+  );
+
+  const cancelSwipe = useCallback(() => {
+    touchRef.current = null;
+  }, []);
+
+  useEffect(() => () => {
+    if (swipeUnlockRef.current) clearTimeout(swipeUnlockRef.current);
+  }, []);
 
   const answer = useCallback(
     async (card: Card, choice: string) => {
@@ -329,7 +331,13 @@ export function ReelFeed({
         </div>
       </header>
 
-      <div ref={scrollRef} className="feed-scroll flex-1">
+      <div
+        ref={scrollRef}
+        className="feed-scroll flex-1"
+        onTouchStart={beginSwipe}
+        onTouchEnd={finishSwipe}
+        onTouchCancel={cancelSwipe}
+      >
         {error && !cards ? (
           <div className="flex h-full items-center justify-center p-6">
             <div className="card max-w-sm p-6 text-center">
@@ -357,7 +365,7 @@ export function ReelFeed({
             }}
             className="feed-slide flex min-h-full items-center justify-center px-3 py-4 sm:px-4"
           >
-            <div className="w-full max-w-xl">
+            <div className="feed-card-scroll w-full max-w-xl">
               <ReelCard
                 card={card}
                 index={i}
@@ -400,42 +408,45 @@ export function ReelFeed({
 
         {visible.length ? (
           <div
+            data-index={visible.length}
             ref={(el) => {
               slideRefs.current[visible.length] = el;
             }}
             className="feed-slide flex min-h-full items-center justify-center px-3 py-4 sm:px-4"
           >
-            <div className="card w-full max-w-sm p-7 text-center">
-              <p className="font-serif text-2xl text-[var(--navy)]">
-                {pack ? "Paket bitti" : "Akışın sonu"}
-              </p>
-              <p className="prose-quiet mt-2 text-sm">
-                {answeredCount
-                  ? `${visible.length} karttan ${answeredCount} tanesini cevapladın, ${correctCount} doğru.`
-                  : "Henüz soru cevaplamadın."}
-              </p>
-              <div className="mt-4 flex flex-col gap-2">
-                {nextPack ? (
-                  <Link href={`/akis/${kind}?pack=${encodeURIComponent(nextPack.id)}`} className="btn btn-primary">
-                    {nextPack.title} →
-                  </Link>
-                ) : (
-                  <button type="button" className="btn btn-primary" onClick={() => goTo(0)}>
-                    Başa dön
-                  </button>
-                )}
-                {pack ? (
-                  <Link
-                    href={`/akis/${kind}/seviye/${levelSlug(packInfo?.level ?? pack.slice(0, pack.lastIndexOf("-")))}`}
-                    className="btn btn-outline"
-                  >
-                    Paketler
-                  </Link>
-                ) : (
-                  <Link href="/akis" className="btn btn-outline">
-                    Biçimler
-                  </Link>
-                )}
+            <div className="feed-card-scroll w-full max-w-sm">
+              <div className="card w-full p-7 text-center">
+                <p className="font-serif text-2xl text-[var(--navy)]">
+                  {pack ? "Paket bitti" : "Akışın sonu"}
+                </p>
+                <p className="prose-quiet mt-2 text-sm">
+                  {answeredCount
+                    ? `${visible.length} karttan ${answeredCount} tanesini cevapladın, ${correctCount} doğru.`
+                    : "Henüz soru cevaplamadın."}
+                </p>
+                <div className="mt-4 flex flex-col gap-2">
+                  {nextPack ? (
+                    <Link href={`/akis/${kind}?pack=${encodeURIComponent(nextPack.id)}`} className="btn btn-primary">
+                      {nextPack.title} →
+                    </Link>
+                  ) : (
+                    <button type="button" className="btn btn-primary" onClick={() => goTo(0)}>
+                      Başa dön
+                    </button>
+                  )}
+                  {pack ? (
+                    <Link
+                      href={`/akis/${kind}/seviye/${levelSlug(packInfo?.level ?? pack.slice(0, pack.lastIndexOf("-")))}`}
+                      className="btn btn-outline"
+                    >
+                      Paketler
+                    </Link>
+                  ) : (
+                    <Link href="/akis" className="btn btn-outline">
+                      Biçimler
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
           </div>
