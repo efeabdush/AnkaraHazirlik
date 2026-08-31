@@ -142,6 +142,13 @@
   .feed-card-scroll::-webkit-scrollbar {
     display: none;
   }
+
+  /* Once feedback expands the card, its buttons travel with the explanation
+     instead of sticking over it. The whole result can then scroll naturally. */
+  .card-actions {
+    position: static;
+    background: transparent;
+  }
 }
 
 /* the action row of an answered card stays within thumb reach */

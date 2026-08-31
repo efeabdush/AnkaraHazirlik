@@ -6,7 +6,6 @@ import { ReelCard } from "@/components/ReelCard";
 import { api, type AnswerResult, type Level, type Pack, type ReelCard as Card } from "@/lib/api";
 import {
   AKIS_SWIPE_DURATION_MS,
-  AKIS_SWIPE_LOCK_MS,
   akisSwipeDestination,
   type SwipeStart,
 } from "@/lib/akis-swipe";
@@ -35,8 +34,6 @@ export function ReelFeed({
   const heightRef = useRef(0);
   const restoredRef = useRef(false);
   const touchRef = useRef<SwipeStart | null>(null);
-  const swipeLockedRef = useRef(false);
-  const swipeUnlockRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const scrollAnimationRef = useRef<number | null>(null);
 
   const [cards, setCards] = useState<Card[] | null>(null);
@@ -200,10 +197,7 @@ export function ReelFeed({
   );
 
   const beginSwipe = useCallback((event: TouchEvent<HTMLDivElement>) => {
-    if (
-      swipeLockedRef.current ||
-      !window.matchMedia("(hover: none) and (pointer: coarse)").matches
-    ) return;
+    if (!window.matchMedia("(hover: none) and (pointer: coarse)").matches) return;
     const touch = event.touches[0];
     const target = event.target as HTMLElement;
     const slide = target.closest<HTMLElement>(".feed-slide");
@@ -235,15 +229,7 @@ export function ReelFeed({
       if (!start || !touch) return;
 
       const destination = akisSwipeDestination(start, touch.clientY, visible.length);
-      if (destination !== null) {
-        swipeLockedRef.current = true;
-        if (swipeUnlockRef.current) clearTimeout(swipeUnlockRef.current);
-        goTo(destination);
-        swipeUnlockRef.current = setTimeout(() => {
-          swipeLockedRef.current = false;
-          swipeUnlockRef.current = null;
-        }, AKIS_SWIPE_LOCK_MS);
-      }
+      if (destination !== null) goTo(destination);
     },
     [goTo, visible.length],
   );
@@ -253,7 +239,6 @@ export function ReelFeed({
   }, []);
 
   useEffect(() => () => {
-    if (swipeUnlockRef.current) clearTimeout(swipeUnlockRef.current);
     if (scrollAnimationRef.current !== null) cancelAnimationFrame(scrollAnimationRef.current);
   }, []);
 

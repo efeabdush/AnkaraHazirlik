@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import {
   AKIS_SWIPE_DURATION_MS,
-  AKIS_SWIPE_LOCK_MS,
+  AKIS_SWIPE_THRESHOLD,
   akisSwipeDestination,
   type SwipeStart,
 } from "../src/lib/akis-swipe.ts";
@@ -29,9 +29,8 @@ assert.equal(akisSwipeDestination(gesture({ canMoveBack: true }), 2200, 30), nul
 // Small finger movement is a tap, not navigation.
 assert.equal(akisSwipeDestination(gesture(), 660, 30), null);
 
-// The lock protects the animation without making consecutive swipes feel heavy.
+// The gesture remains deliberate without feeling unresponsive.
 assert.ok(AKIS_SWIPE_DURATION_MS >= 150 && AKIS_SWIPE_DURATION_MS <= 220);
-assert.ok(AKIS_SWIPE_LOCK_MS >= AKIS_SWIPE_DURATION_MS);
-assert.ok(AKIS_SWIPE_LOCK_MS - AKIS_SWIPE_DURATION_MS <= 60);
+assert.ok(AKIS_SWIPE_THRESHOLD >= 32 && AKIS_SWIPE_THRESHOLD <= 48);
 
 console.log("Akış swipe regression checks passed");

@@ -1,6 +1,5 @@
 export const AKIS_SWIPE_THRESHOLD = 48;
 export const AKIS_SWIPE_DURATION_MS = 190;
-export const AKIS_SWIPE_LOCK_MS = 230;
 
 export type SwipeStart = {
   y: number;
