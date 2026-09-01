@@ -20,6 +20,24 @@ def _question(stem: str, options: list[str], answer: str, rationale: str, *, poi
     }
 
 
+def _choice_question(
+    stem: str,
+    correct: str,
+    distractors: list[str],
+    rationale: str,
+    *,
+    rotation: int = 0,
+    points: int = 1,
+    qtype: str = "detail",
+) -> dict[str, Any]:
+    """Place the correct option at a changing position so packs do not share an answer pattern."""
+    choices = [correct, *distractors]
+    shift = rotation % len(choices)
+    choices = choices[shift:] + choices[:shift]
+    answer = ("A", "B", "C", "D")[choices.index(correct)]
+    return _question(stem, choices, answer, rationale, points=points, qtype=qtype)
+
+
 CONVERSATION_SPECS = [
     ("Changing a Laboratory Session", "course scheduling", "science office", "move a laboratory session", "the new time conflicts with a language class", "changes require the instructor's approval", "join Friday's group after the instructor signs the form", "email the signed form before Wednesday noon"),
     ("Collecting a Student Travel Card", "student transport", "transport desk", "collect a discounted travel card", "the online record shows an old address", "the address must match a recent document", "show a digital bank statement and update the record", "return before the desk closes at four"),
@@ -48,28 +66,81 @@ CONVERSATION_SPECS = [
 
 def _conversation_pack(index: int, spec: tuple[str, ...]) -> dict[str, Any]:
     title, topic, place, goal, problem, rule, solution, next_step = spec
-    script = [
-        {"speaker": "student", "text": f"Hello. I was told that the {place} could help me. I need to {goal}, but I have reached a problem and I am not sure which step should come next."},
-        {"speaker": "staff", "text": f"Of course. Tell me what has happened so far. These requests usually have one general rule, but there may be another option if we understand your situation clearly."},
-        {"speaker": "student", "text": f"The main issue is that {problem}. I checked the website twice, but its short message did not explain whether I should wait, start again, or speak to someone in person."},
-        {"speaker": "staff", "text": f"That message is not very helpful. The important rule is that {rule}. It exists so that staff can treat similar requests in the same way and keep a clear record."},
-        {"speaker": "student", "text": "I understand the reason for the rule. I am not asking you to ignore it; I just want to know whether there is a practical route that still lets me finish the task on time."},
-        {"speaker": "staff", "text": f"There is. You can {solution}. That will give us the information we need without cancelling the work you have already completed."},
-        {"speaker": "student", "text": "That sounds manageable. Will I need to pay anything or complete another long application? I have my student card and can open the campus portal on my phone."},
-        {"speaker": "staff", "text": "There is no extra payment. The form is short, but use your university account so the system connects it to your record. Keep the confirmation page until everything is finished."},
-        {"speaker": "student", "text": f"All right. So first I should {solution}, and then I should {next_step}. Is that the correct order?"},
-        {"speaker": "staff", "text": "Yes. If the confirmation does not appear within an hour, do not send the same request several times. Bring the reference number here and we can find the original request."},
-        {"speaker": "student", "text": "Good. I was worried that I would have to begin the whole process again. I will follow those steps now and save the reference number."},
-        {"speaker": "staff", "text": "That should solve it. Read the final confirmation carefully because it will state the time and any item you need to bring. Come back if the details are different from what we discussed."},
-    ]
+    styles = (
+        [
+            ("student", f"Hi. I am trying to {goal}, and the website sent me to the {place}. Could I check what I need to do?"),
+            ("staff", f"Certainly. Before we look at the form, tell me what stopped you while you were trying to {goal}."),
+            ("student", f"The problem is that {problem}. The online page lists several choices, but none seems to match my situation."),
+            ("staff", f"In this case the key condition is that {rule}. That is why the normal online route did not work."),
+            ("student", f"That makes sense. I still need to finish this soon, so is there an alternative that follows the {place}'s rules?"),
+            ("staff", f"Yes. The quickest valid option is to {solution}. It keeps your earlier work on the system."),
+            ("student", f"After that, should I {next_step}, or will the system contact me automatically?"),
+            ("staff", f"You should {next_step}. Save the confirmation in case the update is delayed."),
+        ],
+        [
+            ("staff", f"Good afternoon, {place}. How can I help?"),
+            ("student", f"I hoped to {goal}, but I discovered that {problem}. I am worried I have left it too late."),
+            ("staff", f"Let me check. Our normal policy says that {rule}, although there is a route for cases like yours."),
+            ("student", f"I read that rule, but I could not tell whether it meant I had to cancel my plan to {goal}."),
+            ("staff", f"No cancellation is necessary. You can {solution}; that gives the {place} enough evidence to continue."),
+            ("student", f"Great. What happens to my request to {goal} once I have done that?"),
+            ("staff", f"Then {next_step}. Please do not create a second request while the first one is being checked."),
+            ("student", f"Understood. I will {solution} today and keep the reference number until the process is complete."),
+        ],
+        [
+            ("student", f"Excuse me, I have a question about how to {goal}. Someone at reception said the {place} handles it."),
+            ("staff", f"That is right. Are you starting a new request to {goal}, or has something gone wrong with an existing one?"),
+            ("student", f"It is an existing request. {problem.capitalize()}, and I do not want to submit incorrect information."),
+            ("staff", f"You were right to pause. We have to make sure that {rule}; otherwise the request may be rejected later."),
+            ("student", f"What can I do without losing the time I have already spent trying to {goal}?"),
+            ("staff", f"You can {solution}. We will attach that step to the same request rather than opening a new file."),
+            ("student", f"Will that be enough for me to {goal}?"),
+            ("staff", f"Yes, provided that you also {next_step}. Check the final message for the exact time and location."),
+        ],
+        [
+            ("student", f"Hello. I have come to the {place} because I need to {goal} before the end of the week."),
+            ("staff", f"All right. Show me the message you received and the {place} can work out why the request stopped."),
+            ("student", f"Here it is. It seems to say that {problem}, but it does not give me another button to press."),
+            ("staff", f"The button disappears because {rule}. The message should explain that more clearly."),
+            ("student", f"Is there still a way to {goal} this week?"),
+            ("staff", f"There should be. First, {solution}. That lets us review the exception without changing the deadline."),
+            ("student", f"And what should I do about {goal} while the review is taking place?"),
+            ("staff", f"Please {next_step}. If you hear nothing by the stated time, contact the {place} with this reference code."),
+        ],
+        [
+            ("staff", f"Welcome to the {place}. What are you hoping to arrange today?"),
+            ("student", f"I want to {goal}. I prepared everything listed online, but {problem}."),
+            ("staff", f"That detail changes the procedure. The rule is that {rule}, so I cannot approve the original route at this desk."),
+            ("student", f"I see. Could you suggest a practical option for {goal} rather than making me start from the beginning?"),
+            ("staff", f"The best option is to {solution}. It was designed for exactly this kind of delay or mismatch."),
+            ("student", f"Do I need to bring anything else to the {place} afterwards?"),
+            ("staff", f"For now, just {next_step}. The confirmation will say if an original document is needed later."),
+            ("student", f"Thanks. I will follow that order for {goal} and check the confirmation before I leave campus."),
+        ],
+        [
+            ("student", f"Could I get some advice? I need to {goal}, but {problem}, and two web pages seem to give different instructions."),
+            ("staff", f"Use the guidance from the {place}. The deciding rule is that {rule}; the other page only describes ordinary cases."),
+            ("student", f"So which part of the process for {goal} should I complete first? I do not want the deadline to pass while I wait."),
+            ("staff", f"Start by trying to {solution}. That creates a dated record of the problem."),
+            ("student", f"Once the record appears, can I continue with my plan to {goal}?"),
+            ("staff", f"Yes. Your next action is to {next_step}. There is no need to repeat the first form."),
+            ("student", f"That is much clearer. I will save both the record and the final reply from the {place}."),
+            ("staff", f"Good idea. If the details about {goal} change, use the same reference number so the {place} can see the full history."),
+        ],
+    )
+    script = [{"speaker": speaker, "text": text} for speaker, text in styles[(index - 1) % len(styles)]]
+    script.extend([
+        {"speaker": "student", "text": f"Before I leave, could you confirm that following these steps will keep my request to {goal} active? I may need to explain the process to my course tutor."},
+        {"speaker": "staff", "text": f"It will remain active. Keep the message from the {place}, follow the stated deadline, and quote the same reference number if you need further help."},
+    ])
     return {
         "id": f"catalog-conversation-{index:02d}", "kind": "conversation", "title": title, "topic": topic,
         "cefr": "B1+", "source": "seed", "published": True, "defer_audio": True, "script": script,
         "questions": [
-            _question("Why does the student visit the office?", ["To complain about a staff member", f"To {goal}", "To collect a course certificate", "To ask for a general campus map"], "B", f"The student says that they need to {goal}.", qtype="purpose"),
-            _question("What is the main difficulty?", ["The office has moved", "The student forgot a password", problem.capitalize(), "A payment was made twice"], "C", f"The student clearly explains that {problem}.", qtype="detail"),
-            _question("What solution does the staff member offer?", [solution.capitalize(), "Wait until the next semester", "Ask another student to complete it", "Cancel the request completely"], "A", f"The staff member recommends that the student {solution}.", qtype="process"),
-            _question("What should the student do if no confirmation appears?", ["Submit several new requests", "Pay an additional charge", "Ignore the missing message", "Take the reference number to the office"], "D", "The staff member says the reference number can be used to find the original request.", qtype="inference"),
+            _choice_question(f"Why does the student contact the {place}?", f"To {goal}", ["To complain about a staff member", "To collect an unrelated certificate", "To ask for a campus map"], f"The student says that they need to {goal}.", rotation=index, qtype="purpose"),
+            _choice_question(f"Which difficulty affects the plan to {goal}?", problem.capitalize(), ["The office has moved", "The student forgot every password", "A payment was made twice"], f"The student explains that {problem}.", rotation=index + 1, qtype="detail"),
+            _choice_question(f"How does the {place} suggest continuing the request?", solution.capitalize(), ["Wait until the next semester", "Ask another student to complete it", "Cancel the request completely"], f"The staff member recommends that the student {solution}.", rotation=index + 2, qtype="process"),
+            _choice_question(f"Which follow-up step completes the plan to {goal}?", next_step.capitalize(), ["Send the same request several times", "Ignore all confirmation messages", "Pay an unmentioned extra charge"], f"The required follow-up is to {next_step}.", rotation=index + 3, qtype="inference"),
         ],
     }
 
@@ -104,17 +175,25 @@ LECTURE_SPECS = [
 
 def _lecture_pack(index: int, spec: tuple[str, ...]) -> dict[str, Any]:
     title, topic, subject, first, second, third, example, limitation, action = spec
+    openings = (
+        f"Good morning. Today we are examining {subject}, beginning with an everyday observation and then building a three-part explanation.",
+        f"Imagine that a classmate asks why {subject} deserves serious study. Today's lecture offers an answer through causes, evidence, and limits.",
+        f"Our subject today is {subject}. Rather than treating it as an isolated fact, we will trace how several parts of the process influence one another.",
+        f"Today's question is simple to ask but harder to answer: what makes {subject} work as it does? We will test three connected claims.",
+        f"Let us begin with {subject}. You may already know the visible result, but the less visible process is more useful for academic listening.",
+        f"This lecture uses {subject} as a case study. Listen for a first cause, a supporting process, a wider effect, and one reason for caution.",
+    )
     lines = [
-        f"Good morning. Today's topic is {subject}. This may sound like a narrow subject, but it connects everyday choices with larger systems. We will look at three main ideas, consider one practical example, and then discuss an important limit. The purpose is not to memorise technical language. It is to understand a process well enough to explain why a particular decision may work.",
-        f"The first idea is that {first}. This matters because people often notice only the final result and miss the process that created it. When we separate cause from result, the subject becomes easier to analyse. It also helps us avoid a common mistake: assuming that one visible feature is responsible for every change we observe.",
-        f"The second idea is that {second}. Think of this as another layer rather than a competing explanation. In real situations, several processes usually operate at the same time. Their strength may change with season, location, resources, or human behaviour. A useful explanation therefore describes conditions instead of promising that the same outcome will appear everywhere.",
-        f"Our third idea is that {third}. This point expands the discussion beyond a single person or object. It shows why planners and researchers measure patterns over time. A quick photograph can show what exists today, but repeated observation reveals whether a change is stable, temporary, or simply the result of unusual conditions.",
-        f"Consider {example}. At first, people involved in this example focused on the most obvious problem. After collecting information for several weeks, they discovered that the three ideas worked together. The project improved when they changed the order of their actions, explained the reason to users, and recorded what happened before and after the change.",
-        f"The example also teaches us something about evidence. A successful result in one place is useful, but it is not a universal rule. We should ask who took part, how long the project lasted, and what was measured. Personal stories can suggest a question, while careful comparison tells us whether the suggested explanation is strong.",
-        f"Now we need to recognise a limitation: {limitation}. This does not make the whole idea useless. Limits tell us where extra support, different timing, or another method is necessary. Good decisions rarely come from choosing between a perfect solution and a terrible one. They come from comparing realistic benefits, costs, and risks.",
-        f"For students, a practical response is to {action}. Begin with a small observation and write down what you expect to happen. Then compare the result with your expectation. If they differ, do not hide the difference. It may reveal a missing factor and lead to a better question for the next round of work.",
-        f"This way of thinking is valuable outside today's topic. It asks us to identify a process, connect several causes, test an example, and state a limit. These are also the moves you use in academic reading and listening questions. Main ideas describe the whole pattern, while details explain how individual parts support it.",
-        f"To summarise, {subject} can be understood through three connected claims: {first}; {second}; and {third}. The case of {example} shows how those claims can guide action, while the fact that {limitation} reminds us to remain careful. The most useful next step is to {action}. Before our next meeting, try to explain the process to someone else in three sentences and include one reason, one example, and one limitation. In the next lecture, we will compare this approach with a case in which the first plan failed and the participants had to revise their assumptions.",
+        openings[(index - 1) % len(openings)] + f" The aim is not to memorise a list. It is to follow the argument about {subject} and decide which details support its central claim most clearly.",
+        f"The first claim is that {first}. In discussions of {subject}, people often jump directly to the outcome and overlook this starting mechanism. Separating the mechanism from the outcome lets us ask better questions: when does it operate, who notices it first, and what evidence would show that it has changed?",
+        f"A second process is equally important: {second}. It does not replace the first claim about {first}; the two can strengthen or weaken one another. For {subject}, location, timing, available resources, and human behaviour may alter the balance. That is why a careful explanation states its conditions instead of promising an identical result everywhere.",
+        f"The third claim widens the frame: {third}. This moves our attention beyond a single person or moment. Researchers studying {subject} therefore compare patterns over time. One photograph or one interview may capture a useful detail, but repeated observation is needed to distinguish a stable pattern from an unusual day.",
+        f"A practical illustration is {example}. The people involved first measured only the most visible outcome. Later, they recorded when problems appeared, which users returned, and what changed after each adjustment. They then saw that {first}, {second}, and {third} were connected rather than separate explanations.",
+        f"The case of {example} also shows why evidence must be interpreted carefully. A positive result can suggest that an approach deserves another trial, but it cannot prove that every setting will behave like this one. We still need to know who participated, how long observation continued, and which alternative explanations were considered.",
+        f"There is an important limit to the argument: {limitation}. In the context of {subject}, this is not a reason to abandon the whole idea. A stated limit shows where extra support, different timing, or another method may be necessary. Honest limits make a recommendation more useful because they prevent a local success from becoming an unrealistic promise.",
+        f"One reasonable response is to {action}. A small trial should begin with a written expectation and a simple measure. Afterwards, compare what actually happened with that expectation. If the result is different, the gap may reveal a missing factor in our explanation of {subject}, not merely a failed project.",
+        f"Notice the structure of today's argument about {subject}: a mechanism, a second process, a wider effect, an example, and a qualification. Academic listening questions often follow the same structure. A main-idea question asks for the entire pattern, whereas a detail or inference question asks how one part supports or limits that pattern.",
+        f"To conclude, {subject} becomes clearer when we connect three claims: {first}; {second}; and {third}. The example of {example} demonstrates how those claims can guide a decision, while {limitation} keeps the conclusion realistic. The next step is to {action}. Try summarising this lecture in three sentences: one cause, one example, and one caution. Then compare your summary with the evidence in your notes. If a claim has no supporting detail, return to that section and listen for the condition or limitation you may have missed. This final check separates a convincing explanation from a list of facts that merely sound relevant.",
     ]
     script = [{"speaker": "lecturer", "text": line} for line in lines]
     return {
@@ -123,10 +202,10 @@ def _lecture_pack(index: int, spec: tuple[str, ...]) -> dict[str, Any]:
         "note_scaffold": [f"Subject: {subject}", f"Idea 1: {first}", f"Idea 2: {second}", f"Idea 3: {third}", f"Example: {example}", f"Limit: {limitation}", f"Action: {action}"],
         "script": script,
         "questions": [
-            _question("What is the lecture mainly about?", [f"The history of university courses about {subject}", f"Three connected ideas that explain {subject}", "Why personal stories are better than research", "A technical method students must memorise"], "B", f"The lecture organises {subject} around three connected ideas.", points=2, qtype="main_idea"),
-            _question("Which statement is TRUE according to the lecture?", [first.capitalize(), "One visible feature always explains every result", "A single photograph proves a long-term pattern", "Conditions have no effect on outcomes"], "A", f"The first main point is that {first}.", points=2, qtype="true"),
-            _question("Which statement is NOT TRUE according to the lecture?", ["Several processes may operate together", "Repeated observation can reveal stable patterns", "Limits can show where another method is needed", "A successful example creates a universal rule"], "D", "The lecturer warns that one successful example is not a universal rule.", points=2, qtype="not_true"),
-            _question("Why does the lecturer mention the practical example?", ["To show how the three ideas can guide a real decision", "To prove that no measurements are necessary", "To replace the main explanation with a personal story", "To introduce a completely unrelated topic"], "A", f"The example of {example} shows the ideas working together.", points=2, qtype="cause"),
+            _choice_question(f"Which option best summarises the lecture about {subject}?", f"It connects three processes, an example, and a limit concerning {subject}", [f"It gives a complete history of {subject}", "It argues that personal stories are stronger than evidence", "It teaches a technical list that must be memorised"], f"The lecture organises {subject} around connected claims, evidence, and a limitation.", rotation=index, points=2, qtype="main_idea"),
+            _choice_question(f"Which claim does the lecturer make about {subject}?", first.capitalize(), ["One visible feature explains every result", "A single observation proves a permanent pattern", "Local conditions never affect the outcome"], f"The first stated claim is that {first}.", rotation=index + 1, points=2, qtype="true"),
+            _choice_question(f"Which statement contradicts the lecturer's argument about {subject}?", "One successful example creates a universal rule", ["Several processes may operate together", "Repeated observation can reveal stable patterns", "Limits can show where another method is needed"], "The lecturer explicitly warns that a local success is not a universal rule.", rotation=index + 2, points=2, qtype="not_true"),
+            _choice_question(f"What purpose does the example of {example} serve?", "To show how the three claims can guide a real decision", ["To prove that measurements are unnecessary", "To replace the main explanation with a personal story", "To introduce a topic unrelated to the lecture"], f"The example of {example} shows the claims working together.", rotation=index + 3, points=2, qtype="cause"),
         ],
     }
 
@@ -160,25 +239,32 @@ READING_SPECS = [
 
 def _reading_pack(index: int, spec: tuple[str, ...]) -> dict[str, Any]:
     title, topic, subject, first, second, third, example, limitation, action = spec
+    leads = (
+        f"Across many towns, {subject} have grown from small experiments into services people meet in ordinary life.",
+        f"It is easy to describe {subject} as a single clever idea, but their long-term value depends on a connected system.",
+        f"Public interest in {subject} often begins with one visible benefit, while the less visible work determines whether that interest lasts.",
+        f"When {subject} first appear, attention usually goes to novelty; later, users begin to judge reliability, clarity, and social value.",
+        f"A useful way to understand {subject} is to look beyond their immediate function and examine what helps people trust them.",
+    )
     paragraphs = [
-        f"In many places, {subject} have moved from a small experiment to a practical part of everyday life. Supporters often describe them as a simple answer, yet their real value comes from several connected effects. The most immediate is that {first}. This visible result attracts attention, but it is only the beginning of the process.",
-        f"A second effect is that {second}. This matters because a service may be technically available without being easy to use. Clear design and repeated experience reduce uncertainty. When people understand what is expected, they make fewer mistakes and are more willing to return. Over time, this reliability can become more important than an impressive launch.",
-        f"There is also a social or educational layer: {third}. People do not simply receive a product or enter a space. They observe how others behave, exchange small pieces of information, and slowly develop shared expectations. These informal lessons are difficult to measure, but interviews often show that users remember them long after the first visit.",
-        f"Consider {example}. At first, organisers measured only the number of users. Later they also recorded questions, repeated visits, and the times when problems occurred. The extra information changed their plan. Instead of expanding immediately, they improved signs, adjusted volunteer duties, and explained the system in shorter language. Use increased because the experience became clearer, not because the project became larger.",
-        f"However, {limitation}. Ignoring this point can turn early success into disappointment. The strongest projects state what they cannot provide and collect evidence before promising more. A realistic next step is to {action}. This approach treats improvement as a continuing process: identify a need, try a limited response, observe its effects, and revise the design when the evidence suggests a better direction.",
-        f"The wider lesson is not that every community must copy the same model. Local conditions affect cost, participation, space, and timing. The lesson is that practical systems work best when physical design, clear information, and human relationships support one another. A useful idea becomes sustainable only when people can understand it, maintain it, and adapt it without losing its original purpose. This takes patient observation, honest communication, and enough time for users to turn a new service into a familiar part of ordinary life.",
+        leads[(index - 1) % len(leads)] + f" The first benefit is that {first}. This outcome attracts support for {subject}, yet it tells us only what users see at the beginning of the process.",
+        f"A second effect is that {second}. For {subject}, availability alone does not guarantee confident use. People also need understandable rules and a predictable experience. When the design explains what is expected, users make fewer avoidable mistakes and are more likely to return. Reliability can eventually matter more than an impressive public launch.",
+        f"The subject has a social or educational dimension as well: {third}. People using {subject} observe one another, exchange practical information, and gradually form shared expectations. These informal lessons are difficult to count, but interviews can reveal how they influence behaviour long after a first visit.",
+        f"The case of {example} makes these connections concrete. Organisers initially counted only total users. Later they recorded repeat visits, common questions, and the moments when difficulties appeared. That evidence led them to adjust signs, responsibilities, and explanations before expanding. The experience improved because {subject} became easier to understand, not simply because the project became larger.",
+        f"A serious qualification is that {limitation}. If this limit is hidden, early enthusiasm for {subject} may turn into disappointment. A realistic response is to {action}. This treats improvement as an evidence cycle: identify a need, test a limited response, observe what changes, and revise the design before making a larger promise.",
+        f"The broader lesson from {subject} is not that every community should copy one model. Cost, space, participation, and timing differ. Durable projects connect physical design, clear information, and human relationships while stating their limits honestly. People can then understand the service, maintain it, and adapt it without losing the original purpose. This slower form of development may attract less attention than a rapid launch, but it produces information that later decisions can use. It also gives organisers time to notice who is excluded, which explanation remains unclear, and whether the original goal still matches the needs of the people using {subject}. Those questions keep improvement connected to evidence rather than publicity.",
     ]
     return {
         "id": f"catalog-reading-standard-{index:02d}", "kind": "reading_standard", "title": title, "topic": topic,
         "cefr": "B1+", "source": "seed", "published": True,
         "instructions": "Read the passage and choose the best answer according to the text.", "content": {"paragraphs": paragraphs},
         "questions": [
-            _question("What is the main purpose of the passage?", [f"To argue that {subject} should be identical everywhere", f"To explain the connected benefits and limits of {subject}", "To describe a historical conflict between two cities", "To give technical instructions for professional researchers"], "B", f"The passage explains how {subject} work, including benefits and a limitation."),
-            _question("According to paragraph 2, what supports repeated use?", ["An expensive launch event", "Removing every rule", "Clear design and a reliable experience", "Measuring only the number of users"], "C", "The paragraph links clarity and repeated experience with reliable use."),
-            _question("Why did the organisers change their plan in the example?", ["They collected information beyond total user numbers", "They wanted the project to look larger", "Volunteers refused to speak to users", "The first location closed immediately"], "A", "Questions, repeat visits and problem times revealed what needed improvement."),
-            _question("The word 'layer' in paragraph 3 is closest in meaning to _____.", ["additional aspect", "physical cover", "official limit", "final result"], "A", "Layer refers to another aspect of the system."),
-            _question("What can be inferred about the writer's view of growth?", ["Every successful project should expand immediately", "Growth matters more than clear information", "Expansion should follow evidence and realistic planning", "Small projects cannot have social effects"], "C", "The writer recommends evidence and improvement before making larger promises."),
-            _question("Which statement would the writer most likely agree with?", ["One model works in every local setting", "Good systems combine design, information and relationships", "Limitations should be hidden from users", "Informal learning has no lasting value"], "B", "The conclusion explicitly connects physical design, information and human relationships."),
+            _choice_question(f"What is the writer's main purpose in discussing {subject}?", f"To explain connected benefits and limits of {subject}", [f"To demand that {subject} be identical everywhere", "To describe a conflict between two cities", "To give technical instructions only for researchers"], f"The passage explains how {subject} work, including benefits and a limitation.", rotation=index),
+            _choice_question(f"According to paragraph 2, what encourages people to use {subject} again?", "Clear design and a reliable experience", ["An expensive launch event", "Removing every rule", "Counting only first-time users"], "The paragraph connects clarity and reliability with repeated use.", rotation=index + 1),
+            _choice_question(f"Why did the organisers revise their plan in the example of {example}?", "They collected information beyond total user numbers", ["They wanted the project to look larger", "Volunteers refused to speak to users", "The first location closed immediately"], "Repeat visits, questions, and problem times showed what needed improvement.", rotation=index + 2),
+            _choice_question("The phrase 'a social or educational dimension' is closest in meaning to _____.", "an additional aspect involving people and learning", ["a physical cover around the service", "an official financial limit", "the final measurable result"], "Dimension refers to another aspect of the subject.", rotation=index + 3),
+            _choice_question(f"What can be inferred about expanding {subject}?", "Expansion should follow evidence and realistic planning", ["Every successful project should expand immediately", "Growth matters more than clear information", "Small projects cannot create social effects"], "The writer recommends testing and improvement before larger promises.", rotation=index + 4, qtype="inference"),
+            _choice_question(f"Which statement best matches the writer's view of {subject}?", "Strong systems combine design, information, and relationships", ["One model works in every local setting", "Limitations should be hidden from users", "Informal learning has no lasting value"], "The conclusion connects physical design, information, and human relationships.", rotation=index + 5),
         ],
     }
 
@@ -214,16 +300,22 @@ INSERTION_TOPICS = [
 def _insertion_pack(index: int, spec: tuple[str, ...]) -> dict[str, Any]:
     title, topic, a, b, c, d, extra = spec
     options = {"A": a + ".", "B": b + ".", "C": c + ".", "D": d + ".", "E": extra + "."}
+    transitions = (
+        ("This practical starting point", "A reliable routine", "A learning benefit", "Evidence from ordinary use"),
+        ("The first visible advantage", "The organisational foundation", "The shared knowledge created", "The record of real behaviour"),
+        ("This immediate function", "A clear operating habit", "The project's educational side", "Information gathered over time"),
+        ("The feature that attracts users", "The rule that protects trust", "The experience participants exchange", "The pattern organisers can measure"),
+    )[(index - 1) % 4]
     paragraphs = [
-        f"Many small projects begin with a practical local need. {title} are one example. [[1]] This first feature explains why people notice the project and decide to try it.",
-        f"Good organisation is necessary after the first interest appears. [[2]] Without this routine, users may lose confidence even when the original idea is useful.",
-        f"The project can also become a place for learning. [[3]] In this way, participation produces knowledge as well as an immediate service.",
-        f"Information collected during normal use supports later decisions. [[4]] Organisers can improve the system without guessing what participants want.",
-        "Like most community projects, the idea works best when its limits are explained honestly. A small, reliable service is often more valuable than a large promise that cannot be maintained.",
+        f"A local need often gives {title} their first group of users. [[1]] {transitions[0]} explains why the idea feels relevant to people interested in {topic}, rather than merely decorative.",
+        f"Initial interest is not enough to keep {title} useful. [[2]] {transitions[1]} helps participants know what will happen and protects confidence when several people share the same service.",
+        f"Participation in {title} can produce more than an immediate result. [[3]] {transitions[2]} allows practical knowledge about {topic} to move between organisers, experienced users, and newcomers.",
+        f"Decisions about the future of {title} should come from observation. [[4]] {transitions[3]} shows which parts work well and where users still face confusion or unnecessary effort.",
+        f"Like most projects connected with {topic}, {title} work best when their limits are stated honestly. A small and dependable service is more valuable than a large promise that organisers cannot maintain.",
     ]
     questions = []
     for gap, answer in enumerate(("A", "B", "C", "D"), start=1):
-        questions.append({"stem": f"Which sentence best fits gap {gap}?", "options": options, "answer": answer, "points": 2, "qtype": "sentence_insertion", "rationale": f"Sentence {answer} develops the idea immediately before and after gap {gap}."})
+        questions.append({"stem": f"Which sentence completes gap {gap} in the text about {title}?", "options": options, "answer": answer, "points": 2, "qtype": "sentence_insertion", "rationale": f"Sentence {answer} develops the idea immediately before and after gap {gap} in the {topic} passage."})
     return {"id": f"catalog-reading-insertion-{index:02d}", "kind": "reading_insertion", "title": title, "topic": topic, "cefr": "B1+", "source": "seed", "published": True, "instructions": "Complete gaps 1-4 with the most suitable sentences A-E. There is one extra sentence.", "content": {"paragraphs": paragraphs, "sentence_options": options}, "questions": questions}
 
 
@@ -232,18 +324,108 @@ CLOZE_TOPICS = [
 ]
 
 
+CLOZE_VARIANTS = [
+    {
+        "text": "People often begin {topic} with an ambitious plan. Progress is easier [[1]] the first action is small and clear. Learners [[2]] change everything at once may become tired before results appear. The plan should [[3]] at the end of each week, not after every attempt. A difficult day can then be examined [[4]] the whole routine being abandoned. Success is also more likely when the necessary materials [[5]] before the chosen starting time.",
+        "questions": [
+            (["unless", "when", "despite", "whereas"], "B", "When introduces the condition that makes progress easier.", "connector"),
+            (["which", "whose", "who", "where"], "C", "Who refers to people.", "relative_clause"),
+            (["review", "reviewed", "be reviewed", "reviewing"], "C", "Should requires be plus the past participle for this passive meaning.", "modal_passive"),
+            (["instead", "rather", "without", "except"], "C", "Without is followed by an -ing form.", "preposition"),
+            (["prepare", "prepared", "are prepared", "have preparing"], "C", "Materials receive the action, so a passive form is needed.", "passive"),
+        ],
+    },
+    {
+        "text": "A short checklist can make {topic} less confusing. It must be simple enough [[1]] in a busy moment. Tasks [[2]] depend on another person should be marked clearly. Once an item [[3]], the date can be added beside it. This creates a useful record [[4]] than a vague feeling of progress. The list should not be expanded [[5]] a new item is genuinely necessary.",
+        "questions": [
+            (["to use", "using", "used", "use"], "A", "Enough is followed by the infinitive: simple enough to use.", "infinitive"),
+            (["what", "that", "where", "whose"], "B", "That introduces a defining relative clause about tasks.", "relative_clause"),
+            (["completes", "has completed", "has been completed", "was completing"], "C", "The item receives the action, so present perfect passive is required.", "perfect_passive"),
+            (["rather", "quite", "more", "so"], "A", "Rather than forms the comparison used here.", "comparison"),
+            (["unless", "because of", "in spite", "during"], "A", "Unless means except if and introduces the required condition.", "connector"),
+        ],
+    },
+    {
+        "text": "Useful feedback can improve {topic}, but only if it leads to action. Instead of [[1]] every comment as criticism, learners can separate advice from personal opinion. A suggestion [[2]] includes an example is usually easier to apply. Some weaknesses can [[3]] immediately, while others require several attempts. Notes should be reviewed [[4]] the work is still fresh in the learner's mind. This process matters [[5]] memory alone often hides small but repeated errors.",
+        "questions": [
+            (["treat", "treated", "treating", "to treated"], "C", "Instead of is followed by an -ing form.", "gerund"),
+            (["who", "where", "whose", "that"], "D", "That refers to the suggestion and introduces a defining clause.", "relative_clause"),
+            (["improve", "be improved", "improved", "improving"], "B", "Can takes be plus the past participle for passive meaning.", "modal_passive"),
+            (["while", "until", "despite", "unless"], "A", "While expresses that the work remains fresh at that time.", "connector"),
+            (["because", "although", "unless", "whereas"], "A", "Because introduces the reason the process matters.", "connector"),
+        ],
+    },
+    {
+        "text": "At the start of {topic}, a group should decide [[1]] each member understands the same goal. People [[2]] responsibilities are unclear may complete the same task twice. If everyone [[3]] on a division of work earlier, this confusion could have been avoided. [[4]] having different skills, members still need a shared record of decisions. The record should be brief [[5]] everyone can check it quickly before a meeting.",
+        "questions": [
+            (["whether", "despite", "unless", "whose"], "A", "Whether introduces the question of shared understanding.", "noun_clause"),
+            (["who", "whose", "which", "whom"], "B", "Whose expresses possession of responsibilities.", "relative_clause"),
+            (["agrees", "has agreed", "had agreed", "would agree"], "C", "The third conditional requires past perfect in the if-clause.", "conditional"),
+            (["Because", "Despite", "Although", "Therefore"], "B", "Despite is followed by the -ing phrase having different skills.", "connector"),
+            (["even though", "so that", "as if", "rather than"], "B", "So that introduces the purpose of keeping the record brief.", "purpose"),
+        ],
+    },
+    {
+        "text": "Good preparation makes {topic} more manageable. Important information should be collected [[1]] a final decision is made. A learner who arrives unprepared may wish they [[2]] the instructions earlier. [[3]] the first attempt is imperfect, it can still reveal what needs attention. The next attempt should then be planned [[4]] instead of being rushed. [[5]], the same preventable difficulty may appear again.",
+        "questions": [
+            (["before", "since", "during", "until"], "A", "Before establishes the correct order of the two actions.", "time_clause"),
+            (["checked", "have checked", "had checked", "would check"], "C", "Wish about an earlier past action takes past perfect.", "wish_clause"),
+            (["Although", "Because", "Unless", "Therefore"], "A", "Although introduces a contrast with the useful result.", "connector"),
+            (["careful", "more carefully", "most careful", "carefulness"], "B", "An adverb is needed to describe how the attempt is planned.", "adverb"),
+            (["Otherwise", "Moreover", "For instance", "Similarly"], "A", "Otherwise states what may happen if the advice is not followed.", "linker"),
+        ],
+    },
+    {
+        "text": "People working on {topic} sometimes expect motivation to remain constant. They may be used [[1]] acting only when they feel enthusiastic. [[2]] they notice that energy changes from day to day, the routine may already have become difficult. A fixed time reduces the number of decisions that must [[3]]. The task should not be made [[4]] complicated to begin. A short repeatable action is useful, [[5]] a dramatic plan is often abandoned after a few days.",
+        "questions": [
+            (["for", "to", "with", "by"], "B", "Be used to is followed by a noun or -ing form.", "preposition"),
+            (["By the time", "Although", "As soon as", "In case"], "A", "By the time shows that one situation may already exist when another is noticed.", "time_clause"),
+            (["make", "be made", "made", "making"], "B", "Must takes be plus the past participle for passive meaning.", "modal_passive"),
+            (["enough", "such", "too", "so much"], "C", "Too plus adjective means more complicated than is helpful.", "degree"),
+            (["whereas", "because", "unless", "therefore"], "A", "Whereas contrasts a short action with a dramatic plan.", "contrast"),
+        ],
+    },
+    {
+        "text": "When several methods for {topic} are available, choosing one can be difficult. [[1]] the cost nor the popularity of a method proves that it is suitable. Options should be [[2]] according to the learner's actual goal. A method [[3]] works well for a friend may require different resources. The learner should [[4]] test a small version before making a long commitment. Evidence from that trial is usually more useful [[5]] a general recommendation online.",
+        "questions": [
+            (["Either", "Neither", "Both", "Not only"], "B", "Neither pairs with nor to reject both factors.", "correlative"),
+            (["compare", "comparing", "be compared", "to compare"], "C", "Should requires passive be compared because options receive the action.", "modal_passive"),
+            (["who", "where", "which", "whose"], "C", "Which refers to the method.", "relative_clause"),
+            (["therefore", "however", "otherwise", "although"], "A", "Therefore introduces the logical recommendation from the previous point.", "linker"),
+            (["that", "then", "as", "than"], "D", "The comparative more useful is followed by than.", "comparison"),
+        ],
+    },
+    {
+        "text": "A small trial is often the safest way to begin {topic}. It allows people to identify difficulties [[1]] risking the whole project. Users may dislike [[2]] asked to follow rules that have not been explained. Clear communication has therefore [[3]] to better participation in many trials. If organisers [[4]] questions early, they can adjust the design before expanding it. A larger version should be launched only [[5]] the first results are reliable.",
+        "questions": [
+            (["without", "except", "beside", "although"], "A", "Without is followed by an -ing form and means the risk is avoided.", "preposition"),
+            (["be", "been", "being", "to being"], "C", "Dislike is followed by an -ing form; passive meaning requires being asked.", "gerund_passive"),
+            (["lead", "led", "leading", "leads"], "B", "Has takes the past participle led.", "present_perfect"),
+            (["collect", "collected", "will collect", "had collecting"], "A", "The first conditional uses present simple in the if-clause.", "conditional"),
+            (["provided that", "despite", "in case of", "whereas"], "A", "Provided that introduces the necessary condition for expansion.", "connector"),
+        ],
+    },
+]
+
+
 def _cloze_pack(index: int, topic: str) -> dict[str, Any]:
-    text = f"Many students want to improve {topic}, but they sometimes begin with a plan that is too difficult to continue. A new routine is easier to build [[1]] the first step is clear and small. People [[2]] try to change everything at once often become tired before they see a result. It is therefore useful to choose one action and repeat it at a regular time. Progress should [[3]] once a week rather than judged after every attempt. This gives the routine enough time to become familiar. If a problem appears, the plan can be adjusted [[4]] being abandoned completely. Students should also notice the conditions that make the action easier. A routine is more likely to continue when the necessary materials [[5]] ready before the starting time."
+    variant = CLOZE_VARIANTS[(index - 1) % len(CLOZE_VARIANTS)]
+    cycle = (index - 1) // len(CLOZE_VARIANTS)
+    leads = (
+        f"This short text focuses on the practical side of {topic}.",
+        f"The following advice treats {topic} as a process that can be tested and improved.",
+        f"Successful {topic} depends on decisions made before, during, and after an attempt.",
+    )
+    text = f"{leads[cycle % len(leads)]} {variant['text'].format(topic=topic)}"
+    questions = []
+    for gap, (options, answer, rationale, qtype) in enumerate(variant["questions"], start=1):
+        correct = options[("A", "B", "C", "D").index(answer)]
+        distractors = [option for option in options if option != correct]
+        questions.append(_choice_question(f"Gap {gap}", correct, distractors, rationale, rotation=index + gap, qtype=qtype))
     return {
         "id": f"catalog-cloze-{index:02d}", "kind": "cloze", "title": f"A Practical Guide to {topic.title()}", "topic": topic,
         "cefr": "B1+", "source": "seed", "published": True, "instructions": "Choose the option that best fits each gap.", "content": {"text": text},
-        "questions": [
-            _question("Gap 1", ["unless", "when", "although", "despite"], "B", "When introduces the condition that makes the routine easier.", qtype="connector"),
-            _question("Gap 2", ["which", "whose", "who", "where"], "C", "Who refers to people.", qtype="relative_clause"),
-            _question("Gap 3", ["review", "reviewed", "be reviewed", "reviewing"], "C", "The modal should requires the passive form be reviewed.", qtype="modal_passive"),
-            _question("Gap 4", ["instead", "rather", "without", "except"], "C", "Without is followed by an -ing form and preserves the intended meaning.", qtype="preposition"),
-            _question("Gap 5", ["prepare", "prepared", "are prepared", "have preparing"], "C", "Materials receive the action, so the passive form is required.", qtype="passive"),
-        ],
+        "questions": questions,
     }
 
 
@@ -256,7 +438,7 @@ RESTATEMENT_TOPICS = [
     ("the recycling campaign", "the sorting poster", "the results summary", "the collection point", "the delivery vehicle"),
     ("the photography course", "the camera manual", "the final portfolio", "the editing lab", "the city tram"),
     ("the cooking class", "the recipe video", "the shared meal", "the training kitchen", "the market bus"),
-    ("the history lecture", "the archive website", "the research essay", "the reading room", "the museum route"),
+    ("the history lecture", "the archive website", "the research essay", "the reading room", "the museum shuttle"),
     ("the sports programme", "the exercise plan", "the fitness record", "the training hall", "the late ferry"),
     ("the coding workshop", "the setup guide", "the team project", "the computer lab", "the express bus"),
     ("the design exhibition", "the visitor map", "the reflection paper", "the main gallery", "the local train"),
@@ -277,12 +459,40 @@ RESTATEMENT_TOPICS = [
 
 def _restatement_pack(index: int, spec: tuple[str, ...]) -> dict[str, Any]:
     event, guide, task, place, transport = spec
+    styles = (
+        [
+            (f"Although {event} is optional, students are advised to attend it before beginning {task}.", f"Attending {event} is recommended but not required before {task} starts.", [f"Students cannot begin {task} unless they attend {event}.", f"Only students who finished {task} may attend {event}.", "Both activities have been cancelled."], "The recommendation and optional status are both preserved."),
+            (f"The coordinator simplified {guide} so that first-time users could follow it more easily.", "The guide was made clearer for people using it for the first time.", ["New users were asked to write a harder guide.", "The guide was removed because nobody followed it.", "Only experienced users can now understand the guide."], "Simplifying the guide makes it easier for first-time users."),
+            (f"Mert did not notice the missing section of {task} until he read the feedback.", "The feedback made Mert aware that part of the task was absent.", ["Mert wrote the feedback before the missing section.", "Mert refused to read feedback about the task.", "The section disappeared after the feedback was read."], "Reading the feedback caused Mert to recognise the missing section."),
+            (f"Because {place} becomes crowded after two o'clock, the group decided to meet there earlier.", "The group chose an earlier time to avoid the crowded period.", ["The place does not allow entry before two.", "The group prefers meeting at the busiest time.", "The meeting moved to another day because the place closed."], "The earlier meeting avoids the later crowded period."),
+            (f"The journey will be faster by {transport} unless there is an unexpected delay.", "Only an unexpected delay may prevent this transport option from being faster.", ["The transport is always slower even when on time.", "The journey was cancelled because a delay was expected.", "Passengers must create a delay before travelling."], "Unless introduces the condition that could change the expected result."),
+        ],
+        [
+            (f"The organisers postponed {event} because too few students had registered by Friday.", f"Insufficient registration by Friday caused {event} to be delayed.", [f"The event took place early because registration was full.", "Students registered only after the event ended.", "Friday's event attracted more students than expected."], "The cause and the postponement are preserved."),
+            (f"Students may use {place} only after a supervisor has checked their booking.", f"A supervisor must confirm the booking before students can enter {place}.", ["Students check the supervisor's booking after entering.", "No booking is needed when a supervisor is absent.", "The place can be used before any check takes place."], "The required check must happen before use."),
+            (f"Selin completed {task} on time despite losing access to {guide} for two days.", f"Losing access to {guide} did not prevent Selin from finishing {task} by the deadline.", ["Selin missed the deadline because the guide was unavailable.", "The guide was available throughout the task.", "Selin stopped the task for two days after finishing it."], "Despite shows that the difficulty did not change the successful result."),
+            (f"The revised version of {guide} is not as detailed as the original, but it is easier to use.", f"The new guide contains less detail yet is more user-friendly.", ["The original guide was shorter and easier.", "Both versions contain exactly the same detail.", "The revision became harder because more detail was added."], "Both the reduced detail and improved usability are retained."),
+            (f"If the group misses {transport}, it will have to arrive after the opening session.", f"Catching {transport} is necessary for the group to arrive before the opening session ends.", ["The opening session begins only after the group arrives.", "Missing the transport will make the group arrive earlier.", "The group has decided not to attend the opening session."], "The conditional consequence is expressed without changing its meaning."),
+        ],
+        [
+            (f"Not until the reminder arrived did Ayşe remember that she had signed up for {event}.", f"The reminder caused Ayşe to recall her registration for {event}.", ["Ayşe registered only after the event reminder ended.", "The reminder made Ayşe cancel an event she remembered.", "Ayşe sent the reminder to everyone who registered."], "The reminder is the point at which she remembers."),
+            (f"The tutor suggested using {guide} rather than searching for several unrelated sources.", f"The tutor preferred the guide to a collection of unconnected sources.", ["The tutor said the guide should never be used.", "Several unrelated sources were written by the tutor.", "The guide contains no information from any source."], "Rather than expresses the tutor's preference."),
+            (f"As long as the main argument remains clear, minor changes can be made to {task}.", f"Small revisions to {task} are acceptable provided that its main argument stays clear.", ["No changes are allowed even when the argument is clear.", "The main argument must be removed before revision.", "Only major changes can make the argument clearer."], "As long as and provided that express the same condition."),
+            (f"Hardly anyone was using {place} when the group first arrived.", f"The place was almost empty at the time of the group's arrival.", ["The group arrived because the place was completely closed.", "A large crowd was already using the place.", "The group left before anyone could arrive."], "Hardly anyone means almost nobody."),
+            (f"By the time {transport} reached the station, the rain had already stopped.", "The rain ended before the transport arrived at the station.", ["The rain began after the transport left the station.", "The transport stopped because the rain continued.", "The station closed before either event happened."], "Past perfect marks the rain ending as the earlier event."),
+        ],
+        [
+            (f"Students who miss {event} can watch the recording, provided that they submit a short reflection.", f"A reflection is required from students who replace attendance at {event} with the recording.", ["Only students at the live event may write a reflection.", "The recording is unavailable to anyone who missed the event.", "Submitting a reflection prevents students from watching."], "The condition attached to using the recording is preserved."),
+            (f"No sooner had Deniz opened {guide} than he found the section he needed.", f"Deniz located the required section immediately after opening the guide.", ["Deniz closed the guide before finding any section.", "The required section was added much later.", "Deniz searched several guides without success."], "No sooner ... than shows that the second event followed immediately."),
+            (f"The lecturer asked for {task} to be shortened without removing its main example.", f"The task should become shorter while keeping the central example.", ["The main example must be removed to shorten the task.", "The lecturer requested a longer task with more examples.", "The task cannot be edited in any way."], "Both shortening and retaining the example are required."),
+            (f"Unless the booking is extended, the group must leave {place} at four.", f"The group can stay after four only if it receives a longer booking.", ["The group may stay indefinitely without a booking.", "Extending the booking forces the group to leave earlier.", "The place always closes before four."], "Only if expresses the same necessary condition as unless."),
+            (f"The group chose {transport} mainly because it was more reliable, not because it was cheaper.", f"Reliability, rather than price, was the main reason for choosing the transport.", ["The group selected the cheapest but least reliable option.", "Price and reliability had no influence on the choice.", "The transport was rejected because it cost less."], "The main reason and the rejected reason are both retained."),
+        ],
+    )
+    selected = styles[(index - 1) % len(styles)]
     questions = [
-        _question(f"Although {event} is optional, students are advised to attend it before beginning {task}.", [f"Students cannot begin {task} unless they attend {event}.", f"Attending {event} is recommended but not required before {task} starts.", f"Only students who finished {task} may attend {event}.", f"The event and the task have both been cancelled."], "B", "The recommendation and the fact that attendance is optional are both preserved.", qtype="restatement"),
-        _question(f"The coordinator simplified {guide} so that first-time users could follow it more easily.", [f"The guide was made clearer for people using it for the first time.", f"First-time users were asked to write a more difficult guide.", f"The coordinator removed the guide because nobody followed it.", f"Only experienced users are now able to understand the guide."], "A", "Simplifying the guide makes it easier for first-time users.", qtype="restatement"),
-        _question(f"Mert did not notice the missing section of {task} until he read the feedback.", [f"Mert wrote the feedback before completing the missing section.", f"The feedback made Mert aware that part of the task was absent.", f"Mert refused to read feedback about the completed task.", f"The section disappeared after Mert read the feedback."], "B", "Reading the feedback caused Mert to recognise the missing section.", qtype="restatement"),
-        _question(f"Because {place} becomes crowded after two o'clock, the group decided to meet there earlier.", [f"The group chose an earlier time to avoid the crowded period.", f"The place does not allow groups to enter before two.", f"The group prefers meeting when the place is busiest.", f"The meeting was moved to another day because the place closed."], "A", "The earlier meeting is a response to the place becoming crowded later.", qtype="restatement"),
-        _question(f"The journey will be faster by {transport} unless there is an unexpected delay.", [f"An unexpected delay is the only stated condition that may prevent the transport from being faster.", f"The transport is always slower even when it leaves on time.", f"The journey was cancelled because the delay was expected.", f"Passengers must create a delay before using the transport."], "A", "Unless introduces the condition that could change the expected faster journey.", qtype="restatement"),
+        _choice_question(original, correct, distractors, rationale, rotation=index + offset, qtype="restatement")
+        for offset, (original, correct, distractors, rationale) in enumerate(selected)
     ]
     return {"id": f"catalog-restatement-{index:02d}", "kind": "restatement", "title": f"Restatement Practice {index:02d}", "topic": event.removeprefix("the "), "cefr": "B1+", "source": "seed", "published": True, "instructions": "Choose the option that best restates the meaning of the original sentence.", "content": {"intro": "Read each original sentence carefully. Choose the option with the closest meaning."}, "questions": questions}
 
@@ -310,10 +520,20 @@ def _speaking_packs() -> list[dict[str, Any]]:
         ("One Useful Change", "Talk about one change you would make to {subject}.", ["what you would change", "why the change is needed", "what result you expect"], ["Why can small changes be effective?", "Who should be involved in the decision?", "What difficulty might appear first?"]),
         ("A Choice to Explain", "Explain an important choice connected with {subject}.", ["what the choices are", "which option you prefer", "what evidence supports your choice"], ["Why might another person choose differently?", "Which factor matters most in this decision?", "Can the best choice change over time?"]),
         ("A Realistic Plan", "Describe a realistic future plan involving {subject}.", ["what you want to do", "which steps you would take", "how you would measure progress"], ["What could interrupt the plan?", "Who could provide useful support?", "When should a plan be revised?"]),
+        ("A Problem and Response", "Describe a problem related to {subject} and explain how you would respond.", ["what causes the problem", "who is affected", "which response is realistic"], ["What should happen first?", "Which response would be ineffective?", "How would you know the problem is improving?"]),
+        ("Advice for Someone", "Give practical advice to someone dealing with {subject}.", ["what the person should understand", "two actions they can take", "one mistake they should avoid"], ["Why might the advice be difficult to follow?", "How could the advice be adapted?", "Who else could help?"]),
+        ("Past and Present", "Compare how you experienced {subject} in the past with how you experience it now.", ["what was different before", "what caused the change", "which situation you prefer"], ["Do people always change in the same direction?", "What may change again in the future?", "Which difference matters most?"]),
+        ("Benefits and Limits", "Discuss both the benefits and the limits of {subject}.", ["one important benefit", "one realistic limitation", "how to keep a fair balance"], ["Who receives the greatest benefit?", "Can the limitation be reduced?", "When might the balance change?"]),
+        ("A Specific Recommendation", "Make a specific recommendation about {subject}.", ["what you recommend", "which evidence supports it", "who should act on it"], ["What objection might someone raise?", "How would you answer that objection?", "What is the first practical step?"]),
+        ("An Unexpected Lesson", "Explain an unexpected lesson you learned through {subject}.", ["what you expected at first", "what actually happened", "how the lesson changed you"], ["Why was the result surprising?", "Could someone learn this without the experience?", "How will you use the lesson later?"]),
+        ("Two Possible Futures", "Describe two possible future outcomes connected with {subject}.", ["what could go well", "what could go wrong", "which action would influence the outcome"], ["Which outcome is more likely?", "Who has the most influence?", "What early sign would you watch?"]),
+        ("Explain It to a Newcomer", "Explain {subject} to someone experiencing it for the first time.", ["what they need to know first", "what may confuse them", "how they can prepare"], ["Which detail is easiest to misunderstand?", "What example would make it clearer?", "What question should the newcomer ask?"]),
     ]
     number = 1
-    for label, subject, topic in SPEAKING_DOMAINS:
-        for suffix, prompt, bullets, followups in formats:
+    for domain_index, (label, subject, topic) in enumerate(SPEAKING_DOMAINS):
+        start = (domain_index * 4) % len(formats)
+        selected_formats = [formats[(start + offset) % len(formats)] for offset in range(4)]
+        for suffix, prompt, bullets, followups in selected_formats:
             cards.append({
                 "id": f"catalog-speaking-{number:03d}", "kind": "speaking_card", "title": f"{label}: {suffix}", "topic": topic,
                 "cefr": "B1+", "source": "seed", "published": True,

@@ -125,6 +125,12 @@ def load_seed_data(db: Session, data: dict, path: Path | None = None) -> Test:
                         print(f"TTS refresh skipped for {existing.id}: {exc}")
                 if audio_path.exists():
                     existing.audio_path = str(audio_path)
+            elif script_changed:
+                # Deferred catalogue audio is generated from the stored script on
+                # first play. Remove a stale render when its script is revised so
+                # learners never hear the previous template with new questions.
+                audio_path.unlink(missing_ok=True)
+                existing.audio_path = ""
             elif audio_path.exists():
                 existing.audio_path = str(audio_path)
         existing.glossary_json = json.dumps(_glossary_for_seed(path, data), ensure_ascii=False)

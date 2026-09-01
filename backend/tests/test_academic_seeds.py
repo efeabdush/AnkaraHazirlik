@@ -1,4 +1,5 @@
 import json
+from collections import Counter
 from pathlib import Path
 
 import pytest
@@ -70,3 +71,29 @@ def test_speaking_catalog_has_one_hundred_unique_cards():
     assert len({card["id"] for card in cards}) == 100
     assert len({card["title"] for card in cards}) == 100
     assert len({card["content"]["prompt"] for card in cards}) == 100
+
+
+def test_generated_catalog_does_not_repeat_fixed_content_blocks():
+    packs = build_practice_catalog()
+    for kind in ("conversation", "lecture"):
+        blocks = [line["text"] for pack in packs if pack["kind"] == kind for line in pack["script"]]
+        assert not [text for text, count in Counter(blocks).items() if count > 1]
+    for kind in ("reading_standard", "reading_insertion"):
+        blocks = [paragraph for pack in packs if pack["kind"] == kind for paragraph in pack["content"]["paragraphs"]]
+        assert not [text for text, count in Counter(blocks).items() if count > 1]
+
+
+def test_generated_cloze_and_speaking_packs_use_varied_formats():
+    packs = build_practice_catalog()
+    cloze_patterns = {
+        tuple(question["qtype"] for question in pack["questions"])
+        for pack in packs
+        if pack["kind"] == "cloze"
+    }
+    speaking_formats = {
+        card["title"].split(": ", 1)[1]
+        for card in packs
+        if card["kind"] == "speaking_card"
+    }
+    assert len(cloze_patterns) >= 8
+    assert len(speaking_formats) >= 12
