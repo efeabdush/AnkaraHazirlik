@@ -29,6 +29,18 @@ def test_disfluency_analysis_counts_fillers_repetitions_and_pauses():
     assert result["unclear_word_count"] == 1
 
 
+def test_production_builds_a_fresh_transcription_model(monkeypatch):
+    models = iter([object(), object()])
+    monkeypatch.setattr(settings, "railway_environment", "production")
+    monkeypatch.setattr(transcribe, "_build_model", lambda: next(models))
+
+    first = transcribe._get_model()
+    second = transcribe._get_model()
+
+    assert first is not second
+    assert transcribe._model is None
+
+
 def test_transcribe_returns_text_and_deletes_temporary_audio(monkeypatch):
     before = _transient_files()
     monkeypatch.setattr(
