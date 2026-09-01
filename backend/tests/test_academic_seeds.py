@@ -1,3 +1,4 @@
+import hashlib
 import json
 from collections import Counter
 from pathlib import Path
@@ -9,6 +10,7 @@ from app.services.validator import validate_academic_pack, validate_pack
 
 
 SEED_DIR = Path(__file__).resolve().parents[2] / "content" / "seeds"
+AUDIO_DIR = Path(__file__).resolve().parents[2] / "content" / "listening" / "audio"
 ACADEMIC = {
     "reading_standard": (25, 1),
     "reading_insertion": (25, 2),
@@ -64,6 +66,20 @@ def test_clean_install_has_twenty_five_valid_tracks_per_listening_kind():
     for pack in lectures:
         validate_pack("lecture", pack)
         assert sum(question.get("points", 2) for question in pack["questions"]) == 8
+
+
+def test_every_listening_track_is_bundled_and_matches_its_script():
+    manifest = json.loads((AUDIO_DIR / "manifest.json").read_text(encoding="utf-8"))
+    packs = _packs("conversation") + _packs("lecture")
+    assert set(manifest) == {pack["id"] for pack in packs}
+    for pack in packs:
+        payload = json.dumps(
+            pack["script"], ensure_ascii=False, sort_keys=True, separators=(",", ":")
+        )
+        digest = hashlib.sha256(payload.encode("utf-8")).hexdigest()
+        audio_path = AUDIO_DIR / f"{pack['id']}.mp3"
+        assert manifest[pack["id"]] == digest
+        assert audio_path.stat().st_size > 10_000
 
 
 def test_speaking_catalog_has_one_hundred_unique_cards():

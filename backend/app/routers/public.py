@@ -12,6 +12,7 @@ from ..config import settings
 from ..db import get_db
 from ..models import Attempt, Test
 from ..services.glossary import merge_entries, word_bank_for
+from ..services.seed import _install_bundled_audio
 from ..services.tts import synthesize_script
 
 router = APIRouter(prefix="/api", tags=["public"])
@@ -174,7 +175,8 @@ def get_audio(test_id: str, db: Session = Depends(get_db)):
                     script = json.loads(t.transcript_json or "[]")
                     if not script:
                         raise ValueError("Boş dinleme metni")
-                    t.duration_sec = synthesize_script(script, audio_path)
+                    if not _install_bundled_audio({"id": t.id, "script": script}, audio_path):
+                        t.duration_sec = synthesize_script(script, audio_path)
                     t.audio_path = str(audio_path)
                     db.commit()
                 except Exception as exc:  # noqa: BLE001

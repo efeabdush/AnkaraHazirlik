@@ -19,6 +19,7 @@ content/private/*
 tmp/
 *.mp3
 !content/akis/audio/*.mp3
+!content/listening/audio/*.mp3
 *.wav
 .DS_Store
 Thumbs.db

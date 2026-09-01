@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import filecmp
+import hashlib
 import json
+import shutil
 from pathlib import Path
 
 from sqlalchemy.orm import Session
@@ -11,6 +14,37 @@ from .glossary import merge_entries
 from .practice_catalog import build_practice_catalog
 from .tts import synthesize_script
 from .validator import ACADEMIC_KINDS, validate_academic_pack, validate_pack
+
+
+def _script_digest(script: list[dict]) -> str:
+    payload = json.dumps(script, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _bundled_audio(data: dict) -> Path | None:
+    """Return a pre-rendered track only when it matches the current script."""
+    audio_dir = settings.content_dir / "listening" / "audio"
+    manifest_path = audio_dir / "manifest.json"
+    bundled_path = audio_dir / f"{data['id']}.mp3"
+    if not manifest_path.exists() or not bundled_path.exists():
+        return None
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    if manifest.get(data["id"]) != _script_digest(data.get("script") or []):
+        return None
+    return bundled_path
+
+
+def _install_bundled_audio(data: dict, audio_path: Path) -> bool:
+    bundled_path = _bundled_audio(data)
+    if bundled_path is None:
+        return False
+    audio_path.parent.mkdir(parents=True, exist_ok=True)
+    if not audio_path.exists() or not filecmp.cmp(audio_path, bundled_path, shallow=False):
+        shutil.copyfile(bundled_path, audio_path)
+    return True
 
 
 def seed_if_empty(db: Session) -> None:
@@ -117,7 +151,10 @@ def load_seed_data(db: Session, data: dict, path: Path | None = None) -> Test:
             audio_path = settings.storage_dir / "audio" / f"{existing.id}.mp3"
             words = sum(len(line["text"].split()) for line in data["script"])
             existing.duration_sec = max(30, int(words / 2.3))
-            if not data.get("defer_audio", False):
+            bundled_installed = _install_bundled_audio(data, audio_path)
+            if bundled_installed:
+                existing.audio_path = str(audio_path)
+            elif not data.get("defer_audio", False):
                 if script_changed or not audio_path.exists():
                     try:
                         existing.duration_sec = synthesize_script(data["script"], audio_path)
@@ -170,7 +207,9 @@ def load_seed_data(db: Session, data: dict, path: Path | None = None) -> Test:
         audio_path = settings.storage_dir / "audio" / f"{test.id}.mp3"
         words = sum(len(line["text"].split()) for line in data["script"])
         test.duration_sec = max(30, int(words / 2.3))
-        if data.get("defer_audio", False):
+        if _install_bundled_audio(data, audio_path):
+            test.audio_path = str(audio_path)
+        elif data.get("defer_audio", False):
             if audio_path.exists():
                 test.audio_path = str(audio_path)
         elif not audio_path.exists():
