@@ -57,6 +57,7 @@ class Settings(BaseSettings):
     whisper_device: str = "cpu"
     whisper_compute_type: str = "int8"
     whisper_beam_size: int = 1
+    whisper_worker_timeout_seconds: int = 180
     max_speaking_audio_mb: int = 25
     akis_pack_size: int = 5
     storage_dir: Path = BACKEND_DIR / "storage"

@@ -41,6 +41,19 @@ def test_production_builds_a_fresh_transcription_model(monkeypatch):
     assert transcribe._model is None
 
 
+def test_production_transcription_uses_disposable_worker(monkeypatch, tmp_path):
+    expected = {"text": "isolated result"}
+    monkeypatch.setattr(settings, "railway_environment", "production")
+    monkeypatch.setattr(transcribe, "_run_isolated_transcription", lambda path, topic: expected)
+    monkeypatch.setattr(
+        transcribe,
+        "_get_model",
+        lambda: (_ for _ in ()).throw(AssertionError("model must not load in the web process")),
+    )
+
+    assert transcribe._run_transcription(tmp_path / "answer.webm", "education") == expected
+
+
 def test_transcribe_returns_text_and_deletes_temporary_audio(monkeypatch):
     before = _transient_files()
     monkeypatch.setattr(

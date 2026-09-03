@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import gc
+import multiprocessing
 import os
 import re
 import tempfile
@@ -120,63 +120,109 @@ def _get_model():
         return _model
 
 
-def _run_transcription(path: Path, topic_hint: str) -> dict:
-    model = _get_model()
+def _transcribe_with_model(model, path: Path, topic_hint: str) -> dict:
+    prompt = "Transcribe the English speech faithfully. Keep spoken filler words such as um, uh, erm, and hmm when audible."
+    if topic_hint.strip():
+        prompt += f" The speaking topic is: {topic_hint.strip()[:500]}"
+    segments, info = model.transcribe(
+        str(path),
+        language="en",
+        beam_size=max(1, settings.whisper_beam_size),
+        vad_filter=True,
+        vad_parameters={"min_silence_duration_ms": 500},
+        condition_on_previous_text=True,
+        initial_prompt=prompt,
+        hotwords="um uh erm hmm mm ah er hesitation",
+        word_timestamps=True,
+    )
+    text_parts: list[str] = []
+    segment_data: list[dict] = []
+    previous_end = 0.0
+    long_pauses = 0
+    speech_duration = 0.0
+    word_data: list[dict] = []
+    for segment in segments:
+        clean = segment.text.strip()
+        if clean:
+            text_parts.append(clean)
+        start, end = float(segment.start), float(segment.end)
+        if start - previous_end >= 1.2:
+            long_pauses += 1
+        speech_duration += max(0.0, end - start)
+        previous_end = end
+        segment_data.append({"start": round(start, 2), "end": round(end, 2), "text": clean})
+        for word in segment.words or []:
+            word_data.append({
+                "word": word.word,
+                "start": round(float(word.start), 2),
+                "end": round(float(word.end), 2),
+                "probability": round(float(word.probability), 3),
+            })
+    text = " ".join(text_parts).strip()
+    duration = float(getattr(info, "duration", 0) or previous_end)
+    disfluencies = _analyze_disfluencies(word_data)
+    return {
+        "text": text,
+        "language": str(getattr(info, "language", "en")),
+        "language_probability": round(float(getattr(info, "language_probability", 0)), 3),
+        "duration_sec": round(duration),
+        "speech_duration_sec": round(speech_duration),
+        "long_pause_count": long_pauses,
+        "segments": segment_data,
+        **disfluencies,
+    }
+
+
+def _transcription_worker(path: str, topic_hint: str, connection) -> None:
+    """Load Whisper in a disposable process so native RAM is returned to Railway."""
     try:
-        prompt = "Transcribe the English speech faithfully. Keep spoken filler words such as um, uh, erm, and hmm when audible."
-        if topic_hint.strip():
-            prompt += f" The speaking topic is: {topic_hint.strip()[:500]}"
-        segments, info = model.transcribe(
-            str(path),
-            language="en",
-            beam_size=max(1, settings.whisper_beam_size),
-            vad_filter=True,
-            vad_parameters={"min_silence_duration_ms": 500},
-            condition_on_previous_text=True,
-            initial_prompt=prompt,
-            hotwords="um uh erm hmm mm ah er hesitation",
-            word_timestamps=True,
-        )
-        text_parts: list[str] = []
-        segment_data: list[dict] = []
-        previous_end = 0.0
-        long_pauses = 0
-        speech_duration = 0.0
-        word_data: list[dict] = []
-        for segment in segments:
-            clean = segment.text.strip()
-            if clean:
-                text_parts.append(clean)
-            start, end = float(segment.start), float(segment.end)
-            if start - previous_end >= 1.2:
-                long_pauses += 1
-            speech_duration += max(0.0, end - start)
-            previous_end = end
-            segment_data.append({"start": round(start, 2), "end": round(end, 2), "text": clean})
-            for word in segment.words or []:
-                word_data.append({
-                    "word": word.word,
-                    "start": round(float(word.start), 2),
-                    "end": round(float(word.end), 2),
-                    "probability": round(float(word.probability), 3),
-                })
-        text = " ".join(text_parts).strip()
-        duration = float(getattr(info, "duration", 0) or previous_end)
-        disfluencies = _analyze_disfluencies(word_data)
-        return {
-            "text": text,
-            "language": str(getattr(info, "language", "en")),
-            "language_probability": round(float(getattr(info, "language_probability", 0)), 3),
-            "duration_sec": round(duration),
-            "speech_duration_sec": round(speech_duration),
-            "long_pause_count": long_pauses,
-            "segments": segment_data,
-            **disfluencies,
-        }
+        result = _transcribe_with_model(_build_model(), Path(path), topic_hint)
+        connection.send({"ok": True, "result": result})
+    except BaseException as exc:  # noqa: BLE001
+        connection.send({"ok": False, "error": f"{type(exc).__name__}: {str(exc)[:500]}"})
     finally:
-        if settings.is_production:
-            del model
-            gc.collect()
+        connection.close()
+
+
+def _run_isolated_transcription(path: Path, topic_hint: str) -> dict:
+    context = multiprocessing.get_context("spawn")
+    parent_connection, child_connection = context.Pipe(duplex=False)
+    process = context.Process(
+        target=_transcription_worker,
+        args=(str(path), topic_hint, child_connection),
+        name="whisper-transcription",
+    )
+    process.start()
+    child_connection.close()
+    timeout = max(30, settings.whisper_worker_timeout_seconds)
+    try:
+        if not parent_connection.poll(timeout):
+            process.terminate()
+            process.join(timeout=5)
+            raise RuntimeError(f"Konuşma modeli {timeout} saniye içinde yanıt vermedi.")
+        try:
+            payload = parent_connection.recv()
+        except EOFError as exc:
+            process.join(timeout=5)
+            raise RuntimeError(
+                f"Konuşma modeli beklenmedik biçimde kapandı (çıkış kodu: {process.exitcode})."
+            ) from exc
+    finally:
+        parent_connection.close()
+
+    process.join(timeout=5)
+    if process.is_alive():
+        process.terminate()
+        process.join(timeout=5)
+    if not payload.get("ok"):
+        raise RuntimeError(payload.get("error") or "Konuşma modeli bilinmeyen bir hata verdi.")
+    return payload["result"]
+
+
+def _run_transcription(path: Path, topic_hint: str) -> dict:
+    if settings.is_production:
+        return _run_isolated_transcription(path, topic_hint)
+    return _transcribe_with_model(_get_model(), path, topic_hint)
 
 
 @router.post("/transcribe")
