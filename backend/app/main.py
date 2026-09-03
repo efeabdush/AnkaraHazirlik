@@ -74,10 +74,27 @@ def _restore_saved_config() -> None:
                 set_panel_key(key_env, row.value)
         provider = db.get(Setting, "llm_provider")
         model = db.get(Setting, "llm_model")
-        if provider and model:
-            set_active(provider.value, model.value)
+        choice = _startup_model_choice(
+            provider.value if provider else "",
+            model.value if model else "",
+        )
+        if choice:
+            set_active(*choice)
     finally:
         db.close()
+
+
+def _startup_model_choice(saved_provider: str, saved_model: str) -> tuple[str, str] | None:
+    """Use explicit production variables instead of a stale admin-panel choice."""
+    env_provider = settings.llm_provider.strip()
+    env_model = settings.llm_model.strip()
+    if settings.is_production and env_provider and env_model:
+        return env_provider, env_model
+    if saved_provider.strip() and saved_model.strip():
+        return saved_provider.strip(), saved_model.strip()
+    if env_provider and env_model:
+        return env_provider, env_model
+    return None
 
 
 @app.on_event("startup")

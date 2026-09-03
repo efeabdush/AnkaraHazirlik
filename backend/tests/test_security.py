@@ -7,7 +7,7 @@ from sqlalchemy import delete
 
 from app.config import Settings, settings
 from app.db import SessionLocal
-from app.main import app
+from app.main import _startup_model_choice, app
 from app.models import ApiUsage
 from app.rate_limit import _client_ip, _persistent_rate_limit
 from app.routers import admin
@@ -23,6 +23,17 @@ def test_railway_environment_enables_production_guards():
 
     assert production.is_production is True
     assert production.admin_key_management_enabled is False
+
+
+def test_production_environment_model_overrides_saved_admin_choice(monkeypatch):
+    monkeypatch.setattr(settings, "railway_environment", "production")
+    monkeypatch.setattr(settings, "llm_provider", "openrouter")
+    monkeypatch.setattr(settings, "llm_model", "deepseek/deepseek-v4-pro-0813")
+
+    assert _startup_model_choice("opencode-go", "glm-5.2") == (
+        "openrouter",
+        "deepseek/deepseek-v4-pro-0813",
+    )
 
 
 def test_admin_key_management_is_blocked_in_production(monkeypatch):

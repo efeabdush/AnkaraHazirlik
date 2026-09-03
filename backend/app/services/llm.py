@@ -169,6 +169,14 @@ def _openai_chat_messages(
     }
     if json_mode:
         body["response_format"] = {"type": "json_object"}
+    if provider.id == "openrouter":
+        # Public users may submit essays and speech transcripts. Keep OpenRouter
+        # routing restricted to providers that neither train on nor retain them.
+        body["provider"] = {
+            "data_collection": "deny",
+            "zdr": True,
+            "require_parameters": json_mode,
+        }
     with httpx.Client(timeout=180) as client:
         r = client.post(f"{provider.base_url}/chat/completions", headers=_auth_headers(provider), json=body)
         _raise_for_status(provider, r)
