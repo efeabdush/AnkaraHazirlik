@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { api, getHumanToken, setHumanToken } from "@/lib/api";
+import {
+  api,
+  getHumanToken,
+  HUMAN_VERIFICATION_REQUIRED_EVENT,
+  notifyHumanVerificationCompleted,
+  setHumanToken,
+} from "@/lib/api";
 
 type SecurityConfig = {
   turnstile_enabled: boolean;
@@ -69,8 +75,8 @@ export function HumanVerification() {
       setVerified(false);
       setMessage("Devam etmek için kısa güvenlik kontrolünü tamamla.");
     };
-    window.addEventListener("human-verification-required", requireVerification);
-    return () => window.removeEventListener("human-verification-required", requireVerification);
+    window.addEventListener(HUMAN_VERIFICATION_REQUIRED_EVENT, requireVerification);
+    return () => window.removeEventListener(HUMAN_VERIFICATION_REQUIRED_EVENT, requireVerification);
   }, []);
 
   useEffect(() => {
@@ -92,6 +98,7 @@ export function HumanVerification() {
                 body: JSON.stringify({ token }),
               });
               setHumanToken(result.human_token, result.expires_at);
+              notifyHumanVerificationCompleted();
               setVerified(true);
             } catch (caught) {
               setMessage(caught instanceof Error ? caught.message : "Doğrulama başarısız oldu; tekrar dene.");
