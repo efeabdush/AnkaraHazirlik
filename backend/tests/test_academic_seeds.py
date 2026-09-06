@@ -1,6 +1,8 @@
 import hashlib
 import json
+import re
 from collections import Counter
+from itertools import combinations
 from pathlib import Path
 
 import pytest
@@ -99,17 +101,88 @@ def test_generated_catalog_does_not_repeat_fixed_content_blocks():
         assert not [text for text, count in Counter(blocks).items() if count > 1]
 
 
-def test_generated_cloze_and_speaking_packs_use_varied_formats():
+def test_generated_cloze_packs_use_varied_formats():
     packs = build_practice_catalog()
     cloze_patterns = {
         tuple(question["qtype"] for question in pack["questions"])
         for pack in packs
         if pack["kind"] == "cloze"
     }
-    speaking_formats = {
-        card["title"].split(": ", 1)[1]
-        for card in packs
-        if card["kind"] == "speaking_card"
-    }
     assert len(cloze_patterns) >= 8
-    assert len(speaking_formats) >= 12
+
+
+def test_speaking_cards_use_short_titles_and_unique_guidance():
+    cards = _packs("speaking_card")
+    banned_title_parts = (
+        ":",
+        "Past and Present",
+        "Problem and Response",
+        "Benefits and Limits",
+        "Two Possible Futures",
+        "Explain It to a Newcomer",
+    )
+    assert all(len(card["title"].split()) <= 6 for card in cards)
+    assert all(not any(part in card["title"] for part in banned_title_parts) for card in cards)
+
+    bullets = [bullet for card in cards for bullet in card["content"]["bullets"]]
+    followups = [question for card in cards for question in card["content"]["followups"]]
+    assert len(bullets) == len(set(bullets))
+    assert len(followups) == len(set(followups))
+
+
+def _catalog_text(pack: dict) -> str:
+    kind = pack["kind"]
+    if kind in {"reading_standard", "reading_insertion"}:
+        return " ".join(pack["content"]["paragraphs"])
+    if kind == "cloze":
+        return pack["content"]["text"]
+    if kind == "restatement":
+        return " ".join(question["stem"] for question in pack["questions"])
+    return " ".join(line["text"] for line in pack["script"])
+
+
+def _word_ngrams(text: str, size: int = 5) -> set[tuple[str, ...]]:
+    words = re.findall(r"[a-z]+", text.lower())
+    return {tuple(words[index:index + size]) for index in range(len(words) - size + 1)}
+
+
+@pytest.mark.parametrize(
+    ("kind", "maximum_shared_ratio"),
+    [
+        ("reading_standard", 0.60),
+        ("reading_insertion", 0.61),
+        ("cloze", 0.15),
+        ("restatement", 0.55),
+        ("lecture", 0.60),
+        ("conversation", 0.64),
+    ],
+)
+def test_generated_catalog_does_not_reuse_most_of_another_exercise(kind: str, maximum_shared_ratio: float):
+    packs = [pack for pack in build_practice_catalog() if pack["kind"] == kind]
+    for left, right in combinations(packs, 2):
+        left_ngrams = _word_ngrams(_catalog_text(left))
+        right_ngrams = _word_ngrams(_catalog_text(right))
+        shared_ratio = len(left_ngrams & right_ngrams) / min(len(left_ngrams), len(right_ngrams))
+        assert shared_ratio < maximum_shared_ratio, (
+            f"{left['id']} and {right['id']} share {shared_ratio:.1%} of their five-word sequences"
+        )
+
+
+def test_generated_cloze_texts_match_seed_length_and_have_no_boilerplate_intro():
+    banned_intros = (
+        "This short text focuses on",
+        "The following advice treats",
+        "Successful preparing for",
+        "A Practical Guide to",
+    )
+    packs = [pack for pack in build_practice_catalog() if pack["kind"] == "cloze"]
+    for pack in packs:
+        text = pack["content"]["text"]
+        assert 150 <= len(text.split()) <= 210
+        assert not any(text.startswith(intro) or pack["title"].startswith(intro) for intro in banned_intros)
+
+
+def test_insertion_answer_positions_and_discourse_structures_vary():
+    packs = [pack for pack in build_practice_catalog() if pack["kind"] == "reading_insertion"]
+    answer_patterns = {tuple(question["answer"] for question in pack["questions"]) for pack in packs}
+    assert len(answer_patterns) >= 12
