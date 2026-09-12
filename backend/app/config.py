@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     app_env: str = "development"
     railway_environment: str = ""
     admin_secret: str = ""
+    local_admin_passwordless: bool = True
 
     # Owner-paid providers. Fill only the one(s) you have.
     opencode_api_key: str = ""
@@ -70,6 +71,10 @@ class Settings(BaseSettings):
     @property
     def admin_key_management_enabled(self) -> bool:
         return not self.is_production
+
+    @property
+    def local_admin_passwordless_enabled(self) -> bool:
+        return self.local_admin_passwordless and not self.is_production
 
     @property
     def turnstile_enabled(self) -> bool:

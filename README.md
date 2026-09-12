@@ -1,93 +1,138 @@
-# Hazırlık Prep
+# Ankara Hazırlık
 
-Unofficial B1+ practice tool for the [Ankara University](https://yabdil.ankara.edu.tr/ingilizce-hazirlik-ornek-yeterlik-muafiyet-sinavlari/) English proficiency / exemption exam.
+Ankara Üniversitesi İngilizce hazırlık yeterlik / muafiyet sınavının B1+ yapısına göre hazırlanmış, bağımsız ve açık kaynak bir çalışma platformu.
 
-**Not affiliated with Ankara University School of Foreign Languages.**
+> Bu proje Ankara Üniversitesi veya YABDİL ile bağlantılı değildir. Resmî sınav belgelerini kopyalamaz; yayımlanan sınav yapısını referans alan özgün pratik içerikleri kullanır.
 
-Visitors can practise every session separately or complete a three-session mock exam. Only the site owner generates new tests (hidden admin panel). Nobody pastes an API key in the browser.
+## Neler var?
 
-## Exam shape
+- Dinleme: kısa diyaloglar ve not almalı akademik dersler
+- Okuma: standart pasajlar ve cümle yerleştirme
+- Dil kullanımı: cloze text ve restatement
+- Yazma: 250+ kelimelik opinion essay ve AI geri bildirimi
+- Konuşma: konu kartları, yerel ses-yazı dönüşümü ve AI koçu
+- Akış: A1–B1+ seviyelerinde kısa, kaydırmalı çalışmalar
+- Üretim paneli: kendi AI anahtarınla yeni özgün içerik üretme ve yayımlama
 
-| Session | Skills | Points |
-| --- | --- | --- |
-| 1 | Listening, Reading, Use of English | 60 |
-| 2 | Writing | 20 |
-| 3 | Speaking | 20 |
+Hazır soru ve ses havuzu repoya dahildir. AI anahtarı olmadan test çözme bölümleri çalışır; açıklama, üretim, yazma ve konuşma değerlendirmesi gibi AI özellikleri için kendi sağlayıcı anahtarın gerekir.
 
-The current MVP includes the complete 100-point structure: Listening, Reading, Use of English, a 250+ word Writing task, and topic-card Speaking practice. The browser keeps the three session scores together on the exam hub. Writing and speaking feedback is an AI estimate, not an official score.
+## En kolay kurulum — Windows
 
-Speaking audio is held in browser memory while the activity is running, then sent to the backend only for transcription. The backend deletes the temporary audio file immediately after transcription (including failed attempts); only the resulting transcript and speaking metrics are sent for AI feedback. Microphone tracks are stopped when the activity finishes or the page closes.
+Gerekenler:
 
-Production protects owner-paid operations with persistent per-client limits, site-wide daily ceilings, and concurrency caps. Optional Cloudflare Turnstile support becomes active only when its site and secret keys are configured; the browser receives a short-lived signed verification session, never the secret key.
+- [Python 3.13](https://www.python.org/downloads/)
+- [Node.js 22 LTS](https://nodejs.org/)
+- Git
 
-The About page contact form does not save messages in the application database. When `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL` are configured on the backend, it sends the message directly through Resend. The route is protected by the same human-verification session plus separate hourly/daily limits. LinkedIn and Instagram links are optional frontend build variables (`NEXT_PUBLIC_LINKEDIN_URL`, `NEXT_PUBLIC_INSTAGRAM_URL`).
+İlk kurulumda PowerShell açıp proje klasöründe şunları çalıştır:
 
-## Quick start
+```powershell
+Copy-Item .env.example .env
 
-Windows: proje klasöründe `baslat.bat` dosyasına çift tıkla. **Tek** siyah pencere açılır; API ve site arka planda çalışır, tarayıcı ana sayfayı açar. Durdurmak için o pencerede `Ctrl+C` bas — hepsi kapanır. Günde bir kez açman yeter. Kod değişse bile API kendini yeniler. Admin’den yeni test üretince yeniden başlatmana gerek yok.
+python -m venv backend/.venv
+backend/.venv/Scripts/python -m pip install -r backend/requirements.txt
 
-```bash
-# elle baslatmak istersen:
-cd backend
-.venv\Scripts\activate
-uvicorn app.main:app --reload --port 8000
-
-# other terminal
-cd frontend
-npm run dev
+Set-Location frontend
+npm install
+Set-Location ..
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Admin: [http://localhost:3000/admin](http://localhost:3000/admin).
+Sonraki açılışlarda yalnızca `baslat.bat` dosyasına çift tıkla. Site otomatik olarak [http://localhost:3000](http://localhost:3000) adresinde açılır.
 
-İlk kurulum (bir kez):
+Üst menüde **Yönetim** bağlantısı görünür. Yerel kurulumda `/admin` şifre istemeden açılır. Bu kolaylık yalnızca aynı bilgisayardan gelen localhost isteklerinde geçerlidir; production ortamında panel `ADMIN_SECRET` ister.
+
+## macOS / Linux
 
 ```bash
 cp .env.example .env
-# set ADMIN_SECRET, then paste ONE provider key (see "AI providers" below)
 
-cd backend
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
+python3 -m venv backend/.venv
+source backend/.venv/bin/activate
+pip install -r backend/requirements.txt
 
-cd ../frontend
+cd frontend
 npm install
+npm run dev
 ```
 
-Or: `docker compose up`.
+İkinci terminalde:
 
-## AI providers
+```bash
+cd backend
+.venv/bin/uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
 
-The site owner pays for the model; visitors never enter a key. Fill one variable in `.env`, then pick the model from a dropdown in `/admin`. The choice is stored in the database and survives restarts.
+## Docker ile çalıştırma
 
-| Provider | Env var | Notes |
-| --- | --- | --- |
-| OpenCode Go | `OPENCODE_API_KEY` | Subscription. Open-weight models (Grok, GLM, Kimi, DeepSeek). |
-| OpenCode Zen | `OPENCODE_API_KEY` | Pay-per-use. Full catalog including GPT and Claude. |
-| OpenRouter | `OPENROUTER_API_KEY` | Uses your credit. 400+ models. |
-| Google Gemini | `GEMINI_API_KEY` | Optional fallback. |
+```bash
+cp .env.example .env
+docker compose up --build
+```
 
-Model lists are fetched live from each provider, so new models appear without a code change.
+Portlar yalnızca `127.0.0.1` adresine bağlanır. Docker içindeki ağ yönlendirmesine göre yönetim paneli `ADMIN_SECRET` isteyebilir; böyle bir durumda `.env` dosyasına uzun bir değer yazıp panelde aynı değeri kullan.
 
-## Turkish help on the results page
+## Kendi AI anahtarını bağlama
 
-After a student submits answers, every English string on the results page is selectable. Clicking one word gives that word alone; dragging over a phrase gives the phrase; selecting a full line gives one natural Turkish sentence. Nothing calls a model at selection time.
+Yerelde [http://localhost:3000/admin](http://localhost:3000/admin) adresini aç. Desteklenen sağlayıcılardan birinin anahtarını yapıştır, **Test et ve kaydet** de, ardından listeden modeli seç.
 
-Three precomputed layers back it, checked in order:
+| Sağlayıcı | Ortam değişkeni |
+| --- | --- |
+| OpenRouter | `OPENROUTER_API_KEY` |
+| OpenCode Go / Zen | `OPENCODE_API_KEY` |
+| Google Gemini | `GEMINI_API_KEY` |
 
-1. phrase and sentence entries stored per test (`tests.glossary_json`)
-2. a word bank the generator produced for words the shared dictionary was missing
-3. `content/dictionary/en_tr_core.json`, the shared word list
+Anahtarlar tarayıcıdaki öğrenci arayüzüne gönderilmez. Yerel panelden kaydedilen anahtar SQLite veritabanında tutulur; bu dosya Git tarafından izlenmez. İstersen anahtarı doğrudan `.env` içine de ekleyebilirsin.
 
-Word lookups fall back through plural and tense forms (`machines` → `machine`, `relinked` → `relink`), and a single word never resolves to the sentence containing it. Unknown word groups are read word by word instead of returning nothing.
+## Projeyi değiştirmek
 
-For an older test with no pack, press **Türkçe paket** in `/admin`. `python -m pytest -q` in `backend` and `npm run check:glossary` in `frontend` assert that both engines resolve every word, option, rationale, and transcript line in the seed tests.
+```text
+frontend/src/app/         sayfalar ve rotalar
+frontend/src/components/  arayüz bileşenleri
+backend/app/routers/      API uçları
+backend/app/services/     üretim, doğrulama, TTS ve AI işlemleri
+content/seeds/            başlangıç testleri
+content/akis/             kısa Akış içerikleri ve sesleri
+content/prompts/          içerik üretim talimatları
+```
 
-## Stack
+Yeni bir yön vermek için repoyu forkla, `.env.example` dosyasını `.env` olarak kopyala ve kendi içeriklerini / promptlarını düzenle. Resmî sınav PDF’lerini, cevap anahtarlarını veya başkasına ait materyalleri repoya ekleme.
 
-- Frontend: Next.js, TypeScript, Tailwind
-- Backend: FastAPI, SQLite, edge-tts
+## Teknik yapı
 
-## License
+- Next.js 16, React 19, TypeScript, Tailwind CSS
+- FastAPI, SQLAlchemy, SQLite
+- faster-whisper ile yerel speech-to-text
+- edge-tts ile ses üretimi
+- OpenRouter, OpenCode ve Gemini sağlayıcı desteği
+- Pytest, ESLint, TypeScript ve GitHub Actions CI
 
-MIT. Do not open PRs that dump official exam PDFs or answer keys.
+Sınav oturumları 100 puanlık yapıyı izler: ilk oturum dinleme + okuma + dil kullanımı (60), ikinci oturum yazma (20), üçüncü oturum konuşma (20). AI puanları çalışma amaçlı tahmindir; resmî sonuç değildir.
+
+## Testler
+
+```bash
+cd backend
+python -m pytest -q
+
+cd ../frontend
+npm run lint
+npx tsc --noEmit
+npm run check:glossary
+npm run build
+```
+
+## Production güvenliği
+
+İnternete açmadan önce en az şunları yap:
+
+- `APP_ENV=production` ve uzun, rastgele bir `ADMIN_SECRET` ayarla.
+- AI anahtarlarını yalnızca backend değişkenlerinde tut; hiçbirini `NEXT_PUBLIC_*` yapma.
+- `CORS_ORIGINS` değerini gerçek frontend alan adlarıyla sınırla.
+- Kullanım limitlerini ve mümkünse Cloudflare Turnstile’ı etkinleştir.
+- SQLite veritabanını kalıcı bir volume üzerinde tut veya yönetilen bir veritabanına geç.
+
+Ayrıntılar için [SECURITY.md](SECURITY.md) dosyasına bak.
+
+## Katkı ve lisans
+
+Katkılar kabul edilir; önce [CONTRIBUTING.md](CONTRIBUTING.md) dosyasını oku. Proje [MIT](LICENSE) lisansıyla yayımlanır.

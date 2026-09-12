@@ -9,6 +9,7 @@ const links = [
   { href: "/akis", label: "⚡ Akış", featured: true },
   { href: "/resources", label: "Kaynaklar" },
   { href: "/about", label: "Hakkında" },
+  { href: "/admin", label: "Yönetim" },
 ];
 
 export function Header() {

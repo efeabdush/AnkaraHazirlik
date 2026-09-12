@@ -67,7 +67,9 @@ export default function AdminPage() {
 
   useEffect(() => {
     const stored = sessionStorage.getItem(KEY);
-    if (stored) void login(stored);
+    // Local clones can open the panel directly. A protected deployment falls
+    // back to the secret form after this harmless empty-secret probe.
+    void login(stored ?? "", false);
     // mount-only restore
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -112,7 +114,7 @@ export default function AdminPage() {
     return () => clearInterval(t);
   }, [glossaryJobId, secret]);
 
-  async function login(value = secret) {
+  async function login(value = secret, showError = true) {
     setError("");
     try {
       const data = await api<{ ok: boolean; llm: boolean; active: ActiveSummary }>("/api/admin/status", {
@@ -125,7 +127,7 @@ export default function AdminPage() {
       await loadTests(value);
     } catch (e) {
       setAuthed(false);
-      setError(e instanceof Error ? e.message : "Giriş yapılamadı");
+      if (showError) setError(e instanceof Error ? e.message : "Giriş yapılamadı");
     }
   }
 
@@ -192,13 +194,13 @@ export default function AdminPage() {
           className="card rise space-y-4 p-7"
           onSubmit={(e) => {
             e.preventDefault();
-            void login();
+            void login(secret);
           }}
         >
-          <span className="badge badge-navy">Yalnızca hazırlayan</span>
+          <span className="badge badge-navy">Yönetim</span>
           <h1 className="font-serif text-3xl text-[var(--navy)]">Üretim paneli</h1>
           <p className="prose-quiet text-sm">
-            Tüm oturumların özgün B1+ içerikleri burada üretilir. Ziyaretçiler bu sayfayı kullanmaz.
+            Yerel kurulumda şifre gerekmez. İnternete açılan kurulumlarda ADMIN_SECRET zorunludur.
           </p>
           <input
             type="password"
@@ -222,7 +224,7 @@ export default function AdminPage() {
     <div className="space-y-8">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div className="space-y-2">
-          <span className="badge badge-navy">Yalnızca hazırlayan</span>
+          <span className="badge badge-navy">Yerel yönetim</span>
           <h1 className="font-serif text-4xl tracking-tight text-[var(--navy)]">Üretim paneli</h1>
         </div>
         <span className={active?.ready ? "badge badge-green" : "badge badge-warn"}>

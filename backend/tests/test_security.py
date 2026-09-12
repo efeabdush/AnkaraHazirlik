@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 from sqlalchemy import delete
 
 from app.config import Settings, settings
+from app.auth import require_admin
 from app.db import SessionLocal
 from app.main import _startup_model_choice, app
 from app.models import ApiUsage
@@ -23,6 +24,34 @@ def test_railway_environment_enables_production_guards():
 
     assert production.is_production is True
     assert production.admin_key_management_enabled is False
+    assert production.local_admin_passwordless_enabled is False
+
+
+def test_local_admin_is_passwordless_only_for_loopback(monkeypatch):
+    monkeypatch.setattr(settings, "app_env", "development")
+    monkeypatch.setattr(settings, "railway_environment", "")
+    monkeypatch.setattr(settings, "local_admin_passwordless", True)
+    monkeypatch.setattr(settings, "admin_secret", "")
+
+    require_admin(_request())
+
+    remote = Request({"type": "http", "method": "GET", "path": "/", "headers": [], "client": ("203.0.113.8", 1)})
+    with pytest.raises(HTTPException) as exc:
+        require_admin(remote)
+    assert exc.value.status_code == 401
+
+
+def test_production_admin_still_requires_secret(monkeypatch):
+    monkeypatch.setattr(settings, "app_env", "production")
+    monkeypatch.setattr(settings, "railway_environment", "")
+    monkeypatch.setattr(settings, "local_admin_passwordless", True)
+    monkeypatch.setattr(settings, "admin_secret", "production-secret")
+
+    with pytest.raises(HTTPException) as exc:
+        require_admin(_request())
+    assert exc.value.status_code == 401
+
+    require_admin(_request(), "production-secret")
 
 
 def test_production_environment_model_overrides_saved_admin_choice(monkeypatch):
