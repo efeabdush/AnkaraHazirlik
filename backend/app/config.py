@@ -51,11 +51,6 @@ class Settings(BaseSettings):
     turnstile_session_secret: str = ""
     turnstile_session_minutes: int = 30
     turnstile_allowed_hostnames: str = ""
-    resend_api_key: str = ""
-    contact_to_email: str = ""
-    contact_from_email: str = "Ankara Hazırlık <onboarding@resend.dev>"
-    contact_rate_limit_per_hour: int = 5
-    contact_daily_request_limit: int = 100
     whisper_model: str = "base.en"
     whisper_device: str = "cpu"
     whisper_compute_type: str = "int8"
@@ -81,11 +76,6 @@ class Settings(BaseSettings):
     @property
     def turnstile_enabled(self) -> bool:
         return bool(self.turnstile_site_key.strip() and self.turnstile_secret_key.strip())
-
-    @property
-    def contact_enabled(self) -> bool:
-        return bool(self.resend_api_key.strip() and self.contact_to_email.strip() and self.contact_from_email.strip())
-
 
 settings = Settings()
 settings.storage_dir.mkdir(parents=True, exist_ok=True)

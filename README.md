@@ -121,11 +121,11 @@ python -m venv backend/.venv
 backend/.venv/Scripts/python -m pip install -r backend/requirements.txt
 
 Set-Location frontend
-npm install
+npm ci
 Set-Location ..
 ```
 
-İlk kurulumdan sonra `baslat.bat` dosyasına çift tıklamak yeterlidir. Site [http://localhost:3000](http://localhost:3000), yönetim paneli [http://localhost:3000/admin](http://localhost:3000/admin) adresinde açılır.
+İlk kurulumdan sonra `baslat.bat` dosyasına çift tıklamak yeterlidir.
 
 ### macOS / Linux
 
@@ -144,7 +144,7 @@ uvicorn app.main:app --app-dir backend --reload --host 127.0.0.1 --port 8000
 
 ```bash
 cd AnkaraHazirlik/frontend
-npm install
+npm ci
 npm run dev
 ```
 
@@ -158,6 +158,17 @@ docker compose up --build
 ```
 
 Docker portları yalnızca `127.0.0.1` adresine bağlar. Container ağında yönetim panelini kullanmak için `.env` içindeki `ADMIN_SECRET` değerine uzun bir yerel parola yazıp panelde aynı değeri kullan.
+
+## İlk kullanım
+
+1. Windows'ta `baslat.bat` dosyasını aç. macOS / Linux'ta yukarıdaki backend ve frontend komutlarını iki ayrı terminalde çalışır durumda bırak.
+2. Tarayıcıdan [http://localhost:3000](http://localhost:3000) adresine git.
+3. AI anahtarı eklemeden hazır testleri, dinleme kayıtlarını, Akış'ı, sayaçları ve çözülme işaretlerini kullanabilirsin.
+4. AI sohbeti, içerik üretimi veya writing / speaking değerlendirmesi için [http://localhost:3000/admin](http://localhost:3000/admin) adresini açıp kendi sağlayıcı anahtarını **Test et ve kaydet** alanına gir, ardından modelini seç.
+5. Yönetim panelinde üretilen içerik ve panel ayarları `backend/storage/hazirlik.db` dosyasında yerel olarak saklanır. Bu klasör Git'e eklenmez; kurulumunu taşımak istiyorsan ayrıca yedekle.
+6. Windows'ta durdurmak için başlangıç penceresinde `Ctrl+C` tuşlarına bas. macOS / Linux'ta iki terminali de aynı şekilde durdur. Sonraki açılışta yerel veritabanın korunur.
+
+Site veya API açılmazsa önce 3000 ve 8000 portlarını başka bir programın kullanmadığını kontrol et. Windows başlatıcısının ayrıntılı çıktıları `.runlogs/` klasöründedir.
 
 ## Kendi AI sağlayıcını bağlama
 
@@ -204,7 +215,7 @@ GitHub Actions aynı kontrolleri her push ve pull request'te çalıştırır.
 ## Production'a açmadan önce
 
 - `APP_ENV=production` ve uzun, rastgele bir `ADMIN_SECRET` ayarla.
-- AI ve e-posta anahtarlarını yalnızca backend değişkenlerinde tut.
+- AI anahtarlarını yalnızca backend değişkenlerinde tut.
 - `CORS_ORIGINS` değerini gerçek frontend alan adlarıyla sınırla.
 - Kullanım / harcama limitlerini ve gerekirse Cloudflare Turnstile'ı etkinleştir.
 - SQLite veritabanını kalıcı volume'a bağla veya yönetilen bir veritabanı kullan.
@@ -214,5 +225,3 @@ GitHub Actions aynı kontrolleri her push ve pull request'te çalıştırır.
 Hata düzeltmeleri, kullanıcı deneyimi iyileştirmeleri ve telifsiz, özgün B1+ pratik içerikleri için katkılara açıktır. Resmî sınav PDF'lerini, cevap anahtarlarını veya başka kaynaklardan kopyalanmış materyalleri eklemeyin; ayrıntılar [CONTRIBUTING.md](CONTRIBUTING.md) dosyasında.
 
 Proje [MIT lisansı](LICENSE) ile sunulur.
-
-Geliştiren: [Efe A. Duman](https://www.linkedin.com/in/efeabdullahduman/)

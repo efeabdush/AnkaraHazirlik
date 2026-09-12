@@ -7,8 +7,6 @@ import { BrandMark } from "@/components/BrandMark";
 const links = [
   { href: "/exam", label: "Sınav merkezi" },
   { href: "/akis", label: "⚡ Akış", featured: true },
-  { href: "/resources", label: "Kaynaklar" },
-  { href: "/about", label: "Hakkında" },
   { href: "/admin", label: "Yönetim" },
 ];
 
@@ -60,25 +58,11 @@ export function Header() {
 export function Footer() {
   return (
     <footer className="mt-16 border-t border-[var(--line)] bg-[rgba(253,251,247,0.6)]">
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-8 text-xs text-[var(--ink-2)] sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto max-w-6xl px-5 py-8 text-xs text-[var(--ink-2)]">
         <p className="max-w-md leading-relaxed">
           <span className="font-medium text-[var(--navy)]">Ankara Hazırlık</span> — bağımsız bir çalışma platformudur;
           Ankara Üniversitesi ile resmi bir bağı yoktur. Tüm içerik özgündür.
         </p>
-        <div className="flex flex-wrap items-center gap-4">
-          <a
-            className="underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--navy)]"
-            href="https://yabdil.ankara.edu.tr/ingilizce-hazirlik-ornek-yeterlik-muafiyet-sinavlari/"
-          >
-            Resmi örnek sınavlar
-          </a>
-          <Link className="underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--navy)]" href="/resources">
-            Kaynaklar
-          </Link>
-          <Link className="underline decoration-[var(--line)] underline-offset-4 hover:text-[var(--navy)]" href="/about">
-            Hakkında ve iletişim
-          </Link>
-        </div>
       </div>
     </footer>
   );

@@ -3,7 +3,7 @@
 ## Secrets
 
 - Never commit `.env`, a local database, provider credentials, private keys, or deployment exports.
-- Keep `OPENROUTER_API_KEY`, `OPENCODE_API_KEY`, `GEMINI_API_KEY`, `RESEND_API_KEY`, `ADMIN_SECRET`, and Turnstile secrets on the backend only.
+- Keep `OPENROUTER_API_KEY`, `OPENCODE_API_KEY`, `GEMINI_API_KEY`, `ADMIN_SECRET`, and Turnstile secrets on the backend only.
 - Never expose a secret through a `NEXT_PUBLIC_*` variable, screenshot, issue, discussion, or log.
 - Run `python scripts/check_secrets.py` before pushing. CI runs the same check automatically.
 - If a credential was ever pasted into a chat, issue, log, or commit, revoke it at the provider and create a new one. Removing the text alone does not make the old credential safe.

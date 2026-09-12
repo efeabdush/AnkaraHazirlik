@@ -59,8 +59,8 @@ export default function HomePage() {
             <Link href="/exam" className="btn btn-primary">
               Sınav merkezine geç
             </Link>
-            <Link href="/resources" className="btn btn-outline">
-              Resmi kaynaklar
+            <Link href="/akis" className="btn btn-outline">
+              Kısa pratik yap
             </Link>
           </div>
         </div>
