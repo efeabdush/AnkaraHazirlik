@@ -118,7 +118,7 @@ python -m pytest -q
 
 cd ../frontend
 npm run lint
-npx tsc --noEmit
+npm run typecheck
 npm run check:glossary
 npm run build
 ```
