@@ -1,10 +1,16 @@
+# Local configuration and credentials. Only sanitized templates belong in Git.
 .env
-.env.local
+.env.*
+!.env.example
+!.env.sample
+.dev.vars
+.dev.vars.*
 .venv/
 venv/
 __pycache__/
 *.py[cod]
 *.db
+*.sqlite
 *.sqlite3
 .pytest_cache/
 .mypy_cache/
@@ -27,3 +33,14 @@ Thumbs.db
 .vscode/
 *.log
 .runlogs/
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+service-account*.json
+secrets.*
+.vercel/
+.railway/
+.wrangler/
+PROJECT_MEMORY.md

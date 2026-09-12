@@ -19,6 +19,12 @@ def _request(headers: list[tuple[bytes, bytes]] | None = None) -> Request:
     return Request({"type": "http", "method": "GET", "path": "/", "headers": headers or [], "client": ("127.0.0.1", 1)})
 
 
+def test_passwordless_admin_is_opt_in_when_no_env_file_exists():
+    defaults = Settings(_env_file=None)
+
+    assert defaults.local_admin_passwordless is False
+
+
 def test_railway_environment_enables_production_guards():
     production = Settings(app_env="development", railway_environment="production")
 

@@ -83,6 +83,8 @@ Yerelde [http://localhost:3000/admin](http://localhost:3000/admin) adresini aç.
 
 Anahtarlar tarayıcıdaki öğrenci arayüzüne gönderilmez. Yerel panelden kaydedilen anahtar SQLite veritabanında tutulur; bu dosya Git tarafından izlenmez. İstersen anahtarı doğrudan `.env` içine de ekleyebilirsin.
 
+> Yerel veritabanındaki panel anahtarları şifrelenmez. `backend/storage/` klasörünü başkasına gönderme veya Git'e zorla ekleme. Paylaşmadan önce `python scripts/check_secrets.py` komutuyla kontrol edebilirsin.
+
 ## Projeyi değiştirmek
 
 ```text

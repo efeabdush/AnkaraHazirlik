@@ -15,7 +15,9 @@ class Settings(BaseSettings):
     app_env: str = "development"
     railway_environment: str = ""
     admin_secret: str = ""
-    local_admin_passwordless: bool = True
+    # Secure by default when somebody starts the backend without an .env file.
+    # The repository's local setup template opts in explicitly.
+    local_admin_passwordless: bool = False
 
     # Owner-paid providers. Fill only the one(s) you have.
     opencode_api_key: str = ""
