@@ -44,3 +44,4 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run check:glossary
+      - run: npm run build

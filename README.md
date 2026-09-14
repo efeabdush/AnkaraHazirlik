@@ -9,6 +9,18 @@ Proje ilk olarak kendi sınav hazırlığım için başladı. Sonra aynı süre�
 
 > Bu proje Ankara Üniversitesi, YABDİL veya başka bir kurum tarafından hazırlanmış ya da onaylanmış değildir. Resmî sınav materyallerini kopyalamaz; yayımlanan sınav yapısı ve değerlendirme başlıkları referans alınarak hazırlanmış özgün pratik içerikleri kullanır. AI puanları çalışma amaçlı tahmindir, resmî sonuç değildir.
 
+## Görünüm
+
+![Ankara Hazırlık ana sayfası](docs/screenshots/home-desktop.png)
+
+| Sınav merkezi | Dil kullanımı pratiği |
+| --- | --- |
+| ![Üç oturum ve bölüm pratiklerini gösteren Sınav Merkezi](docs/screenshots/exam-center-desktop.png) | ![Cloze Text dil kullanımı çalışma ekranı](docs/screenshots/cloze-practice-desktop.png) |
+
+<p align="center">
+  <img src="docs/screenshots/flow-mobile.png" alt="B1+ kısa dinleme Akışı mobil görünümü" width="320">
+</p>
+
 ## Neyi farklı yapıyor?
 
 ### Sınavı tek bir uzun teste sıkıştırmıyor
