@@ -11,15 +11,11 @@ Proje ilk olarak kendi sınav hazırlığım için başladı. Sonra aynı süre�
 
 ## Görünüm
 
-![Ankara Hazırlık ana sayfası](docs/screenshots/home-desktop.png)
-
-| Sınav merkezi | Dil kullanımı pratiği |
+| Projenin çıkış noktası | Sınav merkezi |
 | --- | --- |
-| ![Üç oturum ve bölüm pratiklerini gösteren Sınav Merkezi](docs/screenshots/exam-center-desktop.png) | ![Cloze Text dil kullanımı çalışma ekranı](docs/screenshots/cloze-practice-desktop.png) |
-
-<p align="center">
-  <img src="docs/screenshots/flow-mobile.png" alt="B1+ kısa dinleme Akışı mobil görünümü" width="320">
-</p>
+| ![Ankara Hazırlık projesi ve 2.500 üzeri tekil ziyaretçi](docs/linkedin/01-kapak-2500.png) | ![Beş bölümü ve üç oturumu bir araya getiren Sınav Merkezi](docs/linkedin/02-sinav-merkezi.png) |
+| **Mobil Akış** | **Speaking ve AI geri bildirimi** |
+| ![Kısa ve dikey İngilizce egzersizlerinden oluşan mobil Akış](docs/linkedin/03-akis.png) | ![Konuşma puanı, analiz ve oturum içi AI koçu](docs/linkedin/04-speaking-ai.png) |
 
 ## Neyi farklı yapıyor?
 
